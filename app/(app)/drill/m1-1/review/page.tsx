@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
 import { fmtPercent } from "@/lib/utils";
+import { fmtDuration } from "@/lib/format";
 
 function ReviewContent() {
   const params = useSearchParams();
@@ -32,10 +33,17 @@ function ReviewContent() {
 
   const { session, attempts } = data;
   const accuracy = session.totalSpots > 0 ? (session.correctSpots / session.totalSpots) * 100 : 0;
-  const avgTimeS = attempts.length
-    ? Math.round(attempts.reduce((s, a) => s + a.timeMs, 0) / attempts.length / 1000)
+  const avgTimeMs = attempts.length
+    ? Math.round(attempts.reduce((s, a) => s + a.timeMs, 0) / attempts.length)
     : 0;
   const ratedAttempts = attempts.filter((a) => !a.isCorrect);
+  const failedSpots = attempts.filter((a) => !a.isCorrect).map((a) => a.spotSnapshot);
+
+  function handleRetryFailed() {
+    if (failedSpots.length === 0) return;
+    sessionStorage.setItem("retrySpots", JSON.stringify(failedSpots));
+    window.location.href = "/drill/m1-1?mode=retry";
+  }
 
   return (
     <main className="max-w-[1200px] mx-auto px-8 py-12">
@@ -53,7 +61,7 @@ function ReviewContent() {
 
       <section className="grid grid-cols-3 gap-3 mb-12">
         <ReviewMetric label="Accuracy" value={fmtPercent(accuracy, 0)} color={accuracy >= 80 ? "var(--green)" : accuracy >= 60 ? "var(--amber)" : "var(--red)"} />
-        <ReviewMetric label="Temps moyen" value={`${avgTimeS} s`} />
+        <ReviewMetric label="Temps moyen" value={fmtDuration(avgTimeMs)} />
         <ReviewMetric label="Ratés à re-drill" value={String(ratedAttempts.length)} color={ratedAttempts.length > 0 ? "var(--amber)" : "var(--green)"} />
       </section>
 
@@ -88,7 +96,7 @@ function ReviewContent() {
               Pot {att.spotSnapshot?.potBb}bb · bet {att.spotSnapshot?.betBb}bb · attendu {fmtPercent(att.expected?.requiredEquity ?? 0)}
             </span>
             <span className="text-xs font-mono text-text-faint">
-              {Math.round(att.timeMs / 1000)} s
+              {fmtDuration(att.timeMs)}
             </span>
           </div>
         ))}
@@ -106,9 +114,22 @@ function ReviewContent() {
         >
           Nouvelle session
         </Link>
+        {failedSpots.length > 0 && (
+          <button
+            onClick={handleRetryFailed}
+            className="px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200"
+            style={{
+              background: "var(--amber-glow)",
+              border: "0.5px solid rgba(251, 191, 36, 0.3)",
+              color: "var(--amber)",
+            }}
+          >
+            Re-drillet les {failedSpots.length} ratés →
+          </button>
+        )}
         <Link
           href="/"
-          className="px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200"
+          className="ml-auto px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200"
           style={{
             background: "var(--purple-500)",
             border: "0.5px solid var(--purple-500)",
@@ -116,7 +137,7 @@ function ReviewContent() {
             boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
           }}
         >
-          {"Retour à l'Atelier →"}
+          Retour à l&apos;Atelier →
         </Link>
       </div>
     </main>

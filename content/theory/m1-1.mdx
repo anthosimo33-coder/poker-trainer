@@ -1,0 +1,116 @@
+---
+slug: m1-1
+moduleSlug: m1
+submoduleSlug: m1.1
+title: Pot odds basiques
+subtitle: Le calcul fondamental qui transforme l'intuition en équation.
+order: 1
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module I · Sous-module 1 / 4
+  </div>
+
+# Pot odds basiques.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  Le calcul fondamental qui transforme l'intuition en équation. Tu apprendras à répondre, en moins de cinq secondes, à la question : « ce call est-il rentable ? »
+</p>
+</div>
+
+<WhyBlock title="Au poker, l'argent que tu as déjà mis n'est plus à toi.">
+
+Quand tu décides de caller une mise, tu ne paies pas pour ce qui est déjà dans le pot. **Tu paies pour le pot final** — celui qui contient déjà l'argent du vilain, et qui contiendra le tien.
+
+La cote du pot (*pot odds*) est le rapport entre **ce que tu dois payer maintenant** et **ce que tu peux gagner**. C'est la première compétence à automatiser parce que toutes les autres décisions du jeu (équité, EV, ICM) s'y rattachent.
+
+Sans pot odds, tu joues à l'aveugle. Avec, tu joues comme un mathématicien.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="La mécanique" title={<>Le calcul, <em>en deux temps.</em></>} />
+
+<Prose>
+
+Tu fais face à une mise. Tu veux savoir si caller est rentable à long terme. Le calcul se découpe en deux étapes :
+
+1. **Calculer le ratio du pot** — combien tu gagnes pour chaque unité que tu mises
+2. **Convertir en equity requise** — quel pourcentage de victoires tu dois avoir pour être break-even
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Ratio</FormulaLabel> Pot après la mise du vilain ÷ Mise du vilain<br/>
+  <FormulaLabel>Equity requise</FormulaLabel> Mise du vilain ÷ (Pot + 2 × Mise)
+</Formula>
+
+<Prose>
+
+La formule **equity = bet / (pot + 2 × bet)** est ta formule de base. Apprends-la par cœur. Elle s'applique à 100 % des décisions de call en poker.
+
+Le **« 2 × bet »** au dénominateur vient du fait que le pot final contient deux fois la mise du vilain : la sienne (déjà dans le pot quand tu calcules) **et** la tienne (que tu vas ajouter en callant).
+
+</Prose>
+
+<SectionHeader num="03" label="La règle des 4 et 2" title={<>Convertir <em>en pourcentage,</em> en moins de trois secondes.</>} />
+
+<Prose>
+
+Diviser mentalement en pleine partie est lent. La règle suivante donne le pourcentage d'equity requise instantanément, à partir du ratio :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Bet = 1/2 pot</FormulaLabel> Tu as cote de <K>3:1</K>, equity requise = <K>25 %</K><br/>
+  <FormulaLabel>Bet = 2/3 pot</FormulaLabel> Tu as cote de <K>2.5:1</K>, equity requise = <K>28.6 %</K><br/>
+  <FormulaLabel>Bet = pot</FormulaLabel> Tu as cote de <K>2:1</K>, equity requise = <K>33.3 %</K><br/>
+  <FormulaLabel>Bet = 1.5 pot</FormulaLabel> Tu as cote de <K>1.67:1</K>, equity requise = <K>37.5 %</K><br/>
+  <FormulaMuted>Ces 4 sizings couvrent ~80 % des situations en MTT.</FormulaMuted>
+</Formula>
+
+<Mnemonic keyText="B / (P+2B)">
+« Bet sur Pot plus deux Bets. » C'est la seule formule à automatiser — toutes les autres décisions du jeu en découlent.
+</Mnemonic>
+
+<SectionHeader num="04" label="Exemple appliqué" title={<>Un cas concret <em>de MTT mid-stage.</em></>} />
+
+<Prose>
+
+Tu es au BTN avec un tirage couleur au flop. Le CO a misé **3.2bb** dans un pot de **4bb**.
+
+</Prose>
+
+<Example title="Calcul étape par étape">
+
+**Pot final si tu calles** = 4 + 3.2 + 3.2 = **10.4bb**
+
+**Equity requise** = 3.2 / 10.4 = **30.8 %**
+
+**Ratio** = (4 + 3.2) / 3.2 = **2.25 : 1**
+
+Tu dois donc avoir **au moins 30.8 % de chances de gagner** pour que ton call soit break-even à long terme. Sachant qu'un tirage couleur au flop te donne ~36 % d'equity contre une main faite, *le call est mathématiquement profitable*.
+
+</Example>
+
+<SectionHeader num="05" label="Les pièges classiques" title={<>Trois erreurs <em>qui coûtent cher.</em></>} />
+
+<Prose>
+
+**1. Confondre cote du pot et equity requise.** La cote (3:1) est un ratio, l'equity (25 %) est un pourcentage. On les utilise différemment selon le contexte, mais elles décrivent la même réalité.
+
+**2. Oublier la mise dans le calcul final.** Beaucoup de joueurs débutants calculent l'equity requise comme `bet / (pot + bet)` — c'est faux. Le pot final inclut **ton call**, pas seulement la mise du vilain.
+
+**3. Ignorer les cotes implicites.** La cote du pot ne mesure que ce qui est *garanti maintenant*. Quand tu touches ton tirage, tu peux gagner plus sur les streets suivantes. C'est le concept des *cotes implicites*, traité en M·I sous-module 3.
+
+</Prose>
+
+<LifeLink title="Tu paies toujours pour le futur, jamais pour le passé.">
+
+Cette logique du pot odds — *l'argent déjà investi n'est plus à toi, ne raisonne que sur ce que tu vas payer pour ce que tu peux gagner* — est exactement le principe des **coûts irrécupérables** en business.
+
+Tu as investi 6 mois sur une feature qui ne décolle pas ? Ce n'est plus pertinent. La question est : *combien faut-il investir maintenant, pour quel retour probable ?* Si l'equity (probabilité de succès × valeur potentielle) ne couvre pas le coût marginal, tu fold. Peu importe ce que tu as déjà sunk.
+
+Les meilleurs investisseurs pensent comme les joueurs de poker : **les décisions sont marginales, pas cumulatives**.
+
+</LifeLink>

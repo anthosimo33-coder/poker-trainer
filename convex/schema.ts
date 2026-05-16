@@ -109,4 +109,13 @@ export default defineSchema({
   })
     .index("by_slug", ["slug"])
     .index("by_book", ["bookSlug"]),
+
+  theoryCompletions: defineTable({
+    userId: v.id("users"),
+    submoduleSlug: v.string(),
+    completedAt: v.number(),
+    quickCheckScore: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_submodule", ["userId", "submoduleSlug"]),
 });

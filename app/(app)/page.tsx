@@ -53,9 +53,10 @@ const MODULES = [
   },
 ];
 
-function statusFor(accuracy: number, available: boolean, attempts: number) {
+function statusFor(accuracy: number, available: boolean, attempts: number, isTheoryDone: boolean) {
   if (!available) return { kind: "locked" as const, label: "Verrouillé" };
-  if (attempts === 0) return { kind: "active" as const, label: "À démarrer" };
+  if (!isTheoryDone) return { kind: "theory" as const, label: "Théorie à lire" };
+  if (attempts === 0) return { kind: "active" as const, label: "Prêt à drillet" };
   if (accuracy >= 80) return { kind: "done" as const, label: "Maîtrisé" };
   if (accuracy < 60 && attempts >= 10) return { kind: "leak" as const, label: "Fuite active" };
   return { kind: "active" as const, label: "En cours" };
@@ -66,6 +67,7 @@ const STATUS_STYLES = {
   active: { dot: "var(--purple-400)", glow: "var(--purple-glow)", color: "var(--purple-300)", badgeBg: "var(--purple-glow)", badgeBorder: "rgba(167, 139, 250, 0.3)" },
   leak: { dot: "var(--amber)", glow: "var(--amber-glow)", color: "var(--amber)", badgeBg: "var(--amber-glow)", badgeBorder: "rgba(251, 191, 36, 0.3)" },
   locked: { dot: "var(--text-dim)", glow: "transparent", color: "var(--text-faint)", badgeBg: "var(--surface-strong)", badgeBorder: "var(--border-strong)" },
+  theory: { dot: "var(--purple-400)", glow: "var(--purple-glow)", color: "var(--purple-300)", badgeBg: "var(--purple-glow)", badgeBorder: "rgba(167, 139, 250, 0.3)" },
 };
 
 export default function AtelierPage() {
@@ -163,12 +165,23 @@ function ModuleRow({ mod, userId }: {
     api.attempts.getSubmoduleStats,
     mod.available && userId ? { userId, submoduleSlug: mod.submoduleSlug, lastN: 30 } : "skip"
   );
+  const completion = useQuery(
+    api.theoryCompletions.getCompletion,
+    mod.available && userId ? { userId, submoduleSlug: mod.submoduleSlug } : "skip"
+  );
 
+  const isTheoryDone =
+    completion !== undefined && completion !== null && completion.quickCheckScore >= 2;
   const accuracy = stats?.accuracy ?? 0;
   const totalAttempts = stats?.totalAttempts ?? 0;
-  const status = statusFor(accuracy, mod.available, totalAttempts);
+  const status = statusFor(accuracy, mod.available, totalAttempts, isTheoryDone);
   const styles = STATUS_STYLES[status.kind];
   const locked = status.kind === "locked";
+  const href = !mod.available
+    ? "#"
+    : !isTheoryDone
+    ? `/module/${mod.slug}/theory/${mod.submoduleSlug.replace(".", "-")}`
+    : mod.href;
 
   const progressLabel = !mod.available
     ? "Verrouillé"
@@ -228,5 +241,5 @@ function ModuleRow({ mod, userId }: {
   );
 
   if (locked) return <div>{content}</div>;
-  return <Link href={mod.href}>{content}</Link>;
+  return <Link href={href}>{content}</Link>;
 }

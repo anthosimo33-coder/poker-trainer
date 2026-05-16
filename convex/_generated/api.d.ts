@@ -11,6 +11,7 @@
 import type * as attempts from "../attempts.js";
 import type * as seed from "../seed.js";
 import type * as sessions from "../sessions.js";
+import type * as theoryCompletions from "../theoryCompletions.js";
 import type * as users from "../users.js";
 
 import type {
@@ -23,6 +24,7 @@ declare const fullApi: ApiFromModules<{
   attempts: typeof attempts;
   seed: typeof seed;
   sessions: typeof sessions;
+  theoryCompletions: typeof theoryCompletions;
   users: typeof users;
 }>;
 

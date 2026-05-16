@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
-import { useMutation } from "convex/react";
+import { useState, useMemo, useEffect, useRef, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { useMutation, useQuery } from "convex/react";
+import Link from "next/link";
 import { PokerTable } from "@/components/poker/PokerTable";
 import { generatePotOddsSpot, type PotOddsSpot } from "@/lib/poker/spot-generators/m1-1-pot-odds";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
+import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
 import { api } from "@/convex/_generated/api";
 import { useCurrentUser } from "@/lib/auth/useCurrentUser";
 import type { Id } from "@/convex/_generated/dataModel";
@@ -41,9 +44,18 @@ function parseRatio(input: string): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-export default function DrillM1_1Page() {
+function DrillContent() {
+  const params = useSearchParams();
+  const isRetryMode = params.get("mode") === "retry";
+
   const { userId, isReady } = useCurrentUser();
+  const completion = useQuery(
+    api.theoryCompletions.getCompletion,
+    userId ? { userId, submoduleSlug: "m1.1" } : "skip"
+  );
+
   const [spot, setSpot] = useState<PotOddsSpot | null>(null);
+  const [retrySpots, setRetrySpots] = useState<PotOddsSpot[] | null>(null);
   const [answer, setAnswer] = useState<UserAnswer>({ requiredEquity: "", ratio: "", decision: null });
   const [showCorrection, setShowCorrection] = useState(false);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
@@ -56,6 +68,24 @@ export default function DrillM1_1Page() {
   const addSpotToSession = useMutation(api.sessions.addSpotToSession);
   const endSession = useMutation(api.sessions.endSession);
 
+  // En mode retry, charge les spots ratés depuis sessionStorage au mount
+  useEffect(() => {
+    if (isRetryMode && retrySpots === null) {
+      const raw = sessionStorage.getItem("retrySpots");
+      if (raw) {
+        try {
+          const spots = JSON.parse(raw) as PotOddsSpot[];
+          setRetrySpots(spots);
+          sessionStorage.removeItem("retrySpots");
+        } catch {
+          setRetrySpots([]);
+        }
+      } else {
+        setRetrySpots([]);
+      }
+    }
+  }, [isRetryMode, retrySpots]);
+
   // Start session une fois quand user prêt
   useEffect(() => {
     if (!isReady || !userId || sessionId) return;
@@ -66,22 +96,75 @@ export default function DrillM1_1Page() {
     }).then(setSessionId);
   }, [isReady, userId, sessionId, startSession]);
 
-  // Génère le premier spot une fois la session prête
+  // Génère le premier spot : retry → prend dans la liste, sinon → génère
   useEffect(() => {
-    if (!spot && sessionId) {
+    if (!sessionId) return;
+    if (spot) return;
+    if (isRetryMode) {
+      if (retrySpots && retrySpots.length > 0 && spotIndex <= retrySpots.length) {
+        setSpot(retrySpots[spotIndex - 1]);
+        startedAtRef.current = Date.now();
+      } else if (retrySpots && retrySpots.length === 0) {
+        // Pas de spots à rejouer, fallback : nouvelle session normale
+        window.location.href = "/drill/m1-1";
+      }
+    } else {
       setSpot(generatePotOddsSpot());
       startedAtRef.current = Date.now();
     }
-  }, [spot, sessionId]);
+  }, [spot, sessionId, isRetryMode, retrySpots, spotIndex]);
 
   const stats = useMemo(() => {
     const correct = attempts.filter((a) => a.isCorrect).length;
     const wrong = attempts.length - correct;
-    const avgTime = attempts.length
-      ? Math.round(attempts.reduce((s, a) => s + a.timeMs, 0) / attempts.length / 1000)
+    const avgTimeMs = attempts.length
+      ? Math.round(attempts.reduce((s, a) => s + a.timeMs, 0) / attempts.length)
       : 0;
-    return { correct, wrong, avgTime };
+    return { correct, wrong, avgTimeMs };
   }, [attempts]);
+
+  const isTheoryCompleted =
+    completion !== undefined && completion !== null && completion.quickCheckScore >= 2;
+  const totalSpots = isRetryMode ? retrySpots?.length ?? SPOTS_PER_SESSION : SPOTS_PER_SESSION;
+
+  // Chargement de la complétion théorie (ou user pas encore prêt)
+  if (completion === undefined) {
+    return (
+      <main className="max-w-[720px] mx-auto px-8 py-16">
+        <div className="text-text-muted">Chargement…</div>
+      </main>
+    );
+  }
+
+  // Verrouillage : pas de théorie validée → écran de redirection (sauf mode rejeu)
+  if (!isTheoryCompleted && !isRetryMode) {
+    return (
+      <main className="max-w-[720px] mx-auto px-8 pt-16 pb-24">
+        <div style={{ animation: "fadeUp 400ms var(--ease-out)" }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--amber-glow)", border: "0.5px solid rgba(251, 191, 36, 0.3)", color: "var(--amber)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+            ◆ Drill verrouillé
+          </div>
+          <h1 className="text-[36px] font-semibold leading-[1.1] tracking-[-0.03em] mb-4 bg-gradient-text">
+            Lis la théorie d&apos;abord.
+          </h1>
+          <p className="text-[15px] text-text-muted mb-8 max-w-[520px] leading-[1.65]">
+            Le drill se débloque après lecture de la théorie et validation du quick check (2/3 minimum). C&apos;est la garantie que tu drilles avec les bons outils mentaux, pas dans le vide.
+          </p>
+          <Link
+            href="/module/m1/theory/m1-1"
+            className="inline-block px-6 py-3.5 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200 hover:-translate-y-px text-white"
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+            }}
+          >
+            Lire la théorie M·I.1 →
+          </Link>
+        </div>
+      </main>
+    );
+  }
 
   // Loading state pendant que user et session se setup
   if (!isReady || !sessionId || !spot) {
@@ -136,16 +219,21 @@ export default function DrillM1_1Page() {
   }
 
   async function handleNext() {
-    if (spotIndex >= SPOTS_PER_SESSION && sessionId) {
+    if (spotIndex >= totalSpots && sessionId) {
       await endSession({ sessionId });
       window.location.href = `/drill/m1-1/review?session=${sessionId}`;
       return;
     }
-    setSpot(generatePotOddsSpot());
+    if (isRetryMode && retrySpots) {
+      setSpot(retrySpots[spotIndex]);
+      startedAtRef.current = Date.now();
+    } else {
+      setSpot(generatePotOddsSpot());
+      startedAtRef.current = Date.now();
+    }
     setAnswer({ requiredEquity: "", ratio: "", decision: null });
     setShowCorrection(false);
     setSpotIndex((i) => i + 1);
-    startedAtRef.current = Date.now();
   }
 
   return (
@@ -153,18 +241,36 @@ export default function DrillM1_1Page() {
       {/* Header */}
       <div className="flex justify-between items-end mb-10 pb-6" style={{ borderBottom: "0.5px solid var(--border)" }}>
         <div>
-          <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-2">
+          <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-2 flex items-center gap-2">
             Module I · Pot odds · Sous-module 1
+            {isRetryMode && (
+              <span
+                className="px-2 py-0.5 rounded normal-case tracking-normal"
+                style={{
+                  background: "var(--amber-glow)",
+                  border: "0.5px solid rgba(251, 191, 36, 0.3)",
+                  color: "var(--amber)",
+                  fontSize: 10,
+                }}
+              >
+                Mode rejeu · {totalSpots} spot{totalSpots > 1 ? "s" : ""}
+              </span>
+            )}
           </div>
           <div className="text-4xl font-semibold tracking-[-0.03em] leading-none">
             Spot {spotIndex}
-            <span className="text-text-faint font-normal"> / {SPOTS_PER_SESSION}</span>
+            <span className="text-text-faint font-normal"> / {totalSpots}</span>
           </div>
         </div>
         <div className="flex gap-6 items-center">
           <ScoreStat label="Réussis" value={stats.correct} color="var(--green)" />
           <ScoreStat label="Ratés" value={stats.wrong} color="var(--red)" />
-          <ScoreStat label="Temps moy." value={stats.avgTime} unit="s" pad={false} />
+          <ScoreStat
+            label="Temps moy."
+            value={fmtDurationCompact(stats.avgTimeMs)}
+            unit={fmtDurationCompactUnit(stats.avgTimeMs)}
+            pad={false}
+          />
         </div>
       </div>
 
@@ -207,6 +313,14 @@ export default function DrillM1_1Page() {
   );
 }
 
+export default function DrillM1_1Page() {
+  return (
+    <Suspense fallback={<main className="max-w-[1200px] mx-auto px-8 py-12 text-text-muted">Préparation…</main>}>
+      <DrillContent />
+    </Suspense>
+  );
+}
+
 function ScoreStat({
   label,
   value,
@@ -215,16 +329,17 @@ function ScoreStat({
   pad = true,
 }: {
   label: string;
-  value: number;
+  value: string | number;
   color?: string;
   unit?: string;
   pad?: boolean;
 }) {
+  const display = pad && typeof value === "number" ? String(value).padStart(2, "0") : value;
   return (
     <div className="flex flex-col items-end gap-1">
       <span className="text-[10px] font-mono uppercase tracking-wider text-text-faint font-medium">{label}</span>
       <span className="text-2xl font-semibold font-mono leading-none tracking-tight" style={{ color }}>
-        {pad ? String(value).padStart(2, "0") : value}
+        {display}
         {unit && <span className="text-xs text-text-faint font-normal ml-0.5">{unit}</span>}
       </span>
     </div>
@@ -417,13 +532,13 @@ function CorrectionPanel({
 
       {/* Étape 1 — Identification des montants */}
       <CorrectionStep delay={0} num="01" label="Identifier les montants en jeu">
-        <Formula>
+        <FormulaBox>
           Pot avant ton call = <Mono>{fmtBb(spot.potBb)}</Mono>
           <br />
           Mise du vilain = <Mono>{fmtBb(spot.betBb)}</Mono>
           <br />
           <span className="text-text-muted">Pot final si tu calles = pot + bet + bet =</span> <Mono>{fmtBb(spot.expected.finalPotBb)}</Mono>
-        </Formula>
+        </FormulaBox>
       </CorrectionStep>
 
       {/* Étape 2 — Cote du pot */}
@@ -434,12 +549,12 @@ function CorrectionPanel({
         userAnswer={answer.ratio ? fmtRatio(parseRatio(answer.ratio) ?? 0) : "—"}
         isOk={ratioOk}
       >
-        <Formula>
-          <Label>Formule</Label> Ratio = (pot + bet) / bet
+        <FormulaBox>
+          <Lbl>Formule</Lbl> Ratio = (pot + bet) / bet
           <br />
-          <Label>Application</Label> ({fmtBb(spot.potBb)} + {fmtBb(spot.betBb)}) / {fmtBb(spot.betBb)} ={" "}
+          <Lbl>Application</Lbl> ({fmtBb(spot.potBb)} + {fmtBb(spot.betBb)}) / {fmtBb(spot.betBb)} ={" "}
           <Mono className="!text-purple-300">{fmtRatio(spot.expected.ratio)}</Mono>
-        </Formula>
+        </FormulaBox>
       </CorrectionStep>
 
       {/* Étape 3 — Equity requise */}
@@ -450,12 +565,12 @@ function CorrectionPanel({
         userAnswer={answer.requiredEquity ? fmtPercent(parseAnswerNumber(answer.requiredEquity) ?? 0) : "—"}
         isOk={eqOk}
       >
-        <Formula>
-          <Label>Formule</Label> Equity requise = bet / (pot + 2 × bet)
+        <FormulaBox>
+          <Lbl>Formule</Lbl> Equity requise = bet / (pot + 2 × bet)
           <br />
-          <Label>Application</Label> {fmtBb(spot.betBb)} / {fmtBb(spot.expected.finalPotBb)} ={" "}
+          <Lbl>Application</Lbl> {fmtBb(spot.betBb)} / {fmtBb(spot.expected.finalPotBb)} ={" "}
           <Mono className="!text-purple-300">{fmtPercent(spot.expected.requiredEquity)}</Mono>
-        </Formula>
+        </FormulaBox>
       </CorrectionStep>
 
       {/* Étape 4 — Décision */}
@@ -466,13 +581,13 @@ function CorrectionPanel({
         userAnswer={answer.decision ?? "—"}
         isOk={decisionOk}
       >
-        <Formula>
+        <FormulaBox>
           Si ton equity estimée &gt; <Mono>{fmtPercent(spot.expected.requiredEquity)}</Mono> → <strong className="text-text">call</strong>
           <br />
           Sinon → <strong className="text-text">fold</strong>
           <br />
           <span className="text-text-muted">Bonne réponse :</span> <strong className="text-text capitalize">{expectedDecision}</strong>
-        </Formula>
+        </FormulaBox>
       </CorrectionStep>
 
       <div className="mt-auto pt-6 flex gap-2.5">
@@ -532,7 +647,7 @@ function CorrectionStep({
   );
 }
 
-function Formula({ children, className }: { children: React.ReactNode; className?: string }) {
+function FormulaBox({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div
       className={cn("font-mono text-[13px] rounded p-3.5 leading-[1.9]", className)}
@@ -552,6 +667,6 @@ function Mono({ children, className }: { children: React.ReactNode; className?: 
   return <span className={cn("font-mono text-text", className)}>{children}</span>;
 }
 
-function Label({ children }: { children: React.ReactNode }) {
+function Lbl({ children }: { children: React.ReactNode }) {
   return <span className="text-[var(--purple-300)] font-medium">{children} —</span>;
 }
