@@ -5,19 +5,16 @@ import { type Card, rankOf, suitOf, SUIT_SYMBOLS } from "@/lib/poker/cards";
 
 interface PlayingCardProps {
   card: Card;
-  /** Délai d'animation de distribution en ms. */
   dealDelayMs?: number;
-  /** Taille : 'sm' (40×56), 'md' (56×80, défaut), 'lg' (72×104). */
   size?: "sm" | "md" | "lg";
-  /** Carte face cachée (verso). */
   hidden?: boolean;
   className?: string;
 }
 
 const SIZE_MAP = {
-  sm: { w: 40, h: 56, rank: 16, suit: 12, corner: 8 },
-  md: { w: 56, h: 80, rank: 24, suit: 16, corner: 10 },
-  lg: { w: 72, h: 104, rank: 30, suit: 20, corner: 12 },
+  sm: { w: 40, h: 56, rank: 18, suit: 14, corner: 9 },
+  md: { w: 56, h: 80, rank: 28, suit: 20, corner: 11 },
+  lg: { w: 72, h: 104, rank: 36, suit: 26, corner: 13 },
 };
 
 export function PlayingCard({
@@ -30,23 +27,19 @@ export function PlayingCard({
   const dim = SIZE_MAP[size];
   const rank = rankOf(card);
   const suit = suitOf(card);
+  // Convention 2 couleurs : ♠♣ noir, ♥♦ rouge
   const isRed = suit === "h" || suit === "d";
   const suitChar = SUIT_SYMBOLS[suit];
 
   if (hidden) {
     return (
       <div
-        className={cn(
-          "rounded-lg shrink-0 relative overflow-hidden",
-          className
-        )}
+        className={cn("rounded-lg shrink-0 relative overflow-hidden", className)}
         style={{
           width: dim.w,
           height: dim.h,
-          background:
-            "linear-gradient(135deg, var(--purple-600), var(--purple-700))",
-          boxShadow:
-            "0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.4)",
+          background: "linear-gradient(135deg, var(--purple-600), var(--purple-700))",
+          boxShadow: "0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.4)",
           animation: `cardDeal 600ms var(--ease-out) ${dealDelayMs}ms backwards`,
         }}
         aria-label="Carte cachée"
@@ -79,35 +72,17 @@ export function PlayingCard({
         fontFamily: "var(--font-geist-sans)",
         letterSpacing: "-0.02em",
       }}
-      aria-label={`${rank} de ${suit}`}
+      aria-label={`${rank} of ${suit}`}
     >
       <span
-        className="absolute font-bold leading-none"
-        style={{
-          top: 4,
-          left: 6,
-          fontSize: dim.corner,
-        }}
+        className="absolute font-bold leading-none flex flex-col items-center"
+        style={{ top: 5, left: 6, fontSize: dim.corner, lineHeight: 1.1 }}
       >
-        {rank}
-        {suitChar}
+        <span>{rank}</span>
+        <span style={{ fontSize: dim.corner - 1 }}>{suitChar}</span>
       </span>
-      <span style={{ fontSize: dim.rank, lineHeight: 1 }}>{rank}</span>
-      <span style={{ fontSize: dim.suit, lineHeight: 1, marginTop: 2 }}>
-        {suitChar}
-      </span>
-      <span
-        className="absolute font-bold leading-none"
-        style={{
-          bottom: 4,
-          right: 6,
-          fontSize: dim.corner,
-          transform: "rotate(180deg)",
-        }}
-      >
-        {rank}
-        {suitChar}
-      </span>
+      <span style={{ fontSize: dim.rank, lineHeight: 1, fontWeight: 700 }}>{rank}</span>
+      <span style={{ fontSize: dim.suit, lineHeight: 1, marginTop: 3 }}>{suitChar}</span>
     </div>
   );
 }

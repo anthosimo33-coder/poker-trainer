@@ -1,9 +1,13 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
+import { useMutation } from "convex/react";
 import { PokerTable } from "@/components/poker/PokerTable";
 import { generatePotOddsSpot, type PotOddsSpot } from "@/lib/poker/spot-generators/m1-1-pot-odds";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
+import { api } from "@/convex/_generated/api";
+import { useCurrentUser } from "@/lib/auth/useCurrentUser";
+import type { Id } from "@/convex/_generated/dataModel";
 
 interface Attempt {
   spotId: string;
@@ -17,6 +21,7 @@ interface UserAnswer {
   decision: "call" | "fold" | "raise" | null;
 }
 
+const SPOTS_PER_SESSION = 20;
 const TOLERANCE_PCT = 1.5; // tolérance en points pour considérer la réponse correcte
 const TOLERANCE_RATIO = 0.15; // tolérance pour le ratio
 
@@ -37,20 +42,37 @@ function parseRatio(input: string): number | null {
 }
 
 export default function DrillM1_1Page() {
+  const { userId, isReady } = useCurrentUser();
   const [spot, setSpot] = useState<PotOddsSpot | null>(null);
   const [answer, setAnswer] = useState<UserAnswer>({ requiredEquity: "", ratio: "", decision: null });
   const [showCorrection, setShowCorrection] = useState(false);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [spotIndex, setSpotIndex] = useState(1);
+  const [sessionId, setSessionId] = useState<Id<"sessions"> | null>(null);
   const startedAtRef = useRef<number>(Date.now());
 
-  // Génération du premier spot client-side (évite hydration mismatch)
+  const startSession = useMutation(api.sessions.startSession);
+  const recordAttempt = useMutation(api.attempts.recordAttempt);
+  const addSpotToSession = useMutation(api.sessions.addSpotToSession);
+  const endSession = useMutation(api.sessions.endSession);
+
+  // Start session une fois quand user prêt
   useEffect(() => {
-    if (!spot) {
+    if (!isReady || !userId || sessionId) return;
+    startSession({
+      userId,
+      moduleSlug: "m1",
+      submoduleSlug: "m1.1",
+    }).then(setSessionId);
+  }, [isReady, userId, sessionId, startSession]);
+
+  // Génère le premier spot une fois la session prête
+  useEffect(() => {
+    if (!spot && sessionId) {
       setSpot(generatePotOddsSpot());
       startedAtRef.current = Date.now();
     }
-  }, [spot]);
+  }, [spot, sessionId]);
 
   const stats = useMemo(() => {
     const correct = attempts.filter((a) => a.isCorrect).length;
@@ -61,10 +83,11 @@ export default function DrillM1_1Page() {
     return { correct, wrong, avgTime };
   }, [attempts]);
 
-  if (!spot) {
+  // Loading state pendant que user et session se setup
+  if (!isReady || !sessionId || !spot) {
     return (
       <main className="max-w-[1200px] mx-auto px-8 py-12">
-        <div className="text-text-muted">Génération du spot…</div>
+        <div className="text-text-muted">Préparation de la session…</div>
       </main>
     );
   }
@@ -79,23 +102,45 @@ export default function DrillM1_1Page() {
   // call sinon. Pour le drill basique, on dit "call" car le but est de tester le calcul, pas la décision.
   const expectedDecision: "call" | "fold" = spot.expected.requiredEquity < 40 ? "call" : "fold";
 
-  function handleValidate() {
-    const eqOk = eqAnswered !== null && Math.abs(eqAnswered - spot!.expected.requiredEquity) <= TOLERANCE_PCT;
-    const ratioOk = ratioAnswered !== null && Math.abs(ratioAnswered - spot!.expected.ratio) <= TOLERANCE_RATIO;
+  async function handleValidate() {
+    if (!spot || !userId || !sessionId) return;
+    const eqUser = parseAnswerNumber(answer.requiredEquity);
+    const ratioUser = parseRatio(answer.ratio);
+    const eqOk = eqUser !== null && Math.abs(eqUser - spot.expected.requiredEquity) <= TOLERANCE_PCT;
+    const ratioOk = ratioUser !== null && Math.abs(ratioUser - spot.expected.ratio) <= TOLERANCE_RATIO;
     const decisionOk = answer.decision === expectedDecision;
     const isCorrect = eqOk && ratioOk && decisionOk;
-    setAttempts((prev) => [
-      ...prev,
-      {
-        spotId: spot!.id,
-        isCorrect,
-        timeMs: Date.now() - startedAtRef.current,
-      },
-    ]);
+    const timeMs = Date.now() - startedAtRef.current;
+
+    const attemptId = await recordAttempt({
+      userId,
+      submoduleSlug: "m1.1",
+      spotId: spot.id,
+      spotSnapshot: spot,
+      expected: spot.expected,
+      userAnswer: answer,
+      isCorrect,
+      timeMs,
+      hintUsed: false,
+    });
+
+    await addSpotToSession({
+      sessionId,
+      attemptId,
+      orderIndex: spotIndex - 1,
+      isCorrect,
+    });
+
+    setAttempts((prev) => [...prev, { spotId: spot.id, isCorrect, timeMs }]);
     setShowCorrection(true);
   }
 
-  function handleNext() {
+  async function handleNext() {
+    if (spotIndex >= SPOTS_PER_SESSION && sessionId) {
+      await endSession({ sessionId });
+      window.location.href = `/drill/m1-1/review?session=${sessionId}`;
+      return;
+    }
     setSpot(generatePotOddsSpot());
     setAnswer({ requiredEquity: "", ratio: "", decision: null });
     setShowCorrection(false);
@@ -113,13 +158,13 @@ export default function DrillM1_1Page() {
           </div>
           <div className="text-4xl font-semibold tracking-[-0.03em] leading-none">
             Spot {spotIndex}
-            <span className="text-text-faint font-normal"> / ∞</span>
+            <span className="text-text-faint font-normal"> / {SPOTS_PER_SESSION}</span>
           </div>
         </div>
         <div className="flex gap-6 items-center">
           <ScoreStat label="Réussis" value={stats.correct} color="var(--green)" />
           <ScoreStat label="Ratés" value={stats.wrong} color="var(--red)" />
-          <ScoreStat label="Temps moy." value={stats.avgTime} unit="s" />
+          <ScoreStat label="Temps moy." value={stats.avgTime} unit="s" pad={false} />
         </div>
       </div>
 
@@ -136,7 +181,7 @@ export default function DrillM1_1Page() {
           board={spot.board}
           action={
             <>
-              Le {spot.villainPosition} mise <BetTag>{fmtBb(spot.betBb)}</BetTag> dans un pot de <BetTag>{fmtBb(spot.potBb)}</BetTag>. Action sur toi.
+              Le {spot.villainPosition} <BetTag>bet {fmtBb(spot.betBb)}</BetTag> dans un pot de <BetTag>{fmtBb(spot.potBb)}</BetTag>. Action sur toi.
             </>
           }
           question="Calcule la cote du pot, l'equity requise pour caller, et donne ta décision."
@@ -162,12 +207,24 @@ export default function DrillM1_1Page() {
   );
 }
 
-function ScoreStat({ label, value, color, unit }: { label: string; value: number; color?: string; unit?: string }) {
+function ScoreStat({
+  label,
+  value,
+  color,
+  unit,
+  pad = true,
+}: {
+  label: string;
+  value: number;
+  color?: string;
+  unit?: string;
+  pad?: boolean;
+}) {
   return (
     <div className="flex flex-col items-end gap-1">
       <span className="text-[10px] font-mono uppercase tracking-wider text-text-faint font-medium">{label}</span>
       <span className="text-2xl font-semibold font-mono leading-none tracking-tight" style={{ color }}>
-        {String(value).padStart(2, "0")}
+        {pad ? String(value).padStart(2, "0") : value}
         {unit && <span className="text-xs text-text-faint font-normal ml-0.5">{unit}</span>}
       </span>
     </div>

@@ -13,6 +13,15 @@ pnpm test:run         # Tests une seule fois
 pnpm build            # Build production
 ```
 
+## Setup initial
+
+Après le premier `pnpm dev:convex` (ou `pnpm dlx convex dev --once`) qui déploie le schema,
+seeder les modules/sous-modules une fois :
+
+```bash
+pnpm dlx convex run seed:seedModules   # → { modules: 5, submodules: 4 }
+```
+
 ## Stack
 
 - Next.js 14 + TypeScript + Tailwind

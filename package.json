@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
-    "screenshots": "tsx scripts/screenshots.ts"
+    "screenshots": "tsx scripts/screenshots.ts",
+    "screenshots:s3": "tsx scripts/screenshots-s3.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
