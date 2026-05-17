@@ -3,6 +3,7 @@ import path from "path";
 import { ConvexClient } from "convex/browser";
 import { api } from "../convex/_generated/api";
 import mecaniques from "../content/lessons/mecaniques";
+import strategie from "../content/lessons/strategie";
 
 // Le spec lit process.env.NEXT_PUBLIC_CONVEX_URL mais rien ne le peuple pour un
 // run `tsx` autonome. On charge .env.local minimalement (gap du script du spec).
@@ -30,8 +31,12 @@ async function main() {
   console.log("✓ Books seedés");
 
   // 2. Seed contenu du livre I — Mécaniques
-  const result = await client.mutation(api.lessons.seedBookContent, mecaniques);
-  console.log(`✓ Livre I — Mécaniques : ${result.chapters} chapitres, ${result.cards} fiches`);
+  const r1 = await client.mutation(api.lessons.seedBookContent, mecaniques);
+  console.log(`✓ Livre I — Mécaniques : ${r1.chapters} chapitres, ${r1.cards} fiches`);
+
+  // 3. Seed contenu du livre II — Stratégie
+  const r2 = await client.mutation(api.lessons.seedBookContent, strategie);
+  console.log(`✓ Livre II — Stratégie : ${r2.chapters} chapitres, ${r2.cards} fiches`);
 
   await client.close();
 }

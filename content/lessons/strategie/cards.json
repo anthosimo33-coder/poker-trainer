@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "range-ouverture",
+    "term": "Range d'ouverture",
+    "shortDef": "L'ensemble des mains qu'une position autorise à relancer en premier (open-raise).",
+    "fullContentMd": "Tu n'ouvres jamais une main isolée : tu ouvres un **ensemble** déterminé par ta position. Plus tu parles tôt, plus il est serré, parce que plus de joueurs peuvent te dominer derrière.\n\nOrdres de grandeur en 6-max : UTG ~15 %, MP ~20 %, CO ~28 %, BTN ~45-50 %. La même main (AJo) se fold UTG et s'ouvre au bouton — _le contexte décide, pas la carte_.\n\nUne range d'ouverture cohérente est la première brique d'un jeu solide : la majorité des fuites du débutant viennent d'opens trop larges en position précoce.",
+    "relatedCardSlugs": ["range", "main-premium", "utg", "btn"],
+    "searchKeywords": "range ouverture open raise rfi range first in opening range position preflop largeur"
+  },
+  {
+    "slug": "range",
+    "term": "Range",
+    "shortDef": "L'ensemble des mains que le vilain peut détenir à un instant donné, pas une main unique.",
+    "fullContentMd": "Tu ne joues pas contre _une_ main — tu joues contre tout ce que l'adversaire pourrait avoir, compte tenu de ses actions. Cet ensemble est le **range**.\n\nLe saut mental est décisif : au lieu de _« qu'est-ce qu'il a ? »_ (insoluble), tu te demandes _« quelles mains joue-t-il comme ça ? »_ (déductible). À chaque action, le range se rétrécit : un open UTG suivi d'un triple barrel river ne contient plus grand-chose.\n\nRaisonner en range, c'est remplacer la devinette par une distribution. C'est le socle de toute lecture adverse.",
+    "relatedCardSlugs": ["range-polarise", "range-lineaire", "preflop", "raise"],
+    "searchKeywords": "range éventail fourchette ensemble de mains hand range distribution lecture adverse"
+  },
+  {
+    "slug": "range-polarise",
+    "term": "Range polarisée",
+    "shortDef": "Un range fait uniquement de mains très fortes et de bluffs — rien au milieu.",
+    "fullContentMd": "Un range **polarisé** est creux : il ne contient que les extrêmes — des monstres (value) et des bluffs — sans mains moyennes. C'est la structure typique d'une grosse mise river ou d'un gros 3bet.\n\nConséquence pratique : face à un range polarisé, tes mains « moyennes-fortes » sont dans une position misérable. Elles battent les bluffs et perdent contre la value, donc caller revient à un pile-ou-face sur la fréquence de bluff adverse. _C'est pourquoi payer « bon mais pas génial » face à une grosse mise est souvent un piège._\n\nL'opposé est le range linéaire.",
+    "relatedCardSlugs": ["range-lineaire", "range", "river", "fold-equity"],
+    "searchKeywords": "range polarise polarisée polarized value bluff nuts air gros bet riviere structure"
+  },
+  {
+    "slug": "range-lineaire",
+    "term": "Range linéaire",
+    "shortDef": "Un range continu : les X meilleures mains, sans trou entre value et semi-bluffs.",
+    "fullContentMd": "Un range **linéaire** (ou _merged_) est plein : il prend les X meilleures mains de la situation, en continu — top value, value moyenne, semi-bluffs solides. Pas de creux.\n\nC'est la structure des opens préflop standards et de beaucoup de c-bets flop : on mise un bloc cohérent de mains qui ont toutes une raison d'avancer. Face à un range linéaire, tes mains intermédiaires gardent de la valeur — l'inverse exact du range polarisé.\n\nSavoir si le range adverse est linéaire ou polarisé change toute ta réponse : ce sont deux jeux différents.",
+    "relatedCardSlugs": ["range-polarise", "range", "c-bet", "range-ouverture"],
+    "searchKeywords": "range lineaire linéaire merged condensé continu value semi-bluff structure cbet"
+  },
+  {
+    "slug": "main-premium",
+    "term": "Main premium",
+    "shortDef": "Une main forte préflop (AA-TT, AK, AQ) qui gagne par sa valeur brute.",
+    "fullContentMd": "Les **mains premium** — grosses paires, AK, AQ — valent par leur force immédiate. Leur plan est simple : construire un gros pot dès le préflop, parce qu'elles sont déjà devant la plupart des autres mains.\n\nL'erreur classique est le slowplay systématique : sous-jouer AA pour « piéger » laisse entrer des mains qui te battront au flop et coûte la value que ces mains auraient payée. _Une premium se joue vite et fort — elle gagne en étant payée, pas en se cachant._\n\nÀ l'opposé, jouer une main spéculative comme une premium (gros pot préflop) est tout aussi ruineux.",
+    "relatedCardSlugs": ["main-speculative", "broadways", "paire-poche", "hole-cards"],
+    "searchKeywords": "main premium mains fortes grosses paires AA KK AK AQ value brute starting hand forte"
+  },
+  {
+    "slug": "main-speculative",
+    "term": "Main spéculative",
+    "shortDef": "Une main faible préflop mais à fort potentiel caché (suited connectors, petites paires).",
+    "fullContentMd": "Les **mains spéculatives** — suited connectors, petites paires, suited gappers — ne valent presque rien préflop. Leur valeur est un potentiel : toucher fort et _caché_ (couleur, quinte, set) pour empiler un adversaire qui ne te voit pas venir.\n\nLeurs conditions de rentabilité sont strictes : flop pas cher, multiway de préférence, et surtout des stacks profonds (SPR/implied odds élevés) — sans quoi le rare gros coup ne paie pas les nombreux abandons.\n\n_Une spéculative se joue cheap et profond. Surinvestie préflop, elle n'est qu'une main faible qui paie pour exister._",
+    "relatedCardSlugs": ["suited-connectors", "main-premium", "tirage-couleur", "spr-fiche"],
+    "searchKeywords": "main speculative spéculative implied odds suited connectors petite paire potentiel cache set"
+  },
+  {
+    "slug": "suited-connectors",
+    "term": "Suited connectors",
+    "shortDef": "Deux cartes consécutives de même couleur (87s, T9s) : potentiel quinte + couleur.",
+    "fullContentMd": "Des cartes **consécutives assorties** — 87s, T9s, 65s. Préflop, presque rien. Mais elles ouvrent deux portes à la fois : tirage quinte _et_ tirage couleur, parfois combinés (monstre déguisé).\n\nLeur force est la dissimulation : quand un suited connector touche, l'adversaire avec top paire ne le lit pas et paie. C'est l'arme typique du jeu profond en position.\n\nMais elles exigent des implied odds réelles : jouées hors position, à SPR bas, ou surinvesties préflop, elles brûlent de l'argent. _Cheap, profond, en position — sinon fold._",
+    "relatedCardSlugs": ["main-speculative", "tirage-couleur", "tirage-quinte-bilateral", "ip"],
+    "searchKeywords": "suited connectors connecteurs assortis consecutifs couleur quinte 87s T9s implied"
+  },
+  {
+    "slug": "broadways",
+    "term": "Broadways",
+    "shortDef": "Deux cartes hautes (T à A) : AK, KQ, QJ… fortes par domination de kicker.",
+    "fullContentMd": "Les **broadways** sont les combinaisons de deux cartes hautes (Ten à As) : AK, AQ, KQ, QJ, JT. Leur force vient de la **domination** : quand elles touchent une paire, c'est top paire avec le meilleur kicker — exactement ce qui fait payer les top paires plus faibles.\n\nLes broadways assorties (AKs, KQs) ajoutent un tirage couleur de secours. Les dépareillées restent solides mais souffrent davantage hors position.\n\nElles se jouent fort préflop comme des semi-premiums, mais attention : touchées contre une mise lourde, beaucoup deviennent des cas de reverse implied (top paire kicker dominé).",
+    "relatedCardSlugs": ["main-premium", "hole-cards", "range-ouverture", "co"],
+    "searchKeywords": "broadways cartes hautes AK KQ QJ JT AQ domination kicker top paire suited offsuit"
+  },
+  {
+    "slug": "paire-poche",
+    "term": "Paire en poche",
+    "shortDef": "Une paire servie préflop (pocket pair) ; sa valeur dépend surtout du set qu'elle peut toucher.",
+    "fullContentMd": "Une **paire en poche** (pocket pair) est servie d'entrée. Les grosses (QQ+) sont premium par elles-mêmes ; les petites et moyennes valent surtout par le **set** qu'elles peuvent toucher au flop — environ 1 fois sur 8.\n\nD'où le _set-mining_ : caller un raise avec une petite paire uniquement si les implied odds couvrent le prix (règle approximative : stack effectif ≥ ~10-15× la mise à payer). Sinon, fold sans douleur.\n\nUn set est l'une des mains les plus rentables du jeu : invisible, écrasant. Mais une paire qui ne touche pas son set n'est qu'une paire fragile — _ne te marie pas avec 66 sur un board A-K-7._",
+    "relatedCardSlugs": ["main-premium", "main-speculative", "outs", "spr-fiche"],
+    "searchKeywords": "paire en poche pocket pair paire servie set set mining brelan petite paire implied odds"
+  },
+  {
+    "slug": "ip",
+    "term": "IP (In Position)",
+    "shortDef": "Agir en dernier postflop : voir l'action adverse avant chaque décision.",
+    "fullContentMd": "Être **in position**, c'est agir _après_ l'adversaire sur chaque street postflop. Tu décides en sachant ce qu'il a fait ; il décide à l'aveugle.\n\nL'avantage se compose sur quatre streets : contrôle de la taille du pot (checker derrière ferme la rue), bluffs moins chers (la faiblesse se voit avant l'investissement), value maximisée (tu mises quand il a montré qu'il paie). C'est pourquoi le bouton est la position la plus profitable du jeu.\n\nUne main jouable IP ne l'est souvent pas OOP : _ce n'est pas la main qui change, c'est l'information disponible pour la jouer_.",
+    "relatedCardSlugs": ["oop", "btn", "co", "steal"],
+    "searchKeywords": "ip in position en position dernier a parler avantage informationnel postflop bouton"
+  },
+  {
+    "slug": "oop",
+    "term": "OOP (Out of Position)",
+    "shortDef": "Agir avant l'adversaire postflop : décider sans information, subir l'initiative.",
+    "fullContentMd": "Être **out of position**, c'est agir _avant_ l'adversaire à chaque street. Tu joues à l'aveugle : tu mises sans savoir s'il a touché, tu checkes sans savoir s'il va attaquer.\n\nOOP, tu ne contrôles ni la taille du pot ni le tempo ; le bluff coûte plus cher et la value fuit. La small blind cumule le pire : elle paie une mise forcée _et_ joue OOP toutes les streets suivantes.\n\nLa réponse n'est pas de ne jamais jouer OOP — c'est de resserrer, de jouer plus fort, et d'éviter les mains qui ont besoin de réaliser leur equity sur plusieurs streets.",
+    "relatedCardSlugs": ["ip", "sb", "bb-position", "range"],
+    "searchKeywords": "oop out of position hors position parler premier desavantage aveugle small blind subir"
+  },
+  {
+    "slug": "steal",
+    "term": "Steal",
+    "shortDef": "Relancer depuis une position tardive, action morte devant, pour voler les blinds.",
+    "fullContentMd": "Le **steal** : depuis CO, BTN ou SB, quand tout le monde a fold, relancer pour rafler les blinds sans combat. Tu attaques deux joueurs forcés de miser à l'aveugle et mal placés postflop.\n\nLa main importe peu — c'est la **position** et la **mort de l'action devant toi** qui rendent le vol rentable, via la fold equity. C'est l'une des sources de profit les plus régulières du jeu, surtout antes en jeu (le pot mort est déjà gros).\n\nCorollaire défensif : si on te vole trop souvent en BB, élargis ta défense (3bet ou call) — un steal jamais puni devient gratuit.",
+    "relatedCardSlugs": ["btn", "co", "blinds", "fold-equity"],
+    "searchKeywords": "steal vol de blinds voler les blinds open steal resteal late position bouton fold equity antes"
+  },
+  {
+    "slug": "fold-equity",
+    "term": "Fold equity",
+    "shortDef": "La part de pot que tu gagnes parce que l'adversaire se couche face à ta mise.",
+    "fullContentMd": "La **fold equity** est la valeur que ta mise capture _parce que l'adversaire fold_, avant même tout abattage. C'est la deuxième façon de gagner un pot — celle que la passivité abandonne gratuitement.\n\nElle explique pourquoi miser bat caller : caller ne gagne que par la meilleure main ; miser gagne aussi quand il plie. Un semi-bluff combine les deux (il fold parfois, et tu touches parfois).\n\nMais la fold equity n'existe que face à quelqu'un capable de fold : nulle contre un fish qui call tout, maximale contre un nit. _Sans fold equity, un bluff n'est qu'un don._",
+    "relatedCardSlugs": ["c-bet", "steal", "fold", "bet"],
+    "searchKeywords": "fold equity équité de fold faire coucher bluff semi-bluff valeur de mise agression"
+  },
+  {
+    "slug": "c-bet",
+    "term": "C-bet (Continuation bet)",
+    "shortDef": "La mise du relanceur préflop au flop, qu'il ait touché ou non, pour garder l'initiative.",
+    "fullContentMd": "Le **c-bet** est la mise de continuation : tu as relancé préflop, tu gardes la main au flop en misant — touché ou non. Elle exploite une vérité statistique : l'adversaire rate le flop environ deux fois sur trois.\n\nUn bon c-bet n'est pas automatique. Il dépend de la **texture** (un flop sec A-7-2 favorise le relanceur ; un T-9-8 trempé favorise le défenseur) et du **range** : c-bet large là où ta range domine, freine là où elle est battue.\n\nC'est l'arme principale de l'agresseur préflop — mais c-better 100 % du temps est l'un des leaks les plus exploités.",
+    "relatedCardSlugs": ["fold-equity", "bet", "flop", "range-lineaire"],
+    "searchKeywords": "cbet c-bet continuation bet mise de continuation flop agresseur preflop initiative texture"
+  },
+  {
+    "slug": "spr-fiche",
+    "term": "SPR (Stack-to-Pot Ratio)",
+    "shortDef": "Rapport stack effectif / pot au flop ; il décide d'avance la nature des décisions postflop.",
+    "fullContentMd": "Le **SPR** = stack effectif ÷ pot au flop. Il se lit dès le flop et a déjà presque tout décidé.\n\n- **SPR bas (1-3)** — top paire suffit à s'engager, peu de bluff, _commitment_ rapide.\n- **SPR moyen (4-6)** — vrai jeu sur plusieurs streets, place pour bet/raise/fold.\n- **SPR haut (10+)** — jeu profond : implied odds reines, les mains qui touchent caché (sets, suited connectors) prennent de la valeur.\n\nCorollaire : choisis ta taille de relance préflop _en pensant au SPR_ que tu veux au flop. Un open énorme avec AA crée un SPR bas idéal ; un open minuscule avec 76s garde le SPR haut dont elle a besoin.",
+    "relatedCardSlugs": ["stack-effectif", "commitment", "main-speculative", "all-in"],
+    "searchKeywords": "spr stack to pot ratio rapport tapis pot commitment flop profondeur implied"
+  },
+  {
+    "slug": "stack-effectif",
+    "term": "Stack effectif",
+    "shortDef": "Le plus petit des deux tapis en jeu : le maximum réellement gagnable ou perdable.",
+    "fullContentMd": "Dans un duel, le **stack effectif** est le _plus petit_ des deux tapis. Tu as 200bb, l'adversaire 30bb : vous jouez 30bb. Le surplus ne peut ni être misé ni gagné contre lui.\n\nC'est le seul tapis qui compte pour tous les calculs : SPR, implied odds, commitment, M. Raisonner sur ton propre tapis quand l'adversaire est plus court est une erreur classique — tu surévalues tes implied odds sur de l'argent qui n'est pas en jeu.\n\nEn multiway, le stack effectif se calcule paire par paire. _Avant de planifier une main, demande : combien le plus court peut-il vraiment payer ?_",
+    "relatedCardSlugs": ["spr-fiche", "all-in", "bb-unit", "commitment"],
+    "searchKeywords": "stack effectif effective stack tapis effectif plus petit tapis maximum gagnable implied spr"
+  },
+  {
+    "slug": "m-ratio-fiche",
+    "term": "M-ratio",
+    "shortDef": "Nombre d'orbites de survie sans jouer : stack / (SB + BB + antes). Concept Harrington.",
+    "fullContentMd": "Le **M** mesure combien de tours de table tu survis en ne payant que les mises forcées : `M = stack ÷ (SB + BB + total antes)`.\n\nZones de Harrington : **Green** (>20) jeu normal ; **Yellow** (10-20) prise de risque ; **Orange** (6-10) premier à pousser ; **Red** (1-5) push or fold pur ; **Dead** (<1) plus de fold equity.\n\nLe M est propre au tournoi : les blinds montent, il se dégrade même quand tu gagnes des mains. Il dicte le style avant les cartes — le même ATo se min-raise/fold en Green et se shove en Red.\n\nÀ l'approche de la bulle, le M se lit en parallèle de l'ICM : un M faible peut justifier d'attendre, un gros M d'attaquer.",
+    "relatedCardSlugs": ["blinds", "antes", "bulle", "stack-effectif"],
+    "searchKeywords": "m ratio m-ratio harrington zones green yellow orange red dead push fold mtt blinds antes"
+  },
+  {
+    "slug": "commitment",
+    "term": "Commitment",
+    "shortDef": "Le point où tu as tant investi que fold devient mathématiquement faux : tu es engagé.",
+    "fullContentMd": "Tu es **committed** quand le ratio entre ce qu'il reste à payer et la taille du pot rend le fold incorrect, quelle que soit la suite. À ce stade, la seule question est _comment_ mettre le reste, pas _si_.\n\nLe commitment se prépare en amont, pas au moment fatal : à SPR bas, relancer une main moyenne, c'est déjà choisir de s'engager — il faut le savoir _avant_ d'appuyer. La faute classique est de s'engager par accident, puis de payer « parce qu'on est déjà dedans » sans avoir choisi de l'être.\n\nRègle : décide ton plan de commitment au flop, à la lecture du SPR — pas à la river sous la pression.",
+    "relatedCardSlugs": ["spr-fiche", "stack-effectif", "all-in", "bulle"],
+    "searchKeywords": "commitment engagement committed pot committed point de non retour spr all-in stack"
+  },
+  {
+    "slug": "tag",
+    "term": "TAG (Tight Aggressive)",
+    "shortDef": "Profil serré-agressif : peu de mains, jouées fort. Le bon joueur par défaut.",
+    "fullContentMd": "Le **TAG** joue peu de mains, mais les joue fort : VPIP bas, PFR proche du VPIP. C'est l'archétype du joueur solide — sélectif préflop, agressif quand il entre.\n\nContre un TAG : respecte son agression (quand il barrel, il a souvent), mais attaque sa **prévisibilité**. Un TAG trop carré fold trop ; vole ses blinds, 3bet light ses opens en position, et ne paie pas ses grosses lignes sans une vraie main.\n\nLe TAG est aussi le profil à _imiter_ par défaut quand on débute : serré-agressif perd structurellement moins que loose-passif. L'évolution vers le LAG vient après, avec la lecture.",
+    "relatedCardSlugs": ["lag", "nit", "vpip", "pfr"],
+    "searchKeywords": "tag tight aggressive serré agressif profil joueur solide vpip pfr archetype"
+  },
+  {
+    "slug": "lag",
+    "term": "LAG (Loose Aggressive)",
+    "shortDef": "Profil large-agressif : beaucoup de mains, pression constante. Dangereux et exploitable.",
+    "fullContentMd": "Le **LAG** joue large et met une pression énorme : VPIP haut, PFR haut. Il vole, 3bet light, barrel sans relâche. Bien exécuté, c'est le profil le plus rentable et le plus difficile à affronter ; mal exécuté, c'est un maniaque qui se ruine.\n\nContre un LAG : **élargis tes calls** et laisse-le se pendre. Ne tente pas de le bluffer (il ne croit personne) ; piège-le avec de la value en le laissant miser pour toi. La patience bat l'hyper-agression — tu n'as pas besoin de gagner l'échange, juste d'attendre une main et de la jouer fort.\n\nDistinguer LAG réfléchi et maniaque pur est la lecture clé : l'un a des fréquences, l'autre n'en a aucune.",
+    "relatedCardSlugs": ["tag", "fish", "vpip", "fold-equity"],
+    "searchKeywords": "lag loose aggressive large agressif maniaque pression 3bet light barrel exploit"
+  },
+  {
+    "slug": "nit",
+    "term": "Nit",
+    "shortDef": "Joueur ultra-serré et passif : ne joue que des monstres, ne bluffe presque jamais.",
+    "fullContentMd": "Le **nit** est serré _et_ passif : il attend les mains premium et n'agresse quasiment jamais. Sa faiblesse est structurelle — il abandonne tout le terrain qu'il ne contrôle pas.\n\nContre un nit : **vole-lui tout** ce qu'il ne défend pas (blinds, pots non réclamés, c-bets), et **crois-le totalement** quand il se réveille. Un nit qui 3bet ou check-raise a la main ~toujours : fold tes mains marginales sans payer pour vérifier.\n\nLe profit contre un nit ne vient pas des gros pots — il en prend peu — mais de l'érosion constante : des dizaines de petits pots qu'il te laisse parce qu'il ne se bat que sur les meilleurs.",
+    "relatedCardSlugs": ["tag", "fish", "steal", "vpip"],
+    "searchKeywords": "nit serré passif ultra tight rock joueur faible monstres only fold steal exploit"
+  },
+  {
+    "slug": "fish",
+    "term": "Fish",
+    "shortDef": "Joueur large et passif : joue trop de mains, ne relance presque jamais, ne fold pas assez.",
+    "fullContentMd": "Le **fish** (loose-passive) joue trop de mains et ne relance presque jamais : il _call_ tout, jusqu'au bout, avec n'importe quoi. C'est la principale source de profit d'une table.\n\nLa stratégie contre un fish est contre-intuitive de simplicité : **value bet très large, ne bluffe presque jamais**. Il ne fold pas — donc bluffer le fish, c'est jeter des jetons ; mais miser fort tes mains correctes, c'est l'imprimante, parce qu'il paiera avec pire.\n\nL'erreur classique du joueur agressif est de bluffer le fish « parce qu'il a l'air faible ». Sa faiblesse est justement qu'il ne se couche pas : punis-le en value, pas en pression.",
+    "relatedCardSlugs": ["nit", "lag", "fold-equity", "call"],
+    "searchKeywords": "fish poisson loose passive calling station joueur faible value bet ne fold pas exploit"
+  },
+  {
+    "slug": "vpip",
+    "term": "VPIP",
+    "shortDef": "Voluntarily Put In Pot : fréquence à laquelle un joueur engage volontairement de l'argent préflop.",
+    "fullContentMd": "Le **VPIP** mesure la largeur de jeu : le pourcentage de mains où un joueur met _volontairement_ des jetons préflop (call ou raise — les blinds forcées ne comptent pas).\n\nRepères 6-max : ~15-22 % est solide, >30 % est large (loose), <12 % est ultra-serré (nit). C'est le premier chiffre à estimer sur un adversaire, même à l'œil sans HUD : il situe immédiatement son profil.\n\nLe VPIP seul ne suffit pas — il faut le croiser avec le **PFR**. Un VPIP de 35 % dit « il joue beaucoup » ; couplé au PFR, il dit _comment_ : agressif ou passif.",
+    "relatedCardSlugs": ["pfr", "tag", "lag", "fish"],
+    "searchKeywords": "vpip voluntarily put in pot largeur de jeu stat hud profil loose tight pourcentage mains"
+  },
+  {
+    "slug": "pfr",
+    "term": "PFR",
+    "shortDef": "Pre-Flop Raise : fréquence à laquelle un joueur relance préflop. Mesure l'agressivité.",
+    "fullContentMd": "Le **PFR** est le pourcentage de mains où un joueur _relance_ préflop. Couplé au VPIP, il révèle le profil :\n\n- **PFR proche du VPIP** — agressif : quand il joue, il attaque (TAG ou LAG)\n- **PFR très inférieur au VPIP** — passif : il entre surtout en callant (fish, ou nit s'il est aussi serré)\n\nL'écart VPIP − PFR est le _gap de passivité_. Un 22/19 est un TAG sain ; un 40/6 est un fish flagrant ; un 12/10 est un nit.\n\nDeux chiffres — VPIP et PFR — suffisent à classer 90 % des adversaires et à choisir l'ajustement avant même de voir une main jouée.",
+    "relatedCardSlugs": ["vpip", "tag", "lag", "raise"],
+    "searchKeywords": "pfr preflop raise relance preflop agressivité stat hud gap passivité profil tag lag"
+  }
+]

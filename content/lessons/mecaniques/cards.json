@@ -3,224 +3,345 @@
     "slug": "preflop",
     "term": "Préflop",
     "shortDef": "Première phase d'une main : action sur les deux cartes privatives, avant tout board.",
-    "fullContentMd": "## Préflop\n\nLa première des quatre streets. Chaque joueur a ses deux **hole cards**, rien n'est encore commun. L'action s'ouvre à gauche de la grosse blind et tourne dans le sens horaire.\n\nPréflop est la seule street où tu agis face à une mise _fixe_ (les blinds), pas face au pot. C'est pourquoi on y raisonne en **big blinds**, jamais en fraction de pot. La sélection des mains de départ par position se décide entièrement ici — _toutes_ les erreurs préflop se paient plus cher sur les streets suivantes.",
-    "relatedCardSlugs": ["flop", "blinds", "hole-cards", "bb-unit"],
+    "fullContentMd": "La première des quatre streets. Chaque joueur a ses deux **hole cards**, rien n'est encore commun. L'action s'ouvre à gauche de la grosse blind et tourne dans le sens horaire.\n\nPréflop est la seule street où tu agis face à une mise _fixe_ (les blinds), pas face au pot. C'est pourquoi on y raisonne en **big blinds**, jamais en fraction de pot. La sélection des mains de départ par position se décide entièrement ici — _toutes_ les erreurs préflop se paient plus cher sur les streets suivantes.",
+    "relatedCardSlugs": [
+      "flop",
+      "blinds",
+      "hole-cards",
+      "bb-unit"
+    ],
     "searchKeywords": "preflop préflop pré-flop avant flop premiere phase street initiale hole cards cartes privatives ouverture action depart"
   },
   {
     "slug": "flop",
     "term": "Flop",
     "shortDef": "Les trois premières cartes communes, étalées simultanément après le tour préflop.",
-    "fullContentMd": "## Flop\n\nTrois cartes communes révélées d'un coup, visibles de tous. C'est le premier contact entre ta main et le board : tu touches, tu rates, ou tu tires.\n\nL'action postflop change de référence : on ne raisonne plus en big blinds mais en **fraction du pot**. La texture du flop (sec, humide, paire, connecté) fixe l'éventail des mains plausibles pour le reste de la main. _Le flop ne révèle pas seulement des cartes — il révèle l'espace des possibles._",
-    "relatedCardSlugs": ["preflop", "turn", "community-cards", "outs"],
+    "fullContentMd": "Trois cartes communes révélées d'un coup, visibles de tous. C'est le premier contact entre ta main et le board : tu touches, tu rates, ou tu tires.\n\nL'action postflop change de référence : on ne raisonne plus en big blinds mais en **fraction du pot**. La texture du flop (sec, humide, paire, connecté) fixe l'éventail des mains plausibles pour le reste de la main. _Le flop ne révèle pas seulement des cartes — il révèle l'espace des possibles._",
+    "relatedCardSlugs": [
+      "preflop",
+      "turn",
+      "community-cards",
+      "outs"
+    ],
     "searchKeywords": "flop trois cartes communes board premier tour postflop street deux texture"
   },
   {
     "slug": "turn",
     "term": "Turn",
     "shortDef": "La quatrième carte commune, distribuée seule après le tour d'enchères du flop.",
-    "fullContentMd": "## Turn\n\nUne carte commune supplémentaire, la quatrième. Le pot est plus gros, les mises grossissent, l'information s'est accumulée sur deux streets.\n\nLe turn est la street des **décisions chères** : c'est souvent là que se joue le second barrel, que les tirages deviennent payants ou ruineux, que la taille du pot future se verrouille. Une carte qui change la texture (couleur qui rentre, board qui se connecte) peut retourner la valeur de ta main d'un coup. _Au turn, on ne paie plus pour voir : on paie pour s'engager._",
-    "relatedCardSlugs": ["flop", "river", "outs", "tirage-couleur"],
+    "fullContentMd": "Une carte commune supplémentaire, la quatrième. Le pot est plus gros, les mises grossissent, l'information s'est accumulée sur deux streets.\n\nLe turn est la street des **décisions chères** : c'est souvent là que se joue le second barrel, que les tirages deviennent payants ou ruineux, que la taille du pot future se verrouille. Une carte qui change la texture (couleur qui rentre, board qui se connecte) peut retourner la valeur de ta main d'un coup. _Au turn, on ne paie plus pour voir : on paie pour s'engager._",
+    "relatedCardSlugs": [
+      "flop",
+      "river",
+      "outs",
+      "tirage-couleur"
+    ],
     "searchKeywords": "turn quatrieme carte commune street trois board barrel deuxieme"
   },
   {
     "slug": "river",
     "term": "River",
     "shortDef": "La cinquième et dernière carte commune ; plus aucun tirage ne peut s'améliorer après.",
-    "fullContentMd": "## River\n\nLa dernière carte commune. Plus rien ne s'améliore : ce que tu as à la river est ce que tu abats. Les tirages non complétés ne valent plus que leur force de bluff.\n\nC'est la street de la **vérité** : value ou bluff, sans demi-mesure. La cote du pot et les implied odds n'ont plus de sens — il n'y a pas de street suivante d'où extraire. Une mise river polarise : monstre ou rien. _À la river, tu ne joues plus des probabilités, tu joues une affirmation._",
-    "relatedCardSlugs": ["turn", "showdown", "outs"],
+    "fullContentMd": "La dernière carte commune. Plus rien ne s'améliore : ce que tu as à la river est ce que tu abats. Les tirages non complétés ne valent plus que leur force de bluff.\n\nC'est la street de la **vérité** : value ou bluff, sans demi-mesure. La cote du pot et les implied odds n'ont plus de sens — il n'y a pas de street suivante d'où extraire. Une mise river polarise : monstre ou rien. _À la river, tu ne joues plus des probabilités, tu joues une affirmation._",
+    "relatedCardSlugs": [
+      "turn",
+      "showdown",
+      "outs"
+    ],
     "searchKeywords": "river cinquieme derniere carte commune street quatre showdown value bluff polarise"
   },
   {
     "slug": "showdown",
     "term": "Showdown",
     "shortDef": "L'abattage : les joueurs encore en lice montrent leurs cartes, la meilleure main de cinq gagne.",
-    "fullContentMd": "## Showdown\n\nS'il reste au moins deux joueurs après la dernière mise de la river, on **abat**. Chacun montre ses deux privatives ; la meilleure main de cinq cartes — formée librement à partir des sept disponibles — emporte le pot.\n\nL'ordre de montre suit l'agression de la dernière street : le dernier agresseur montre en premier. Tu peux **mucker** une main perdante non payée pour ne pas donner d'information. _Pas de showdown s'il ne reste qu'un joueur : le pot se prend sans rien révéler — et c'est souvent le meilleur scénario._",
-    "relatedCardSlugs": ["river", "classement-mains", "fold"],
+    "fullContentMd": "S'il reste au moins deux joueurs après la dernière mise de la river, on **abat**. Chacun montre ses deux privatives ; la meilleure main de cinq cartes — formée librement à partir des sept disponibles — emporte le pot.\n\nL'ordre de montre suit l'agression de la dernière street : le dernier agresseur montre en premier. Tu peux **mucker** une main perdante non payée pour ne pas donner d'information. _Pas de showdown s'il ne reste qu'un joueur : le pot se prend sans rien révéler — et c'est souvent le meilleur scénario._",
+    "relatedCardSlugs": [
+      "river",
+      "classement-mains",
+      "fold"
+    ],
     "searchKeywords": "showdown abattage abattre montrer cartes meilleure main muck mucker fin de main winner"
   },
   {
     "slug": "utg",
     "term": "UTG (Under The Gun)",
     "shortDef": "Première position d'action préflop, immédiatement à gauche de la grosse blind ; la plus aveugle.",
-    "fullContentMd": "## UTG — Under The Gun\n\n**Première position** à parler préflop, juste à gauche de la grosse blind. UTG agit sans aucune information : personne n'a encore montré la moindre intention.\n\nC'est la position la plus contrainte du jeu — souvent appelée _early position_. La range d'ouverture y est la plus serrée de la table : seules les mains qui résistent à toute la table derrière passent. Ouvrir trop large UTG est l'un des leaks les plus coûteux du débutant. _Plus tu parles tôt, moins tu sais — donc plus tu dois être fort._",
-    "relatedCardSlugs": ["mp", "co", "btn", "blinds"],
+    "fullContentMd": "**Première position** à parler préflop, juste à gauche de la grosse blind. UTG agit sans aucune information : personne n'a encore montré la moindre intention.\n\nC'est la position la plus contrainte du jeu — souvent appelée _early position_. La range d'ouverture y est la plus serrée de la table : seules les mains qui résistent à toute la table derrière passent. Ouvrir trop large UTG est l'un des leaks les plus coûteux du débutant. _Plus tu parles tôt, moins tu sais — donc plus tu dois être fort._",
+    "relatedCardSlugs": [
+      "mp",
+      "co",
+      "btn",
+      "blinds"
+    ],
     "searchKeywords": "utg under the gun premiere position early position position precoce gun ouverture serree avant la grosse blind"
   },
   {
     "slug": "mp",
     "term": "MP (Middle Position)",
     "shortDef": "Position intermédiaire, entre UTG et le cutoff ; range d'ouverture modérée.",
-    "fullContentMd": "## MP — Middle Position\n\nLe **milieu de table** : tu parles après UTG mais avant cutoff et bouton. Tu as un peu d'information (UTG a déjà agi) mais beaucoup de joueurs restent derrière.\n\nLa range d'ouverture s'élargit par rapport à UTG sans atteindre la largeur des positions tardives. En 9-max, MP regroupe plusieurs sièges (MP1, MP2…) ; la logique reste continue : _chaque siège vers le bouton autorise une carte de plus_. MP est la position de transition — ni la prudence d'UTG, ni la liberté du bouton.",
-    "relatedCardSlugs": ["utg", "co", "btn"],
+    "fullContentMd": "Le **milieu de table** : tu parles après UTG mais avant cutoff et bouton. Tu as un peu d'information (UTG a déjà agi) mais beaucoup de joueurs restent derrière.\n\nLa range d'ouverture s'élargit par rapport à UTG sans atteindre la largeur des positions tardives. En 9-max, MP regroupe plusieurs sièges (MP1, MP2…) ; la logique reste continue : _chaque siège vers le bouton autorise une carte de plus_. MP est la position de transition — ni la prudence d'UTG, ni la liberté du bouton.",
+    "relatedCardSlugs": [
+      "utg",
+      "co",
+      "btn"
+    ],
     "searchKeywords": "mp middle position position intermediaire milieu de table moyenne position range moderee"
   },
   {
     "slug": "co",
     "term": "CO (Cutoff)",
     "shortDef": "Avant-dernière position, juste avant le bouton ; deuxième meilleure place de la table.",
-    "fullContentMd": "## CO — Cutoff\n\nLe siège **juste avant le bouton**. Seuls le bouton et les blinds parlent après toi : tu es presque toujours en bonne position postflop.\n\nLe cutoff est la **deuxième position la plus profitable**, après le bouton. La range d'ouverture y est large : voler les blinds devient un objectif explicite, surtout si le bouton est passif. Le nom vient du _cut_ historique du donneur. _Au cutoff, l'agression n'est plus optionnelle : c'est le cœur de la rentabilité positionnelle._",
-    "relatedCardSlugs": ["btn", "mp", "blinds"],
+    "fullContentMd": "Le siège **juste avant le bouton**. Seuls le bouton et les blinds parlent après toi : tu es presque toujours en bonne position postflop.\n\nLe cutoff est la **deuxième position la plus profitable**, après le bouton. La range d'ouverture y est large : voler les blinds devient un objectif explicite, surtout si le bouton est passif. Le nom vient du _cut_ historique du donneur. _Au cutoff, l'agression n'est plus optionnelle : c'est le cœur de la rentabilité positionnelle._",
+    "relatedCardSlugs": [
+      "btn",
+      "mp",
+      "blinds"
+    ],
     "searchKeywords": "co cutoff cut off avant dernier position tardive late position vol blinds steal"
   },
   {
     "slug": "btn",
     "term": "BTN (Bouton / Button)",
     "shortDef": "Le bouton : dernière position d'action postflop, la place la plus profitable du poker.",
-    "fullContentMd": "## BTN — Le Bouton\n\nLe **bouton** parle en dernier sur toutes les streets postflop. Il voit l'action de tout le monde avant de décider, à chaque tour. C'est un avantage informationnel permanent et gratuit.\n\nConséquence : c'est la **position la plus profitable du jeu**. La range d'ouverture y est la plus large, le vol de blinds maximal, le contrôle du pot total. Le jeton « bouton » tourne d'un siège à chaque main pour que cet avantage soit équitablement réparti sur la durée. _On ne joue pas mieux au bouton parce qu'on a de meilleures cartes — mais parce qu'on décide toujours en dernier._",
-    "relatedCardSlugs": ["co", "sb", "bb-position", "blinds"],
+    "fullContentMd": "Le **bouton** parle en dernier sur toutes les streets postflop. Il voit l'action de tout le monde avant de décider, à chaque tour. C'est un avantage informationnel permanent et gratuit.\n\nConséquence : c'est la **position la plus profitable du jeu**. La range d'ouverture y est la plus large, le vol de blinds maximal, le contrôle du pot total. Le jeton « bouton » tourne d'un siège à chaque main pour que cet avantage soit équitablement réparti sur la durée. _On ne joue pas mieux au bouton parce qu'on a de meilleures cartes — mais parce qu'on décide toujours en dernier._",
+    "relatedCardSlugs": [
+      "co",
+      "sb",
+      "bb-position",
+      "blinds"
+    ],
     "searchKeywords": "btn bouton button dernier a parler position late position meilleure position dealer in position IP vol blinds"
   },
   {
     "slug": "sb",
     "term": "SB (Small Blind)",
     "shortDef": "Petite blind : mise forcée la plus petite, agit en dernier préflop mais tôt postflop.",
-    "fullContentMd": "## SB — Small Blind\n\nLa **petite blind** poste une mise forcée réduite (typiquement la moitié de la grosse blind) avant de voir ses cartes. Elle parle en dernier préflop, mais **première postflop** — la pire combinaison positionnelle du jeu.\n\nLa SB est structurellement perdante : tu paies une mise à l'aveugle puis tu joues hors position toutes les streets suivantes. Défendre sa SB demande de la discipline, pas de l'attachement à l'argent déjà posté — _ce jeton n'est plus à toi (cf. pot odds)_. Beaucoup de leaks viennent d'une SB sur-défendue par réflexe.",
-    "relatedCardSlugs": ["bb-position", "btn", "blinds"],
+    "fullContentMd": "La **petite blind** poste une mise forcée réduite (typiquement la moitié de la grosse blind) avant de voir ses cartes. Elle parle en dernier préflop, mais **première postflop** — la pire combinaison positionnelle du jeu.\n\nLa SB est structurellement perdante : tu paies une mise à l'aveugle puis tu joues hors position toutes les streets suivantes. Défendre sa SB demande de la discipline, pas de l'attachement à l'argent déjà posté — _ce jeton n'est plus à toi (cf. pot odds)_. Beaucoup de leaks viennent d'une SB sur-défendue par réflexe.",
+    "relatedCardSlugs": [
+      "bb-position",
+      "btn",
+      "blinds"
+    ],
     "searchKeywords": "sb small blind petite blind mise forcee out of position oop defense blind pire position"
   },
   {
     "slug": "bb-position",
     "term": "BB (Big Blind)",
     "shortDef": "Grosse blind : mise forcée la plus grande, dernière à parler préflop avec une cote déjà payée.",
-    "fullContentMd": "## BB — Big Blind (position)\n\nLa **grosse blind** poste la plus grosse mise forcée et parle en **dernier préflop**. Elle a déjà investi : face à une relance, la cote du pot offerte est souvent excellente, ce qui justifie une range de défense large.\n\nMais cet avantage préflop se paie postflop : la BB joue hors position contre tout le monde sauf la SB. Défendre large _et_ jouer correctement OOP est l'un des équilibres les plus techniques du jeu. Ne confonds pas « j'ai déjà payé » avec « je dois continuer » — _l'argent posté est un coût irrécupérable_.",
-    "relatedCardSlugs": ["sb", "btn", "blinds", "preflop"],
+    "fullContentMd": "La **grosse blind** poste la plus grosse mise forcée et parle en **dernier préflop**. Elle a déjà investi : face à une relance, la cote du pot offerte est souvent excellente, ce qui justifie une range de défense large.\n\nMais cet avantage préflop se paie postflop : la BB joue hors position contre tout le monde sauf la SB. Défendre large _et_ jouer correctement OOP est l'un des équilibres les plus techniques du jeu. Ne confonds pas « j'ai déjà payé » avec « je dois continuer » — _l'argent posté est un coût irrécupérable_.",
+    "relatedCardSlugs": [
+      "sb",
+      "btn",
+      "blinds",
+      "preflop"
+    ],
     "searchKeywords": "bb big blind grosse blind mise forcee defense large cote payee derniere parole preflop oop"
   },
   {
     "slug": "fold",
     "term": "Fold",
     "shortDef": "Jeter sa main et abandonner le pot ; l'action toujours disponible, jamais coûteuse sur l'instant.",
-    "fullContentMd": "## Fold\n\n**Coucher** sa main : tu renonces au pot et tu ne mets plus un jeton. C'est la seule action _toujours_ légale, à tout moment.\n\nFold n'est pas une défaite — c'est la décision qui économise le plus d'argent sur une carrière. Le jeton déjà investi ne te revient pas si tu folds, mais il ne te revient pas davantage si tu continues une main perdante : _les décisions sont marginales, pas cumulatives_. Le bon joueur folde sans douleur ; le mauvais paie « parce qu'il a déjà mis ».",
-    "relatedCardSlugs": ["check", "call", "showdown"],
+    "fullContentMd": "**Coucher** sa main : tu renonces au pot et tu ne mets plus un jeton. C'est la seule action _toujours_ légale, à tout moment.\n\nFold n'est pas une défaite — c'est la décision qui économise le plus d'argent sur une carrière. Le jeton déjà investi ne te revient pas si tu folds, mais il ne te revient pas davantage si tu continues une main perdante : _les décisions sont marginales, pas cumulatives_. Le bon joueur folde sans douleur ; le mauvais paie « parce qu'il a déjà mis ».",
+    "relatedCardSlugs": [
+      "check",
+      "call",
+      "showdown"
+    ],
     "searchKeywords": "fold coucher jeter sa main abandonner se coucher pas jouer renoncer pot abandon"
   },
   {
     "slug": "check",
     "term": "Check",
     "shortDef": "Passer son tour sans miser ; légal uniquement si personne n'a encore misé sur la street.",
-    "fullContentMd": "## Check\n\n**Parole** : tu passes la main sans rien miser. Légal _seulement_ si aucune mise n'a été faite avant toi sur cette street — sinon, ta seule façon de rester est de call.\n\nCheck est gratuit, mais loin d'être neutre : il peut signaler la faiblesse, ou cacher un piège (le **check-raise**). Checker derrière en position (_check-back_) ferme la street et contrôle le pot. _Un check raconte toujours quelque chose — à toi de choisir quoi._",
-    "relatedCardSlugs": ["call", "bet", "fold"],
+    "fullContentMd": "**Parole** : tu passes la main sans rien miser. Légal _seulement_ si aucune mise n'a été faite avant toi sur cette street — sinon, ta seule façon de rester est de call.\n\nCheck est gratuit, mais loin d'être neutre : il peut signaler la faiblesse, ou cacher un piège (le **check-raise**). Checker derrière en position (_check-back_) ferme la street et contrôle le pot. _Un check raconte toujours quelque chose — à toi de choisir quoi._",
+    "relatedCardSlugs": [
+      "call",
+      "bet",
+      "fold"
+    ],
     "searchKeywords": "check parole passer sans miser checker check-raise check-back gratuit street"
   },
   {
     "slug": "call",
     "term": "Call",
     "shortDef": "Payer exactement la mise en cours pour rester dans le coup, sans relancer.",
-    "fullContentMd": "## Call\n\n**Suivre** : tu paies exactement le montant de la mise en cours pour continuer. Ni plus (ce serait un raise), ni rien (ce serait fold ou check).\n\nUn call est une décision d'**equity** : tu paies un prix pour une chance de gagner un pot. C'est exactement là qu'interviennent les pot odds — le call n'est correct que si ta probabilité de gagner dépasse l'equity requise par le prix. Un **snap-call** (call instantané) signale souvent que la décision était triviale. _Caller, c'est acheter une part de pot à un prix affiché._",
-    "relatedCardSlugs": ["bet", "raise", "check", "fold"],
+    "fullContentMd": "**Suivre** : tu paies exactement le montant de la mise en cours pour continuer. Ni plus (ce serait un raise), ni rien (ce serait fold ou check).\n\nUn call est une décision d'**equity** : tu paies un prix pour une chance de gagner un pot. C'est exactement là qu'interviennent les pot odds — le call n'est correct que si ta probabilité de gagner dépasse l'equity requise par le prix. Un **snap-call** (call instantané) signale souvent que la décision était triviale. _Caller, c'est acheter une part de pot à un prix affiché._",
+    "relatedCardSlugs": [
+      "bet",
+      "raise",
+      "check",
+      "fold"
+    ],
     "searchKeywords": "call suivre payer egaler mise rester snap-call cold call paiement equity cote"
   },
   {
     "slug": "bet",
     "term": "Bet",
     "shortDef": "Ouvrir l'enchère sur une street où personne n'a encore misé.",
-    "fullContentMd": "## Bet\n\n**Miser le premier** sur une street vierge de toute mise. S'il y avait déjà une mise, ce n'est pas un bet — c'est un raise.\n\nUn bet a deux raisons d'être : la **value** (te faire payer par des mains pires) ou le **bluff** (faire folder des mains meilleures). Sa taille — exprimée en fraction du pot — fixe la cote offerte à l'adversaire et la difficulté de sa décision. _Une mise n'est pas un montant, c'est un message : choisis-le pour ce qu'il fait croire, pas pour ce que tu as._",
-    "relatedCardSlugs": ["raise", "call", "check"],
+    "fullContentMd": "**Miser le premier** sur une street vierge de toute mise. S'il y avait déjà une mise, ce n'est pas un bet — c'est un raise.\n\nUn bet a deux raisons d'être : la **value** (te faire payer par des mains pires) ou le **bluff** (faire folder des mains meilleures). Sa taille — exprimée en fraction du pot — fixe la cote offerte à l'adversaire et la difficulté de sa décision. _Une mise n'est pas un montant, c'est un message : choisis-le pour ce qu'il fait croire, pas pour ce que tu as._",
+    "relatedCardSlugs": [
+      "raise",
+      "call",
+      "check"
+    ],
     "searchKeywords": "bet miser mise ouvrir enchere value bluff sizing taille de mise cbet continuation"
   },
   {
     "slug": "raise",
     "term": "Raise",
     "shortDef": "Relancer une mise existante : payer la mise en cours puis l'augmenter.",
-    "fullContentMd": "## Raise\n\n**Relancer** : face à une mise, tu paies _puis_ tu ajoutes. Un raise doit au minimum doubler l'incrément d'agression pour être valide. On ne « bet » jamais contre une mise — on raise.\n\nRelancer fait deux choses qu'un call ne fait pas : ça **construit le pot** quand tu as la value, et ça **prend l'initiative** quand tu bluffes. Une relance préflop est une _open_ ou un _3bet_ ; postflop, un check-raise ou un raise de continuation. _Le call dit « je veux voir » ; le raise dit « c'est moi qui fixe le prix »._",
-    "relatedCardSlugs": ["bet", "call", "all-in"],
+    "fullContentMd": "**Relancer** : face à une mise, tu paies _puis_ tu ajoutes. Un raise doit au minimum doubler l'incrément d'agression pour être valide. On ne « bet » jamais contre une mise — on raise.\n\nRelancer fait deux choses qu'un call ne fait pas : ça **construit le pot** quand tu as la value, et ça **prend l'initiative** quand tu bluffes. Une relance préflop est une _open_ ou un _3bet_ ; postflop, un check-raise ou un raise de continuation. _Le call dit « je veux voir » ; le raise dit « c'est moi qui fixe le prix »._",
+    "relatedCardSlugs": [
+      "bet",
+      "call",
+      "all-in"
+    ],
     "searchKeywords": "raise relancer relance sur-relance 3bet open check-raise reraise agression initiative"
   },
   {
     "slug": "all-in",
     "term": "All-in",
     "shortDef": "Engager la totalité de son tapis ; plus aucune décision possible après pour soi.",
-    "fullContentMd": "## All-in\n\n**Tapis** : tu mises tous tes jetons. Tu ne peux plus agir sur les streets suivantes — ta main ira au showdown si elle est payée.\n\nEn MTT, l'all-in est l'arme des stacks courts : sous 15 bb, le jeu se réduit souvent à **push or fold**. Un all-in supprime toute décision future, ce qui élimine les erreurs postflop — c'est sa force quand on est peu profond. Mais il met _tout_ ton tournoi en jeu : le calcul n'est plus seulement chip-EV, il devient ICM. _Le tapis ne pardonne pas : c'est la seule action irréversible._",
-    "relatedCardSlugs": ["raise", "bb-unit", "itm"],
+    "fullContentMd": "**Tapis** : tu mises tous tes jetons. Tu ne peux plus agir sur les streets suivantes — ta main ira au showdown si elle est payée.\n\nEn MTT, l'all-in est l'arme des stacks courts : sous 15 bb, le jeu se réduit souvent à **push or fold**. Un all-in supprime toute décision future, ce qui élimine les erreurs postflop — c'est sa force quand on est peu profond. Mais il met _tout_ ton tournoi en jeu : le calcul n'est plus seulement chip-EV, il devient ICM. _Le tapis ne pardonne pas : c'est la seule action irréversible._",
+    "relatedCardSlugs": [
+      "raise",
+      "bb-unit",
+      "itm"
+    ],
     "searchKeywords": "all-in all in tapis shove push jam stack court push or fold engager tout irreversible"
   },
   {
     "slug": "blinds",
     "term": "Blinds",
     "shortDef": "Mises forcées (petite et grosse) postées avant les cartes pour amorcer l'action.",
-    "fullContentMd": "## Blinds\n\nLes **mises forcées** : la petite blind (SB) et la grosse blind (BB), postées avant distribution par les deux joueurs à gauche du bouton. Sans elles, personne ne jouerait jamais une main marginale — _les blinds créent le conflit qui rend le poker jouable_.\n\nElles tournent d'un siège à chaque main : tout le monde paie sa part sur la durée. En MTT, leur montée régulière, exprimée en niveaux, érode ta profondeur en **big blinds** sans que tu joues une seule main. Voler les blinds (les prendre sans showdown) est une source de profit centrale en position tardive.",
-    "relatedCardSlugs": ["sb", "bb-position", "antes", "bb-unit"],
+    "fullContentMd": "Les **mises forcées** : la petite blind (SB) et la grosse blind (BB), postées avant distribution par les deux joueurs à gauche du bouton. Sans elles, personne ne jouerait jamais une main marginale — _les blinds créent le conflit qui rend le poker jouable_.\n\nElles tournent d'un siège à chaque main : tout le monde paie sa part sur la durée. En MTT, leur montée régulière, exprimée en niveaux, érode ta profondeur en **big blinds** sans que tu joues une seule main. Voler les blinds (les prendre sans showdown) est une source de profit centrale en position tardive.",
+    "relatedCardSlugs": [
+      "sb",
+      "bb-position",
+      "antes",
+      "bb-unit"
+    ],
     "searchKeywords": "blinds blindes mises forcees small blind big blind petite grosse blind vol steal niveaux montee"
   },
   {
     "slug": "antes",
     "term": "Antes",
     "shortDef": "Petite mise payée par chaque joueur (ou par la BB) à chaque main, en plus des blinds.",
-    "fullContentMd": "## Antes\n\nUn **droit d'entrée** par main, en supplément des blinds. Soit chaque joueur poste une petite ante, soit la grosse blind poste un montant unique pour la table (le **big blind ante**, désormais standard).\n\nL'effet est mécanique mais profond : le pot préflop est déjà conséquent _avant_ toute action. La cote pour voler s'améliore, l'agression devient prioritaire, les ranges s'élargissent. Les antes apparaissent à un niveau donné du MTT et accélèrent tout le jeu. _Une ante ne change pas tes cartes — elle change la valeur de les jouer._",
-    "relatedCardSlugs": ["blinds", "structure-mtt", "bb-unit"],
+    "fullContentMd": "Un **droit d'entrée** par main, en supplément des blinds. Soit chaque joueur poste une petite ante, soit la grosse blind poste un montant unique pour la table (le **big blind ante**, désormais standard).\n\nL'effet est mécanique mais profond : le pot préflop est déjà conséquent _avant_ toute action. La cote pour voler s'améliore, l'agression devient prioritaire, les ranges s'élargissent. Les antes apparaissent à un niveau donné du MTT et accélèrent tout le jeu. _Une ante ne change pas tes cartes — elle change la valeur de les jouer._",
+    "relatedCardSlugs": [
+      "blinds",
+      "structure-mtt",
+      "bb-unit"
+    ],
     "searchKeywords": "antes ante big blind ante droit entree mtt tournoi pot prefop vol agression"
   },
   {
     "slug": "hole-cards",
     "term": "Hole cards",
     "shortDef": "Les deux cartes privatives, face cachée, que toi seul connais.",
-    "fullContentMd": "## Hole cards\n\nTes **deux cartes privatives**, distribuées face cachée préflop. Personne d'autre ne les voit avant un éventuel showdown. C'est ta seule information privée dans tout le jeu.\n\nAu Hold'em, ta main finale combine librement ces deux cartes avec les cinq communes : tu retiens les **cinq meilleures** parmi sept. Parfois tu en utilises deux, parfois une seule, parfois zéro (_play the board_). La force d'une main de départ se juge toujours en fonction de la position : les mêmes hole cards se jouent UTG et au bouton de façon radicalement différente.",
-    "relatedCardSlugs": ["community-cards", "preflop", "classement-mains"],
+    "fullContentMd": "Tes **deux cartes privatives**, distribuées face cachée préflop. Personne d'autre ne les voit avant un éventuel showdown. C'est ta seule information privée dans tout le jeu.\n\nAu Hold'em, ta main finale combine librement ces deux cartes avec les cinq communes : tu retiens les **cinq meilleures** parmi sept. Parfois tu en utilises deux, parfois une seule, parfois zéro (_play the board_). La force d'une main de départ se juge toujours en fonction de la position : les mêmes hole cards se jouent UTG et au bouton de façon radicalement différente.",
+    "relatedCardSlugs": [
+      "community-cards",
+      "preflop",
+      "classement-mains"
+    ],
     "searchKeywords": "hole cards cartes privatives cartes fermees main de depart starting hand deux cartes privees"
   },
   {
     "slug": "community-cards",
     "term": "Community cards",
     "shortDef": "Les cinq cartes communes (flop, turn, river) partagées par tous les joueurs.",
-    "fullContentMd": "## Community cards\n\nLes **cartes communes** : trois au flop, une au turn, une à la river. Cinq au total, visibles, partagées par toute la table.\n\nChaque joueur les combine avec ses hole cards privatives pour former sa meilleure main de cinq. Comme elles sont publiques, elles définissent l'**espace des mains possibles** pour tout le monde : c'est la base de la lecture (range adverse) et de l'analyse de texture. Si le board est plus fort que ta main et celle de l'adversaire, on _play the board_ : split du pot. _Les cartes communes appartiennent à tous — l'avantage vient de ce que tu y ajoutes._",
-    "relatedCardSlugs": ["hole-cards", "flop", "turn", "river"],
+    "fullContentMd": "Les **cartes communes** : trois au flop, une au turn, une à la river. Cinq au total, visibles, partagées par toute la table.\n\nChaque joueur les combine avec ses hole cards privatives pour former sa meilleure main de cinq. Comme elles sont publiques, elles définissent l'**espace des mains possibles** pour tout le monde : c'est la base de la lecture (range adverse) et de l'analyse de texture. Si le board est plus fort que ta main et celle de l'adversaire, on _play the board_ : split du pot. _Les cartes communes appartiennent à tous — l'avantage vient de ce que tu y ajoutes._",
+    "relatedCardSlugs": [
+      "hole-cards",
+      "flop",
+      "turn",
+      "river"
+    ],
     "searchKeywords": "community cards cartes communes board tableau flop turn river partagees publiques play the board"
   },
   {
     "slug": "tirage-couleur",
     "term": "Tirage couleur (Flush draw)",
     "shortDef": "Quatre cartes d'une même couleur ; une cinquième assortie complète une couleur.",
-    "fullContentMd": "## Tirage couleur — Flush draw\n\nTu as **quatre cartes d'une couleur**, il en manque une. Treize cartes existent dans chaque couleur ; quatre étant visibles, il reste **9 outs** pour compléter.\n\nC'est le tirage le plus fréquent et le plus rentable au flop : ~36 % d'equity de toucher d'ici la river contre une main faite. Mais un tirage ne _vaut_ rien tant qu'il n'est pas complété — sa valeur est une promesse, à pondérer par les pot odds et les implied odds. Attention au tirage couleur _dominé_ : toucher la couleur en étant battu par une plus haute est un cas typique de reverse implied.",
-    "relatedCardSlugs": ["outs", "tirage-quinte-bilateral", "tirage-quinte-ventral", "turn"],
+    "fullContentMd": "Tu as **quatre cartes d'une couleur**, il en manque une. Treize cartes existent dans chaque couleur ; quatre étant visibles, il reste **9 outs** pour compléter.\n\nC'est le tirage le plus fréquent et le plus rentable au flop : ~36 % d'equity de toucher d'ici la river contre une main faite. Mais un tirage ne _vaut_ rien tant qu'il n'est pas complété — sa valeur est une promesse, à pondérer par les pot odds et les implied odds. Attention au tirage couleur _dominé_ : toucher la couleur en étant battu par une plus haute est un cas typique de reverse implied.",
+    "relatedCardSlugs": [
+      "outs",
+      "tirage-quinte-bilateral",
+      "tirage-quinte-ventral",
+      "turn"
+    ],
     "searchKeywords": "tirage couleur flush draw fd tirage flush 9 outs neuf outs couleur draw assortie"
   },
   {
     "slug": "tirage-quinte-bilateral",
     "term": "Tirage quinte bilatéral (Open-ended)",
     "shortDef": "Quatre cartes consécutives ouvertes des deux côtés ; deux rangs complètent la quinte.",
-    "fullContentMd": "## Tirage quinte bilatéral — Open-ended\n\nQuatre cartes qui se suivent, **ouvertes aux deux bouts**. Avec 9 8 7 6, un T _ou_ un 5 complète la quinte : deux rangs gagnants, soit **8 outs**.\n\nC'est le meilleur tirage quinte — deux fois plus d'outs qu'une ventrale. ~32 % d'equity au flop d'ici la river. Combiné à un tirage couleur (_combo draw_), il devient favori même contre une main faite. Comme tout tirage, sa valeur n'existe qu'une fois complété : on le joue sur les pot odds, jamais sur l'espoir.",
-    "relatedCardSlugs": ["tirage-quinte-ventral", "tirage-couleur", "outs"],
+    "fullContentMd": "Quatre cartes qui se suivent, **ouvertes aux deux bouts**. Avec 9 8 7 6, un T _ou_ un 5 complète la quinte : deux rangs gagnants, soit **8 outs**.\n\nC'est le meilleur tirage quinte — deux fois plus d'outs qu'une ventrale. ~32 % d'equity au flop d'ici la river. Combiné à un tirage couleur (_combo draw_), il devient favori même contre une main faite. Comme tout tirage, sa valeur n'existe qu'une fois complété : on le joue sur les pot odds, jamais sur l'espoir.",
+    "relatedCardSlugs": [
+      "tirage-quinte-ventral",
+      "tirage-couleur",
+      "outs"
+    ],
     "searchKeywords": "tirage quinte bilateral bilaterale open ended oesd straight draw ouverte 8 outs huit outs deux cotes"
   },
   {
     "slug": "tirage-quinte-ventral",
     "term": "Tirage quinte ventral (Gutshot)",
     "shortDef": "Quinte à laquelle il manque une carte au milieu ; un seul rang la complète.",
-    "fullContentMd": "## Tirage quinte ventral — Gutshot\n\nUne quinte trouée : il manque **une carte au milieu**. Avec 9 7 6 5, seul un 8 complète — un seul rang, soit **4 outs**.\n\nC'est le tirage le plus faible : ~16 % d'equity au flop d'ici la river. Sur les pot odds seules, une ventrale est presque toujours insuffisante face à une mise sérieuse. Elle ne devient jouable qu'avec de fortes implied odds (gros stacks, adversaire qui paiera), ou en complément (overcards, backdoor). _Règle de survie : ventrale = rarement profitable sans cote directe._",
-    "relatedCardSlugs": ["tirage-quinte-bilateral", "outs", "tirage-couleur"],
+    "fullContentMd": "Une quinte trouée : il manque **une carte au milieu**. Avec 9 7 6 5, seul un 8 complète — un seul rang, soit **4 outs**.\n\nC'est le tirage le plus faible : ~16 % d'equity au flop d'ici la river. Sur les pot odds seules, une ventrale est presque toujours insuffisante face à une mise sérieuse. Elle ne devient jouable qu'avec de fortes implied odds (gros stacks, adversaire qui paiera), ou en complément (overcards, backdoor). _Règle de survie : ventrale = rarement profitable sans cote directe._",
+    "relatedCardSlugs": [
+      "tirage-quinte-bilateral",
+      "outs",
+      "tirage-couleur"
+    ],
     "searchKeywords": "tirage quinte ventral ventrale gutshot inside straight draw trou milieu 4 outs quatre outs faible"
   },
   {
     "slug": "outs",
     "term": "Outs",
     "shortDef": "Cartes encore dans le paquet qui transforment ta main en main probablement gagnante.",
-    "fullContentMd": "## Outs\n\nUn **out** est une carte non vue qui fait passer ta main de perdante à gagnante. Tirage couleur : 9 outs. Bilatérale : 8. Ventrale : 4.\n\nLes outs sont la matière première de toute estimation d'equity. Règle mentale rapide (_la règle des 4 et 2_) : outs × 4 ≈ % de toucher d'ici la river au flop ; outs × 2 ≈ % par carte. Attention aux **faux outs** : une carte qui complète ta quinte mais donne couleur à l'adversaire n'est pas un vrai out. _Compter ses outs honnêtement — sans gonfler — est la première discipline du calcul._",
-    "relatedCardSlugs": ["tirage-couleur", "tirage-quinte-bilateral", "tirage-quinte-ventral"],
+    "fullContentMd": "Un **out** est une carte non vue qui fait passer ta main de perdante à gagnante. Tirage couleur : 9 outs. Bilatérale : 8. Ventrale : 4.\n\nLes outs sont la matière première de toute estimation d'equity. Règle mentale rapide (_la règle des 4 et 2_) : outs × 4 ≈ % de toucher d'ici la river au flop ; outs × 2 ≈ % par carte. Attention aux **faux outs** : une carte qui complète ta quinte mais donne couleur à l'adversaire n'est pas un vrai out. _Compter ses outs honnêtement — sans gonfler — est la première discipline du calcul._",
+    "relatedCardSlugs": [
+      "tirage-couleur",
+      "tirage-quinte-bilateral",
+      "tirage-quinte-ventral"
+    ],
     "searchKeywords": "outs out cartes gagnantes regle des 4 et 2 equity compter outs faux outs probabilite ameliorer"
   },
   {
     "slug": "bb-unit",
     "term": "bb (Big blind, unité)",
     "shortDef": "L'unité de mesure d'un tapis en tournoi : nombre de grosses blinds, pas de jetons.",
-    "fullContentMd": "## bb — l'unité\n\nEn tournoi, un tapis ne se mesure **jamais en jetons**, toujours en **big blinds**. 3000 jetons à 50/100 valent 30 bb ; les mêmes 3000 à 200/400 valent 7,5 bb. Le chiffre brut ne dit rien ; la profondeur en bb dit tout.\n\nLa profondeur définit la stratégie : >40 bb jeu profond, 15–25 bb territoire du 3bet/squeeze, <15 bb push or fold. Toutes les mises postflop se disent aussi en _fraction du pot_, mais préflop reste en bb. _La première question de chaque main n'est pas « quelles cartes ? » mais « combien de bb ? »_",
-    "relatedCardSlugs": ["blinds", "all-in", "structure-mtt"],
+    "fullContentMd": "En tournoi, un tapis ne se mesure **jamais en jetons**, toujours en **big blinds**. 3000 jetons à 50/100 valent 30 bb ; les mêmes 3000 à 200/400 valent 7,5 bb. Le chiffre brut ne dit rien ; la profondeur en bb dit tout.\n\nLa profondeur définit la stratégie : >40 bb jeu profond, 15–25 bb territoire du 3bet/squeeze, <15 bb push or fold. Toutes les mises postflop se disent aussi en _fraction du pot_, mais préflop reste en bb. _La première question de chaque main n'est pas « quelles cartes ? » mais « combien de bb ? »_",
+    "relatedCardSlugs": [
+      "blinds",
+      "all-in",
+      "structure-mtt"
+    ],
     "searchKeywords": "bb big blind unite profondeur stack tapis nombre de blinds stack depth jetons mesure push fold"
   },
   {
     "slug": "itm",
     "term": "ITM (In The Money)",
     "shortDef": "Le seuil où le tournoi commence à payer ; avant lui, on repart les mains vides.",
-    "fullContentMd": "## ITM — In The Money\n\nUn MTT ne paie qu'une fraction du field (souvent le top 10–15 %). Franchir ce seuil, c'est être **ITM** : tu as garanti au moins une part. Avant, c'est zéro ; après, c'est quelque chose. Le saut de valeur est **discontinu**, pas progressif.\n\nCette discontinuité crée des effets ICM puissants autour de la **bulle** (la place juste avant l'argent). Survivre n'est pourtant pas le but : les structures sont top-heavy, et le pro joue pour _maximiser sa part_, pas seulement pour atteindre le minimum payé. Comprendre l'ITM, c'est savoir pourquoi un même all-in est correct en début et catastrophique sur la bulle.",
-    "relatedCardSlugs": ["bulle", "all-in", "bb-unit"],
+    "fullContentMd": "Un MTT ne paie qu'une fraction du field (souvent le top 10–15 %). Franchir ce seuil, c'est être **ITM** : tu as garanti au moins une part. Avant, c'est zéro ; après, c'est quelque chose. Le saut de valeur est **discontinu**, pas progressif.\n\nCette discontinuité crée des effets ICM puissants autour de la **bulle** (la place juste avant l'argent). Survivre n'est pourtant pas le but : les structures sont top-heavy, et le pro joue pour _maximiser sa part_, pas seulement pour atteindre le minimum payé. Comprendre l'ITM, c'est savoir pourquoi un même all-in est correct en début et catastrophique sur la bulle.",
+    "relatedCardSlugs": [
+      "bulle",
+      "all-in",
+      "bb-unit"
+    ],
     "searchKeywords": "itm in the money dans l'argent paye places payees seuil payout min cash bubble bulle"
   },
   {
     "slug": "bulle",
     "term": "Bulle",
     "shortDef": "La place juste avant l'ITM : la prochaine élimination paie tout le monde sauf l'éliminé.",
-    "fullContentMd": "## Bulle\n\nLa **bulle** est le palier juste avant l'argent : il reste un joueur de trop. La prochaine élimination débloque les paiements pour tous les survivants — sauf celui qui saute.\n\nC'est le moment le plus tendu d'un MTT. Les petits tapis se crispent pour survivre ; les gros tapis _exploitent_ cette peur en mettant une pression maximale, volant des pots que personne n'ose défendre. La bulle n'est pas un détail administratif : c'est un champ stratégique gouverné par l'ICM, où la valeur d'un jeton perdu dépasse celle d'un jeton gagné. _Sur la bulle, le bon jeu n'est presque jamais le jeu prudent._",
-    "relatedCardSlugs": ["itm", "all-in"],
+    "fullContentMd": "La **bulle** est le palier juste avant l'argent : il reste un joueur de trop. La prochaine élimination débloque les paiements pour tous les survivants — sauf celui qui saute.\n\nC'est le moment le plus tendu d'un MTT. Les petits tapis se crispent pour survivre ; les gros tapis _exploitent_ cette peur en mettant une pression maximale, volant des pots que personne n'ose défendre. La bulle n'est pas un détail administratif : c'est un champ stratégique gouverné par l'ICM, où la valeur d'un jeton perdu dépasse celle d'un jeton gagné. _Sur la bulle, le bon jeu n'est presque jamais le jeu prudent._",
+    "relatedCardSlugs": [
+      "itm",
+      "all-in"
+    ],
     "searchKeywords": "bulle bubble bulle d'argent juste avant itm pression icm short stack big stack survie elimination"
   }
 ]
