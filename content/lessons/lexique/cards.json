@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "bet-fiche",
+    "term": "Bet",
+    "shortDef": "Au sens stratégique : une mise est un message dosé (sizing) qui raconte une histoire, pas un simple montant.",
+    "fullContentMd": "Le Livre I définit le **bet** mécaniquement (ouvrir l'enchère). Côté stratégie, ce qui compte n'est pas _que_ tu mises mais _combien_ et _pourquoi_.\n\n## Le sizing porte l'intention\n\nUn petit bet (1/3 pot) dénie une cote, garde le pot petit, protège une main moyenne. Un gros bet (3/4 pot+) polarise : value forte ou bluff. La taille _est_ le message — un adversaire attentif lit ta range dans ton sizing avant de lire tes cartes.\n\n## Deux raisons, jamais zéro\n\nTout bet doit servir la **value** (te faire payer par pire) ou le **bluff** (faire fold mieux). Miser « pour voir » est la fuite la plus chère du débutant : une mise sans intention est de l'argent jeté.",
+    "relatedCardSlugs": ["raise-fiche", "c-bet-fiche", "overbet", "underbet"],
+    "searchKeywords": "bet sizing strategie intention message taille de mise value bluff polarise dosage pourquoi miser"
+  },
+  {
+    "slug": "raise-fiche",
+    "term": "Raise",
+    "shortDef": "Au sens stratégique : relancer pour prendre l'initiative, isoler ou polariser — le sizing définit l'intention.",
+    "fullContentMd": "Le Livre I couvre le **raise** mécaniquement. En stratégie, le raise est l'arme de l'initiative : il prend la main de l'histoire et impose le prix.\n\n## Ce qu'un raise accomplit\n\nUn raise fold les mains marginales (fold equity), isole un range, construit le pot quand tu as la value. C'est l'inverse du call passif : tu décides au lieu de subir.\n\n## Le sizing dit tout\n\n- Petit raise (min-raise) : souvent value épaisse ou stack court\n- Raise standard (2.5-3x) : range linéaire d'ouverture\n- Gros raise / overraise : polarisé\n\nUn raise sans plan pour la street suivante est un demi-geste. _Relancer, c'est s'engager à raconter la suite._",
+    "relatedCardSlugs": ["bet-fiche", "3bet", "iso-raise", "check-raise"],
+    "searchKeywords": "raise relance sizing initiative isoler polariser strategie intention 3bet overraise minraise"
+  },
+  {
+    "slug": "re-raise",
+    "term": "Re-raise",
+    "shortDef": "Relancer une relance : terme générique pour tout raise par-dessus un raise existant (3-bet, 4-bet…).",
+    "fullContentMd": "Un **re-raise** est toute relance posée sur une relance déjà faite. C'est le mot-parapluie ; les noms précis (3-bet, 4-bet, 5-bet) comptent les étages.\n\n## Pourquoi compter les étages\n\nChaque re-raise rétrécit les ranges et gonfle le pot. Un re-raise préflop transforme un pot de 3bb en pot de 20bb+ : la marge d'erreur fond. Plus on monte les étages, plus les ranges deviennent polarisés (monstres + bluffs choisis).\n\n## En pratique\n\nDire « re-raise » suffit en table ; dire « 4-bet » est plus précis pour analyser. Les deux désignent le même geste — relancer ce qui était déjà une relance.",
+    "relatedCardSlugs": ["3bet", "4bet", "5bet", "raise-fiche"],
+    "searchKeywords": "re-raise reraise re relance sur-relance relancer une relance generique 3bet 4bet"
+  },
+  {
+    "slug": "3bet",
+    "term": "3-bet",
+    "shortDef": "Troisième mise volontaire préflop : la re-relance posée après un open et avant un éventuel 4-bet.",
+    "fullContentMd": "Le **3-bet** est la _troisième_ mise volontaire préflop.\n\n## Pourquoi 3 et pas 2\n\nLa grosse blind est comptée comme la mise 1. L'open (premier raise libre) est la mise 2. La re-relance est donc la mise 3 — d'où le nom, qui n'a rien à voir avec « trois fois la mise ».\n\n## Pourquoi c'est central\n\nLe 3-bet pose la question : « prêt à jouer un gros pot ? ». Bien dosé, il fold les mains marginales et isole un range solide en position. Mal dosé, il pollue ta range et te rend lisible. Un range de 3-bet est souvent **polarisé** (value premium + bluffs sélectionnés) en position profonde, plus **linéaire** short.\n\n## Sizing standard\n\n- En position : ~2.5x à 3x l'open\n- Hors position : ~3.5x à 4x (compenser le désavantage positionnel)",
+    "relatedCardSlugs": ["4bet", "squeeze-fiche", "re-raise", "raise-fiche"],
+    "searchKeywords": "3bet 3-bet three bet troisieme mise re-raise relance preflop polarise sizing"
+  },
+  {
+    "slug": "4bet",
+    "term": "4-bet",
+    "shortDef": "La relance qui répond à un 3-bet ; ratio plus serré (~2.2-2.4x) car les pots sont déjà gros.",
+    "fullContentMd": "Le **4-bet** est l'étage au-dessus du 3-bet : tu re-relances une re-relance.\n\n## Sizing\n\nLe ratio est plus petit qu'un 3-bet : ~**2.2x à 2.4x** le 3-bet. Raison mécanique : le pot est déjà gros, un multiplicateur élevé t'engagerait pour rien. Beaucoup de 4-bets sont _committing_ — au-delà, fold devient incorrect.\n\n## Une range polarisée\n\nÀ ce niveau, les mains moyennes disparaissent. Un range de 4-bet est typiquement **très polarisé** : tes meilleures mains (QQ+, AK) et une petite dose de bluffs (souvent des Ax suited qui bloquent AA/AK). Caller un 4-bet « bon mais pas génial » est presque toujours une faute.",
+    "relatedCardSlugs": ["3bet", "5bet", "commitment", "re-raise"],
+    "searchKeywords": "4bet 4-bet four bet quatrieme mise re-raise sur 3bet polarise committing sizing"
+  },
+  {
+    "slug": "5bet",
+    "term": "5-bet",
+    "shortDef": "Le cinquième étage d'enchère préflop : rare, souvent un shove all-in, range ultra-polarisée.",
+    "fullContentMd": "Le **5-bet** répond à un 4-bet. C'est l'étage le plus haut qu'on voit en pratique.\n\n## Quand il apparaît\n\nQuasi inexistant en cash deep ; surtout en **MTT short-stacked**, où les stacks effectifs sont si peu profonds que le 5-bet est simplement un **shove all-in**. Les jetons restants après un 4-bet ne laissent plus de place pour finasser.\n\n## Range ultra-polarisée\n\nÀ ce niveau, la range se réduit à l'extrême : les tout meilleurs (souvent KK+/AK) et de purs bluffs de blocage. Il n'y a plus de zone grise. Un 5-bet, c'est « tout ou rien » — par construction.",
+    "relatedCardSlugs": ["4bet", "3bet", "commitment"],
+    "searchKeywords": "5bet 5-bet five bet cinquieme mise shove all-in preflop short stack mtt ultra polarise"
+  },
+  {
+    "slug": "squeeze-fiche",
+    "term": "Squeeze",
+    "shortDef": "3-bet posé après un open + au moins un call : tu « presses » l'open-raiser entre toi et les callers.",
+    "fullContentMd": "Un **squeeze** est un 3-bet effectué quand il y a déjà un open _et_ au moins un caller derrière.\n\n## L'idée\n\nTu mets l'open-raiser dans un étau : il doit payer une grosse relance _en sachant_ qu'il reste des joueurs derrière lui susceptibles de réagir. Le caller, lui, a montré une main non-premium (il n'a pas 3-bet) : tu attaques deux faiblesses à la fois.\n\n## Sizing\n\nPlus large qu'un 3-bet classique — typiquement **~4x** l'open (au lieu de ~3x), parfois plus avec plusieurs callers. Le surplus de fold equity vient du pot mort déjà constitué et du nombre d'adversaires à faire plier d'un coup.",
+    "relatedCardSlugs": ["3bet", "cold-call", "flat", "steal"],
+    "searchKeywords": "squeeze squeeze play 3bet apres call presser open raiser etau multiway sizing large"
+  },
+  {
+    "slug": "cold-call",
+    "term": "Cold call",
+    "shortDef": "Caller un open sans avoir déjà investi volontairement (ni open, ni limp) sur cette main.",
+    "fullContentMd": "Un **cold call** est un call « à froid » : tu paies un open sans avoir mis le moindre jeton volontaire avant sur cette main.\n\n## La distinction qui compte\n\nUn limper qui call ensuite un raise n'a **pas** cold-callé : il avait déjà investi. Le cold call désigne précisément l'entrée _directe_ par un call (souvent depuis les blinds ou une position tardive), sans étape intermédiaire.\n\n## Pourquoi le mot existe\n\nLe cold call a une réputation faible : il n'a ni l'initiative du raise, ni la cote du limp/complete. Il invite des joueurs derrière, joue OOP souvent, et révèle une main « moyenne » (sinon tu 3-bet). Le nommer permet de le traquer comme leak.",
+    "relatedCardSlugs": ["flat", "squeeze-fiche", "iso-raise"],
+    "searchKeywords": "cold call cold-call caller a froid call open sans investir flat appel direct"
+  },
+  {
+    "slug": "flat",
+    "term": "Flat",
+    "shortDef": "Cold-call déceptif : choisir de juste caller alors qu'on aurait pu 3-bet, pour masquer sa force.",
+    "fullContentMd": "**Flat** (ou _flat call_) est un cold-call, avec une nuance d'intention : c'est un choix _conscient_ de ne pas 3-bet une main qui le pourrait.\n\n## La déception comme but\n\nFlatter AA ou QQ contre un open, c'est cacher la force : tu laisses l'adversaire continuer son histoire, garder ses bluffs, surjouer une main pire. Le piège se referme plus tard.\n\n## Le revers\n\nFlatter trop large déséquilibre : ta range de call devient un fourre-tout que l'adversaire exploite en pression. Le flat est puissant _ponctuellement_, dangereux _systématiquement_. La question n'est jamais « puis-je caller ? » mais « pourquoi je ne 3-bet pas ? ».",
+    "relatedCardSlugs": ["cold-call", "3bet", "level"],
+    "searchKeywords": "flat flat call flatter call deceptif slowplay preflop ne pas 3bet piege cold call"
+  },
+  {
+    "slug": "iso-raise",
+    "term": "Iso-raise",
+    "shortDef": "Relancer pour isoler un limper faible et jouer le pot en tête-à-tête contre lui, en position.",
+    "fullContentMd": "L'**iso-raise** (raise d'isolement) cible un limper. Tu vois un joueur faible compléter (limp), tu relances pour faire fold tout le monde derrière et jouer le coup **1v1 contre le limper**.\n\n## Pourquoi isoler\n\nUn limper a souvent une main faible et un jeu prévisible. Le coincer seul, en position, c'est transformer une situation multiway floue en duel où ton edge est maximal. La main que tu iso-raises importe moins que la qualité de la cible.\n\n## Sizing\n\nPlus gros qu'un open standard — il faut décourager les overcalls _et_ punir le limper : typiquement open standard + 1bb par limper. Trop petit, et la table suit ; l'isolement échoue.",
+    "relatedCardSlugs": ["raise-fiche", "cold-call", "fish"],
+    "searchKeywords": "iso-raise iso raise isolation isoler limper raise d'isolement 1v1 punir limp"
+  },
+  {
+    "slug": "check-raise",
+    "term": "Check-raise",
+    "shortDef": "Checker pour laisser l'adversaire miser, puis relancer sa mise : piège ou semi-bluff puissant.",
+    "fullContentMd": "Le **check-raise** : tu checkes (renonçant à miser), l'adversaire mise, et tu relances par-dessus. Deux actions opposées dans le même tour, pour un effet maximal.\n\n## Deux usages\n\n- **Value** : tu as une grosse main, tu laisses l'agresseur miser pour toi, puis tu doubles la mise.\n- **Semi-bluff / bluff** : tu représentes une grosse main, exploitant le fait que son c-bet est souvent faible.\n\n## Pourquoi c'est fort\n\nLe check-raise attaque l'automatisme du c-bet. Il transforme la passivité apparente (check) en agression maximale, et coûte cher à l'adversaire qui a misé « par habitude ». Mal utilisé, il sur-représente et se fait payer light.",
+    "relatedCardSlugs": ["c-bet-fiche", "raise-fiche", "donk-bet"],
+    "searchKeywords": "check-raise checkraise check raise checker puis relancer piege semi-bluff contre cbet"
+  },
+  {
+    "slug": "donk-bet",
+    "term": "Donk bet",
+    "shortDef": "Miser OOP en premier sur une street où c'est l'agresseur préflop (IP) qui était censé c-bet.",
+    "fullContentMd": "Un **donk bet** est une mise prise par le joueur _hors de position_, en premier, alors que la convention veut que l'agresseur préflop (en position) c-bet.\n\n## Pourquoi le nom\n\nHistoriquement vu comme un geste de _donkey_ — faible, mal compris : tu donnes l'initiative que tu aurais pu laisser venir, et tu construis le pot OOP.\n\n## La réhabilitation GTO\n\nLa théorie moderne réhabilite le donk dans des spots précis : flops qui favorisent fortement le range du défenseur (low connectés que l'agresseur rate), où mener protège mieux que checker. Rare, ciblé, jamais par réflexe. _Le donk n'est plus une faute — mais reste une exception qui se justifie._",
+    "relatedCardSlugs": ["c-bet-fiche", "probe-bet", "check-raise"],
+    "searchKeywords": "donk bet donkbet donk lead bet oop mener flop hors position contre agresseur gto"
+  },
+  {
+    "slug": "c-bet-fiche",
+    "term": "C-bet (Continuation bet)",
+    "shortDef": "Au sens lexique avancé : mise de continuation dont le sizing et la fréquence dépendent du board.",
+    "fullContentMd": "Le Livre II pose le **c-bet** comme arme de l'agresseur préflop. Le lexique entre dans le réglage fin : _quelle taille_, _à quelle fréquence_.\n\n## Sizing selon le board\n\n- **Petit (1/3 pot)** : board sec où ta range domine — peu de raisons à l'adversaire de continuer, pas besoin de mettre gros.\n- **Moyen/gros (2/3-pot)** : board humide où il faut dénier de l'equity aux tirages.\n\n## Fréquence selon le board\n\n- **Board sec** (A-7-2 rainbow) : c-bet proche de **100 %**, range entière, petite taille.\n- **Board humide** (T-9-8 deux couleurs) : c-bet **~50 %**, sélectif — checker protège ta range et évite le check-raise.\n\n_C-better tout, tout le temps, à la même taille, est le leak le plus exploité du joueur intermédiaire._",
+    "relatedCardSlugs": ["double-barrel", "delayed-c-bet", "bet-fiche", "check-raise"],
+    "searchKeywords": "cbet c-bet continuation bet sizing frequence board sec humide 1/3 2/3 pot reglage avance"
+  },
+  {
+    "slug": "double-barrel",
+    "term": "Double barrel",
+    "shortDef": "Continuer le c-bet au turn après l'avoir misé au flop : deuxième coup de la rafale.",
+    "fullContentMd": "Un **double barrel** est le c-bet du flop suivi d'un second bet au turn. Le mot _barrel_ (canon) image la rafale d'agressivité tirée street après street.\n\n## Le story-telling\n\nMiser deux streets raconte une main forte et cohérente. Beaucoup de mains qui callent le flop (tirages, paires faibles) abandonnent au turn face à la pression continue — c'est là que le double barrel encaisse sa fold equity.\n\n## Bien choisir le turn\n\nLes meilleures cartes de double barrel renforcent _ton_ histoire : overcards, cartes qui complètent des tirages que tu représentes, cartes qui n'aident pas le range du caller. Barreler une brique inoffensive sans plan, c'est brûler des jetons sur un bluff sans munitions.",
+    "relatedCardSlugs": ["c-bet-fiche", "triple-barrel", "float"],
+    "searchKeywords": "double barrel double-barrel deuxieme barrel turn cbet flop puis turn rafale story"
+  },
+  {
+    "slug": "triple-barrel",
+    "term": "Triple barrel",
+    "shortDef": "Miser flop, turn ET river : la rafale complète, l'engagement maximal d'une ligne agressive.",
+    "fullContentMd": "Le **triple barrel** est la séquence complète : c-bet flop, bet turn, bet river. Trois coups, l'engagement total.\n\n## Le poids du dernier barrel\n\nUn triple barrel en bluff est l'un des coups les plus chers du jeu : si l'adversaire paie, tout est perdu. Il exige une cohérence parfaite — chaque street doit avoir construit l'histoire d'une main que tu peux _crédiblement_ avoir à la river.\n\n## Lecture défensive\n\nFace à un triple barrel, le range adverse est **polarisé** : monstres et bluffs choisis, presque rien au milieu. Caller demande une vraie main et une lecture du joueur ; payer « par curiosité » est exactement ce que le triple barrel punit. _On ne tire pas trois cartouches sans plan dès le flop._",
+    "relatedCardSlugs": ["double-barrel", "c-bet-fiche", "overbet"],
+    "searchKeywords": "triple barrel triple-barrel trois barrels river bluff polarise engagement maximal story"
+  },
+  {
+    "slug": "probe-bet",
+    "term": "Probe bet",
+    "shortDef": "Bet OOP au turn/river après que l'agresseur préflop ait checké le flop : on « sonde » sa faiblesse.",
+    "fullContentMd": "Un **probe bet** est une mise prise hors de position, au turn ou à la river, _après_ que l'agresseur préflop ait renoncé à c-bet le flop.\n\n## La logique du sondage\n\nLe check du flop par l'agresseur signale souvent une range faible (s'il avait touché, il aurait misé). Le probe « sonde » cette faiblesse : tu reprends l'initiative qu'il a abandonnée, en attaquant la zone qu'il vient de montrer vide.\n\n## Différence avec le donk\n\nLe donk bet mène _avant_ que l'agresseur ait pu agir (au flop). Le probe vient _après_ son renoncement (street suivante). L'un coupe l'agresseur, l'autre exploite son silence. _Un check non puni est une invitation._",
+    "relatedCardSlugs": ["donk-bet", "delayed-c-bet", "float"],
+    "searchKeywords": "probe bet probe-bet sonde sonder turn river apres check agresseur oop initiative abandonnee"
+  },
+  {
+    "slug": "float",
+    "term": "Float",
+    "shortDef": "Caller un c-bet sans main faite, dans l'intention de bluffer une street suivante si le vilain checke.",
+    "fullContentMd": "**Floater**, c'est payer le c-bet adverse au flop _sans_ main faite, avec un plan : voler le pot plus tard si l'agresseur ralentit.\n\n## Pourquoi ça marche\n\nBeaucoup de c-bets sont automatiques et faibles. En callant, tu ne montres rien et tu attends le signe de renoncement : un check turn. Là, tu mises et tu prends le pot que son bluff de flop n'a pas su finir.\n\n## Les bons floats\n\nLe float est meilleur **en position** (tu vois son action avant d'agir) et avec un minimum d'equity de secours (overcards, backdoor) : si le bluff échoue, tu peux encore toucher. Floater sans position ni équité, c'est juste payer pour espérer — pas un plan.",
+    "relatedCardSlugs": ["c-bet-fiche", "probe-bet", "double-barrel"],
+    "searchKeywords": "float floater floating caller cbet sans main bluff differé position plan turn river"
+  },
+  {
+    "slug": "delayed-c-bet",
+    "term": "Delayed c-bet",
+    "shortDef": "Checker le flop (alors qu'on pouvait c-bet) puis miser le turn une fois le vilain checké aussi.",
+    "fullContentMd": "Le **delayed c-bet** est un c-bet retardé : l'agresseur préflop checke le flop, puis mise le turn après que l'adversaire ait également checké.\n\n## Pourquoi retarder\n\nPlusieurs raisons légitimes :\n\n- **Protéger sa range de check flop** : si tu ne checkes jamais, ton check devient lisiblement faible.\n- **Board très sec** : peu d'intérêt à miser flop, l'equity adverse est faible — le turn suffit.\n- **Récolter les abandons** : le check-check flop a déjà filtré les mains fortes adverses.\n\n## La nuance\n\nLe delayed c-bet n'est pas un renoncement suivi d'un sursaut : c'est un plan dès le flop. _Checker peut être plus agressif que miser, si le check est armé pour la street d'après._",
+    "relatedCardSlugs": ["c-bet-fiche", "probe-bet", "double-barrel"],
+    "searchKeywords": "delayed c-bet delayed cbet cbet retarde check flop puis bet turn range protection board sec"
+  },
+  {
+    "slug": "overbet",
+    "term": "Overbet",
+    "shortDef": "Miser plus que le pot (typiquement 1.5x-2x) ; range polarisée, pression maximale.",
+    "fullContentMd": "Un **overbet** est une mise _supérieure_ à la taille du pot — typiquement **1.5x à 2x pot**, parfois plus à la river.\n\n## Quand et pourquoi\n\nL'overbet sert deux extrêmes : extraire le maximum avec les **nuts**, ou appliquer une pression insoutenable en **bluff**. Entre les deux, rien — c'est la mise la plus **polarisée** du jeu.\n\n## L'effet sur l'adversaire\n\nUn overbet attaque la cote : il offre une equity requise très haute (mise pot = 33 % requis ; overbet 2x pot ≈ 40 %). Il fait fold les mains moyennes et transforme la décision adverse en pile-ou-face sur ta fréquence de bluff. Réservé aux spots où ta range _est_ crédiblement polarisée — sinon il se fait payer ou snap-fold à mauvais escient.",
+    "relatedCardSlugs": ["underbet", "bet-fiche", "triple-barrel"],
+    "searchKeywords": "overbet over bet over-bet miser plus que le pot 1.5x 2x pot polarise pression nuts bluff"
+  },
+  {
+    "slug": "underbet",
+    "term": "Underbet",
+    "shortDef": "Miser beaucoup moins que le pot (1/4-1/3) ; souvent un block bet pour contrôler le prix.",
+    "fullContentMd": "Un **underbet** est une mise nettement inférieure au pot — typiquement **1/4 à 1/3 pot**.\n\n## Le block bet\n\nL'usage le plus courant est le **block bet** : à la river, OOP, avec une main moyenne, tu mises petit pour _fixer le prix toi-même_ et empêcher l'adversaire de t'imposer un gros bet. Tu paies un petit montant choisi plutôt que de subir une grosse décision.\n\n## Autres usages\n\n- Sur board très sec où l'adversaire a peu de continuations\n- Pour extraire de la value fine d'un range qui ne paie qu'un petit prix\n\nL'underbet déroute parce qu'il casse les tailles attendues. Mal employé, il invite le raise ; bien placé, il neutralise le levier positionnel adverse.",
+    "relatedCardSlugs": ["overbet", "bet-fiche"],
+    "searchKeywords": "underbet under bet under-bet petite mise block bet 1/4 1/3 pot bloquer prix river oop"
+  },
+  {
+    "slug": "notation-aks",
+    "term": "AKs",
+    "shortDef": "As-Roi assortis (suited) : les deux cartes de même couleur ; 4 combinaisons possibles.",
+    "fullContentMd": "`AKs` désigne **As-Roi de la même couleur** — le suffixe `s` = _suited_.\n\n## Pourquoi le distinguer\n\nÊtre assorti ajoute un tirage couleur de secours : `AKs` n'est pas `AKo`, c'est une main mesurablement plus forte (≈2-3 points d'equity et un potentiel postflop différent). La notation force cette précision.\n\n## Combinatoire\n\n`AKs` compte **4 combos** — un par couleur (♠♥♦♣). À comparer aux 12 combos de `AKo` et aux 16 de `AK` non spécifié. Compter les combos de `AKs` est typique des raisonnements de blockers (avoir un As réduit les `AA`/`AK` adverses).",
+    "relatedCardSlugs": ["notation-ako", "notation-suited", "notation-broadway", "notation-range-plus"],
+    "searchKeywords": "aks ak suited as roi assortis meme couleur 4 combos notation main premium suited"
+  },
+  {
+    "slug": "notation-ako",
+    "term": "AKo",
+    "shortDef": "As-Roi dépareillés (offsuit) : couleurs différentes ; 12 combinaisons possibles.",
+    "fullContentMd": "`AKo` désigne **As-Roi de couleurs différentes** — le suffixe `o` = _offsuit_.\n\n## La différence avec AKs\n\nPas de tirage couleur de secours : `AKo` reste une main premium par sa domination de kicker, mais joue un cran moins bien postflop, surtout hors position, que `AKs`.\n\n## Combinatoire\n\n`AKo` compte **12 combos** (4 couleurs pour l'As × 3 couleurs restantes pour le Roi). C'est trois fois plus que `AKs` (4 combos) : dans un range adverse, les versions offsuit pèsent toujours plus lourd en nombre — un réflexe utile quand on estime ce que le vilain peut détenir.",
+    "relatedCardSlugs": ["notation-aks", "notation-offsuit", "notation-pair"],
+    "searchKeywords": "ako ak offsuit as roi depareilles couleurs differentes 12 combos notation"
+  },
+  {
+    "slug": "notation-pair",
+    "term": "Paires (AA, KK, QQ…)",
+    "shortDef": "Deux cartes de même rang ; notées sans suffixe (impossible d'être suited à soi-même), 6 combos.",
+    "fullContentMd": "Une paire servie s'écrit avec le rang doublé, **sans suffixe** : `AA`, `KK`, `TT`, `22`. Logique — les deux cartes étant du même rang, elles sont forcément de couleurs différentes : ni `s` ni `o` n'ont de sens.\n\n## Combinatoire\n\nChaque paire = **6 combos**. Pour `AA` : As♠As♥, As♠As♦, As♠As♣, As♥As♦, As♥As♣, As♦As♣. Six façons de choisir 2 couleurs parmi 4.\n\n## Usage de range\n\n`22+` veut dire toutes les paires de 22 à AA — 13 rangs × 6 = 78 combos. Le poids des paires dans une range se compte vite grâce à ce 6 constant : un repère mental de base pour estimer un range adverse.",
+    "relatedCardSlugs": ["notation-range-plus", "notation-aks", "notation-suited"],
+    "searchKeywords": "paire paires pocket pair AA KK QQ notation sans suffixe 6 combos rang double servie"
+  },
+  {
+    "slug": "notation-suited",
+    "term": "Suited (s)",
+    "shortDef": "Suffixe « s » : les deux cartes de la main sont de la même couleur (ex. AKs, T9s).",
+    "fullContentMd": "Le suffixe **`s`** = _suited_ : les deux cartes partagent la même couleur.\n\n## Ce que ça change\n\nSuited ajoute un **tirage couleur** : potentiel postflop accru, equity légèrement supérieure, mains spéculatives nettement plus jouables (`76s` ≫ `76o`). C'est pourquoi la notation distingue toujours `s` — la même paire de rangs est deux mains différentes.\n\n## Combinatoire\n\nUne main suited = **4 combos** (un par couleur). C'est la moitié de l'histoire des combos ; l'autre moitié est l'offsuit (12). Retenir « suited = 4, offsuit = 12, total = 16 » est le socle du comptage de range.",
+    "relatedCardSlugs": ["notation-offsuit", "notation-aks", "notation-suited-connector"],
+    "searchKeywords": "suited s assorti meme couleur suffixe notation tirage couleur 4 combos flush draw"
+  },
+  {
+    "slug": "notation-offsuit",
+    "term": "Offsuit (o)",
+    "shortDef": "Suffixe « o » : les deux cartes de la main sont de couleurs différentes (ex. AKo, T9o).",
+    "fullContentMd": "Le suffixe **`o`** = _offsuit_ : les deux cartes sont de couleurs différentes.\n\n## Ce que ça retire\n\nPas de tirage couleur. Une main offsuit perd le potentiel flush et un peu d'equity ; les connecteurs offsuit (`87o`) sont bien plus faibles que leurs versions suited et sortent vite des ranges d'ouverture en position précoce.\n\n## Combinatoire\n\nUne main offsuit = **12 combos** (4 couleurs pour la 1re carte × 3 restantes pour la 2e). C'est le plus gros bloc : dans un range non spécifié (`AK` = 16), les 12 offsuit dominent numériquement les 4 suited — réflexe clé pour pondérer ce que tient l'adversaire.",
+    "relatedCardSlugs": ["notation-suited", "notation-ako", "notation-connector"],
+    "searchKeywords": "offsuit o depareille couleurs differentes suffixe notation 12 combos pas de couleur"
+  },
+  {
+    "slug": "notation-broadway",
+    "term": "Broadway",
+    "shortDef": "Main composée uniquement de cartes T à A (Ten, Valet, Dame, Roi, As) : AK, KQ, JT…",
+    "fullContentMd": "Une main **broadway** n'est faite que de cartes hautes : **T, J, Q, K, A**. Exemples : `AK`, `AQ`, `KQ`, `QJ`, `JT`, `KT`.\n\n## Pourquoi le terme\n\nCes mains tirent leur force de la **domination de kicker** : quand elles touchent une paire, c'est souvent top paire avec le meilleur kicker — exactement ce qui fait payer les top paires plus faibles. `JT` peut aussi former la quinte broadway maximale (A-K-Q-J-T).\n\n## Suited compte double\n\nLes broadways suited (`AKs`, `KQs`, `QJs`) sont des spéculatives premium : domination _plus_ tirage couleur. Les versions offsuit restent fortes mais souffrent davantage hors position (reverse implied sur kicker dominé).",
+    "relatedCardSlugs": ["notation-connector", "notation-suited", "notation-aks"],
+    "searchKeywords": "broadway broadways cartes hautes T J Q K A AK KQ JT quinte broadway domination kicker"
+  },
+  {
+    "slug": "notation-connector",
+    "term": "Connector",
+    "shortDef": "Deux cartes consécutives (87, T9, KQ) jouées pour leur potentiel de quinte.",
+    "fullContentMd": "Un **connector** est une main de deux rangs **consécutifs** : `87`, `T9`, `54`, `KQ`. Aucun écart entre les cartes.\n\n## Pourquoi on les joue\n\nUn connector vise la **quinte** : c'est la forme qui maximise le nombre de tirages quinte au flop. Plus les cartes sont proches du milieu (`87`, `T9`), plus elles forment de quintes dans les deux sens.\n\n## Suited change tout\n\nUn connector _suited_ (`87s`) cumule deux potentiels : quinte _et_ couleur, parfois combinés en monstre déguisé. C'est l'arme spéculative reine du jeu profond en position. Un connector offsuit, lui, reste marginal hors des positions tardives.",
+    "relatedCardSlugs": ["notation-gapper", "notation-suited-connector", "notation-broadway"],
+    "searchKeywords": "connector connecteur cartes consecutives 87 T9 54 quinte straight draw notation"
+  },
+  {
+    "slug": "notation-gapper",
+    "term": "Gapper",
+    "shortDef": "Deux cartes avec un écart : 1-gapper (T8) = 1 carte d'écart, 2-gapper (T7) = 2 cartes.",
+    "fullContentMd": "Un **gapper** est un connecteur troué : il manque une ou deux cartes entre les deux rangs.\n\n## Le décompte de l'écart\n\n- **1-gapper** : `T8`, `J9`, `97` — une carte d'écart\n- **2-gapper** : `T7`, `J8`, `96` — deux cartes d'écart\n\nPlus le gap est grand, moins il y a de quintes possibles, donc moins la main vaut.\n\n## Quand ça se joue\n\nUn gapper suited garde de la valeur spéculative — surtout multiway et profond, où le rare gros coup paie les abandons fréquents. Offsuit ou hors position, c'est presque toujours un fold : le potentiel ne couvre plus le coût. _Le gap est une taxe sur le potentiel quinte._",
+    "relatedCardSlugs": ["notation-connector", "notation-suited-connector"],
+    "searchKeywords": "gapper one gapper two gapper 1-gapper 2-gapper carte ecart trou T8 T7 connecteur troue"
+  },
+  {
+    "slug": "notation-suited-connector",
+    "term": "Suited connector",
+    "shortDef": "Deux cartes consécutives de même couleur (76s, 98s, T9s) : le meilleur potentiel postflop spéculatif.",
+    "fullContentMd": "Un **suited connector** combine les deux : rangs consécutifs **et** même couleur — `76s`, `87s`, `98s`, `T9s`.\n\n## Pourquoi tant aimé\n\nC'est la main spéculative idéale : tirage quinte _et_ tirage couleur, parfois ensemble (combo monstre). Sa force est la **dissimulation** — quand elle touche, l'adversaire avec top paire ne la voit pas et paie. C'est l'arme reine des implied odds en jeu profond.\n\n## Ses conditions\n\nElle exige : flop pas cher, stacks profonds (SPR/implied élevés), idéalement la position. Surinvestie préflop, jouée OOP ou à SPR bas, elle n'est qu'une main faible qui paie pour exister. Le contexte fait toute sa valeur, pas la carte.",
+    "relatedCardSlugs": ["notation-connector", "notation-suited", "notation-gapper"],
+    "searchKeywords": "suited connector connecteur assorti 76s 87s 98s T9s quinte couleur implied odds speculative"
+  },
+  {
+    "slug": "notation-range-plus",
+    "term": "Range « + »",
+    "shortDef": "Le « + » signifie « et au-dessus » : 22+ = toutes les paires, ATs+ = ATs/AJs/AQs/AKs.",
+    "fullContentMd": "Le signe **`+`** dans une notation veut dire _« ce rang et tous les plus forts »_.\n\n## Lecture\n\n- `22+` = toutes les paires, de 22 à AA\n- `ATs+` = `ATs`, `AJs`, `AQs`, `AKs` (le kicker monte, l'As reste)\n- `KJo+` = `KJo`, `KQo`\n- `T9s+` = `T9s`, `JTs`, ... (connecteurs suited au-dessus)\n\n## Pourquoi universel\n\nCette convention est partagée par tous les solvers, coachs et forums : elle exprime un range entier en quelques caractères. La lire couramment, c'est pouvoir absorber une range d'un coup d'œil (`22+, ATs+, KQs, AJo+`) au lieu d'énumérer chaque combo. C'est la grammaire de base de toute discussion stratégique.",
+    "relatedCardSlugs": ["notation-pair", "notation-aks", "notation-suited"],
+    "searchKeywords": "range plus + et au-dessus 22+ ATs+ KJo+ notation range abrege solver convention universelle"
+  },
+  {
+    "slug": "exploit",
+    "term": "Exploit",
+    "shortDef": "Dévier de la stratégie GTO pour profiter au maximum d'une faiblesse adverse identifiée.",
+    "fullContentMd": "**Exploiter**, c'est jouer _différemment de l'optimal théorique_ pour punir une fuite précise chez l'adversaire.\n\n## L'inverse philosophique du GTO\n\nLe GTO ne perd jamais mais ne maximise pas contre un faible. L'exploit fait l'inverse : il abandonne l'équilibre pour extraire le maximum d'une erreur connue — value-bet à mort une calling station, bluffer à outrance un nit.\n\n## Le revers\n\nUn exploit pur est lui-même **exploitable** : en t'éloignant de l'équilibre pour battre un joueur, tu t'exposes à un joueur qui s'adapte. D'où la règle : exploite franchement les faibles, reviens vers le GTO contre les forts. _Le bon joueur n'est pas celui qui connaît le GTO — c'est celui qui sait quand le quitter._",
+    "relatedCardSlugs": ["gto", "level", "tilt"],
+    "searchKeywords": "exploit exploiter exploitatif deviation gto profiter faiblesse adverse ajustement maximiser"
+  },
+  {
+    "slug": "gto",
+    "term": "GTO (Game Theory Optimal)",
+    "shortDef": "Stratégie d'équilibre de Nash, mathématiquement inexploitable : ne gagne pas le max, ne perd rien.",
+    "fullContentMd": "**GTO** = _Game Theory Optimal_ : la stratégie d'**équilibre de Nash** d'un spot. Contre elle, aucune contre-stratégie ne peut gagner à long terme.\n\n## Ce qu'elle garantit (et pas)\n\nLe GTO est défensif par nature : tu ne **perds rien** contre le meilleur joueur du monde. Mais tu ne **gagnes pas le maximum** contre un faible — pour ça, il faut s'en écarter (exploiter).\n\n## En pratique\n\nC'est la référence de tous les **solvers** modernes. On ne joue jamais un GTO parfait (impossible mentalement) ; on s'en sert comme **boussole** : connaître l'équilibre pour mesurer de combien on s'en éloigne en exploitant, et y revenir face à un adversaire qui s'adapte. Théorie d'abord, déviation ensuite — jamais l'inverse.",
+    "relatedCardSlugs": ["exploit", "level", "notation-range-plus"],
+    "searchKeywords": "gto game theory optimal equilibre nash inexploitable solver theorie optimale unexploitable"
+  },
+  {
+    "slug": "level",
+    "term": "Level (multi-level thinking)",
+    "shortDef": "Niveau de pensée : 1 « ce que j'ai », 2 « ce qu'il a », 3 « ce qu'il croit que j'ai »…",
+    "fullContentMd": "Le **level** est l'étage de raisonnement où tu joues :\n\n- **Level 1** : « qu'est-ce que _j'_ai ? »\n- **Level 2** : « qu'est-ce qu'_il_ a ? »\n- **Level 3** : « qu'est-ce qu'il pense que _j'_ai ? »\n- **Level 4** : « qu'est-ce qu'il pense que je pense qu'il a ? »\n\nAu-delà, c'est de la masturbation intellectuelle : le gain marginal s'effondre.\n\n## La règle d'or\n\nJoue **un niveau au-dessus de ton adversaire — pas deux**. Sur-leveler un débutant (qui est au level 1) en le créditant de bluffs élaborés, c'est se battre soi-même. Le bon niveau n'est pas le plus haut : c'est _le sien plus un_.",
+    "relatedCardSlugs": ["exploit", "gto", "tilt"],
+    "searchKeywords": "level leveling multi-level thinking niveau de pensee level 1 2 3 4 sur-leveler war"
+  },
+  {
+    "slug": "tilt",
+    "term": "Tilt",
+    "shortDef": "État émotionnel altéré (frustration, fatigue) qui dégrade les décisions sans qu'on s'en rende compte.",
+    "fullContentMd": "Le **tilt** est l'état où l'émotion — colère après un bad beat, frustration, fatigue, ennui — prend la barre à la place du calcul.\n\n## Le danger réel\n\nLe tilt ne te fait pas « jouer un peu moins bien » : il te fait jouer un _autre_ jeu, souvent à ton insu. Caller pour « se refaire », bluffer par rage, sur-jouer pour punir : autant de décisions à EV négative que le toi calme n'aurait jamais prises.\n\n## Double compétence pro\n\nReconnaître _son propre_ tilt et quitter la table est une compétence aussi importante que lire un range. Et le tilt _visible_ chez l'adversaire est un signal d'exploit immédiat : un joueur en tilt a des fréquences cassées — value-bet large, ne bluffe plus, laisse-le se saborder.",
+    "relatedCardSlugs": ["exploit", "maniac", "level"],
+    "searchKeywords": "tilt tilté tilté emotion frustration colere bad beat fatigue mental game controle exploit"
+  },
+  {
+    "slug": "nit-fiche",
+    "term": "Nit (Lexique)",
+    "shortDef": "Terme de table : joueur ultra-serré et passif. (La stratégie d'ajustement est traitée au Livre II.)",
+    "fullContentMd": "Dans le jargon de la table, un **nit** est un joueur réputé pour ne jouer presque rien et n'agresser quasiment jamais. Le mot est à la fois descriptif et légèrement péjoratif — « il est nit » signale un style timoré, exploitable.\n\n## Au lexique, pas à la stratégie\n\nCette fiche définit le _terme_. La fiche **Nit** du Livre II couvre l'autre versant : _comment_ ajuster contre lui (lui voler tout, le croire quand il se réveille).\n\n## Repère chiffré\n\nOn qualifie de nit un profil au VPIP très bas (souvent < 12 % en 6-max) avec un PFR proche du VPIP mais des fréquences postflop atones. Synonyme courant en table : _rock_, avec une nuance (le rock ne mise que la nuts absolue).",
+    "relatedCardSlugs": ["rock", "calling-station", "shark"],
+    "searchKeywords": "nit lexique jargon table definition terme serre passif tight weak pejoratif rock vpip bas"
+  },
+  {
+    "slug": "rock",
+    "term": "Rock",
+    "shortDef": "Joueur ultra-passif/tight qui ne mise que la nuts : quand il met des jetons, il a toujours la main.",
+    "fullContentMd": "Un **rock** est un cran au-delà du nit : il ne joue _que_ des mains nut et ne met de l'argent que quand il est quasi certain d'être devant.\n\n## La lecture évidente\n\nLa conséquence est limpide : **quand un rock mise ou relance, il a la main — toujours**. Aucun bluff dans sa range. C'est l'adversaire le plus facile à lire du jeu… et le plus difficile à _payer_.\n\n## Comment en profiter\n\nLe profit contre un rock ne vient pas des gros pots (il n'en donne aucun) mais de l'**érosion** : vole-lui tout ce qu'il abandonne — blinds, pots non réclamés, c-bets — et fold instantanément dès qu'il montre de la résistance. _Contre un rock, le pot qu'on gagne est celui qu'il ne dispute pas._",
+    "relatedCardSlugs": ["nit-fiche", "calling-station", "shark"],
+    "searchKeywords": "rock joueur ultra tight passif nuts only mise toujours main facile a lire jargon table"
+  },
+  {
+    "slug": "calling-station",
+    "term": "Calling station",
+    "shortDef": "Joueur qui call presque tout, ne relance jamais, ne fold quasi jamais : impossible à bluffer.",
+    "fullContentMd": "Une **calling station** paie. Tout. Jusqu'au bout. Elle ne relance presque jamais et ne se couche presque jamais — la passivité poussée à l'absurde.\n\n## La règle d'or contre elle\n\n**Ne la bluffe jamais. Value-bet à mort.** Sa faiblesse n'est pas qu'elle est faible — c'est qu'elle _ne se couche pas_. Bluffer une station, c'est lui offrir des jetons ; miser fort tes mains correctes, c'est l'imprimante, parce qu'elle paiera avec bien pire.\n\n## L'erreur classique\n\nLe joueur agressif s'acharne à la bluffer « parce qu'elle a l'air faible ». C'est exactement l'inverse : punis-la en _value_, jamais en pression. La calling station est la source de profit la plus stable d'une table — à condition de ne pas se battre contre sa seule force.",
+    "relatedCardSlugs": ["maniac", "rock", "shark"],
+    "searchKeywords": "calling station call tout ne fold pas ne raise pas passif fish value bet pas de bluff"
+  },
+  {
+    "slug": "maniac",
+    "term": "Maniac",
+    "shortDef": "Joueur ultra-agressif et ultra-loose : raise et bet sans arrêt, imprévisible, perdant à long terme.",
+    "fullContentMd": "Un **maniac** met une pression non-stop : il raise et barrel avec n'importe quoi, sans fréquences cohérentes. Court terme, il gagne par intimidation ; long terme, il se ruine.\n\n## L'ajustement\n\nDeux réflexes :\n\n- **Resserre** ta range d'entrée : tu n'as pas besoin de te battre à chaque main, juste d'attendre.\n- **Élargis tes calls de value** : il bluffe tellement que des mains moyennes deviennent payantes ; laisse-le miser _pour_ toi.\n\nNe tente pas de le contre-bluffer — il ne croit personne. La patience bat l'hyper-agression : tu n'as pas à gagner l'échange, juste à cueillir une vraie main et à la jouer fort. Distinguer le maniac pur du LAG réfléchi (qui, lui, a des fréquences) est la lecture clé.",
+    "relatedCardSlugs": ["calling-station", "tilt", "shark"],
+    "searchKeywords": "maniac maniaque ultra agressif loose aggressive raise tout bet tout imprevisible LAG tilt"
+  },
+  {
+    "slug": "shark",
+    "term": "Shark",
+    "shortDef": "Joueur professionnel ou avancé : lit les autres, ajuste, exploite. L'opposé du fish.",
+    "fullContentMd": "Un **shark** est un requin : joueur fort, souvent professionnel, qui lit les ranges, ajuste son jeu à chaque adversaire et exploite les fuites sans se faire exploiter en retour.\n\n## Le reconnaître\n\nContrairement aux profils caricaturaux (nit, maniac, station), le shark n'a pas de tell statistique simple : ses fréquences sont équilibrées, ses sizings cohérents, ses déviations ciblées. Le signe le plus net est l'_adaptation_ — il ne te joue pas pareil au fil de la session.\n\n## La consigne\n\nContre un shark, reviens vers le **GTO** : minimise les fuites exploitables, évite les gros affrontements sans edge clair, et cherche ton profit ailleurs (les fish de la table). _On ne bat pas un requin de front — on évite de saigner devant lui._",
+    "relatedCardSlugs": ["whale", "gto", "exploit"],
+    "searchKeywords": "shark requin joueur pro fort avance lit ranges ajuste exploite oppose du fish reg"
+  },
+  {
+    "slug": "whale",
+    "term": "Whale",
+    "shortDef": "Fish extrême — très riche, très mauvais, ou les deux : la cible la plus lucrative d'une table.",
+    "fullContentMd": "Une **whale** (baleine) est un fish poussé à l'extrême : un joueur qui perd beaucoup et souvent, parce qu'il est très mauvais, très riche et insensible aux pertes — souvent les trois.\n\n## Pourquoi le mot existe\n\nLa whale est la **cible privilégiée des sharks** : sa présence à une table change l'économie du jeu. On choisit sa table, sa position et son timing pour être _à côté d'elle, en position_. Toute la dynamique tourne autour de qui capte ses jetons.\n\n## La jouer\n\nComme tout fish, en **value pure** : elle ne se couche pas, donc on ne bluffe pas — on mise fort ses mains correctes et on la laisse payer. La seule subtilité est sociale : ne pas l'effrayer, garder la table agréable pour qu'elle reste.",
+    "relatedCardSlugs": ["shark", "calling-station", "nit-fiche"],
+    "searchKeywords": "whale baleine fish extreme tres mauvais tres riche cible lucrative table selection value"
+  }
+]
