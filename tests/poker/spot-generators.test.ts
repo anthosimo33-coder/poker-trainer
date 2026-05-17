@@ -3,6 +3,7 @@ import { generatePotOddsSpot } from "@/lib/poker/spot-generators/m1-1-pot-odds";
 import { generatePotOddsConversionSpot } from "@/lib/poker/spot-generators/m1-2-conversion";
 import { generateImpliedOddsSpot } from "@/lib/poker/spot-generators/m1-3-implied";
 import { generateReverseImpliedSpot } from "@/lib/poker/spot-generators/m1-4-reverse-implied";
+import { generateOutsSpot } from "@/lib/poker/spot-generators/m2-1-outs";
 
 describe("generators — cohérence des spots", () => {
   it("M1.1 génère des spots valides", () => {
@@ -35,6 +36,18 @@ describe("generators — cohérence des spots", () => {
     expect(spot.handDescription).toBeTruthy();
     expect(spot.adjustedEquity).toBeLessThanOrEqual(spot.apparentEquity);
     expect(spot.expected.estimatedFutureLossBb).toBeGreaterThan(0);
+  });
+
+  it("M2.1 fournit outs, street et equity = outs × multiplicateur", () => {
+    const spot = generateOutsSpot();
+    expect(spot.submoduleSlug).toBe("m2.1");
+    expect(spot.heroCards).toHaveLength(2);
+    expect(["flop", "turn"]).toContain(spot.street);
+    expect(spot.board).toHaveLength(spot.street === "flop" ? 3 : 4);
+    expect(spot.outs).toBeGreaterThan(0);
+    const mult = spot.street === "flop" ? 4 : 2;
+    expect(spot.expected.multiplier).toBe(mult);
+    expect(spot.expected.equityApprox).toBe(spot.outs * mult);
   });
 });
 

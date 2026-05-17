@@ -15,6 +15,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m1-2": () => import("@/content/theory/m1-2.mdx"),
   "m1-3": () => import("@/content/theory/m1-3.mdx"),
   "m1-4": () => import("@/content/theory/m1-4.mdx"),
+  "m2-1": () => import("@/content/theory/m2-1.mdx"),
 };
 
 function TheoryContent() {
@@ -270,6 +271,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Plus le board est texturé (tirages couleur, quinte, double tirage), plus les barrels suivants du vilain sont crédibles et plus tu paies cher si tu es derrière. Les boards secs limitent le reverse implied car peu de cartes changent la donne.",
+    },
+  ],
+
+  "m2-1": [
+    {
+      question: "Tu as un tirage couleur au flop (9 outs). Avec la règle des 4 et 2, quelle est ton equity approximative ?",
+      options: [
+        { letter: "A", text: "18 %" },
+        { letter: "B", text: "27 %" },
+        { letter: "C", text: "36 %" },
+        { letter: "D", text: "54 %" },
+      ],
+      correctLetter: "C",
+      explanation: "Au flop (2 cartes à venir), equity ≈ outs × 4 = 9 × 4 = 36 %. La règle des 4 et 2 est une approximation rapide à mémoriser.",
+    },
+    {
+      question: "Tu as un tirage quinte ventrale au turn (4 outs). Quelle est ton equity approximative ?",
+      options: [
+        { letter: "A", text: "4 %" },
+        { letter: "B", text: "8 %" },
+        { letter: "C", text: "16 %" },
+        { letter: "D", text: "32 %" },
+      ],
+      correctLetter: "B",
+      explanation: "Au turn (1 carte à venir), equity ≈ outs × 2 = 4 × 2 = 8 %. Une quinte ventrale au turn est rarement profitable face à un bet sans implied odds substantielles.",
+    },
+    {
+      question: "Pourquoi la règle « × 4 » au flop est-elle approximative et non exacte ?",
+      options: [
+        { letter: "A", text: "Parce qu'il faudrait multiplier par 4.5 pour être précis." },
+        { letter: "B", text: "Parce qu'elle surestime légèrement les gros tirages (>8 outs) — le vrai calcul est plus proche de outs × 4 - (outs - 8)." },
+        { letter: "C", text: "Parce qu'elle ne tient pas compte des outs du vilain." },
+        { letter: "D", text: "Parce qu'elle dépend du sizing du bet." },
+      ],
+      correctLetter: "B",
+      explanation: "La règle des 4 est exacte pour ~8 outs. Au-delà, elle surestime (15 outs × 4 = 60 %, vraie equity ≈ 54 %). Un ajustement simple : retirer (outs - 8) du résultat.",
     },
   ],
 };

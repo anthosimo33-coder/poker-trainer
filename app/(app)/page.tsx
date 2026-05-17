@@ -41,8 +41,13 @@ const MODULES: ModuleDef[] = [
     badge: "M·II",
     title: "Equity & outs",
     desc: "Évaluer la force de ta main face à un range, heads-up et multiway",
-    available: false,
-    submodules: [],
+    available: true,
+    submodules: [
+      { slug: "m2.1", urlSlug: "m2-1", title: "Outs et règle des 4&2", available: true },
+      { slug: "m2.2", urlSlug: "m2-2", title: "Equity heads-up précise", available: false },
+      { slug: "m2.3", urlSlug: "m2-3", title: "Equity multiway", available: false },
+      { slug: "m2.4", urlSlug: "m2-4", title: "Equity vs range", available: false },
+    ],
   },
   {
     slug: "m3",

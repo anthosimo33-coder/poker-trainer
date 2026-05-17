@@ -16,6 +16,11 @@ export const seedModules = internalMutation({
       { slug: "m1.2", moduleSlug: "m1", name: "Pot odds en pourcentage vs ratio", description: "Conversion fluide entre les deux formats", orderIndex: 2 },
       { slug: "m1.3", moduleSlug: "m1", name: "Cotes implicites", description: "Estimation du futur revenue", orderIndex: 3 },
       { slug: "m1.4", moduleSlug: "m1", name: "Reverse implied odds", description: "Estimation des pertes futures probables", orderIndex: 4 },
+      // M·II — Equity & outs (S6a : m2.1 jouable ; m2.2-m2.4 seedés mais lockés UI jusqu'à S6b/c)
+      { slug: "m2.1", moduleSlug: "m2", name: "Outs et règle des 4&2", description: "Compter les outs et estimer l'equity par la règle des 4 et 2", orderIndex: 1 },
+      { slug: "m2.2", moduleSlug: "m2", name: "Equity heads-up précise", description: "Equity exacte d'une main face à une main", orderIndex: 2 },
+      { slug: "m2.3", moduleSlug: "m2", name: "Equity multiway", description: "Equity face à plusieurs adversaires", orderIndex: 3 },
+      { slug: "m2.4", moduleSlug: "m2", name: "Equity vs range", description: "Equity d'une main face à un range complet", orderIndex: 4 },
     ];
 
     for (const mod of MODULES) {

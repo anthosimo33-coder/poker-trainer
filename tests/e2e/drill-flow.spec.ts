@@ -143,4 +143,31 @@ test.describe("Drill M1.1 — flow complet", () => {
     await page.goto("/module/m1/theory/m1-4");
     await expect(page.getByRole("heading", { name: /Reverse implied/ })).toBeVisible({ timeout: 20_000 });
   });
+
+  test("M2.1 — accessible après quick check, drill jouable", async ({ page }) => {
+    await page.goto("/module/m2/theory/m2-1");
+    await expect(page.getByText(/Outs et règle/i)).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Réponses 3/3 (C, B, B)
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m2-1/);
+  });
+
+  test("Atelier : M·II déverrouillé avec 4 sous-modules dont 3 lockés", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByText("Equity & outs")).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText("Outs et règle des 4&2")).toBeVisible();
+    // 3 sous-modules en "Verrouillé"
+    const lockedCount = await page.getByText("Verrouillé").count();
+    expect(lockedCount).toBeGreaterThanOrEqual(3);
+  });
 });

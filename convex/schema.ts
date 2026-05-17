@@ -40,6 +40,11 @@ export default defineSchema({
     isCorrect: v.boolean(),
     timeMs: v.number(),
     hintUsed: v.boolean(),
+    // Erreur signée pour les drills à composante numérique (estimation user −
+    // vraie valeur). Fonde le calibration tracking de S11. Optionnel : les
+    // drills juste/faux purs (M1.1 ratio exact) ne le renseignent pas, et les
+    // attempts M1.x existants restent valides sans migration.
+    signedError: v.optional(v.number()),
     attemptedAt: v.number(),
     // Pour spaced repetition (S6+)
     nextReviewAt: v.optional(v.number()),

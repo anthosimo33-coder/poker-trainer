@@ -12,6 +12,8 @@ export const recordAttempt = mutation({
     isCorrect: v.boolean(),
     timeMs: v.number(),
     hintUsed: v.boolean(),
+    // Erreur signée optionnelle (cf. schema spotAttempts.signedError).
+    signedError: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("spotAttempts", {

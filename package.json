@@ -23,6 +23,7 @@
     "screenshots:s5b": "tsx scripts/screenshots-s5b.ts",
     "screenshots:s5c": "tsx scripts/screenshots-s5c.ts",
     "screenshots:s5d": "tsx scripts/screenshots-s5d.ts",
+    "screenshots:s6a": "tsx scripts/screenshots-s6a.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {

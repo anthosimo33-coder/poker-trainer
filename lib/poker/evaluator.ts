@@ -44,9 +44,17 @@ function toSolverFormat(card: Card): string {
 
 /**
  * Convertit un format pokersolver vers notre Card type.
+ * pokersolver émet le suit en dernier caractère, mais le rang n'est PAS toujours
+ * sur 1 caractère : un Ten est rendu "10s" (et l'As de la quinte basse A-2-3-4-5
+ * est rendu "1s"). On parse donc le suit comme dernier char et on normalise le
+ * rang ("10" → "T", "1" → "A") au lieu de supposer un format 2 caractères.
  */
 function fromSolverFormat(str: string): Card {
-  return `${str[0]}${str[1].toLowerCase()}` as Card;
+  const suit = str.slice(-1).toLowerCase();
+  let rank = str.slice(0, -1).toUpperCase();
+  if (rank === "10") rank = "T";
+  else if (rank === "1") rank = "A"; // As de la roue (5-high straight)
+  return `${rank}${suit}` as Card;
 }
 
 /**

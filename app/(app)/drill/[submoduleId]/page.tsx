@@ -10,6 +10,7 @@ import type { GenericSpot } from "@/lib/poker/spot-generators/types";
 import type { PotOddsConversionSpot } from "@/lib/poker/spot-generators/m1-2-conversion";
 import type { ImpliedOddsSpot } from "@/lib/poker/spot-generators/m1-3-implied";
 import type { ReverseImpliedSpot } from "@/lib/poker/spot-generators/m1-4-reverse-implied";
+import type { OutsSpot } from "@/lib/poker/spot-generators/m2-1-outs";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
 import { urlSlugToDbSlug, moduleSlugFromSubmodule } from "@/lib/slug";
@@ -30,10 +31,20 @@ interface UserAnswer {
   requiredEquity: string;
   neededExtra: string;
   adjustedEquity: string;
+  outsInput: string;
+  equityInput: string;
   decision: Decision;
 }
 
-const EMPTY_ANSWER: UserAnswer = { ratio: "", requiredEquity: "", neededExtra: "", adjustedEquity: "", decision: null };
+const EMPTY_ANSWER: UserAnswer = {
+  ratio: "",
+  requiredEquity: "",
+  neededExtra: "",
+  adjustedEquity: "",
+  outsInput: "",
+  equityInput: "",
+  decision: null,
+};
 
 const SPOTS_PER_SESSION = 20;
 const TOL_PCT = 1.5;
@@ -65,6 +76,11 @@ function isImplied(s: GenericSpot): s is ImpliedOddsSpot {
 function isReverse(s: GenericSpot): s is ReverseImpliedSpot {
   return "handDescription" in s;
 }
+// OutsSpot porte aussi `drawDescription` (comme ImpliedOddsSpot) : on le
+// distingue par son champ unique `outs` et on le teste TOUJOURS avant isImplied.
+function isOuts(s: GenericSpot): s is OutsSpot {
+  return "outs" in s;
+}
 
 interface CorrStep {
   num: string;
@@ -79,9 +95,24 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m1.2": "Conversion · Sous-module 2",
   "m1.3": "Cotes implicites · Sous-module 3",
   "m1.4": "Reverse implied · Sous-module 4",
+  "m2.1": "Outs & règle 4&2 · Sous-module 1",
+};
+
+const MODULE_ROMAN: Record<string, string> = {
+  m1: "I",
+  m2: "II",
+  m3: "III",
+  m4: "IV",
+  m5: "V",
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isOuts(spot)) {
+    return (
+      parseAnswerNumber(a.outsInput) !== null &&
+      parseAnswerNumber(a.equityInput) !== null
+    );
+  }
   if (isConversion(spot)) {
     return spot.ask === "ratio"
       ? parseRatio(a.ratio) !== null
@@ -102,6 +133,67 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isOuts(spot)) {
+    const outsUser = parseAnswerNumber(a.outsInput);
+    const eqUser = parseAnswerNumber(a.equityInput);
+    // Outs : comptage exact, aucune tolérance.
+    const outsOk = outsUser !== null && Math.round(outsUser) === spot.expected.outs;
+    // Equity : règle 4&2 approximative → tolérance ±5 points.
+    const eqOk = eqUser !== null && Math.abs(eqUser - spot.expected.equityApprox) <= 5;
+    const signed =
+      eqUser === null ? 0 : Math.round((eqUser - spot.expected.equityApprox) * 10) / 10;
+    const signedLabel =
+      eqUser === null
+        ? "—"
+        : signed > 0
+        ? `+${signed} % (surestimé)`
+        : signed < 0
+        ? `${signed} % (sous-estimé)`
+        : "exact";
+    return {
+      isCorrect: outsOk && eqOk,
+      steps: [
+        {
+          num: "01",
+          label: "Compter les outs",
+          userText: a.outsInput ? `${Math.round(outsUser ?? 0)}` : "—",
+          ok: outsOk,
+          body: (
+            <FormulaBox>
+              <Lbl>Tirage</Lbl> {spot.drawDescription}
+              <br />
+              <Lbl>Outs corrects</Lbl>{" "}
+              <Mono className="!text-purple-300">{spot.expected.outs}</Mono>
+              <br />
+              <span className="text-text-muted">
+                Le comptage est exact : une carte est un out, ou ne l&apos;est pas.
+              </span>
+            </FormulaBox>
+          ),
+        },
+        {
+          num: "02",
+          label: `Règle des 4 et 2 (${spot.street})`,
+          userText: a.equityInput ? fmtPercent(eqUser ?? 0) : "—",
+          ok: eqOk,
+          body: (
+            <FormulaBox>
+              <Lbl>Formule</Lbl> outs × {spot.expected.multiplier} ={" "}
+              {spot.street === "flop" ? "equity (2 cartes à venir)" : "equity (1 carte à venir)"}
+              <br />
+              <Lbl>Application</Lbl> {spot.expected.outs} × {spot.expected.multiplier} ={" "}
+              <Mono className="!text-purple-300">
+                {fmtPercent(spot.expected.equityApprox)}
+              </Mono>
+              <br />
+              <span className="text-text-muted">Erreur signée : {signedLabel}</span>
+            </FormulaBox>
+          ),
+        },
+      ],
+    };
+  }
+
   if (isConversion(spot)) {
     const askRatio = spot.ask === "ratio";
     const exp = askRatio ? spot.expected.ratio : spot.expected.requiredEquity;
@@ -315,6 +407,9 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 }
 
 function actionFor(spot: GenericSpot): ReactNode {
+  // OutsSpot a son énoncé rendu inline dans le drill (jamais via actionFor) ;
+  // ce garde assure la totalité de type (OutsSpot n'a ni potBb ni positions).
+  if (isOuts(spot)) return null;
   if (isImplied(spot)) {
     return (
       <>
@@ -506,6 +601,15 @@ function DrillContent() {
     if (!spot || !userId || !sessionId) return;
     const result = grade(spot, answer);
     const timeMs = Date.now() - startedAtRef.current;
+    // Erreur signée (calibration tracking) : pour M2.1, écart estimation
+    // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
+    let signedError: number | undefined;
+    if (isOuts(spot)) {
+      const ue = parseAnswerNumber(answer.equityInput);
+      if (ue !== null) {
+        signedError = Math.round((ue - spot.expected.equityApprox) * 10) / 10;
+      }
+    }
     const attemptId = await recordAttempt({
       userId,
       submoduleSlug: dbSubmoduleSlug,
@@ -516,6 +620,7 @@ function DrillContent() {
       isCorrect: result.isCorrect,
       timeMs,
       hintUsed: false,
+      ...(signedError !== undefined ? { signedError } : {}),
     });
     await addSpotToSession({ sessionId, attemptId, orderIndex: spotIndex - 1, isCorrect: result.isCorrect });
     setAttempts((prev) => [...prev, { spotId: spot.id, isCorrect: result.isCorrect, timeMs }]);
@@ -544,7 +649,7 @@ function DrillContent() {
       <div className="flex justify-between items-end mb-10 pb-6" style={{ borderBottom: "0.5px solid var(--border)" }}>
         <div>
           <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-2 flex items-center gap-2">
-            Module I · {SUBMODULE_TITLES[dbSubmoduleSlug] ?? dbSubmoduleSlug}
+            Module {MODULE_ROMAN[moduleSlug] ?? moduleSlug} · {SUBMODULE_TITLES[dbSubmoduleSlug] ?? dbSubmoduleSlug}
             {isRetryMode && (
               <span
                 className="px-2 py-0.5 rounded normal-case tracking-normal"
@@ -572,19 +677,44 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        <PokerTable
-          contextTag="MTT · mid-stage"
-          contextInfo={`${spot.effectiveStackBb}bb effective`}
-          stacks={[
-            { label: "Toi", bb: spot.effectiveStackBb, position: spot.heroPosition },
-            { label: "Vilain", bb: spot.effectiveStackBb - 2, position: spot.villainPosition },
-            { label: "Pot", bb: spot.potBb, position: "au flop" },
-          ]}
-          heroCards={spot.heroCards}
-          board={spot.board}
-          action={actionFor(spot)}
-          question={questionFor(spot)}
-        />
+        {isOuts(spot) ? (
+          <PokerTable
+            contextTag="MTT · lecture d'outs"
+            contextInfo={
+              spot.street === "flop"
+                ? "Flop — 2 cartes à venir"
+                : "Turn — 1 carte à venir"
+            }
+            stacks={[]}
+            heroCards={spot.heroCards}
+            board={spot.board}
+            action={
+              <>
+                Tu as ta main au {spot.street}. Tirage :{" "}
+                <BetTag>{spot.drawDescription}</BetTag>.
+              </>
+            }
+            question={
+              spot.street === "flop"
+                ? "Compte tes outs, puis applique la règle × 4 (flop)."
+                : "Compte tes outs, puis applique la règle × 2 (turn)."
+            }
+          />
+        ) : (
+          <PokerTable
+            contextTag="MTT · mid-stage"
+            contextInfo={`${spot.effectiveStackBb}bb effective`}
+            stacks={[
+              { label: "Toi", bb: spot.effectiveStackBb, position: spot.heroPosition },
+              { label: "Vilain", bb: spot.effectiveStackBb - 2, position: spot.villainPosition },
+              { label: "Pot", bb: spot.potBb, position: "au flop" },
+            ]}
+            heroCards={spot.heroCards}
+            board={spot.board}
+            action={actionFor(spot)}
+            question={questionFor(spot)}
+          />
+        )}
 
         {!showCorrection ? (
           <AnswerPanel
@@ -659,6 +789,52 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M2.1 — panneau purement calculatoire (pas de décision). Early-return pour
+  // préserver le narrowing aliasé des guards m1.x ci-dessous.
+  if (isOuts(spot)) {
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Ta réponse
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-7">
+          Compte, puis applique.
+        </h2>
+        <Field
+          label="Outs"
+          hint="Nombre entier"
+          value={answer.outsInput}
+          onChange={(v) => setAnswer({ ...answer, outsInput: v })}
+          placeholder="ex. 9"
+        />
+        <Field
+          label="Equity approximative"
+          hint={`Règle des 4 et 2 (× ${spot.expected.multiplier})`}
+          value={answer.equityInput}
+          onChange={(v) => setAnswer({ ...answer, equityInput: v })}
+          placeholder="ex. 36 %"
+        />
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const conversion = isConversion(spot);
   const implied = isImplied(spot);
   const reverse = isReverse(spot);

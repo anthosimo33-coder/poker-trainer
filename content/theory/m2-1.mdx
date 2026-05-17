@@ -1,0 +1,122 @@
+---
+slug: m2-1
+moduleSlug: m2
+submoduleSlug: m2.1
+title: Outs et règle des 4&2
+subtitle: Compter ce qui te sauve.
+order: 1
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module II · Sous-module 1 / 4
+  </div>
+
+# Outs et règle des 4&2.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Compter ce qui te sauve.</em> Une main qui n&apos;a pas encore gagné n&apos;est pas une main perdante — c&apos;est une main en attente d&apos;un certain nombre de cartes.
+</p>
+</div>
+
+<WhyBlock title="Toute main qui n'a pas encore gagné est une question : combien de cartes peuvent la faire gagner ?">
+
+Le pot odds te dit ce qu&apos;il faut **payer**. L&apos;equity te dit avec quelle **probabilité** tu gagnes. Entre les deux, il manque un chiffre : combien de cartes restantes transforment ta main perdante en main gagnante ?
+
+Ces cartes ont un nom — les **outs**. Les compter, c&apos;est convertir une intuition floue (*« j&apos;ai un tirage »*) en une probabilité que tu peux comparer à une cote. Sans ce pont, le pot odds est une serrure sans clé.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="L'unité" title={<>Qu&apos;est-ce <em>qu&apos;un out.</em></>} />
+
+<Prose>
+
+Un **out** est une carte qui fait passer ta main *derrière* devant — ou, au minimum, à égalité. Pas une carte qui « aide » : une carte qui **gagne**.
+
+Les trois tirages canoniques, à connaître sans réfléchir :
+
+**Tirage couleur** — il reste 13 cartes de la couleur, tu en vois 4 (2 en main, 2 au board) → **9 outs**. **Tirage quinte bilatérale** — deux bouts ouverts, 2 rangs × 4 couleurs → **8 outs**. **Tirage quinte ventrale** — un seul rang comble le trou → **4 outs**.
+
+Le reste se déduit : un double tirage (couleur + quinte) cumule jusqu&apos;à **15 outs** ; deux overcards sans tirage, **6 outs** ; une paire poche qui vise le brelan, **2 outs**.
+
+</Prose>
+
+<SectionHeader num="03" label="La conversion" title={<>La règle <em>des 4 et 2.</em></>} />
+
+<Prose>
+
+Compter les outs ne sert à rien si tu ne sais pas les *traduire* en equity à la vitesse de la table. La règle des 4 et 2 fait exactement ça, de tête.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Au flop</FormulaLabel> equity ≈ outs × <K>4</K> <FormulaMuted>(turn + river à venir)</FormulaMuted><br/>
+  <FormulaLabel>Au turn</FormulaLabel> equity ≈ outs × <K>2</K> <FormulaMuted>(river seule à venir)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Pourquoi ça marche : une carte à venir, c&apos;est ~2 % par out (1 out sur ~47 cartes ≈ 2 %). Deux cartes, c&apos;est ~2× plus, d&apos;où le ×4 au flop.
+
+Pourquoi c&apos;est *approximatif* : multiplier par 4 suppose deux tirages indépendants, ce qui surestime les **gros tirages**. À 15 outs, `15 × 4 = 60 %` alors que la vraie equity est ≈ 54 %. Le correctif de table tient en une ligne :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Gros tirage (&gt; 8 outs, au flop)</FormulaLabel> equity ≈ outs × 4 − (outs − 8)
+</Formula>
+
+<Mnemonic keyText="×4 flop · ×2 turn">
+« Quatre au flop, deux au turn. » Au-delà de 8 outs, retire l&apos;excédent : `outs × 4 − (outs − 8)`. En dessous, le ×4 brut suffit.
+</Mnemonic>
+
+<SectionHeader num="04" label="Le tableau" title={<>Ce que tu dois <em>savoir par cœur.</em></>} />
+
+<Prose>
+
+Six lignes. Apprises une fois, elles couvrent 90 % des spots de drill.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Couleur</FormulaLabel> 9 outs · ~36 % flop · ~18 % turn<br/>
+  <FormulaLabel>Quinte bilatérale</FormulaLabel> 8 outs · ~32 % flop · ~16 % turn<br/>
+  <FormulaLabel>Quinte ventrale</FormulaLabel> 4 outs · ~16 % flop · ~8 % turn<br/>
+  <FormulaLabel>Couleur + quinte</FormulaLabel> 15 outs · ~54 % flop · ~30 % turn<br/>
+  <FormulaLabel>Couleur + overs</FormulaLabel> 12 outs · ~45 % flop · ~24 % turn<br/>
+  <FormulaLabel>Set draw (paire → brelan)</FormulaLabel> 2 outs · ~8 % flop · ~4 % turn
+</Formula>
+
+<SectionHeader num="05" label="Exemple appliqué" title={<>Un tirage couleur <em>face à un bet pot.</em></>} />
+
+<Example title="Calcul étape par étape">
+
+Tu as **A♠ K♠** au flop **T♠ 4♠ 2♦**. Tu as le tirage couleur max — **9 outs**.
+
+**Equity (règle des 4)** = 9 × 4 = **36 %**
+
+Le vilain bet **pot** : cote 2:1, equity requise **33.3 %**.
+
+`36 % > 33.3 %` → le call est **mathématiquement profitable**, *avant même* de compter les cotes implicites (qui ne font que l&apos;améliorer). Le tirage n&apos;est pas un espoir : c&apos;est une position +EV, prouvée en deux multiplications.
+
+</Example>
+
+<SectionHeader num="06" label="Les pièges classiques" title={<>Trois manières <em>de mal compter.</em></>} />
+
+<Prose>
+
+**1. Les faux outs.** Tu comptes une carte qui te donne la *deuxième* meilleure main. Tu touches ta paire — mais le vilain a deux paires. Un out qui te fait payer plus n&apos;est pas un out.
+
+**2. Les outs déjà pris.** Tu vises un As pour ta top paire ; le vilain tient **A-K**. Deux de tes « outs » sont dans sa main : ils ne sortiront pas pour toi.
+
+**3. Les outs en multiway.** Tes 9 outs couleur valent face à *un* adversaire. Face à trois, certaines de tes cartes gagnantes en font gagner un autre encore plus fort. Plus il y a de monde, moins un out vaut.
+
+</Prose>
+
+<LifeLink title="Les probabilités sont des décisions déguisées en cartes.">
+
+En business, on regarde une opportunité comme un *oui/non* : « ça pourrait marcher ». C&apos;est exactement l&apos;erreur du joueur qui dit « j&apos;ai un tirage » sans le chiffrer.
+
+Compter ses outs, c&apos;est lister mécaniquement les conditions qui doivent se réunir. Une stratégie n&apos;est presque jamais un coup unique : c&apos;est un chemin de **5 à 7 outs** dont 3 doivent toucher. Le fondateur lucide ne demande pas *« est-ce possible ? »* — il demande *« combien de cartes me sauvent, et combien en reste-t-il dans le deck ? »*. La discipline est la même qu&apos;à la table : **transforme l&apos;espoir en compte, puis le compte en décision.**
+
+</LifeLink>
