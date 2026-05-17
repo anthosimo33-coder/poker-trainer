@@ -19,7 +19,7 @@
     "slug": "re-raise",
     "term": "Re-raise",
     "shortDef": "Relancer une relance : terme générique pour tout raise par-dessus un raise existant (3-bet, 4-bet…).",
-    "fullContentMd": "Un **re-raise** est toute relance posée sur une relance déjà faite. C'est le mot-parapluie ; les noms précis (3-bet, 4-bet, 5-bet) comptent les étages.\n\n## Pourquoi compter les étages\n\nChaque re-raise rétrécit les ranges et gonfle le pot. Un re-raise préflop transforme un pot de 3bb en pot de 20bb+ : la marge d'erreur fond. Plus on monte les étages, plus les ranges deviennent polarisés (monstres + bluffs choisis).\n\n## En pratique\n\nDire « re-raise » suffit en table ; dire « 4-bet » est plus précis pour analyser. Les deux désignent le même geste — relancer ce qui était déjà une relance.",
+    "fullContentMd": "Un **re-raise** est toute relance posée sur une relance déjà faite. C'est le mot-parapluie : générique, valable préflop comme postflop.\n\n## Re-raise vs 3-bet\n\nLe `3-bet` n'est pas un synonyme — c'est un _sous-cas_. Tout 3-bet est un re-raise ; tout re-raise n'est pas un 3-bet. Le 3-bet désigne précisément le re-raise préflop (3ᵉ mise volontaire). « Re-raise » couvre aussi le postflop, qu'aucune numérotation standard ne nomme.\n\n- **Préflop** : open → re-raise = _3-bet_.\n- **Postflop** : bet → raise → re-raise = jeu en trois niveaux.\n\n## Le poids des étages\n\nChaque étage rétrécit les ranges et gonfle le pot. Un re-raise postflop (le 3ᵉ niveau d'une même street) annonce une main _très_ forte : presque aucun bluff ne survit à trois relances sur le même tour. À chaque étage franchi, la part de value monte et celle de bluff s'effondre — le range se vide par le milieu et ne garde que ses extrêmes. En analyse, dis « 4-bet » pour la précision ; en table, « re-raise » suffit.",
     "relatedCardSlugs": ["3bet", "4bet", "5bet", "raise-fiche"],
     "searchKeywords": "re-raise reraise re relance sur-relance relancer une relance generique 3bet 4bet"
   },
@@ -179,7 +179,7 @@
     "slug": "notation-pair",
     "term": "Paires (AA, KK, QQ…)",
     "shortDef": "Deux cartes de même rang ; notées sans suffixe (impossible d'être suited à soi-même), 6 combos.",
-    "fullContentMd": "Une paire servie s'écrit avec le rang doublé, **sans suffixe** : `AA`, `KK`, `TT`, `22`. Logique — les deux cartes étant du même rang, elles sont forcément de couleurs différentes : ni `s` ni `o` n'ont de sens.\n\n## Combinatoire\n\nChaque paire = **6 combos**. Pour `AA` : As♠As♥, As♠As♦, As♠As♣, As♥As♦, As♥As♣, As♦As♣. Six façons de choisir 2 couleurs parmi 4.\n\n## Usage de range\n\n`22+` veut dire toutes les paires de 22 à AA — 13 rangs × 6 = 78 combos. Le poids des paires dans une range se compte vite grâce à ce 6 constant : un repère mental de base pour estimer un range adverse.",
+    "fullContentMd": "Une paire servie s'écrit avec le rang doublé, **sans suffixe** : `AA`, `KK`, `TT`, `22`. Logique — les deux cartes étant du même rang, elles sont forcément de couleurs différentes : ni `s` ni `o` n'ont de sens.\n\n## Combinatoire\n\nChaque paire = **6 combos**. Pour `AA` : A♠A♥, A♠A♦, A♠A♣, A♥A♦, A♥A♣, A♦A♣. Six façons de choisir 2 couleurs parmi 4. `22+` couvre 13 rangs × 6 = **78 combos** — un repère mental de base pour estimer un range adverse.\n\n## Force relative des paires\n\nUn rang d'écart paraît minime à l'œil, énorme à l'equity. Paire contre paire inférieure all-in préflop, la plus haute écrase : `JJ` bat `TT` environ **80 / 20**. Le saut `TT → JJ` n'ajoute pas « une carte » — il renverse un duel. C'est pourquoi l'ordre exact des paires structure tout range.\n\n## Paires vulnérables\n\nLes paires basses `22`-`66` ne se jouent presque jamais pour leur valeur propre : non améliorées, elles perdent face à deux overcards. Leur intérêt est le **set mining** — payer petit en espérant le brelan (~1 sur 8.5 au flop), qui se cache bien et se paie cher.",
     "relatedCardSlugs": ["notation-range-plus", "notation-aks", "notation-suited"],
     "searchKeywords": "paire paires pocket pair AA KK QQ notation sans suffixe 6 combos rang double servie"
   },
@@ -187,7 +187,7 @@
     "slug": "notation-suited",
     "term": "Suited (s)",
     "shortDef": "Suffixe « s » : les deux cartes de la main sont de la même couleur (ex. AKs, T9s).",
-    "fullContentMd": "Le suffixe **`s`** = _suited_ : les deux cartes partagent la même couleur.\n\n## Ce que ça change\n\nSuited ajoute un **tirage couleur** : potentiel postflop accru, equity légèrement supérieure, mains spéculatives nettement plus jouables (`76s` ≫ `76o`). C'est pourquoi la notation distingue toujours `s` — la même paire de rangs est deux mains différentes.\n\n## Combinatoire\n\nUne main suited = **4 combos** (un par couleur). C'est la moitié de l'histoire des combos ; l'autre moitié est l'offsuit (12). Retenir « suited = 4, offsuit = 12, total = 16 » est le socle du comptage de range.",
+    "fullContentMd": "Le suffixe **`s`** = _suited_ : les deux cartes partagent la même couleur.\n\n## L'impact réel en equity\n\nSuited ne gonfle l'equity que de **2 à 4 %** selon le matchup — minuscule sur le papier. Mais ces points décident si une main franchit le seuil d'ouverture. `KJs` s'ouvre dès MP ; `KJo`, seulement depuis CO/BTN. Même paire de rangs, deux mains, deux ranges. Le gain n'est pas dans le pot moyen — il est dans la **fréquence** à laquelle la main devient jouable.\n\n## Pourquoi si peu pèse autant\n\nLe tirage couleur ajoute des outs cachés, améliore la _réalisation d'equity_ (on continue plus souvent à bon escient) et transforme des mains marginales en spéculatives à fort potentiel. Concret : `76s` se défend en pot 3-bet là où `76o` part au fold préflop sans hésiter. Le chiffre est petit ; l'effet sur la range est structurel.\n\n## Combinatoire\n\nUne main suited = **4 combos** (un par couleur). Socle du comptage : « suited 4, offsuit 12, total 16 ».",
     "relatedCardSlugs": ["notation-offsuit", "notation-aks", "notation-suited-connector"],
     "searchKeywords": "suited s assorti meme couleur suffixe notation tirage couleur 4 combos flush draw"
   },
@@ -195,7 +195,7 @@
     "slug": "notation-offsuit",
     "term": "Offsuit (o)",
     "shortDef": "Suffixe « o » : les deux cartes de la main sont de couleurs différentes (ex. AKo, T9o).",
-    "fullContentMd": "Le suffixe **`o`** = _offsuit_ : les deux cartes sont de couleurs différentes.\n\n## Ce que ça retire\n\nPas de tirage couleur. Une main offsuit perd le potentiel flush et un peu d'equity ; les connecteurs offsuit (`87o`) sont bien plus faibles que leurs versions suited et sortent vite des ranges d'ouverture en position précoce.\n\n## Combinatoire\n\nUne main offsuit = **12 combos** (4 couleurs pour la 1re carte × 3 restantes pour la 2e). C'est le plus gros bloc : dans un range non spécifié (`AK` = 16), les 12 offsuit dominent numériquement les 4 suited — réflexe clé pour pondérer ce que tient l'adversaire.",
+    "fullContentMd": "Le suffixe **`o`** = _offsuit_ : les deux cartes sont de couleurs différentes.\n\n## Pourquoi le rang sauve (ou pas)\n\n`AKo` reste premium sans couleur : sa force vient de la **domination** — il bat les autres As et Rois par le kicker, fait payer les top paires plus faibles. Pas besoin de flush pour gagner gros. `T9o`, lui, perd tout : ni domination (il _est_ le kicker dominé), ni tirage couleur. Il ne lui reste qu'une quinte fragile.\n\n## La règle implicite\n\nPlus on descend dans les rangs, plus le suited compte. En haut, le rang porte la main seul ; en bas, la couleur est _la_ raison de la jouer. C'est pourquoi `KJo` survit là où `76o` est un fold automatique en position précoce.\n\n## Combinatoire\n\nUne main offsuit = **12 combos** (4 × 3). Le plus gros bloc d'un range non spécifié — il pèse trois fois plus que sa version suited.",
     "relatedCardSlugs": ["notation-suited", "notation-ako", "notation-connector"],
     "searchKeywords": "offsuit o depareille couleurs differentes suffixe notation 12 combos pas de couleur"
   },
@@ -251,7 +251,7 @@
     "slug": "gto",
     "term": "GTO (Game Theory Optimal)",
     "shortDef": "Stratégie d'équilibre de Nash, mathématiquement inexploitable : ne gagne pas le max, ne perd rien.",
-    "fullContentMd": "**GTO** = _Game Theory Optimal_ : la stratégie d'**équilibre de Nash** d'un spot. Contre elle, aucune contre-stratégie ne peut gagner à long terme.\n\n## Ce qu'elle garantit (et pas)\n\nLe GTO est défensif par nature : tu ne **perds rien** contre le meilleur joueur du monde. Mais tu ne **gagnes pas le maximum** contre un faible — pour ça, il faut s'en écarter (exploiter).\n\n## En pratique\n\nC'est la référence de tous les **solvers** modernes. On ne joue jamais un GTO parfait (impossible mentalement) ; on s'en sert comme **boussole** : connaître l'équilibre pour mesurer de combien on s'en éloigne en exploitant, et y revenir face à un adversaire qui s'adapte. Théorie d'abord, déviation ensuite — jamais l'inverse.",
+    "fullContentMd": "**GTO** = _Game Theory Optimal_ : la stratégie d'**équilibre de Nash** d'un spot. Contre elle, aucune contre-stratégie ne gagne à long terme.\n\n## Ce qu'elle garantit (et pas)\n\nLe GTO est défensif : tu ne **perds rien** contre le meilleur joueur du monde. Mais tu ne **gagnes pas le maximum** contre un faible — pour ça, il faut s'en écarter (_exploiter_).\n\n## Un exemple chiffré\n\nSous 15bb, SB, jeu push/fold. Le range de push GTO se calcule via Nash : ≈ **30 % des mains**.\n\n- Vilain qui call _optimal_ → ton push pur ne gagne rien net : l'équilibre s'annule.\n- Vilain qui **over-call** (trop large) → ton push large perd ; exploit = resserrer.\n- Vilain qui **under-call** (trop serré) → tu encaisses la fold equity ; exploit = pusher plus large.\n\nLe GTO te dit où est le zéro ; l'adversaire te dit de quel côté dévier.\n\n## La formule\n\n**Le GTO est le sol, l'exploit est le toit.** On apprend l'équilibre pour mesurer de combien on s'en éloigne — et y revenir face à qui s'adapte. Théorie d'abord, déviation ensuite ; jamais l'inverse.",
     "relatedCardSlugs": ["exploit", "level", "notation-range-plus"],
     "searchKeywords": "gto game theory optimal equilibre nash inexploitable solver theorie optimale unexploitable"
   },
@@ -259,7 +259,7 @@
     "slug": "level",
     "term": "Level (multi-level thinking)",
     "shortDef": "Niveau de pensée : 1 « ce que j'ai », 2 « ce qu'il a », 3 « ce qu'il croit que j'ai »…",
-    "fullContentMd": "Le **level** est l'étage de raisonnement où tu joues :\n\n- **Level 1** : « qu'est-ce que _j'_ai ? »\n- **Level 2** : « qu'est-ce qu'_il_ a ? »\n- **Level 3** : « qu'est-ce qu'il pense que _j'_ai ? »\n- **Level 4** : « qu'est-ce qu'il pense que je pense qu'il a ? »\n\nAu-delà, c'est de la masturbation intellectuelle : le gain marginal s'effondre.\n\n## La règle d'or\n\nJoue **un niveau au-dessus de ton adversaire — pas deux**. Sur-leveler un débutant (qui est au level 1) en le créditant de bluffs élaborés, c'est se battre soi-même. Le bon niveau n'est pas le plus haut : c'est _le sien plus un_.",
+    "fullContentMd": "Le **level** est l'étage de raisonnement où tu joues :\n\n- **Level 1** : « qu'est-ce que _j'_ai ? »\n- **Level 2** : « qu'est-ce qu'_il_ a ? »\n- **Level 3** : « qu'est-ce qu'il pense que _j'_ai ? »\n- **Level 4** : « qu'est-ce qu'il pense que je pense qu'il a ? »\n\n## Un spot concret\n\nTu as TPTK, board sec, le vilain check-raise turn :\n\n- **Level 1** (« j'ai top paire top kicker ») → tu call sans réfléchir.\n- **Level 2** (« son check-raise = set ou bluff ») → tu pèses ses combos.\n- **Level 3** (« il sait que j'ai TPTK et veut me faire fold ») → tu call plus fort, parfois tu 3-bet bluff-catcher.\n- **Level 4** (« il sait que je sais qu'il sait ») → tu reviens au Level 2.\n\nLa pensée tourne en boucle : passé un certain étage, on retombe sur la lecture brute.\n\n## La règle d'or\n\nJoue **un niveau au-dessus de ton adversaire — pas deux**. Sur-leveler un débutant (qui est au Level 1) en le créditant de bluffs élaborés, c'est se battre soi-même. Le bon niveau n'est pas le plus haut : c'est _le sien plus un_. Au-delà, c'est du _level masturbation_ — du raffinement à EV nulle.",
     "relatedCardSlugs": ["exploit", "gto", "tilt"],
     "searchKeywords": "level leveling multi-level thinking niveau de pensee level 1 2 3 4 sur-leveler war"
   },
@@ -318,5 +318,181 @@
     "fullContentMd": "Une **whale** (baleine) est un fish poussé à l'extrême : un joueur qui perd beaucoup et souvent, parce qu'il est très mauvais, très riche et insensible aux pertes — souvent les trois.\n\n## Pourquoi le mot existe\n\nLa whale est la **cible privilégiée des sharks** : sa présence à une table change l'économie du jeu. On choisit sa table, sa position et son timing pour être _à côté d'elle, en position_. Toute la dynamique tourne autour de qui capte ses jetons.\n\n## La jouer\n\nComme tout fish, en **value pure** : elle ne se couche pas, donc on ne bluffe pas — on mise fort ses mains correctes et on la laisse payer. La seule subtilité est sociale : ne pas l'effrayer, garder la table agréable pour qu'elle reste.",
     "relatedCardSlugs": ["shark", "calling-station", "nit-fiche"],
     "searchKeywords": "whale baleine fish extreme tres mauvais tres riche cible lucrative table selection value"
+  },
+  {
+    "slug": "grille-13x13",
+    "term": "Grille 13×13",
+    "shortDef": "Matrice de 169 mains préflop : paires sur la diagonale, suited au-dessus, offsuit en-dessous.",
+    "fullContentMd": "La **grille 13×13** affiche l'intégralité du préflop en une matrice de 169 cases.\n\n## La structure\n\n- **Diagonale** : les 13 paires, `AA` (haut-gauche) à `22` (bas-droite).\n- **Au-dessus** de la diagonale : les 78 mains _suited_.\n- **En-dessous** : les 78 mains _offsuit_.\n\n13 + 78 + 78 = **169 mains** — tout ce qu'on peut recevoir avant le flop, d'un seul coup d'œil.\n\n## Pourquoi cette forme\n\nLignes et colonnes vont de l'As au 2. Une main forte est en haut à gauche, une faible en bas à droite. Un range _linéaire_ dessine un bloc continu depuis ce coin ; un range _polarisé_, deux paquets disjoints. La forme du range _se voit_ avant de se lire.\n\n## Convention universelle\n\nDepuis Sklansky, c'est le support standard de tout solver et tout livre. Lire la grille, c'est lire une stratégie entière sans la parcourir main par main.",
+    "relatedCardSlugs": ["combo", "notation-range-plus", "notation-pair"],
+    "searchKeywords": "grille 13x13 13×13 matrice 169 mains preflop diagonale paires suited offsuit hand chart range chart grid sklansky"
+  },
+  {
+    "slug": "combo",
+    "term": "Combo",
+    "shortDef": "Combinaison concrète de deux cartes précises. AKs = 4 combos, AKo = 12, une paire = 6.",
+    "fullContentMd": "Un **combo** (combinaison) est une instance _concrète_ d'une main : deux cartes précises, couleurs comprises.\n\n## Le décompte\n\n- Paire : **6 combos** (`A♠A♥`, `A♠A♦`…).\n- Suited : **4 combos** (un par couleur).\n- Offsuit : **12 combos** (4 × 3).\n- Main non spécifiée (`AK`) : **16 combos** (4 + 12).\n\n## Pourquoi raisonner ainsi\n\nPenser « il a AK » est grossier ; penser « il a 16 combos de AK, dont 4 me bloquent » est précis. Le combo est l'unité du raisonnement en range pondéré : on ne compte pas des mains, on compte des **combos**, et les _blockers_ en retirent. C'est l'étage au-dessus de la simple liste de mains.",
+    "relatedCardSlugs": ["grille-13x13", "notation-aks", "notation-ako", "notation-pair"],
+    "searchKeywords": "combo combinaison combos compter blockers 6 4 12 16 combinatoire range pondere unite hand combination"
+  },
+  {
+    "slug": "frequence",
+    "term": "Fréquence",
+    "shortDef": "Pourcentage auquel une action est prise dans un range donné (open 100 %, 3-bet 70 %…).",
+    "fullContentMd": "La **fréquence** est le pourcentage auquel une action est jouée, pour une main donnée, dans un range.\n\n## Lecture\n\n- `BTN, AA : open 100 %` — pure.\n- `BB vs BTN, AKo : 3-bet 70 % / call 30 %` — mixte.\n\nUne même main peut avoir _plusieurs_ actions, chacune avec sa part. Les solvers exposent toujours ces parts — jamais un verdict binaire.\n\n## Pourquoi ça compte\n\nJouer une main « toujours pareil » est lisible donc exploitable. Distribuer ses actions selon une fréquence (un _RNG_ mental) rend la range indéchiffrable. Le poker fort ne demande pas « quelle est la bonne action ? » mais « _à quelle fréquence_ chaque action ? ». C'est la grammaire du jeu moderne, héritée du raisonnement GTO.",
+    "relatedCardSlugs": ["mixed-strategy", "pure-strategy", "gto", "c-bet"],
+    "searchKeywords": "frequence frequency pourcentage action range mix solver rng equilibre 70 30 distribution gto"
+  },
+  {
+    "slug": "mixed-strategy",
+    "term": "Mixed strategy",
+    "shortDef": "Jouer la même main de plusieurs façons selon une fréquence : 70 % raise / 30 % call.",
+    "fullContentMd": "Une **mixed strategy** (stratégie mixte) joue une même main de plusieurs façons, réparties par fréquence : `AKo : 70 % raise / 30 % call`.\n\n## Le tirage aléatoire\n\nLe choix de la ligne se fait au hasard — _RNG_ mental, trotteuse de la montre, n'importe quel aléa privé. L'adversaire ne peut donc associer aucune action à une main précise : il n'y a aucun pattern à exploiter.\n\n## Pourquoi l'équilibre l'exige\n\nAu point GTO, beaucoup de mains sont _indifférentes_ entre deux actions : les mixer protège la range des deux côtés à la fois. La stratégie mixte est inconfortable (on « renonce » à trancher) mais c'est _exactement_ ce qui la rend inexploitable.",
+    "relatedCardSlugs": ["pure-strategy", "frequence", "gto"],
+    "searchKeywords": "mixed strategy strategie mixte mix randomize rng 70 30 indifference gto inexploitable frequence"
+  },
+  {
+    "slug": "pure-strategy",
+    "term": "Pure strategy",
+    "shortDef": "Une seule action prise à 100 % pour une main : simple à exécuter, plus facile à exploiter.",
+    "fullContentMd": "Une **pure strategy** (stratégie pure) prend _une seule_ action à 100 % pour une main donnée : `AA : raise toujours`.\n\n## Le compromis\n\nAvantage : simple à exécuter, zéro charge mentale, zéro RNG.\nCoût : prévisible. Si chaque main n'a qu'une action, l'adversaire attentif reconstruit ta range à partir de ton action — et l'attaque.\n\n## En pratique\n\nLes extrêmes du range sont souvent purs (les monstres raise toujours, les déchets fold toujours) ; le _milieu_ est là où la stratégie mixte gagne. Jouer 100 % pur est une simplification volontaire — défendable contre des adversaires faibles, dangereuse contre un joueur qui adapte. _Le pur n'est pas une faute : c'est un raccourci dont on connaît le prix._",
+    "relatedCardSlugs": ["mixed-strategy", "frequence", "exploit"],
+    "searchKeywords": "pure strategy strategie pure 100 une action previsible simplification exploitable extremes range"
+  },
+  {
+    "slug": "range-composite",
+    "term": "Range composite",
+    "shortDef": "Range défini par plusieurs sous-ranges concaténés : [22-99, ATs+, KQs, AJo+].",
+    "fullContentMd": "Un **range composite** s'écrit comme une suite de sous-ranges concaténés : `[22-99, ATs+, KQs, AJo+, KQo]`.\n\n## Lire les blocs\n\nChaque bloc est une famille :\n\n- `22-99` — paires basses à moyennes (un _intervalle_).\n- `ATs+` — As-suited du Ten au King.\n- `KQs`, `KQo` — mains nommées une à une.\n\nMis bout à bout, ces blocs décrivent un range serré sans énumérer ses ~150 combos.\n\n## Pourquoi cette notation\n\nC'est la phrase complète dont le « + » et le tiret sont la grammaire. Elle permet d'échanger un range entier en une ligne — sur un forum, dans un solver, en coaching. _Un range bien écrit n'a pas besoin d'être expliqué : il se lit._",
+    "relatedCardSlugs": ["notation-range-plus", "range", "range-ouverture", "grille-13x13"],
+    "searchKeywords": "range composite sous-ranges concatenes intervalle 22-99 ATs+ notation bloc abrege solver"
+  },
+  {
+    "slug": "range-vs-range",
+    "term": "Range vs range",
+    "shortDef": "Équité entre deux ranges complets (pas main vs main) : le calcul standard des solvers.",
+    "fullContentMd": "Le **range vs range** mesure l'équité entre _deux ranges entiers_, pas entre deux mains.\n\n## La différence clé\n\n`AA vs KK` est un calcul main contre main (~80/20). « Range de BTN vs range de défense BB » est la moyenne pondérée de _tous_ les affrontements possibles entre les deux distributions. C'est ce second calcul qui décide la stratégie réelle — on ne joue jamais une main isolée, toujours une range contre une range.\n\n## Ordre de grandeur\n\nUn open BTN (~45 % des mains) contre une défense BB (~35 %) tourne autour de **52 / 48** en faveur du BTN. L'avantage est mince — d'où l'importance de la position et de la _réalisation d'equity_ pour le transformer en profit réel.",
+    "relatedCardSlugs": ["equity-realization", "range", "range-polarise"],
+    "searchKeywords": "range vs range equite ranges complets distribution solver moyenne ponderee btn bb defense 52 48"
+  },
+  {
+    "slug": "equity-realization",
+    "term": "Equity realization",
+    "shortDef": "La part de son equity brute qu'une main réalise vraiment après les actions postflop.",
+    "fullContentMd": "L'**equity realization** est l'écart entre l'equity _brute_ d'une main et ce qu'elle **encaisse réellement** une fois le coup joué.\n\n## Le piège\n\nUne main à 60 % d'equity au flop ne récolte pas 60 % du pot final. Hors de position, sans capacité de relancer, sous pression, elle réalise souvent ~50 % — parfois moins. À l'inverse, un tirage _en position_ réalise plus que son equity brute (il voit des cartes gratuites, encaisse quand il touche).\n\n## Pourquoi c'est central\n\nC'est l'explication mathématique du prix de la **position** et de l'**initiative** : elles ne changent pas tes cartes, elles changent la _fraction_ d'equity transformée en jetons. R < E hors de position ; R > E en position. Tout le reste en découle.",
+    "relatedCardSlugs": ["range-vs-range", "ip", "oop"],
+    "searchKeywords": "equity realization realisation d'equity R<E R>E position initiative oop ip brute reelle postflop"
+  },
+  {
+    "slug": "solver",
+    "term": "Solver",
+    "shortDef": "Logiciel qui calcule la stratégie GTO d'un spot à partir des ranges, stacks et sizings.",
+    "fullContentMd": "Un **solver** est un logiciel qui calcule la stratégie d'équilibre (GTO) d'un spot précis.\n\n## Entrées et sorties\n\n- **En entrée** : les ranges de départ, les stacks effectifs, les tailles de mise autorisées, l'arbre d'actions.\n- **En sortie** : pour chaque main, la _fréquence_ GTO de chaque action — la grille colorée.\n\n## Ce qu'il est, ce qu'il n'est pas\n\nLe solver donne l'équilibre, pas la décision contre _ton_ adversaire réel. C'est une **boussole théorique** : on l'étudie hors-table pour connaître le sol, puis on en dévie en table pour exploiter. Confondre « jouer comme le solver » et « jouer bien » est l'erreur du débutant qui découvre l'outil. _Le solver répond à une question que l'adversaire faible ne pose pas._",
+    "relatedCardSlugs": ["gto", "exploit", "piosolver", "gtowizard"],
+    "searchKeywords": "solver logiciel gto equilibre calcul ranges stacks sizing arbre boussole pio gtowizard etude"
+  },
+  {
+    "slug": "piosolver",
+    "term": "PioSolver",
+    "shortDef": "Le solver postflop de référence depuis 2015 : très puissant, très gourmand en calcul.",
+    "fullContentMd": "**PioSolver** est le solver postflop historiquement dominant, référence des pros depuis ~2015.\n\n## Sa force\n\nUne précision et une profondeur d'arbre qui en font l'étalon-or de l'étude postflop : on y résout des spots sur mesure, sizing par sizing.\n\n## Son coût\n\nIl tourne en **local** et consomme énormément de CPU et de RAM : une résolution complète prend de quelques minutes à plusieurs heures. C'est un outil d'étude _ciblée_ — on y travaille un spot précis, pas une bibliothèque entière.\n\n## Sa place\n\nPio a fixé le vocabulaire visuel (la grille colorée, les fréquences) que tout le monde utilise aujourd'hui. Les solvers cloud l'ont rendu plus accessible, mais la grammaire vient de lui.",
+    "relatedCardSlugs": ["solver", "gtowizard", "gto"],
+    "searchKeywords": "piosolver pio solver postflop reference 2015 local cpu ram etude ciblee pro etalon"
+  },
+  {
+    "slug": "gtowizard",
+    "term": "GTOwizard",
+    "shortDef": "Solver web qui pré-calcule des millions de spots : plus accessible que PioSolver.",
+    "fullContentMd": "**GTOwizard** est un solver _cloud_ : au lieu de résoudre un spot sur ta machine, il sert des millions de spots **pré-calculés** depuis un navigateur.\n\n## Le changement de paradigme\n\nPas d'installation, pas d'attente de calcul, une interface lisible. L'étude GTO devient consultable comme un dictionnaire — la tendance dominante 2022-2025.\n\n## Le compromis\n\nOn gagne l'accessibilité, on perd le sur-mesure : les arbres et sizings sont ceux pré-résolus, pas forcément ton spot exact. Pour la masse de l'étude (ranges préflop, spots standard), c'est largement suffisant ; pour un spot atypique, Pio garde l'avantage. _Le cloud a démocratisé la boussole — il ne l'a pas remplacée._",
+    "relatedCardSlugs": ["solver", "piosolver", "gto"],
+    "searchKeywords": "gtowizard gto wizard solver cloud web pre-calcule navigateur accessible 2022 2025 dictionnaire"
+  },
+  {
+    "slug": "minimum-defense-frequency",
+    "term": "Minimum defense frequency (MDF)",
+    "shortDef": "Fréquence minimale de défense face à un bet pour ne pas être exploitable : 1 − bet/(pot+bet).",
+    "fullContentMd": "La **MDF** (_minimum defense frequency_) est la part minimale de ta range que tu dois continuer (call ou raise) face à un bet pour ne pas devenir exploitable par un bluff systématique.\n\n## La formule\n\n`MDF = 1 − bet / (pot + bet)`\n\n- Vilain bet **pot** → MDF = **50 %**.\n- Vilain bet **½ pot** → MDF ≈ **67 %**.\n- Vilain bet **⅓ pot** → MDF ≈ **75 %**.\n\nPlus il mise petit, plus tu dois défendre large.\n\n## Le pendant des pot odds\n\nLes _pot odds_ disent quand **toi** tu peux call ; la MDF dit combien tu dois défendre pour que **lui** ne puisse pas bluffer impunément. Deux faces d'une même pièce : l'une protège ta décision, l'autre protège ta range. _Sous-défendre, c'est offrir un bluff gratuit ; sur-défendre, c'est payer des mains battues._",
+    "relatedCardSlugs": ["gto", "bet", "call", "fold"],
+    "searchKeywords": "mdf minimum defense frequency frequence defense minimale formule pot odds exploitable bluff 50 67 75"
+  },
+  {
+    "slug": "bankroll",
+    "term": "Bankroll",
+    "shortDef": "Capital total dédié au poker, séparé de la vie : 50-100 buy-ins MTT, ~30 cash.",
+    "fullContentMd": "La **bankroll** est le capital _exclusivement_ dédié au poker, étanche au budget de la vie.\n\n## Les repères\n\n- **MTT** : 50 à 100 buy-ins (la variance tournoi est très élevée).\n- **Cash** : ~30 buy-ins, davantage selon le niveau.\n\nTrop peu : la variance te ruine avant que ton edge ne s'exprime — le _risk of ruin_ devient non négligeable. Trop : du capital qui dort, un sous-emploi du skill.\n\n## Pourquoi c'est non négociable\n\nUn joueur gagnant _mal_ bankrollé fait quand même faillite : un downswing normal suffit. La bankroll n'est pas une prudence morale, c'est la condition mathématique pour que le long terme — là où ton edge existe — ait le temps d'arriver.",
+    "relatedCardSlugs": ["buy-in", "variance-fiche", "m-ratio-fiche", "itm"],
+    "searchKeywords": "bankroll capital poker buy-ins 50 100 mtt 30 cash risk of ruin gestion separe vie downswing"
+  },
+  {
+    "slug": "buy-in",
+    "term": "Buy-in",
+    "shortDef": "Montant payé pour entrer en tournoi ou s'asseoir en cash : l'unité de mesure de la bankroll.",
+    "fullContentMd": "Le **buy-in** est le montant payé pour entrer dans un tournoi, ou la cave posée sur une table de cash.\n\n## L'unité de compte\n\nOn ne mesure pas une bankroll en euros mais en **buy-ins** : « 80 buy-ins » renseigne sur la solidité ; « 4 000 € » ne dit rien tant qu'on ignore le niveau joué. Le buy-in normalise le risque entre les limites.\n\n## En tournoi\n\nLe buy-in se décompose : une part au prizepool, une part de **rake** pour la salle. C'est cette seconde part, invisible, qui fait qu'un joueur break-even contre les autres est en réalité perdant. Penser en buy-ins, c'est penser en risque relatif — la seule échelle qui compte pour durer.",
+    "relatedCardSlugs": ["bankroll", "rake", "itm", "bulle"],
+    "searchKeywords": "buy-in buyin cave entree tournoi cash unite mesure bankroll prizepool rake risque relatif"
+  },
+  {
+    "slug": "rake",
+    "term": "Rake",
+    "shortDef": "Commission prélevée par la salle (2-5 %) : le niveau caché qui rend le break-even perdant.",
+    "fullContentMd": "Le **rake** est la commission que la salle prélève — un pourcentage du pot en cash, une part de l'inscription en MTT. Typiquement **2 à 5 %**.\n\n## Le niveau caché\n\nLe rake ne se voit pas dans une main jouée : il s'applique _avant_ que tu comptes tes gains. Conséquence brutale : un joueur exactement break-even **contre les autres joueurs** est, en réalité, **perdant** — il paie le rake sur chaque pot remporté.\n\n## L'implication\n\nTon edge ne se mesure pas contre tes adversaires seuls, mais contre tes adversaires _plus la salle_. C'est pourquoi battre les micro-limites est plus dur qu'il n'y paraît : le rake y pèse proportionnellement le plus lourd. _La salle est le seul joueur garanti gagnant à chaque main._",
+    "relatedCardSlugs": ["buy-in", "bankroll"],
+    "searchKeywords": "rake commission salle pourcentage pot mtt inscription 2 5 break-even perdant niveau cache micro"
+  },
+  {
+    "slug": "variance-fiche",
+    "term": "Variance",
+    "shortDef": "Amplitude des résultats court terme autour de l'espérance long terme : un gagnant peut perdre des mois.",
+    "fullContentMd": "La **variance** est l'amplitude des résultats à court terme autour de l'espérance à long terme.\n\n## Le chiffre qui dégrise\n\nUn joueur _gagnant_ à 10 BB/100 peut traverser des séquences de **−100 BB sur 10 000 mains** sans avoir mal joué. Ce n'est pas une malchance exceptionnelle : c'est la distribution normale d'un jeu où le hasard domine le court terme et le skill le long terme.\n\n## La conséquence mentale\n\nQui ne comprend pas la variance la lit comme un _verdict_ sur son niveau — et tilte, ou casse un jeu correct. Le pro fait l'inverse : il sait qu'un échantillon court ne prouve rien, garde le même jeu, et laisse la loi des grands nombres travailler. _La variance ne se combat pas — elle se finance (bankroll) et se supporte (mental)._",
+    "relatedCardSlugs": ["bankroll", "downswing", "upswing", "tilt", "bulle"],
+    "searchKeywords": "variance amplitude resultats court terme esperance long terme bb/100 10000 mains echantillon ecart-type loi grands nombres"
+  },
+  {
+    "slug": "downswing",
+    "term": "Downswing",
+    "shortDef": "Période de pertes prolongée due à la variance négative : peut durer des dizaines de milliers de mains.",
+    "fullContentMd": "Un **downswing** est une période de pertes prolongée provoquée par la variance négative — pas (forcément) par une baisse de niveau.\n\n## L'ordre de grandeur\n\nPour un joueur gagnant, un downswing peut durer **30 000 à 50 000 mains**. C'est long, c'est normal, et ça ne dit rien sur le skill : c'est la queue gauche de la distribution, statistiquement inévitable.\n\n## La compétence pro\n\nLe test n'est pas d'éviter les downswings (impossible) mais de **continuer à jouer le même jeu** pendant. La tentation est double : forcer pour « se refaire » (tilt) ou douter et tout changer (sur-ajustement). Les deux aggravent. Identifier qu'on _est_ en downswing — et ne réduire que la taille des sessions, rien d'autre — sépare le pro de l'amateur.",
+    "relatedCardSlugs": ["variance-fiche", "upswing", "tilt", "bankroll"],
+    "searchKeywords": "downswing serie pertes variance negative 30000 50000 mains queue gauche distribution continuer meme jeu"
+  },
+  {
+    "slug": "upswing",
+    "term": "Upswing",
+    "shortDef": "Période de gains prolongée par variance positive : le danger est de la confondre avec du skill.",
+    "fullContentMd": "Un **upswing** est le pendant heureux du downswing : une séquence de gains portée par la variance positive.\n\n## Le piège\n\nLe downswing fait douter ; l'upswing fait pire — il **rassure à tort**. Beaucoup de joueurs prennent un upswing pour la preuve qu'ils jouent bien, montent de limite trop vite, relâchent l'étude, et rendent tout au premier retour à la moyenne.\n\n## La lecture juste\n\nUn échantillon court qui _gagne_ ne prouve pas plus qu'un échantillon court qui _perd_. Le bon réflexe est symétrique : ne pas changer son jeu en downswing, ne pas changer son ego en upswing. _La variance ment dans les deux sens — l'upswing ment juste plus agréablement._",
+    "relatedCardSlugs": ["downswing", "variance-fiche", "tilt"],
+    "searchKeywords": "upswing serie gains variance positive faux signal ego montee limite trop vite retour moyenne"
+  },
+  {
+    "slug": "a-game",
+    "term": "A-game",
+    "shortDef": "Le niveau de jeu maximal : frais, concentré, sans tilt — ce qu'on voit dans les bonnes sessions.",
+    "fullContentMd": "L'**A-game** est ton plafond : le niveau que tu joues quand tu es frais, concentré, sans émotion parasite.\n\n## Ce qu'il n'est pas\n\nL'A-game n'est _pas_ ton niveau « moyen ». C'est ton niveau dans les meilleures conditions — celui d'une session courte et focalisée, ou face au solver à froid.\n\n## Pourquoi le nommer\n\nDistinguer son A-game de son jeu réel impose une question gênante : _combien de temps_ par session joues-tu vraiment à ce niveau ? Pour la plupart, moins qu'on ne croit. Progresser ne consiste pas seulement à relever ce plafond — surtout à y rester plus longtemps. _Connaître son A-game, c'est mesurer la distance qui t'en sépare le reste du temps._",
+    "relatedCardSlugs": ["c-game", "tilt", "stop-loss"],
+    "searchKeywords": "a-game a game niveau maximal plafond frais concentre sans tilt meilleures conditions session courte"
+  },
+  {
+    "slug": "c-game",
+    "term": "C-game",
+    "shortDef": "Le niveau de jeu dégradé : fatigue, tilt, distraction. Le reconnaître = quitter la table.",
+    "fullContentMd": "Le **C-game** est ton plancher : le jeu réel quand tu es fatigué, distrait, énervé ou en pilotage automatique.\n\n## Où part l'argent\n\nLe profit ne se perd presque jamais en A-game. Il se perd en C-game : les calls de frustration, les bluffs de lassitude, les lignes molles de fin de session. L'écart A−C coûte plus cher que l'écart entre toi et un meilleur joueur.\n\n## La seule bonne réponse\n\nOn ne « joue pas mieux » son C-game par volonté — on le **quitte**. Reconnaître les signes (ennui, irritation, autopilote) et fermer la table est une compétence technique, pas une faiblesse. _Le pro n'est pas celui qui n'a pas de C-game : c'est celui qui ne le joue pas._",
+    "relatedCardSlugs": ["a-game", "tilt", "stop-loss"],
+    "searchKeywords": "c-game c game niveau degrade plancher fatigue tilt distraction autopilote ecart a-c quitter table"
+  },
+  {
+    "slug": "table-selection",
+    "term": "Table selection",
+    "shortDef": "Choisir activement les tables où on a un edge, pas celles où on est curieux.",
+    "fullContentMd": "La **table selection** est la décision qui précède toutes les autres : _à quelle table s'asseoir_, et à quelle place.\n\n## Le principe\n\nTon edge n'est pas une propriété de toi seul — c'est une propriété de la _différence_ entre toi et la table. Table de regs solides : edge nul, voire négatif après rake. Table avec un fish identifié : edge réel. Le profit se _choisit_ avant de se jouer.\n\n## Les réflexes\n\n- Observer 5-10 mains avant de s'asseoir.\n- Fuir les tables 100 % regs.\n- Cibler la place **en position sur le fish** (à sa gauche).\n\nLa meilleure main de la soirée est parfois celle qu'on ne joue pas, à la table où l'on ne s'assoit pas. _On ne bat pas le poker — on bat des adversaires choisis._",
+    "relatedCardSlugs": ["fish", "shark", "whale", "rake"],
+    "searchKeywords": "table selection choisir table edge fish regs position a gauche observer profit avant de jouer"
+  },
+  {
+    "slug": "stop-loss",
+    "term": "Stop-loss",
+    "shortDef": "Limite de perte par session décidée à froid : atteinte = quitter immédiatement, sans négocier.",
+    "fullContentMd": "Le **stop-loss** est un seuil de perte, fixé _avant_ la session, qui déclenche un arrêt immédiat dès qu'il est atteint.\n\n## Pourquoi à froid\n\nLe moi qui vient de perdre trois caves est exactement celui à qui il ne faut **pas** confier la décision de continuer. Le stop-loss délègue ce choix au moi calme : la règle est posée d'avance, l'exécution n'est pas négociable. C'est un protocole anti-tilt, pas une cible de performance.\n\n## Le jumeau\n\nSon pendant est le **stop-win** : sortir aussi après un gros gain. Contre-intuitif, mais une longue session euphorique se termine souvent en C-game qui rend les gains. Les deux seuils protègent la même chose : la qualité de jeu, pas le score du jour. _Une limite tenue vaut mieux qu'une remontée espérée._",
+    "relatedCardSlugs": ["tilt", "c-game", "bankroll"],
+    "searchKeywords": "stop-loss stop loss seuil perte session quitter froid protocole anti-tilt stop-win c-game discipline"
   }
 ]

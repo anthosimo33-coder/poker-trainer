@@ -6,15 +6,27 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
+const BOOK_LABELS: Record<string, string> = {
+  mecaniques: "Méca",
+  strategie: "Strat",
+  lexique: "Lex",
+};
+
+const BOOK_COLORS: Record<string, string> = {
+  mecaniques: "var(--purple-300)",
+  strategie: "var(--green)",
+  lexique: "var(--amber)",
+};
+
 export default function CardDetailPage() {
   const params = useParams();
   const bookSlug = params.bookSlug as string;
   const cardSlug = params.cardSlug as string;
 
   const card = useQuery(api.lessons.getCard, { slug: cardSlug });
-  const related = useQuery(
-    api.lessons.listCardsForBook,
-    card ? { bookSlug: card.bookSlug } : "skip"
+  const relatedCards = useQuery(
+    api.lessons.getCardsBySlugs,
+    card ? { slugs: card.relatedCardSlugs } : "skip"
   );
 
   if (!card) {
@@ -24,8 +36,6 @@ export default function CardDetailPage() {
       </main>
     );
   }
-
-  const relatedCards = related?.filter((c) => card.relatedCardSlugs.includes(c.slug));
 
   return (
     <main className="max-w-[720px] mx-auto px-8 pt-12 pb-24">
@@ -81,15 +91,27 @@ export default function CardDetailPage() {
               {relatedCards.map((c) => (
                 <Link
                   key={c.slug}
-                  href={`/lesson/${bookSlug}/cards/${c.slug}`}
-                  className="px-3 py-1.5 rounded text-[13px] transition-all hover:-translate-y-px"
+                  href={`/lesson/${c.bookSlug}/cards/${c.slug}`}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-[13px] transition-all hover:-translate-y-px"
                   style={{
                     background: "var(--surface)",
                     border: "0.5px solid var(--border)",
                     color: "var(--text-muted)",
                   }}
                 >
-                  {c.term}
+                  {c.bookSlug !== bookSlug && (
+                    <span
+                      className="font-mono text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider"
+                      style={{
+                        background: "var(--surface-strong)",
+                        color: BOOK_COLORS[c.bookSlug] ?? "var(--text-muted)",
+                        border: `0.5px solid ${BOOK_COLORS[c.bookSlug] ?? "var(--border)"}`,
+                      }}
+                    >
+                      {BOOK_LABELS[c.bookSlug] ?? c.bookSlug}
+                    </span>
+                  )}
+                  <span>{c.term}</span>
                 </Link>
               ))}
             </div>

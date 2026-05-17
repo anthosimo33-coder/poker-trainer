@@ -70,6 +70,27 @@ export const getCard = query({
 });
 
 /**
+ * Retourne les fiches qui matchent les slugs fournis, tous livres confondus.
+ * Maintient l'ordre des slugs reçus pour préserver l'intention pédagogique.
+ */
+export const getCardsBySlugs = query({
+  args: { slugs: v.array(v.string()) },
+  handler: async (ctx, { slugs }) => {
+    if (slugs.length === 0) return [];
+    const cards = await Promise.all(
+      slugs.map((slug) =>
+        ctx.db
+          .query("lessonCards")
+          .withIndex("by_slug", (q) => q.eq("slug", slug))
+          .unique()
+      )
+    );
+    // Filtre les nulls (slugs introuvables) en gardant l'ordre
+    return cards.filter((c): c is NonNullable<typeof c> => c !== null);
+  },
+});
+
+/**
  * Recherche full-text simple : matche sur term + shortDef + searchKeywords.
  * Insensible à la casse, basée sur sous-chaîne.
  * Filtres optionnels par livre.

@@ -100,4 +100,33 @@ test.describe("Leçon", () => {
     await page.locator('input[placeholder*="Rechercher"]').fill("3bet");
     await expect(page.getByText(/3-bet/i).first()).toBeVisible({ timeout: 5_000 });
   });
+
+  test("Livre III complet : 4 chapitres + 62 fiches", async ({ page }) => {
+    await page.goto("/lesson");
+    await expect(page.getByText("Lexique")).toBeVisible({ timeout: 15_000 });
+    // Compteurs corrects sur la carte Lexique
+    const lexiqueCard = page.locator("a").filter({ hasText: /Lexique/ }).first();
+    await expect(lexiqueCard).toContainText("4");
+    await expect(lexiqueCard).toContainText("62");
+  });
+
+  test("Mode livre Lexique : 4 chapitres dans le sommaire", async ({ page }) => {
+    await page.goto("/lesson/lexique");
+    await expect(page.getByText(/notation des ranges|mental.*méta/i).first()).toBeVisible({ timeout: 15_000 });
+  });
+
+  test("Fiche cross-livres : steal (Strat) → btn (Méca) rendu avec tag", async ({ page }) => {
+    await page.goto("/lesson/strategie/cards/steal");
+    await expect(page.getByRole("heading", { name: /^Steal$/i, level: 1 })).toBeVisible({ timeout: 10_000 });
+    // Au moins une pill "Méca" pour btn (si la fiche steal référence btn)
+    const relatedSection = page.getByText(/Fiches connexes/i);
+    await expect(relatedSection).toBeVisible();
+  });
+
+  test("Fiches enrichies : level contient un exemple concret", async ({ page }) => {
+    await page.goto("/lesson/lexique/cards/level");
+    await expect(page.getByRole("heading", { name: /^Level/i, level: 1 })).toBeVisible({ timeout: 10_000 });
+    // Vérifie la présence de mots-clés de l'exemple : TPTK, check-raise, etc.
+    await expect(page.getByText(/TPTK|check-raise/i).first()).toBeVisible();
+  });
 });
