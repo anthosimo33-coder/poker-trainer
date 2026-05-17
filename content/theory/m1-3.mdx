@@ -1,0 +1,98 @@
+---
+slug: m1-3
+moduleSlug: m1
+submoduleSlug: m1.3
+title: Cotes implicites
+subtitle: Le futur, quantifié.
+order: 3
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module I · Sous-module 3 / 4
+  </div>
+
+# Cotes implicites.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Le futur, quantifié.</em> La cote affichée n'est pas la vraie cote — parce qu'un tirage qui touche peut encore extraire de l'argent que personne n'a encore misé.
+</p>
+</div>
+
+<WhyBlock title="Tu paies le présent, mais tu joues le futur.">
+
+Les pot odds ne mesurent qu'une chose : ce qui est dans le pot **maintenant**. Mais le poker se joue sur trois streets. Un tirage couleur qui rentre au turn ouvre une mise de plus à la river — une mise qui n'existait pas quand tu as calculé ta cote.
+
+Cet argent futur — *probabilisé, jamais garanti* — transforme les calls « presque profitables » en calls clairement profitables. C'est lui qui justifie de payer un tirage que la cote brute condamnerait.
+
+La cote du moment ment par omission. Les cotes implicites réparent l'omission.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="La mécanique" title={<>Combien <em>tu dois extraire.</em></>} />
+
+<Prose>
+
+Quand ton equity actuelle ne couvre pas la cote, la question n'est plus *« est-ce profitable ? »* mais *« combien dois-je gagner en moyenne sur les streets suivantes pour que ça le devienne ? »*
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Gain futur requis</FormulaLabel> X = (Bet ÷ Equity) − Pot final<br/>
+  <FormulaMuted>Bet = mise du vilain · Equity = ta proba de toucher (0–1) · Pot final = pot + 2 × bet</FormulaMuted>
+</Formula>
+
+<Prose>
+
+`X` est le montant *moyen* que tu dois soutirer en plus quand tu touches. Si `X` est plus petit que ce que le vilain peut raisonnablement payer derrière, le call est bon. S'il dépasse son stack ou son willingness, la cote implicite est un fantasme.
+
+</Prose>
+
+<SectionHeader num="03" label="Quand y croire" title={<>Implicite réel, <em>ou implicite rêvé.</em></>} />
+
+<Prose>
+
+Une cote implicite n'a de valeur que si l'extraction est *crédible*. Trois conditions la tuent :
+
+**Tirage visible** — trois cartes assorties au board : le vilain voit la couleur arriver et ferme le robinet. **Stack court** — il n'y a plus rien à extraire derrière. **Vilain prudent** — un joueur qui fold tout sauf le nuts ne te paiera jamais ta couleur.
+
+</Prose>
+
+<Mnemonic keyText="X = B/E − P">
+« Le gain futur égale Bet sur Equity, moins le Pot final. » Si ce que tu dois extraire dépasse ce que le vilain peut payer, oublie l'implicite : reviens à la cote brute.
+
+</Mnemonic>
+
+<SectionHeader num="04" label="Exemple appliqué" title={<>Un tirage couleur <em>face à un gros bet.</em></>} />
+
+<Example title="Calcul étape par étape">
+
+Pot **8bb**, le vilain bet **8bb** (cote 2:1, equity requise **33.3 %**). Tu as un tirage couleur — environ **20 %** d'equity de le toucher à la prochaine carte.
+
+**Pot final** = 8 + 8 + 8 = **24bb**
+
+**Gain futur requis** = (8 ÷ 0.20) − 24 = 40 − 24 = **16bb**
+
+En cote brute, 20 % < 33.3 % : *fold*. Mais si le vilain a un stack profond et un profil qui paie une river, soutirer **16bb** de plus en moyenne quand ta couleur rentre est réaliste. La cote implicite *retourne la décision*.
+
+</Example>
+
+<SectionHeader num="05" label="Les pièges classiques" title={<>Trois manières <em>de se mentir.</em></>} />
+
+<Prose>
+
+**1. Surestimer l'extraction.** Tu touches, tu shoves, il fold. Le `X` théorique suppose qu'il paie — la réalité est souvent muette.
+
+**2. Oublier que le board peut se dégrader.** Ta quinte rentre au turn, mais une troisième carte de couleur arrive aussi : tu touches *et* tu es battu.
+
+**3. Compter l'implicite sur une ventrale.** Avec ~16 % d'equity, le `X` requis explose. Très peu de mains adverses permettent de l'extraire. Règle : *ventrale = rarement profitable sans cote directe*.
+
+</Prose>
+
+<LifeLink title="Investir dans une option à valeur asymétrique.">
+
+Les meilleurs paris business ont des payoffs *convexes* : tu engages une petite mise pour t'exposer à un gros gain conditionnel. Un prototype à 10 k€ qui ouvre, *peut-être*, un marché à 2 M€. C'est exactement une cote implicite : tu paies maintenant un coût certain pour acheter une porte sur un gain futur probabiliste.
+
+Le piège est le même qu'à la table : *surestimer la probabilité que la porte s'ouvre*. Les fondateurs qui se brûlent ne sont pas ceux qui prennent des paris convexes — ce sont ceux qui comptent le jackpot comme acquis. La discipline du joueur de poker : **probabilise le futur, ne le présume jamais.**
+
+</LifeLink>

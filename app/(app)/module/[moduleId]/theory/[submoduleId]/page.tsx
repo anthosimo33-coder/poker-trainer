@@ -7,11 +7,14 @@ import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { useCurrentUser } from "@/lib/auth/useCurrentUser";
+import { urlSlugToDbSlug } from "@/lib/slug";
 
 // Map des slugs → composants MDX
 const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> = {
   "m1-1": () => import("@/content/theory/m1-1.mdx"),
-  // M1.2, M1.3, M1.4 arriveront en S4b
+  "m1-2": () => import("@/content/theory/m1-2.mdx"),
+  "m1-3": () => import("@/content/theory/m1-3.mdx"),
+  "m1-4": () => import("@/content/theory/m1-4.mdx"),
 };
 
 function TheoryContent() {
@@ -161,6 +164,114 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
         "36 % > 25 %, donc le call est +EV. Les cotes implicites le rendraient encore plus profitable (gain probable sur les streets suivantes en cas de touche).",
     },
   ],
+
+  "m1-2": [
+    {
+      question: "Tu as une cote du pot de 3:1. Quelle est l'equity requise en pourcentage ?",
+      options: [
+        { letter: "A", text: "20 %" },
+        { letter: "B", text: "25 %" },
+        { letter: "C", text: "30 %" },
+        { letter: "D", text: "33.3 %" },
+      ],
+      correctLetter: "B",
+      explanation: "Formule ratio → % : 1 / (3 + 1) = 25 %. Apprends les 4 points d'ancrage : 1:1 = 50 %, 2:1 = 33.3 %, 3:1 = 25 %, 4:1 = 20 %.",
+    },
+    {
+      question: "L'equity requise est de 33.3 %. Quelle est la cote du pot ?",
+      options: [
+        { letter: "A", text: "1:1" },
+        { letter: "B", text: "1.5:1" },
+        { letter: "C", text: "2:1" },
+        { letter: "D", text: "3:1" },
+      ],
+      correctLetter: "C",
+      explanation: "Formule % → ratio : (100 - 33.3) / 33.3 ≈ 2. Donc cote 2:1. Mnémonique : « bet = pot → 2:1 → 33.3 % ».",
+    },
+    {
+      question: "Pourquoi maîtriser les deux formats (ratio et %) plutôt qu'un seul ?",
+      options: [
+        { letter: "A", text: "Par tradition du jeu." },
+        { letter: "B", text: "Parce que les solvers utilisent l'un et les coachs l'autre — tu dois lire les deux sans hésiter." },
+        { letter: "C", text: "Parce que le ratio est plus précis pour les implied odds." },
+        { letter: "D", text: "Parce que le % est plus précis pour les pot odds simples." },
+      ],
+      correctLetter: "B",
+      explanation: "Le ratio et le pourcentage décrivent la même réalité mais s'utilisent dans des contextes différents (solvers, coachs, conversation en table). L'hésitation à convertir est un leak.",
+    },
+  ],
+
+  "m1-3": [
+    {
+      question: "Pot 4bb, bet 4bb (cote 2:1, equity requise 33.3 %). Tu as un tirage couleur (36 % equity). Le call est-il profitable ?",
+      options: [
+        { letter: "A", text: "Non, equity insuffisante." },
+        { letter: "B", text: "Oui, equity de 36 % > 33.3 % requis." },
+        { letter: "C", text: "Indifférent." },
+        { letter: "D", text: "Profitable uniquement avec implied odds." },
+      ],
+      correctLetter: "B",
+      explanation: "Avec 36 % > 33.3 %, le call est déjà +EV en pot odds purs. Les implied odds le rendent encore plus profitable mais ne sont pas nécessaires à la décision.",
+    },
+    {
+      question: "Tu as un tirage quinte ventrale (~16 % equity). Le vilain bet pot (equity requise 33.3 %). Quel gain futur minimum dois-tu pouvoir extraire en moyenne pour que le call soit break-even ?",
+      options: [
+        { letter: "A", text: "Aucun, la cote suffit." },
+        { letter: "B", text: "Le gain doit être au moins égal à la mise vilain." },
+        { letter: "C", text: "Environ 2× la mise vilain en moyenne." },
+        { letter: "D", text: "Aucun montant ne rend ce call profitable." },
+      ],
+      correctLetter: "C",
+      explanation: "Avec 16 % d'equity et un bet pot, le ratio implied nécessaire approche ~2 (la formule X = bet/equity − pot final donne un gain futur d'environ 2× la mise). En pratique, peu de mains permettent d'extraire ça — d'où la règle « ventrale = rarement profitable sans cote ».",
+    },
+    {
+      question: "Quand les implied odds sont-elles surestimées en pratique ?",
+      options: [
+        { letter: "A", text: "Quand le tirage est visible (3 cartes de même couleur sur le board)." },
+        { letter: "B", text: "Quand le stack effectif est court." },
+        { letter: "C", text: "Quand le vilain est un nit qui fold facilement post-touche." },
+        { letter: "D", text: "Toutes ces réponses." },
+      ],
+      correctLetter: "D",
+      explanation: "Les trois situations limitent le gain futur réel : tirage visible = adversaire qui fold, stack court = pas d'argent à extraire, nit = fold facile. La cote implied théorique n'est utile que si les conditions de l'extraction sont réelles.",
+    },
+  ],
+
+  "m1-4": [
+    {
+      question: "Pourquoi une top paire kicker faible est-elle une main reverse implied ?",
+      options: [
+        { letter: "A", text: "Parce qu'elle perd contre les tirages." },
+        { letter: "B", text: "Parce que ses gains sont plafonnés et ses pertes amplifiées : quand elle est devant, le vilain fold ou call petit ; quand elle est derrière (kicker dominé), le vilain raise et elle paie deux streets." },
+        { letter: "C", text: "Parce qu'elle est mathématiquement faible." },
+        { letter: "D", text: "Parce qu'elle ne gagne jamais au showdown." },
+      ],
+      correctLetter: "B",
+      explanation: "Le reverse implied vient de l'asymétrie des résultats : tu n'es payé que quand tu es devant légèrement, et tu paies beaucoup quand tu es dominé. L'apparence (tu es devant en moyenne) ment sur les vrais flows d'argent.",
+    },
+    {
+      question: "Ton equity apparente est 65 % avec TPKW (top paire kicker faible). Comment ajuster pour la décision ?",
+      options: [
+        { letter: "A", text: "Utiliser 65 % comme si c'était une main faite." },
+        { letter: "B", text: "Pénaliser à ~48 % pour refléter les pertes futures probables." },
+        { letter: "C", text: "Ajouter 10 % pour la value de la position." },
+        { letter: "D", text: "Doubler pour les implied odds." },
+      ],
+      correctLetter: "B",
+      explanation: "L'equity apparente surestime ta vraie equity nette. L'ajustement reverse implied (typiquement -15 à -20 points sur les mains marginales) te donne l'equity « effective » à utiliser pour la décision.",
+    },
+    {
+      question: "Quel type de board augmente le plus le reverse implied de ta top paire ?",
+      options: [
+        { letter: "A", text: "Board sec et rainbow (T 7 2 différentes couleurs)." },
+        { letter: "B", text: "Board très texturé (T 9 8 deux couleurs, tirages multiples)." },
+        { letter: "C", text: "Board paire (T T 4)." },
+        { letter: "D", text: "Board avec As (A T 5)." },
+      ],
+      correctLetter: "B",
+      explanation: "Plus le board est texturé (tirages couleur, quinte, double tirage), plus les barrels suivants du vilain sont crédibles et plus tu paies cher si tu es derrière. Les boards secs limitent le reverse implied car peu de cartes changent la donne.",
+    },
+  ],
 };
 
 function QuickCheckModal({
@@ -190,7 +301,7 @@ function QuickCheckModal({
       0
     );
     if (userId) {
-      await recordCompletion({ userId, submoduleSlug: submoduleId.replace("m1-1", "m1.1").replace("m1-2", "m1.2").replace("m1-3", "m1.3").replace("m1-4", "m1.4"), quickCheckScore: score });
+      await recordCompletion({ userId, submoduleSlug: urlSlugToDbSlug(submoduleId), quickCheckScore: score });
     }
     setShowResults(true);
   }

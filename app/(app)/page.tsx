@@ -4,52 +4,69 @@ import Link from "next/link";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useCurrentUser } from "@/lib/auth/useCurrentUser";
+import type { Id } from "@/convex/_generated/dataModel";
 
-const MODULES = [
+interface Submodule {
+  slug: string;
+  urlSlug: string;
+  title: string;
+  available: boolean;
+}
+
+interface ModuleDef {
+  slug: string;
+  badge: string;
+  title: string;
+  desc: string;
+  available: boolean;
+  submodules: Submodule[];
+}
+
+const MODULES: ModuleDef[] = [
   {
     slug: "m1",
-    submoduleSlug: "m1.1",
     badge: "M·I",
     title: "Pot odds & cotes implicites",
     desc: "Calcul mental de l'equity requise face à toute mise",
-    href: "/drill/m1-1",
     available: true,
+    submodules: [
+      { slug: "m1.1", urlSlug: "m1-1", title: "Pot odds basiques", available: true },
+      { slug: "m1.2", urlSlug: "m1-2", title: "Conversion ratio ↔ pourcentage", available: true },
+      { slug: "m1.3", urlSlug: "m1-3", title: "Cotes implicites", available: true },
+      { slug: "m1.4", urlSlug: "m1-4", title: "Reverse implied odds", available: true },
+    ],
   },
   {
     slug: "m2",
-    submoduleSlug: "m2.1",
     badge: "M·II",
     title: "Equity & outs",
     desc: "Évaluer la force de ta main face à un range, heads-up et multiway",
-    href: "#",
     available: false,
+    submodules: [],
   },
   {
     slug: "m3",
-    submoduleSlug: "m3.1",
     badge: "M·III",
     title: "EV de décisions composites",
     desc: "Push/fold, 3bet, check-raise — pondération multi-branches",
-    href: "#",
     available: false,
+    submodules: [],
   },
   {
     slug: "m4",
-    submoduleSlug: "m4.1",
     badge: "M·IV",
     title: "ICM — bulle & table finale",
     desc: "Pondération Malmuth-Harville, bubble factor, payouts MTT",
-    href: "#",
     available: false,
+    submodules: [],
   },
   {
     slug: "m5",
-    submoduleSlug: "m5.1",
     badge: "M·V",
     title: "Ranges Nash push/fold",
     desc: "L'arsenal sub-15bb : mémorisation des ranges optimales",
-    href: "#",
     available: false,
+    submodules: [],
   },
 ];
 
@@ -105,20 +122,9 @@ export default function AtelierPage() {
           value={globalStats ? Math.round(globalStats.accuracy).toString() : "—"}
           unit="%"
         />
-        <MetricCard
-          label="Spots drillés"
-          value={globalStats?.totalAttempts?.toString() ?? "0"}
-        />
-        <MetricCard
-          label="Streak"
-          value={globalStats?.currentStreakDays?.toString() ?? "0"}
-          unit="j"
-        />
-        <MetricCard
-          label="Fuites actives"
-          value="—"
-          hint="Détection en S+"
-        />
+        <MetricCard label="Spots drillés" value={globalStats?.totalAttempts?.toString() ?? "0"} />
+        <MetricCard label="Streak" value={globalStats?.currentStreakDays?.toString() ?? "0"} unit="j" />
+        <MetricCard label="Fuites actives" value="—" hint="Détection en S+" />
       </section>
 
       <div className="flex justify-between items-center mb-5">
@@ -129,7 +135,7 @@ export default function AtelierPage() {
 
       <section className="flex flex-col gap-2 mb-16">
         {MODULES.map((mod) => (
-          <ModuleRow key={mod.slug} mod={mod} userId={userId} />
+          <ModuleBlock key={mod.slug} mod={mod} userId={userId} />
         ))}
       </section>
     </main>
@@ -138,16 +144,8 @@ export default function AtelierPage() {
 
 function MetricCard({ label, value, unit, hint }: { label: string; value: string; unit?: string; hint?: string }) {
   return (
-    <div
-      className="rounded p-5 transition-all duration-200"
-      style={{
-        background: "var(--surface)",
-        border: "0.5px solid var(--border)",
-      }}
-    >
-      <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-3">
-        {label}
-      </div>
+    <div className="rounded p-5 transition-all duration-200" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+      <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-3">{label}</div>
       <div className="text-3xl font-semibold leading-none mb-2 tracking-[-0.03em]">
         {value}
         {unit && <span className="text-lg text-text-faint font-medium">{unit}</span>}
@@ -157,89 +155,97 @@ function MetricCard({ label, value, unit, hint }: { label: string; value: string
   );
 }
 
-function ModuleRow({ mod, userId }: {
-  mod: typeof MODULES[number];
-  userId: ReturnType<typeof useCurrentUser>["userId"];
-}) {
-  const stats = useQuery(
-    api.attempts.getSubmoduleStats,
-    mod.available && userId ? { userId, submoduleSlug: mod.submoduleSlug, lastN: 30 } : "skip"
+function ModuleBlock({ mod, userId }: { mod: ModuleDef; userId: Id<"users"> | null }) {
+  const locked = !mod.available;
+  const styles = locked ? STATUS_STYLES.locked : STATUS_STYLES.active;
+  const moduleLabel = locked
+    ? "Verrouillé"
+    : `${mod.submodules.length} sous-module${mod.submodules.length > 1 ? "s" : ""}`;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <div
+        className={`grid items-center gap-5 px-6 py-5 rounded-lg transition-all duration-200 ${locked ? "opacity-40" : ""}`}
+        style={{
+          gridTemplateColumns: "48px 1fr 160px",
+          background: "var(--surface)",
+          border: "0.5px solid var(--border)",
+        }}
+      >
+        <div
+          className="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-semibold font-mono tracking-tight"
+          style={{ background: styles.badgeBg, border: `0.5px solid ${styles.badgeBorder}`, color: styles.color }}
+        >
+          {mod.badge}
+        </div>
+        <div>
+          <div className="text-[15px] font-medium tracking-[-0.015em] mb-0.5">{mod.title}</div>
+          <div className="text-[13px] text-text-muted">{mod.desc}</div>
+        </div>
+        <div className="flex items-center gap-1.5 text-xs font-medium justify-end" style={{ color: styles.color }}>
+          <span
+            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+            style={{ background: styles.dot, boxShadow: `0 0 0 3px ${styles.glow}` }}
+          />
+          {moduleLabel}
+        </div>
+      </div>
+
+      {mod.available &&
+        mod.submodules.map((sub) => (
+          <SubmoduleRow key={sub.slug} sub={sub} userId={userId} parentSlug={mod.slug} />
+        ))}
+    </div>
   );
+}
+
+function SubmoduleRow({ sub, userId, parentSlug }: { sub: Submodule; userId: Id<"users"> | null; parentSlug: string }) {
   const completion = useQuery(
     api.theoryCompletions.getCompletion,
-    mod.available && userId ? { userId, submoduleSlug: mod.submoduleSlug } : "skip"
+    userId && sub.available ? { userId, submoduleSlug: sub.slug } : "skip"
+  );
+  const stats = useQuery(
+    api.attempts.getSubmoduleStats,
+    userId && sub.available ? { userId, submoduleSlug: sub.slug, lastN: 30 } : "skip"
   );
 
-  const isTheoryDone =
-    completion !== undefined && completion !== null && completion.quickCheckScore >= 2;
+  const isTheoryDone = completion != null && completion.quickCheckScore >= 2;
   const accuracy = stats?.accuracy ?? 0;
   const totalAttempts = stats?.totalAttempts ?? 0;
-  const status = statusFor(accuracy, mod.available, totalAttempts, isTheoryDone);
+  const status = statusFor(accuracy, sub.available, totalAttempts, isTheoryDone);
   const styles = STATUS_STYLES[status.kind];
-  const locked = status.kind === "locked";
-  const href = !mod.available
+
+  const href = !sub.available
     ? "#"
     : !isTheoryDone
-    ? `/module/${mod.slug}/theory/${mod.submoduleSlug.replace(".", "-")}`
-    : mod.href;
+    ? `/module/${parentSlug}/theory/${sub.urlSlug}`
+    : `/drill/${sub.urlSlug}`;
 
-  const progressLabel = !mod.available
-    ? "Verrouillé"
-    : totalAttempts === 0
-    ? "À démarrer"
-    : `${Math.round(accuracy)} / 100 sur ${totalAttempts} spot${totalAttempts > 1 ? "s" : ""}`;
-
-  const content = (
-    <div
-      className={`grid items-center gap-5 px-6 py-5 rounded-lg transition-all duration-200 ${locked ? "opacity-40 cursor-not-allowed" : "hover:-translate-y-px hover:[background:var(--surface-hover)] cursor-pointer"}`}
+  return (
+    <Link
+      href={href}
+      className="grid items-center gap-4 px-5 py-3.5 ml-8 rounded transition-all duration-200 hover:[background:var(--surface-hover)]"
       style={{
-        gridTemplateColumns: "48px 1fr 240px 120px 16px",
+        gridTemplateColumns: "20px 1fr 70px 130px 16px",
         background: "var(--surface)",
         border: "0.5px solid var(--border)",
       }}
     >
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-semibold font-mono tracking-tight"
-        style={{
-          background: styles.badgeBg,
-          border: `0.5px solid ${styles.badgeBorder}`,
-          color: styles.color,
-        }}
-      >
-        {mod.badge}
-      </div>
-      <div>
-        <div className="text-[15px] font-medium tracking-[-0.015em] mb-0.5">{mod.title}</div>
-        <div className="text-[13px] text-text-muted">{mod.desc}</div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <div className="h-1 rounded-full overflow-hidden" style={{ background: "var(--surface-strong)" }}>
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: `${Math.min(100, accuracy)}%`,
-              background:
-                status.kind === "done"
-                  ? "linear-gradient(90deg, var(--green), #86EFAC)"
-                  : status.kind === "leak"
-                  ? "linear-gradient(90deg, var(--amber), #FCD34D)"
-                  : "linear-gradient(90deg, var(--purple-500), var(--purple-400))",
-            }}
-          />
-        </div>
-        <div className="text-[11px] font-mono text-text-faint">{progressLabel}</div>
-      </div>
-      <div className="flex items-center gap-1.5 text-xs font-medium" style={{ color: styles.color }}>
+      <span className="text-text-faint font-mono text-[11px]">
+        {sub.slug.replace(`${parentSlug}.`, "")}
+      </span>
+      <span className="text-[13px] font-medium">{sub.title}</span>
+      <span className="text-[11px] font-mono text-text-faint">
+        {totalAttempts > 0 ? `${Math.round(accuracy)} %` : "—"}
+      </span>
+      <span className="flex items-center gap-1.5 text-[11px] font-medium" style={{ color: styles.color }}>
         <span
           className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-          style={{ background: styles.dot, boxShadow: `0 0 0 3px ${styles.glow}` }}
+          style={{ background: styles.dot, boxShadow: `0 0 0 2px ${styles.glow}` }}
         />
         {status.label}
-      </div>
-      <div className="text-text-faint text-base">→</div>
-    </div>
+      </span>
+      <span className="text-text-faint text-base">→</span>
+    </Link>
   );
-
-  if (locked) return <div>{content}</div>;
-  return <Link href={href}>{content}</Link>;
 }

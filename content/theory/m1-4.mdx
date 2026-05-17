@@ -1,0 +1,95 @@
+---
+slug: m1-4
+moduleSlug: m1
+submoduleSlug: m1.4
+title: Reverse implied odds
+subtitle: Les pertes cachées.
+order: 4
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module I · Sous-module 4 / 4
+  </div>
+
+# Reverse implied odds.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Les pertes cachées.</em> Parfois la cote ment dans l'autre sens : ta main paraît devant, et c'est précisément ce qui te coûte cher.
+</p>
+</div>
+
+<WhyBlock title="Une main qui paraît bonne n'est pas une main qui gagne gros.">
+
+Une top paire kicker faible te souffle : *« tu es devant »*. Et c'est vrai — *en moyenne*. Mais regarde les flux d'argent, pas la moyenne.
+
+Quand tu es devant, le vilain check derrière ou call petit : tu gagnes peu. Quand tu es derrière — kicker dominé, deux paires, set — il mise, il barrel, et tu paies deux streets pour le découvrir. Tes gains sont **écrêtés**, tes pertes **amplifiées**. La moyenne dit « profitable ». Le compte en banque dit autre chose.
+
+C'est l'implicite à l'envers : tu paies le futur au lieu d'être payé par lui.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="La mécanique" title={<>L'equity réelle, <em>après pénalité.</em></>} />
+
+<Prose>
+
+Ton equity *apparente* est ce qu'un equity calculator t'affiche contre le range vilain. Ton equity *réelle* est ce qu'il te reste une fois retiré l'argent que tu vas payer en étant dominé sans le savoir.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Equity réelle</FormulaLabel> Apparente − Pénalité reverse<br/>
+  <FormulaMuted>Pénalité typique : 15 à 20 points sur les mains marginales jouées hors position.</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Une top paire kicker faible affichée à **65 %** ne vaut pas 65 % en décision : pénalisée de ~17 points, elle vaut **~48 %** d'equity effective. C'est *ce chiffre-là* — pas l'apparent — que tu compares à ta cote.
+
+</Prose>
+
+<SectionHeader num="03" label="Les mains à risque" title={<>Celles qui <em>paraissent</em> sûres.</>} />
+
+<Prose>
+
+Le reverse implied frappe les mains *moyennes mais flatteuses* : top paire kicker faible, second paire, overpair sur board connecté. Toutes partagent le même profil — assez fortes pour caller, trop faibles pour être payées quand elles gagnent, trop attachantes pour être foldées quand elles perdent.
+
+La texture du board amplifie tout : plus il y a de tirages et de cartes qui tournent, plus les barrels adverses sont crédibles, plus tu paies cher d'être derrière.
+
+</Prose>
+
+<Mnemonic keyText="Apparent − Pénalité = Réel">
+« Ce que l'outil affiche n'est pas ce que tu encaisses. » Sur toute main marginale : retire la pénalité avant de comparer à la cote. La main que tu vois n'est pas la main que tu joues.
+</Mnemonic>
+
+<SectionHeader num="04" label="Exemple appliqué" title={<>Un TPTK <em>qui paie deux barrels.</em></>} />
+
+<Example title="Le coût de paraître devant">
+
+Tu as top paire bon kicker, board **T 9 8 deux couleurs**. Equity apparente vs range : **~75 %**. Rassurant.
+
+Mais ce board est un nid à tirages. Sur turn et river, le vilain barrel : la moitié de ses barrels te battent déjà (quinte, deux paires, set), l'autre moitié te fait fold le meilleur sous pression. Pénalité reverse lourde — board très texturé : ramène l'equity effective autour de **~60 %**, et *encore* tu paieras des bets supplémentaires en étant souvent derrière au showdown.
+
+La main « paraît » gagnante à 75 %. Elle se joue à 60 %, et elle saigne sur les streets suivantes.
+
+</Example>
+
+<SectionHeader num="05" label="Les pièges classiques" title={<>Trois excès <em>de confiance.</em></>} />
+
+<Prose>
+
+**1. Lire l'apparent comme du réel.** 65 % affiché n'est pas 65 % en poche. Sur main marginale, applique toujours la pénalité avant de décider.
+
+**2. Sous-estimer la texture.** Board sec et rainbow : pénalité faible. Board connecté multicolore : pénalité maximale. La même main ne vaut pas la même chose selon le tapis.
+
+**3. S'attacher parce que « ça paraît bon ».** L'apparence est exactement le piège : plus une main marginale *semble* devant, plus elle invite à payer les streets où elle est derrière.
+
+</Prose>
+
+<LifeLink title="Les opportunités qui paraissent évidentes coûtent souvent le plus cher.">
+
+Le deal facile à signer. Le marché « en pleine croissance ». Le client enthousiaste au premier call. En business, ce qui *paraît* gagnant porte des coûts asymétriques que l'enthousiasme masque : le deal facile devient un client qui exige tout, le marché en croissance attire cinquante concurrents, le client enthousiaste change d'avis au troisième mois.
+
+C'est le reverse implied du business : *ce que tu vois ne te dit rien des coûts que tu paieras sur les streets suivantes du projet*. Les opérateurs aguerris pénalisent mentalement les opportunités trop évidentes — non par pessimisme, mais parce qu'ils ont appris, comme au poker, que **l'apparence d'avance est le moment exact où l'on paie le plus**.
+
+</LifeLink>

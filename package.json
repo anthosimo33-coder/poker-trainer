@@ -17,7 +17,8 @@
     "test:e2e:headed": "playwright test --headed",
     "screenshots": "tsx scripts/screenshots.ts",
     "screenshots:s3": "tsx scripts/screenshots-s3.ts",
-    "screenshots:s4a": "tsx scripts/screenshots-s4a.ts"
+    "screenshots:s4a": "tsx scripts/screenshots-s4a.ts",
+    "screenshots:s4b": "tsx scripts/screenshots-s4b.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

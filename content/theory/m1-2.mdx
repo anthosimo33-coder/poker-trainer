@@ -1,0 +1,103 @@
+---
+slug: m1-2
+moduleSlug: m1
+submoduleSlug: m1.2
+title: Conversion ratio ↔ pourcentage
+subtitle: L'art de convertir sans hésiter.
+order: 2
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module I · Sous-module 2 / 4
+  </div>
+
+# Conversion ratio ↔ pourcentage.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>L'art de convertir</em> sans hésiter. Une cote se dit en ratio ou en pourcentage — tu dois passer de l'un à l'autre instantanément, sans poser le crayon.
+</p>
+</div>
+
+<WhyBlock title="Tu joues avec deux langues. Tu dois les parler toutes les deux.">
+
+En cash, les pros parlent **ratio** : « j'ai 3:1, je call ». En tournoi, sur les solvers, dans les trainings modernes, on parle souvent **equity en pourcentage** : « il me faut 25 % ». Ce sont deux dialectes de la même vérité.
+
+Le problème n'est pas de connaître les deux. C'est de **ne pas hésiter**. Une demi-seconde de calcul mental qui s'éternise, et tu sors de ton rythme, tu donnes un tell de timing, tu doutes. *L'hésitation à convertir est un leak* — invisible, mais réel.
+
+Ce sous-module n'enseigne pas une table à réciter. Il automatise un réflexe.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="La mécanique" title={<>Deux formules, <em>réversibles.</em></>} />
+
+<Prose>
+
+Une cote `R:1` signifie : tu mises 1 pour pouvoir gagner `R`. Le seuil de rentabilité, c'est la fraction de fois où tu dois gagner pour que ça s'équilibre.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Ratio → %</FormulaLabel> equity requise = 1 ÷ (R + 1)<br/>
+  <FormulaLabel>% → Ratio</FormulaLabel> R = (100 − %) ÷ %
+</Formula>
+
+<Prose>
+
+C'est exactement la même équation lue dans les deux sens. Une cote de `2:1` donne `1 / (2 + 1)` = **33.3 %**. Une equity de `25 %` donne `(100 − 25) / 25` = **3**, soit `3:1`. Aucune des deux n'est « plus juste » : elles décrivent la même réalité, depuis deux angles.
+
+</Prose>
+
+<SectionHeader num="03" label="Les ancres" title={<>Quatre points <em>à connaître par cœur.</em></>} />
+
+<Prose>
+
+Tu n'as pas besoin de calculer à chaque main. Tu as besoin de quatre ancres mémorisées, et d'interpoler entre elles.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Bet 1/3 pot</FormulaLabel> cote <K>4:1</K> → equity <K>20 %</K><br/>
+  <FormulaLabel>Bet 1/2 pot</FormulaLabel> cote <K>3:1</K> → equity <K>25 %</K><br/>
+  <FormulaLabel>Bet 2/3 pot</FormulaLabel> cote <K>2.5:1</K> → equity <K>28.6 %</K><br/>
+  <FormulaLabel>Bet pot</FormulaLabel> cote <K>2:1</K> → equity <K>33.3 %</K><br/>
+  <FormulaMuted>Au-delà (1.5× pot → 37.5 %), tu extrapoles. Ces quatre couvrent l'essentiel.</FormulaMuted>
+</Formula>
+
+<Mnemonic keyText="2:1 → 33">
+L'ancre maîtresse. « Cote deux pour un, trente-trois pour cent. » Si tu retiens un seul couple, retiens celui-là : tout le reste se déduit autour.
+</Mnemonic>
+
+<SectionHeader num="04" label="Exemple appliqué" title={<>Quand la conversion <em>décide seule.</em></>} />
+
+<Example title="Lecture croisée en table">
+
+Un coach te dit : *« sur ce spot le solver call à 28 % »*. Le vilain bet **2/3 pot**.
+
+Tu n'as pas 28 % sous les yeux — tu as une cote. Bet 2/3 pot → cote **2.5:1** → `1 / (2.5 + 1)` = **28.6 %**.
+
+Le seuil du solver (28 %) est *juste en dessous* de ton seuil break-even (28.6 %). Traduction immédiate : ce call est marginal, presque indifférent. Sans la conversion fluide, tu aurais comparé une pomme (28 %) à une poire (2.5:1) — et tu aurais tranché au feeling.
+
+</Example>
+
+<SectionHeader num="05" label="Les pièges classiques" title={<>Trois erreurs <em>de traduction.</em></>} />
+
+<Prose>
+
+**1. Inverser le sens du ratio.** `3:1` veut dire « gagner 3 pour 1 misé », pas « 3 % » ni « 1 chance sur 3 ». Le pourcentage associé est `1/(3+1)` = 25 %, pas 33 %.
+
+**2. Confondre cote offerte et equity de la main.** La conversion te donne le *seuil requis*. Elle ne te dit rien de ton equity réelle — c'est une autre étape.
+
+**3. Mémoriser au lieu d'interpoler.** Apprendre 12 lignes de table par cœur cède sous la pression. Quatre ancres + interpolation tient en partie réelle.
+
+</Prose>
+
+<LifeLink title="Penser en deux unités, c'est s'extraire des illusions d'un seul cadre.">
+
+Un même chiffre business change de visage selon l'unité. Un coût de *15 k€* paraît lourd — jusqu'à ce que tu le dises *2 % du budget*. Une croissance de *3 % par mois* paraît modeste — jusqu'à ce que tu la cumules en *+43 % sur l'année*.
+
+Les décideurs faibles raisonnent dans l'unité qu'on leur sert. Les bons **convertissent par réflexe** : absolu ↔ relatif, flux ↔ stock, mensuel ↔ annualisé. Pas parce qu'une unité est vraie et l'autre fausse — mais parce que voir les deux, c'est refuser de se faire cadrer.
+
+Le poker t'apprend ça main après main : *le même fait, deux langues, aucune hésitation*.
+
+</LifeLink>

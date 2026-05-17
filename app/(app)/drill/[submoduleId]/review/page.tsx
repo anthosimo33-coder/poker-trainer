@@ -1,17 +1,28 @@
 "use client";
 
 import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
 import { fmtPercent } from "@/lib/utils";
 import { fmtDuration } from "@/lib/format";
+import { urlSlugToDbSlug } from "@/lib/slug";
+
+const SUBMODULE_TITLES: Record<string, string> = {
+  "m1.1": "Pot odds · Sous-module 1",
+  "m1.2": "Conversion ratio ↔ % · Sous-module 2",
+  "m1.3": "Cotes implicites · Sous-module 3",
+  "m1.4": "Reverse implied odds · Sous-module 4",
+};
 
 function ReviewContent() {
-  const params = useSearchParams();
-  const sessionId = params.get("session") as Id<"sessions"> | null;
+  const params = useParams();
+  const urlSubmoduleId = params.submoduleId as string;
+  const dbSubmoduleSlug = urlSlugToDbSlug(urlSubmoduleId);
+  const search = useSearchParams();
+  const sessionId = search.get("session") as Id<"sessions"> | null;
   const data = useQuery(api.sessions.getSessionWithSpots, sessionId ? { sessionId } : "skip");
 
   if (!sessionId) {
@@ -42,7 +53,7 @@ function ReviewContent() {
   function handleRetryFailed() {
     if (failedSpots.length === 0) return;
     sessionStorage.setItem("retrySpots", JSON.stringify(failedSpots));
-    window.location.href = "/drill/m1-1?mode=retry";
+    window.location.href = `/drill/${urlSubmoduleId}?mode=retry`;
   }
 
   return (
@@ -55,7 +66,7 @@ function ReviewContent() {
           {session.correctSpots} sur {session.totalSpots} réussis.
         </h1>
         <p className="text-base text-text-muted max-w-[540px]">
-          Module I · Pot odds · Sous-module 1
+          Module I · {SUBMODULE_TITLES[dbSubmoduleSlug] ?? dbSubmoduleSlug}
         </p>
       </header>
 
@@ -76,11 +87,7 @@ function ReviewContent() {
           <div
             key={att._id}
             className="grid items-center gap-4 px-5 py-4 rounded-lg"
-            style={{
-              gridTemplateColumns: "32px 60px 1fr auto",
-              background: "var(--surface)",
-              border: "0.5px solid var(--border)",
-            }}
+            style={{ gridTemplateColumns: "32px 60px 1fr auto", background: "var(--surface)", border: "0.5px solid var(--border)" }}
           >
             <span className="font-mono text-xs text-text-faint">{String(i + 1).padStart(2, "0")}</span>
             <span
@@ -95,22 +102,16 @@ function ReviewContent() {
             <span className="text-sm text-text-muted">
               Pot {att.spotSnapshot?.potBb}bb · bet {att.spotSnapshot?.betBb}bb · attendu {fmtPercent(att.expected?.requiredEquity ?? 0)}
             </span>
-            <span className="text-xs font-mono text-text-faint">
-              {fmtDuration(att.timeMs)}
-            </span>
+            <span className="text-xs font-mono text-text-faint">{fmtDuration(att.timeMs)}</span>
           </div>
         ))}
       </section>
 
       <div className="flex gap-3">
         <Link
-          href="/drill/m1-1"
+          href={`/drill/${urlSubmoduleId}`}
           className="px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200"
-          style={{
-            background: "var(--surface)",
-            border: "0.5px solid var(--border)",
-            color: "var(--text)",
-          }}
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text)" }}
         >
           Nouvelle session
         </Link>
@@ -118,11 +119,7 @@ function ReviewContent() {
           <button
             onClick={handleRetryFailed}
             className="px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] transition-all duration-200"
-            style={{
-              background: "var(--amber-glow)",
-              border: "0.5px solid rgba(251, 191, 36, 0.3)",
-              color: "var(--amber)",
-            }}
+            style={{ background: "var(--amber-glow)", border: "0.5px solid rgba(251, 191, 36, 0.3)", color: "var(--amber)" }}
           >
             Re-drillet les {failedSpots.length} ratés →
           </button>
@@ -146,16 +143,8 @@ function ReviewContent() {
 
 function ReviewMetric({ label, value, color }: { label: string; value: string; color?: string }) {
   return (
-    <div
-      className="rounded p-5"
-      style={{
-        background: "var(--surface)",
-        border: "0.5px solid var(--border)",
-      }}
-    >
-      <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-3">
-        {label}
-      </div>
+    <div className="rounded p-5" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+      <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-3">{label}</div>
       <div className="text-3xl font-semibold leading-none tracking-[-0.03em]" style={{ color }}>
         {value}
       </div>

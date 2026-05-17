@@ -79,8 +79,9 @@ test.describe("Drill M1.1 — flow complet", () => {
     await page.goto("/");
     await expect(page.getByText(/Bienvenue Serge/)).toBeVisible({ timeout: 15_000 });
 
-    // Click sur M·I → route vers théorie (verrouillé)
-    await page.getByText("Pot odds & cotes implicites").click();
+    // S4b : l'Atelier expose 4 sous-modules ; le lien théorie est la row du
+    // sous-module "Pot odds basiques" (le titre du module n'est plus cliquable).
+    await page.getByText("Pot odds basiques").click();
     await expect(page).toHaveURL(/\/module\/m1\/theory\/m1-1/);
     await expect(page.getByText(/Pot odds basiques/)).toBeVisible({ timeout: 20_000 });
 
@@ -108,9 +109,38 @@ test.describe("Drill M1.1 — flow complet", () => {
   });
 
   test("drill verrouillé si théorie pas faite", async ({ page }) => {
-    // Nouveau user
+    // Nouveau user — S4b fix 1.4 : le badge est désormais "Théorie à lire" (purple)
     await page.goto("/drill/m1-1");
-    await expect(page.getByText(/Drill verrouillé/)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Théorie à lire/)).toBeVisible({ timeout: 15_000 });
     await expect(page.getByRole("link", { name: /Lire la théorie/ })).toBeVisible();
+  });
+
+  test("flow complet M1.2 : théorie → quick check → drill", async ({ page }) => {
+    await page.goto("/module/m1/theory/m1-2");
+    await expect(page.getByRole("heading", { name: /Conversion/ })).toBeVisible({ timeout: 20_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+
+    // Réponses correctes M1.2 : B, C, B
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m1-2/);
+  });
+
+  test("M1.3 et M1.4 sont accessibles via la théorie", async ({ page }) => {
+    // Assertions ciblées sur le h1 (regex large du spec = strict-mode multi-match)
+    await page.goto("/module/m1/theory/m1-3");
+    await expect(page.getByRole("heading", { name: /Cotes implicites/ })).toBeVisible({ timeout: 20_000 });
+
+    await page.goto("/module/m1/theory/m1-4");
+    await expect(page.getByRole("heading", { name: /Reverse implied/ })).toBeVisible({ timeout: 20_000 });
   });
 });
