@@ -222,7 +222,7 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
         { letter: "D", text: "Aucun montant ne rend ce call profitable." },
       ],
       correctLetter: "C",
-      explanation: "Avec 16 % d'equity et un bet pot, le ratio implied nécessaire approche ~2 (la formule X = bet/equity − pot final donne un gain futur d'environ 2× la mise). En pratique, peu de mains permettent d'extraire ça — d'où la règle « ventrale = rarement profitable sans cote ».",
+      explanation: "Avec 16 % d'equity et un bet pot, la formule X = bet/equity − pot final donne un gain futur d'environ 3× la mise du vilain. En pratique, peu de mains permettent d'extraire ça — d'où la règle « ventrale = rarement profitable sans cote directe ».",
     },
     {
       question: "Quand les implied odds sont-elles surestimées en pratique ?",

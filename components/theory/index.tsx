@@ -99,7 +99,7 @@ export function Mnemonic({ keyText, label = "Mnémonique", children }: { keyText
     <div
       className="rounded-lg px-8 py-7 my-10 grid items-center transition-all duration-200 hover:[background:var(--surface-hover)]"
       style={{
-        gridTemplateColumns: "auto 1fr",
+        gridTemplateColumns: "minmax(auto, 240px) 1fr",
         gap: 28,
         background: "var(--surface)",
         border: "0.5px solid var(--border)",

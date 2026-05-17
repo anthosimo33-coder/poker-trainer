@@ -1,0 +1,6 @@
+{
+  "slug": "textures-board",
+  "name": "Les textures de board",
+  "orderIndex": 7,
+  "contentMd": "# Les textures de board\n\n_Le board n'est pas un décor. C'est la liste de ce que l'adversaire peut avoir._\n\n## Sec contre humide\n\nUn board **sec** offre peu de tirages : K♥ 7♠ 2♦. Peu de mains s'améliorent, les forces sont figées. Un board **humide** grouille de possibilités : 9♠ 8♠ 7♦. Tirages couleur, tirages quinte, deux paires — la moitié du paquet change la donne.\n\n## Le vocabulaire de la texture\n\n- **Paire** — le board contient une paire (Q Q 4). Full et carré deviennent plausibles.\n- **Rainbow** — trois couleurs différentes : aucun tirage couleur possible au flop.\n- **Monotone** — trois cartes de la même couleur : la couleur est _déjà_ là pour qui a une carte assortie.\n- **Connecté** — cartes proches en rang (T 9 8) : les tirages quinte pullulent.\n\n## La texture pilote la lecture\n\nSur K♥ 7♠ 2♦, presque rien n'a touché : qui mise gros représente une vraie main. Sur 9♠ 8♠ 7♦, _tout_ est crédible — tu ne peux plus déduire la force adverse de la seule agression.\n\n## Une mise n'a pas le même sens partout\n\nLe même bet de 2/3 pot raconte une histoire différente selon le tapis sous lui. _La texture est le contexte qui donne un sens à l'action._ Lis le board avant de lire le joueur."
+}
