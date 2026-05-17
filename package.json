@@ -24,6 +24,8 @@
     "screenshots:s5c": "tsx scripts/screenshots-s5c.ts",
     "screenshots:s5d": "tsx scripts/screenshots-s5d.ts",
     "screenshots:s6a": "tsx scripts/screenshots-s6a.ts",
+    "screenshots:s6b": "tsx scripts/screenshots-s6b.ts",
+    "precompute:m2-2": "tsx scripts/precompute-m2-2.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {

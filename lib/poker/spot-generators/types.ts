@@ -3,13 +3,15 @@ import type { PotOddsConversionSpot } from "./m1-2-conversion";
 import type { ImpliedOddsSpot } from "./m1-3-implied";
 import type { ReverseImpliedSpot } from "./m1-4-reverse-implied";
 import type { OutsSpot } from "./m2-1-outs";
+import type { EquitySpot } from "./m2-2-equity";
 
 export type GenericSpot =
   | PotOddsSpot
   | PotOddsConversionSpot
   | ImpliedOddsSpot
   | ReverseImpliedSpot
-  | OutsSpot;
+  | OutsSpot
+  | EquitySpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).

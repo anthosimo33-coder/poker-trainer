@@ -170,4 +170,30 @@ test.describe("Drill M1.1 — flow complet", () => {
     const lockedCount = await page.getByText("Verrouillé").count();
     expect(lockedCount).toBeGreaterThanOrEqual(3);
   });
+
+  test("M2.2 — théorie → quick check → drill avec scoring nuancé", async ({ page }) => {
+    await page.goto("/module/m2/theory/m2-2");
+    await expect(page.getByText(/Equity heads-up/i)).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (le spec l'omet) : attendre le modal avant de répondre,
+    // comme completeM11TheoryAndOpenDrill et le script screenshots. Sans ça,
+    // la séquence rapide peut court-circuiter recordCompletion (userId pas prêt).
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // 3/3
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m2-2/);
+    // Cartes vilain visibles. Timeout 15s : la chaîne gate→completion→session
+    // →spot du drill dépasse les 5s par défaut sur une route dev à froid
+    // (même garde que completeM11TheoryAndOpenDrill / tests M1.x).
+    await expect(page.getByText(/Vilain/i)).toBeVisible({ timeout: 15_000 });
+  });
 });

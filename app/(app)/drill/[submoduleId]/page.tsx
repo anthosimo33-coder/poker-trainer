@@ -5,12 +5,14 @@ import { useSearchParams, useParams } from "next/navigation";
 import { useMutation, useQuery } from "convex/react";
 import Link from "next/link";
 import { PokerTable } from "@/components/poker/PokerTable";
+import { PlayingCard } from "@/components/poker/PlayingCard";
 import { getGenerator } from "@/lib/poker/spot-generators/registry";
 import type { GenericSpot } from "@/lib/poker/spot-generators/types";
 import type { PotOddsConversionSpot } from "@/lib/poker/spot-generators/m1-2-conversion";
 import type { ImpliedOddsSpot } from "@/lib/poker/spot-generators/m1-3-implied";
 import type { ReverseImpliedSpot } from "@/lib/poker/spot-generators/m1-4-reverse-implied";
 import type { OutsSpot } from "@/lib/poker/spot-generators/m2-1-outs";
+import type { EquitySpot } from "@/lib/poker/spot-generators/m2-2-equity";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
 import { urlSlugToDbSlug, moduleSlugFromSubmodule } from "@/lib/slug";
@@ -33,6 +35,7 @@ interface UserAnswer {
   adjustedEquity: string;
   outsInput: string;
   equityInput: string;
+  equityHu: string;
   decision: Decision;
 }
 
@@ -43,6 +46,7 @@ const EMPTY_ANSWER: UserAnswer = {
   adjustedEquity: "",
   outsInput: "",
   equityInput: "",
+  equityHu: "",
   decision: null,
 };
 
@@ -81,6 +85,54 @@ function isReverse(s: GenericSpot): s is ReverseImpliedSpot {
 function isOuts(s: GenericSpot): s is OutsSpot {
   return "outs" in s;
 }
+// EquitySpot (M2.2) : discriminé par `villainCards` + submoduleSlug. Testé
+// AVANT isOuts/isImplied (guard le plus spécifique d'abord).
+function isEquity(s: GenericSpot): s is EquitySpot {
+  return "villainCards" in s && s.submoduleSlug === "m2.2";
+}
+
+// ---- Scoring nuancé M2.2 ----
+type EquityLevel = "excellent" | "juste" | "proche" | "faux";
+function gradeM22(
+  userEquity: number,
+  expectedEquity: number
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorLabel: string;
+  errorColor: string;
+} {
+  const signedError = Math.round((userEquity - expectedEquity) * 10) / 10;
+  const absError = Math.abs(signedError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absError <= 1) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absError <= 3) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absError <= 5) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absError <= 3;
+  const sign = signedError > 0 ? "+" : "";
+  const direction = signedError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absError <= 1
+      ? "Excellent"
+      : absError <= 3
+      ? `Juste (${sign}${signedError} %)`
+      : absError <= 5
+      ? `Proche (${sign}${signedError} % ${direction})`
+      : `Faux (${sign}${signedError} % ${direction})`;
+  return { isCorrect, level, signedError, errorLabel, errorColor };
+}
 
 interface CorrStep {
   num: string;
@@ -96,6 +148,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m1.3": "Cotes implicites · Sous-module 3",
   "m1.4": "Reverse implied · Sous-module 4",
   "m2.1": "Outs & règle 4&2 · Sous-module 1",
+  "m2.2": "Equity heads-up · Sous-module 2",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -107,6 +160,9 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isEquity(spot)) {
+    return parseAnswerNumber(a.equityHu) !== null;
+  }
   if (isOuts(spot)) {
     return (
       parseAnswerNumber(a.outsInput) !== null &&
@@ -133,6 +189,13 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isEquity(spot)) {
+    // Rendu de correction dédié (EquityCorrectionPanel) ; ici on ne fournit
+    // que isCorrect pour handleValidate. Steps vides (non rendus pour M2.2).
+    const ue = parseAnswerNumber(a.equityHu);
+    const g = gradeM22(ue ?? 0, spot.expected.equity);
+    return { isCorrect: ue !== null && g.isCorrect, steps: [] };
+  }
   if (isOuts(spot)) {
     const outsUser = parseAnswerNumber(a.outsInput);
     const eqUser = parseAnswerNumber(a.equityInput);
@@ -407,8 +470,9 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 }
 
 function actionFor(spot: GenericSpot): ReactNode {
-  // OutsSpot a son énoncé rendu inline dans le drill (jamais via actionFor) ;
-  // ce garde assure la totalité de type (OutsSpot n'a ni potBb ni positions).
+  // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
+  // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isEquity(spot)) return null;
   if (isOuts(spot)) return null;
   if (isImplied(spot)) {
     return (
@@ -604,7 +668,12 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isOuts(spot)) {
+    if (isEquity(spot)) {
+      const ue = parseAnswerNumber(answer.equityHu);
+      if (ue !== null) {
+        signedError = Math.round((ue - spot.expected.equity) * 10) / 10;
+      }
+    } else if (isOuts(spot)) {
       const ue = parseAnswerNumber(answer.equityInput);
       if (ue !== null) {
         signedError = Math.round((ue - spot.expected.equityApprox) * 10) / 10;
@@ -677,7 +746,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isOuts(spot) ? (
+        {isEquity(spot) ? (
+          <EquityTable spot={spot} />
+        ) : isOuts(spot) ? (
           <PokerTable
             contextTag="MTT · lecture d'outs"
             contextInfo={
@@ -789,6 +860,48 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M2.2 — un seul champ : l'equity de la main du héros (lecture pure).
+  if (isEquity(spot)) {
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Ta réponse
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Estime ton equity.
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          Cartes des deux joueurs visibles. Quelle est la probabilité que{" "}
+          <strong className="text-text">ta main</strong> gagne à l&apos;abattage ?
+        </p>
+        <Field
+          label="Equity de ta main"
+          hint="En pourcentage (0–100)"
+          value={answer.equityHu}
+          onChange={(v) => setAnswer({ ...answer, equityHu: v })}
+          placeholder="ex. 47"
+        />
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M2.1 — panneau purement calculatoire (pas de décision). Early-return pour
   // préserver le narrowing aliasé des guards m1.x ci-dessous.
   if (isOuts(spot)) {
@@ -982,6 +1095,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isEquity(spot)) {
+    return <EquityCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   const { isCorrect, steps } = grade(spot, answer);
   return (
     <div
@@ -1059,4 +1175,172 @@ function Mono({ children, className }: { children: ReactNode; className?: string
 
 function Lbl({ children }: { children: ReactNode }) {
   return <span className="text-[var(--purple-300)] font-medium">{children} —</span>;
+}
+
+// ===== M2.2 — table heads-up (cartes des DEUX joueurs visibles) =====
+function CardPlaceholder() {
+  return (
+    <div
+      className="rounded-lg shrink-0"
+      style={{
+        width: 56,
+        height: 80,
+        background: "rgba(255,255,255,0.03)",
+        border: "0.5px dashed var(--border-strong)",
+      }}
+      aria-label="Carte à venir"
+    />
+  );
+}
+
+function EquityTable({ spot }: { spot: EquitySpot }) {
+  const streetLabel =
+    spot.street === "preflop" ? "préflop" : spot.street === "flop" ? "flop" : "turn";
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-green" style={{ boxShadow: "0 0 0 3px var(--green-glow)" }} />
+          Heads-up · cartes ouvertes
+        </div>
+        <div className="text-xs font-mono text-text-faint">{streetLabel}</div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-7 pb-6" style={{ borderBottom: "0.5px solid rgba(255,255,255,0.05)" }}>
+        <div>
+          <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+            Toi
+          </div>
+          <div className="flex gap-2">
+            {spot.heroCards.map((c, i) => (
+              <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+            Vilain
+          </div>
+          <div className="flex gap-2">
+            {spot.villainCards.map((c, i) => (
+              <PlayingCard key={`v-${c}-${i}`} card={c} dealDelayMs={160 + i * 80} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <div className="font-mono uppercase text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Board · {streetLabel}
+        </div>
+        <div className="flex gap-2">
+          {spot.board.map((c, i) => (
+            <PlayingCard key={`b-${c}-${i}`} card={c} dealDelayMs={320 + i * 80} />
+          ))}
+          {Array.from({ length: 5 - spot.board.length }).map((_, i) => (
+            <CardPlaceholder key={`ph-${i}`} />
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded p-5 mt-2" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Estime l&apos;equity de TA main contre celle de l&apos;adversaire (à
+          l&apos;abattage, toutes cartes restantes distribuées).
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EquityCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: EquitySpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const ue = parseAnswerNumber(answer.equityHu) ?? 0;
+  const g = gradeM22(ue, spot.expected.equity);
+  const e = spot.expected;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div
+        className="text-[11px] font-mono uppercase tracking-wider mb-2"
+        style={{ color: g.errorColor }}
+      >
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ta réponse</div>
+          <div className="text-3xl font-semibold font-mono leading-none">{fmtPercent(ue)}</div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Vraie equity</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {fmtPercent(e.equity)}
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Hero</Lbl> <Mono>{spot.heroCards.join(" ")}</Mono>
+        <br />
+        <Lbl>Vilain</Lbl> <Mono>{spot.villainCards.join(" ")}</Mono>
+        <br />
+        <Lbl>Board</Lbl>{" "}
+        <Mono>{spot.board.length ? spot.board.join(" ") : "— (préflop)"}</Mono>
+        <br />
+        <Lbl>Méthode</Lbl>{" "}
+        <Mono>
+          {e.method === "exact"
+            ? `exact (${e.iterations} scénarios)`
+            : `monte-carlo (${e.iterations.toLocaleString("fr-FR")} itér.)`}
+        </Mono>
+        <br />
+        <Lbl>Wins / Ties / Losses</Lbl>{" "}
+        <Mono className="!text-purple-300">
+          {e.wins} / {e.ties} / {e.losses}
+        </Mono>
+      </FormulaBox>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
 }

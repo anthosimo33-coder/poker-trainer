@@ -1,0 +1,113 @@
+---
+slug: m2-2
+moduleSlug: m2
+submoduleSlug: m2.2
+title: Equity heads-up précise
+subtitle: Quand l'à-peu-près ne suffit plus.
+order: 2
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module II · Sous-module 2 / 4
+  </div>
+
+# Equity heads-up précise.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Quand l&apos;à-peu-près ne suffit plus.</em> La règle des 4 et 2 te donne une estimation. Ici, on mesure l&apos;écart entre cette estimation et la vérité — parce que cet écart, c&apos;est ton vrai niveau.
+</p>
+</div>
+
+<WhyBlock title="L'approximation des outs ment de 3 à 5 %. À haute intensité, 3 % décident d'une carrière.">
+
+La règle des 4 et 2 suppose deux choses fausses : que tu connais tes outs *exactement*, et qu&apos;ils sont tous *propres*. En réalité, certains outs te donnent la **deuxième meilleure main**, certaines mains ont des equity contre-intuitives (paire vs sur-paire, deux paires vs tirage), et l&apos;arrondi pèse quand la décision est serrée.
+
+Le calcul précis n&apos;est pas un outil de table — c&apos;est impossible mentalement. C&apos;est un outil de **calibration** : savoir si ton intuition surestime ou sous-estime, et *de combien*. On ne s&apos;entraîne pas à calculer vite. On s&apos;entraîne à se connaître.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="Pourquoi affiner" title={<>L&apos;à-peu-près <em>a un coût.</em></>} />
+
+<Prose>
+
+La règle 4&2 surestime systématiquement les **gros tirages** : 15 outs × 4 = 60 %, mais la vraie equity est ~54 %. Six points d&apos;erreur, toujours dans le même sens. Multiplié par mille décisions, c&apos;est une fuite invisible.
+
+Affiner ne sert pas à jouer plus vite. Ça sert à savoir que *quand tu sens « 60 % », c&apos;est en fait 54 %*. Cette connaissance de ton biais est ce qui sépare le joueur calibré du joueur confiant.
+
+</Prose>
+
+<SectionHeader num="03" label="Les ancres préflop" title={<>Six chiffres <em>à graver.</em></>} />
+
+<Prose>
+
+Tout le préflop se déduit de six ancres. Apprends-les comme des constantes physiques.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Paire vs 2 overcards</FormulaLabel> ~52 / 48 <FormulaMuted>la paire est à peine favorite (race)</FormulaMuted><br/>
+  <FormulaLabel>AKo vs paire moyenne (77)</FormulaLabel> ~47 / 53 <FormulaMuted>la paire est à peine favorite</FormulaMuted><br/>
+  <FormulaLabel>Paire vs paire inférieure</FormulaLabel> ~80 / 20<br/>
+  <FormulaLabel>AKs vs AQs (domination)</FormulaLabel> ~70 / 30<br/>
+  <FormulaLabel>AA vs KK</FormulaLabel> ~82 / 18<br/>
+  <FormulaLabel>AKs vs 72o</FormulaLabel> ~67 / 33
+</Formula>
+
+<Prose>
+
+Retiens surtout les deux *flips* : contre deux overcards, ta paire ne gagne que de justesse ; avec `AKo` contre une paire moyenne, tu es *underdog* d&apos;un cheveu. Tout le reste s&apos;interpole entre « race » et « domination ».
+
+</Prose>
+
+<SectionHeader num="04" label="Au flop" title={<>Les matchups <em>dynamiques.</em></>} />
+
+<Formula>
+  <FormulaLabel>Tirage couleur nu vs main faite</FormulaLabel> ~36 % <FormulaMuted>9 outs propres = règle 4&2 exacte</FormulaMuted><br/>
+  <FormulaLabel>Tirage couleur + 2 overs vs over-pair</FormulaLabel> ~45–50 % <FormulaMuted>proche du flip</FormulaMuted><br/>
+  <FormulaLabel>Combo draw (couleur + quinte) vs over-pair</FormulaLabel> ~54–60 % <FormulaMuted>favorite légère</FormulaMuted><br/>
+  <FormulaLabel>Top paire vs 2 overcards</FormulaLabel> ~65 %<br/>
+  <FormulaLabel>Set vs over-pair</FormulaLabel> ~90 %
+</Formula>
+
+<Prose>
+
+Le piège est ici : le combo draw *paraît* immense (« 15 outs ! ») mais ne vaut que ~55 %. Le tirage couleur nu, lui, est exactement ce que la règle dit — 36 % — parce que 9 outs est précisément la zone où 4&2 ne ment pas.
+
+</Prose>
+
+<SectionHeader num="05" label="La calibration" title={<>Ton biais <em>a une signature.</em></>} />
+
+<Prose>
+
+Deux biais cognitifs structurent l&apos;erreur de presque tout le monde :
+
+**Sur-optimisme sur les tirages.** On voit le potentiel, pas la probabilité. On gonfle ses tirages combinés. **Sur-prudence sur les mains faites.** Une top paire « pourrait être battue », alors on la sous-évalue contre deux overcards.
+
+Le drill M2.2 mesure ton erreur *signée* — pas juste « faux », mais *« +7 % »* ou *« −4 % »*. Sur cent spots, le signe moyen révèle ta signature : es-tu un optimiste des tirages ? un timoré des paires ? La donnée ne ment pas ; l&apos;intuition, si.
+
+</Prose>
+
+<Mnemonic keyText="Paire ~52 · gros tirage ~45">
+Deux ancres pour tout caler : contre deux overs, ta paire est *à peine* favorite (~52). Avec un gros tirage, tu es *à peine* underdog (~45). Le reste s&apos;interpole.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges classiques" title={<>Trois confusions <em>coûteuses.</em></>} />
+
+<Prose>
+
+**1. Equity ≠ fold equity.** L&apos;equity ne compte que l&apos;abattage. Elle ignore les fois où l&apos;adversaire se couche — c&apos;est un autre calcul, un autre module.
+
+**2. Equity vs main ≠ equity vs range.** Contre une main précise, le chiffre est exact. Contre un range, il faut moyenner sur toutes ses mains possibles — souvent très différent.
+
+**3. Equity brute ≠ equity réalisée.** 55 % au flop ne devient pas 55 % du pot final : hors de position, sans capacité de relancer, tu réalises moins que ton equity. *La carte ne sait pas que tu es mal placé — mais le résultat, si.*
+
+</Prose>
+
+<LifeLink title="L'écart entre intuition et mesure est ta véritable performance.">
+
+Un manager qui annonce *« ce projet a 80 % de chances »* et se trompe une fois sur deux n&apos;a pas un problème d&apos;intelligence — il a un problème de **calibration**. Les meilleurs décideurs ne sont pas ceux qui prédisent le plus haut : ce sont ceux dont les *« 70 % »* arrivent vraiment 70 % du temps.
+
+La seule façon de calibrer est de prédire *puis de mesurer*, en boucle. Le drill M2.2 est exactement ça : tu annonces une equity, on te donne la vraie, l&apos;écart signé s&apos;accumule. Au bout de cent répétitions, tu ne connais pas seulement le poker — *tu te connais toi*. C&apos;est transférable à toute décision sous incertitude.
+
+</LifeLink>

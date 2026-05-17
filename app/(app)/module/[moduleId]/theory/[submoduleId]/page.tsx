@@ -16,6 +16,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m1-3": () => import("@/content/theory/m1-3.mdx"),
   "m1-4": () => import("@/content/theory/m1-4.mdx"),
   "m2-1": () => import("@/content/theory/m2-1.mdx"),
+  "m2-2": () => import("@/content/theory/m2-2.mdx"),
 };
 
 function TheoryContent() {
@@ -307,6 +308,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "La règle des 4 est exacte pour ~8 outs. Au-delà, elle surestime (15 outs × 4 = 60 %, vraie equity ≈ 54 %). Un ajustement simple : retirer (outs - 8) du résultat.",
+    },
+  ],
+
+  "m2-2": [
+    {
+      question: "Quelle est l'equity approximative de AKo face à 77 préflop ?",
+      options: [
+        { letter: "A", text: "30 % (AKo dominé)" },
+        { letter: "B", text: "47 % (77 légèrement favorite)" },
+        { letter: "C", text: "60 % (AKo favorite)" },
+        { letter: "D", text: "80 % (77 largement favorite)" },
+      ],
+      correctLetter: "B",
+      explanation: "AKo vs 77 est ~47/53 : la paire est légèrement favorite, mais le matchup est proche du coin flip. Cette ancre est essentielle pour calibrer l'intuition contre les paires moyennes.",
+    },
+    {
+      question: "Tu as un tirage couleur nu (9 outs) au flop contre une over-pair. Quelle est ton equity précise ?",
+      options: [
+        { letter: "A", text: "~25 %" },
+        { letter: "B", text: "~36 %" },
+        { letter: "C", text: "~45 %" },
+        { letter: "D", text: "~50 %" },
+      ],
+      correctLetter: "B",
+      explanation: "Tirage couleur nu = 9 outs propres. Equity flop ≈ outs × 4 = 36 %. La règle 4&2 est ici exacte parce qu'on a 9 outs (la formule corrigée outs × 4 - (outs - 8) donne 36 - 1 = 35 %, très proche).",
+    },
+    {
+      question: "Quelle erreur de calibration est la plus typique chez un joueur intermédiaire ?",
+      options: [
+        { letter: "A", text: "Sous-estimer ses paires faites." },
+        { letter: "B", text: "Surestimer ses tirages combinés (flush + straight)." },
+        { letter: "C", text: "Sous-estimer ses tirages couleur." },
+        { letter: "D", text: "Surestimer ses over-pairs sur boards humides." },
+      ],
+      correctLetter: "B",
+      explanation: "Les tirages combinés sont attirants visuellement (« 15 outs ! ») mais la règle 4 × 15 = 60 % surestime de ~6 points. La vraie equity est ~54 %. Le biais d'optimisme amplifie cette erreur en table.",
     },
   ],
 };
