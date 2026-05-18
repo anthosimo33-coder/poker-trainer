@@ -242,4 +242,28 @@ test.describe("Drill M1.1 — flow complet", () => {
       page.locator('[title="AA"], [title="KK"]').first()
     ).toBeVisible({ timeout: 15_000 });
   });
+
+  test("M3.1 — flow complet push/fold avec saisie décomposée", async ({ page }) => {
+    await page.goto("/module/m3/theory/m3-1");
+    await expect(
+      page.getByText(/Push.fold sub-15bb|Push.fold preflop/i)
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (cf. S6b/S6c/S6d) : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m3-1/);
+    // Saisie décomposée : P(fold) + Equity vs call range (timeout 15s : gate).
+    await expect(page.getByText(/P\(fold\)/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Equity vs call range/i)).toBeVisible();
+  });
 });

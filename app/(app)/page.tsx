@@ -54,8 +54,13 @@ const MODULES: ModuleDef[] = [
     badge: "M·III",
     title: "EV de décisions composites",
     desc: "Push/fold, 3bet, check-raise — pondération multi-branches",
-    available: false,
-    submodules: [],
+    available: true,
+    submodules: [
+      { slug: "m3.1", urlSlug: "m3-1", title: "Push/fold sub-15bb", available: true },
+      { slug: "m3.2", urlSlug: "m3-2", title: "Fold equity et décomposition", available: false },
+      { slug: "m3.3", urlSlug: "m3-3", title: "EV composites multi-branches", available: false },
+      { slug: "m3.4", urlSlug: "m3-4", title: "Check-raise et lignes complexes", available: false },
+    ],
   },
   {
     slug: "m4",

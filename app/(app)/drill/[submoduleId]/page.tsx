@@ -15,6 +15,7 @@ import type { OutsSpot } from "@/lib/poker/spot-generators/m2-1-outs";
 import type { EquitySpot } from "@/lib/poker/spot-generators/m2-2-equity";
 import type { MultiwaySpot } from "@/lib/poker/spot-generators/m2-3-multiway";
 import type { VsRangeSpot } from "@/lib/poker/spot-generators/m2-4-vs-range";
+import type { PushFoldSpot } from "@/lib/poker/spot-generators/m3-1-push-fold";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -39,6 +40,8 @@ interface UserAnswer {
   outsInput: string;
   equityInput: string;
   equityHu: string;
+  pFoldInput: string;
+  equityCallInput: string;
   decision: Decision;
 }
 
@@ -50,6 +53,8 @@ const EMPTY_ANSWER: UserAnswer = {
   outsInput: "",
   equityInput: "",
   equityHu: "",
+  pFoldInput: "",
+  equityCallInput: "",
   decision: null,
 };
 
@@ -98,9 +103,18 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
   return "villain1Cards" in s && s.submoduleSlug === "m2.3";
 }
 // VsRangeSpot (M2.4) : discriminé par `villainRangeNotation` + submoduleSlug.
-// Testé EN PREMIER : isVsRange → isMultiway → isEquity → isOuts → isImplied.
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
+}
+// PushFoldSpot (M3.1) : discriminé par `villainCallRangeNotation` + heroStack +
+// submoduleSlug. Testé EN PREMIER :
+// isPushFold → isVsRange → isMultiway → isEquity → isOuts → isImplied.
+function isPushFold(s: GenericSpot): s is PushFoldSpot {
+  return (
+    "villainCallRangeNotation" in s &&
+    "heroStack" in s &&
+    s.submoduleSlug === "m3.1"
+  );
 }
 
 // ---- Scoring nuancé M2.2 ----
@@ -146,6 +160,89 @@ function gradeM22(
   return { isCorrect, level, signedError, errorLabel, errorColor };
 }
 
+// ---- M3.1 — EV push/fold : calcul live + scoring sur l'erreur d'EV (bb) ----
+function computeUserEV(
+  pFoldPct: number,
+  equityPct: number,
+  heroStack: number,
+  potBefore: number
+): number {
+  const pFold = pFoldPct / 100;
+  const pCall = 1 - pFold;
+  const equity = equityPct / 100;
+  const callAmount = heroStack;
+  const netGainIfWin = potBefore + callAmount;
+  const lossIfLose = callAmount;
+  return (
+    pFold * potBefore +
+    pCall * (equity * netGainIfWin - (1 - equity) * lossIfLose)
+  );
+}
+
+function gradeM31(
+  userPFoldPct: number,
+  userEquityPct: number,
+  spot: PushFoldSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  userEV: number;
+  trueEV: number;
+  pFoldError: number;
+  equityError: number;
+} {
+  const userEV = computeUserEV(
+    userPFoldPct,
+    userEquityPct,
+    spot.heroStack,
+    spot.potBefore
+  );
+  const trueEV = spot.expected.evBb;
+  const evError = Math.round((userEV - trueEV) * 100) / 100;
+  const absErr = Math.abs(evError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 0.3) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 0.8) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 1.5) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 0.8;
+  const sign = evError > 0 ? "+" : "";
+  const dir = evError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 0.3
+      ? "Excellent"
+      : absErr <= 0.8
+      ? `Juste (${sign}${evError} bb)`
+      : absErr <= 1.5
+      ? `Proche (${sign}${evError} bb ${dir})`
+      : `Faux (${sign}${evError} bb ${dir})`;
+  return {
+    isCorrect,
+    level,
+    signedError: evError,
+    errorColor,
+    errorLabel,
+    userEV,
+    trueEV,
+    pFoldError: Math.round((userPFoldPct - spot.expected.pFold * 100) * 10) / 10,
+    equityError:
+      Math.round((userEquityPct - spot.expected.equityVsCallRange) * 10) / 10,
+  };
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -163,6 +260,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m2.2": "Equity heads-up · Sous-module 2",
   "m2.3": "Equity multiway · Sous-module 3",
   "m2.4": "Equity vs range · Sous-module 4",
+  "m3.1": "Push/fold sub-15bb · Sous-module 1",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -174,6 +272,12 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isPushFold(spot)) {
+    return (
+      parseAnswerNumber(a.pFoldInput) !== null &&
+      parseAnswerNumber(a.equityCallInput) !== null
+    );
+  }
   if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
     return parseAnswerNumber(a.equityHu) !== null;
   }
@@ -203,6 +307,13 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isPushFold(spot)) {
+    // Correction dédiée (PushFoldCorrectionPanel) ; ici seulement isCorrect.
+    const pf = parseAnswerNumber(a.pFoldInput);
+    const eq = parseAnswerNumber(a.equityCallInput);
+    if (pf === null || eq === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM31(pf, eq, spot).isCorrect, steps: [] };
+  }
   if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
     // Rendu de correction dédié (panel M2.2/M2.3) ; ici on ne fournit que
     // isCorrect pour handleValidate. Steps vides (non rendus pour ces modes).
@@ -486,6 +597,7 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isPushFold(spot)) return null;
   if (isVsRange(spot)) return null;
   if (isMultiway(spot)) return null;
   if (isEquity(spot)) return null;
@@ -684,7 +796,14 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
+    if (isPushFold(spot)) {
+      // signedError = erreur d'EV en bb (la métrique business du module).
+      const pf = parseAnswerNumber(answer.pFoldInput);
+      const eq = parseAnswerNumber(answer.equityCallInput);
+      if (pf !== null && eq !== null) {
+        signedError = gradeM31(pf, eq, spot).signedError;
+      }
+    } else if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
       const ue = parseAnswerNumber(answer.equityHu);
       if (ue !== null) {
         signedError = Math.round((ue - spot.expected.equity) * 10) / 10;
@@ -762,7 +881,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isVsRange(spot) ? (
+        {isPushFold(spot) ? (
+          <PushFoldTable spot={spot} />
+        ) : isVsRange(spot) ? (
           <VsRangeTable spot={spot} />
         ) : isMultiway(spot) ? (
           <MultiwayTable spot={spot} />
@@ -880,6 +1001,83 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M3.1 — saisie décomposée : P(fold) + equity vs call range, EV live.
+  if (isPushFold(spot)) {
+    const pf = parseAnswerNumber(answer.pFoldInput);
+    const eq = parseAnswerNumber(answer.equityCallInput);
+    const liveEv =
+      pf !== null && eq !== null
+        ? computeUserEV(pf, eq, spot.heroStack, spot.potBefore)
+        : null;
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Décompose l&apos;EV
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Push ou fold ?
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          Estime les deux composants. L&apos;EV se recompose en direct.
+        </p>
+        <Field
+          label="P(fold) du vilain"
+          hint="En % — proba qu'il jette ton push"
+          value={answer.pFoldInput}
+          onChange={(v) => setAnswer({ ...answer, pFoldInput: v })}
+          placeholder="ex. 78"
+        />
+        <Field
+          label="Equity vs call range"
+          hint="En % — ton equity s'il call"
+          value={answer.equityCallInput}
+          onChange={(v) => setAnswer({ ...answer, equityCallInput: v })}
+          placeholder="ex. 38"
+        />
+        <div
+          className="rounded p-3.5 mb-1"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            EV calculée avec tes valeurs
+          </div>
+          <div
+            className="text-2xl font-mono font-semibold leading-none"
+            style={{
+              color:
+                liveEv === null
+                  ? "var(--text-faint)"
+                  : liveEv >= 0
+                  ? "var(--green)"
+                  : "var(--red)",
+            }}
+          >
+            {liveEv === null
+              ? "—"
+              : `${liveEv >= 0 ? "+" : ""}${liveEv.toFixed(2)} bb`}
+          </div>
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M2.4 — un seul champ : equity moyenne de la main du héros vs le range.
   if (isVsRange(spot)) {
     return (
@@ -1201,6 +1399,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isPushFold(spot)) {
+    return <PushFoldCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isVsRange(spot)) {
     return <VsRangeCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -1731,6 +1932,175 @@ function VsRangeCorrectionPanel({
 
       <div className="mt-4">
         <RangeDisplay notation={spot.villainRangeNotation} />
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.1 — table push/fold (hero + scénario + call range) =====
+function PfInfo({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded p-3" style={{ background: "rgba(0,0,0,0.2)", border: "0.5px solid var(--border)" }}>
+      <div className="font-mono uppercase tracking-wider text-text-faint mb-1" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+        {label}
+      </div>
+      <div className="font-semibold" style={{ fontSize: 16 }}>{value}</div>
+    </div>
+  );
+}
+
+function PushFoldTable({ spot }: { spot: PushFoldSpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-green" style={{ boxShadow: "0 0 0 3px var(--green-glow)" }} />
+          Push all-in · sub-15bb
+        </div>
+        <div className="text-xs font-mono text-text-faint">
+          {spot.hasAntes ? "avec antes" : "sans antes"}
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Ta main
+        </div>
+        <div className="flex gap-2">
+          {spot.heroCards.map((c, i) => (
+            <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-5">
+        <PfInfo label="Position" value={spot.heroPosition} />
+        <PfInfo label="Stack" value={`${spot.heroStack} bb`} />
+        <PfInfo label="Vilain" value={spot.villainPosition} />
+        <PfInfo label="Pot avant" value={`${spot.potBefore} bb`} />
+      </div>
+
+      <div className="mb-5">
+        <RangeDisplay
+          notation={spot.villainCallRangeNotation}
+          label={`Call range : ${spot.villainCallRangeLabel}`}
+          comboCount={spot.expected.combosInCallRange}
+        />
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Tu pushes all-in {spot.heroStack} bb depuis {spot.heroPosition}. Le vilain{" "}
+          {spot.villainPosition} call avec le range ci-dessus. Décompose l&apos;EV du
+          push.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PushFoldCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: PushFoldSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const pf = parseAnswerNumber(answer.pFoldInput) ?? 0;
+  const eq = parseAnswerNumber(answer.equityCallInput) ?? 0;
+  const g = gradeM31(pf, eq, spot);
+  const e = spot.expected;
+  const truePFoldPct = Math.round(e.pFold * 1000) / 10;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV de ta saisie</div>
+          <div className="text-3xl font-semibold font-mono leading-none">
+            {g.userEV >= 0 ? "+" : ""}
+            {g.userEV.toFixed(2)} bb
+          </div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {g.trueEV >= 0 ? "+" : ""}
+            {g.trueEV.toFixed(2)} bb
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>P(fold)</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pf)} · vrai {fmtPercent(truePFoldPct)}
+        </Mono>{" "}
+        <span className="text-text-muted">(écart {g.pFoldError >= 0 ? "+" : ""}{g.pFoldError} pts)</span>
+        <br />
+        <Lbl>Equity vs call</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(eq)} · vrai {fmtPercent(e.equityVsCallRange)}
+        </Mono>{" "}
+        <span className="text-text-muted">(écart {g.equityError >= 0 ? "+" : ""}{g.equityError} pts)</span>
+        <br />
+        <Lbl>Hero</Lbl> <Mono>{spot.heroCards.join(" ")}</Mono> ·{" "}
+        <Mono>{spot.heroStack}bb {spot.heroPosition}</Mono>
+        <br />
+        <Lbl>Call range</Lbl> <Mono>{spot.villainCallRangeLabel}</Mono>{" "}
+        <Mono className="!text-purple-300">({e.combosInCallRange} combos)</Mono>
+        <br />
+        <Lbl>Pot final si call</Lbl>{" "}
+        <Mono>{(spot.potBefore + 2 * spot.heroStack).toFixed(1)} bb</Mono>
+        <br />
+        <Lbl>EV vraie</Lbl>{" "}
+        <Mono className="!text-purple-300">
+          {e.evBb >= 0 ? "+" : ""}
+          {e.evBb} bb
+        </Mono>
+      </FormulaBox>
+
+      <div className="mt-4">
+        <RangeDisplay notation={spot.villainCallRangeNotation} />
       </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">

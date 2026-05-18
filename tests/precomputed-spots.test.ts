@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import spots from "@/content/spots/m2-2.json";
 import spots3way from "@/content/spots/m2-3.json";
+import spots31 from "@/content/spots/m3-1.json";
 
 describe("M2.2 precomputed spots", () => {
   it("contient au moins 100 spots", () => {
@@ -53,5 +54,30 @@ describe("M2.3 precomputed spots", () => {
       (s) => s.expected.equity >= 20 && s.expected.equity <= 80
     );
     expect(inBand.length / spots3way.length).toBeGreaterThan(0.6);
+  });
+});
+
+describe("M3.1 precomputed spots", () => {
+  it("contient au moins 100 spots", () => {
+    expect(spots31.length).toBeGreaterThanOrEqual(100);
+  });
+
+  it("toutes les EV sont dans une plage réaliste (-5 à +10 bb)", () => {
+    for (const s of spots31) {
+      expect(s.expected.evBb).toBeGreaterThan(-5);
+      expect(s.expected.evBb).toBeLessThan(10);
+    }
+  });
+
+  it("toutes les P(fold) sont entre 0 et 1", () => {
+    for (const s of spots31) {
+      expect(s.expected.pFold).toBeGreaterThanOrEqual(0);
+      expect(s.expected.pFold).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("distribution EV équilibrée (au moins 30% dans bande ±1 bb)", () => {
+    const inBand = spots31.filter((s) => Math.abs(s.expected.evBb) <= 1);
+    expect(inBand.length / spots31.length).toBeGreaterThan(0.3);
   });
 });

@@ -6,6 +6,7 @@ import { generateOutsSpot } from "./m2-1-outs";
 import { generateEquitySpot } from "./m2-2-equity";
 import { generateMultiwaySpot } from "./m2-3-multiway";
 import { generateVsRangeSpot } from "./m2-4-vs-range";
+import { generatePushFoldSpot } from "./m3-1-push-fold";
 import type { GenericSpot } from "./types";
 
 export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
@@ -17,6 +18,7 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m2.2": generateEquitySpot,
   "m2.3": generateMultiwaySpot,
   "m2.4": generateVsRangeSpot,
+  "m3.1": generatePushFoldSpot,
 };
 
 export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {

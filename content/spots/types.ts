@@ -49,3 +49,23 @@ export interface PrecomputedM24Spot {
     comboCount: number;
   };
 }
+
+export interface PrecomputedM31Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: "UTG" | "MP" | "CO" | "BTN" | "SB";
+  heroStack: number;
+  villainPosition: "BB" | "BTN" | "SB" | "CO";
+  villainCallRangeSlug: string;
+  villainCallRangeLabel: string;
+  villainCallRangeNotation: string;
+  potBefore: number;
+  hasAntes: boolean;
+  scenarioLabel: string;
+  expected: {
+    pFold: number;
+    equityVsCallRange: number;
+    evBb: number;
+    combosInCallRange: number;
+  };
+}

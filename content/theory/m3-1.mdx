@@ -1,0 +1,105 @@
+---
+slug: m3-1
+moduleSlug: m3
+submoduleSlug: m3.1
+title: Push/fold sub-15bb
+subtitle: La première vraie monnaie : les chips.
+order: 1
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module III · Sous-module 1 / 4
+  </div>
+
+# Push/fold sub-15bb.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La première vraie monnaie : les chips.</em> Equity et pot odds sont des composants. L&apos;EV est ce que tu gagnes, en grosses blindes, à long terme.
+</p>
+</div>
+
+<WhyBlock title="L'EV est la seule métrique qui se compte en chips. Tout le reste est intermédiaire.">
+
+Equity, pot odds, fold equity — ce sont des *pièces*. L&apos;**espérance de valeur** (EV) est l&apos;assemblage : ce que tu gagnes *en moyenne* par décision, mesuré en grosses blindes.
+
+Push EV **+2.3 bb** = à long terme, ce push te rapporte 2.3 bb à chaque fois. Push EV **−0.5 bb** = il te coûte 0.5 bb à chaque fois. C&apos;est la seule monnaie réelle du poker : tout le module M·I et M·II construisait les pièces, M·III les assemble en valeur.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="Le pont" title={<>Des pourcentages <em>aux chips.</em></>} />
+
+<Prose>
+
+M·I et M·II calculaient des *probabilités* (pot odds, equity). M·III calcule des *chips* : combien tu gagnes ou perds en moyenne par décision. La formule canonique du push tout-in préflop :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>EV push</FormulaLabel> P(fold) × pot_avant_push + P(call) × [equity × gain_si_win − (1−equity) × call]
+  <br />
+  <FormulaMuted>Deux termes pondérés : ce que tu prends sans combat, ce que tu combats à sa vraie valeur.</FormulaMuted>
+</Formula>
+
+<SectionHeader num="03" label="Décomposer" title={<>Cinq termes, <em>une décision.</em></>} />
+
+<Prose>
+
+**`P(fold)`** — proba que le vilain jette : tu ramasses le pot avant push (blinds + antes). **`P(call)`** — proba qu&apos;il paie : abattage. **`equity_vs_call_range`** — ton equity contre le range *avec lequel il call*, pas son range total. **`call_amount`** — ta mise (bornée au plus petit stack). **`pot_final`** = pot avant push + 2 × call.
+
+</Prose>
+
+<SectionHeader num="04" label="Le call range" title={<>Pas son range. <em>Son call range.</em></>} />
+
+<Prose>
+
+Subtilité critique : on ne calcule *pas* l&apos;equity vs le range total du vilain. On la calcule vs le range avec lequel il **call spécifiquement** ton push.
+
+Un vilain peut jouer 30 % des mains mais ne *call un all-in* qu&apos;avec 8 % (les premiums). Ton equity vs 30 % large ≠ ton equity vs 8 % tight. C&apos;est *pourquoi* pusher `72o` peut être profitable : tu gagnes ~92 % du temps par fold, tu perds gros 8 % du temps — la moyenne dépend de la balance, pas de la force de la main.
+
+</Prose>
+
+<SectionHeader num="05" label="Patterns" title={<>EV <em>à mémoriser.</em></>} />
+
+<Formula>
+  <FormulaLabel>AA push SB 10bb vs BB standard</FormulaLabel> ≈ <K>+4.8 bb</K><br/>
+  <FormulaLabel>AKs push SB 10bb</FormulaLabel> ≈ <K>+2.5 bb</K><br/>
+  <FormulaLabel>77 push SB 10bb</FormulaLabel> ≈ <K>+1.4 bb</K> <FormulaMuted>(race + fold equity)</FormulaMuted><br/>
+  <FormulaLabel>K9o push SB 10bb</FormulaLabel> ≈ <K>+0.2 bb</K> <FormulaMuted>(marginal)</FormulaMuted><br/>
+  <FormulaLabel>72o push SB 10bb</FormulaLabel> ≈ <K>−1.5 bb</K> <FormulaMuted>(mauvais)</FormulaMuted><br/>
+  <FormulaLabel>72o push SB 5bb</FormulaLabel> ≈ <K>+0.3 bb</K> <FormulaMuted>(le stack court change tout)</FormulaMuted>
+</Formula>
+
+<SectionHeader num="06" label="La fold equity" title={<>Le stack <em>commande tout.</em></>} />
+
+<Prose>
+
+Plus le stack est court, plus le vilain doit call large (les pot odds explosent). À **5 bb** : il call ~50 % du deck, ta fold equity s&apos;effondre — mais ton equity vs ce range large remonte (n&apos;importe quel A bat la moitié du deck). *Push any two* devient parfois +EV. À **12 bb+** : il ne call qu&apos;avec 8-12 % ; la fold equity domine, ton equity vs call range importe peu — tu pushes large parce qu&apos;il *fold* large.
+
+</Prose>
+
+<Mnemonic keyText="EV = fold × pot + call × SD">
+La formule en une ligne. Deux termes additionnés selon les probabilités : le pot que tu *prends* sans combat, plus le pot que tu *combats* à sa valeur réelle.
+</Mnemonic>
+
+<SectionHeader num="07" label="Les pièges" title={<>Quatre erreurs <em>de chips.</em></>} />
+
+<Prose>
+
+**1. P(fold) total ≠ P(fold) du push.** Il fold 80 % à un raise mais 50 % à un all-in : les pot odds ne sont pas les mêmes.
+
+**2. Sous-estimer l&apos;equity vs call range.** Tu fixes « AA me bat » au lieu de moyenner sur tout le call range.
+
+**3. Ignorer la stack size.** 10bb ≠ 8bb ≠ 12bb : les call ranges adverses bougent à chaque palier.
+
+**4. Oublier les antes.** ~1 bb d&apos;antes au pot avant push peut transformer un break-even en +EV.
+
+</Prose>
+
+<LifeLink title="L'EV est la métrique des choix sous incertitude.">
+
+Lancer un produit, c&apos;est un calcul d&apos;EV implicite : `P(succès) × gain − P(échec) × coût`. NPV en finance, arbres de décision pondérés en stratégie — la même équation, rarement explicitée. Les décideurs médiocres raisonnent par anecdote (« et si ça rate ? ») ; les bons *écrivent l&apos;équation*.
+
+Le poker MTT est l&apos;école pratique de ce raisonnement : 1000+ calculs d&apos;EV par session, certains justes, d&apos;autres faux, et la table renvoie le score sans pitié. **Explicite l&apos;équation, puis laisse la loi des grands nombres trancher.**
+
+</LifeLink>

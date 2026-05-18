@@ -19,6 +19,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m2-2": () => import("@/content/theory/m2-2.mdx"),
   "m2-3": () => import("@/content/theory/m2-3.mdx"),
   "m2-4": () => import("@/content/theory/m2-4.mdx"),
+  "m3-1": () => import("@/content/theory/m3-1.mdx"),
 };
 
 function TheoryContent() {
@@ -418,6 +419,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "C",
       explanation: "Le biais d'ancrage : « il a peut-être AA » (pire scénario) ou « il bluffe peut-être » (meilleur scénario). Le bon raisonnement est la moyenne sur tout le range. Calibrer cette moyenne est exactement ce que M2.4 entraîne.",
+    },
+  ],
+
+  "m3-1": [
+    {
+      question: "Quelle est la formule canonique de l'EV d'un push all-in ?",
+      options: [
+        { letter: "A", text: "EV = equity × pot" },
+        { letter: "B", text: "EV = P(fold) × pot_avant_push + P(call) × (equity_vs_call_range × pot_final - call_amount × (1-equity))" },
+        { letter: "C", text: "EV = pot odds × equity" },
+        { letter: "D", text: "EV = fold_equity + showdown_equity" },
+      ],
+      correctLetter: "B",
+      explanation: "Deux termes additionnés : (1) ce que tu prends par fold du vilain, pondéré par P(fold). (2) ce que tu gagnes ou perds au showdown si vilain call, pondéré par P(call). C'est la formule de base de tout le module M·III.",
+    },
+    {
+      question: "Tu pushes 72o pour 10bb depuis SB. Vilain BB call avec un range tight (~8% du deck). Pourquoi le push peut être +EV ?",
+      options: [
+        { letter: "A", text: "72o a une bonne equity vs les paires." },
+        { letter: "B", text: "Parce que P(fold) ≈ 92% : tu gagnes le pot avant push 92 fois sur 100, ce qui compense les pertes 8% du temps." },
+        { letter: "C", text: "Parce que 72o a un bon potentiel postflop." },
+        { letter: "D", text: "Parce que le pot est trop gros pour fold." },
+      ],
+      correctLetter: "B",
+      explanation: "C'est tout l'effet de la fold equity. 92% × 1.5bb (pot) + 8% × (~12% × 21bb - 9.5bb) ≈ +1.38 - 0.84 = +0.54 bb. Push profitable malgré une main faible parce que le call range est extrêmement tight. C'est la base du push light en short stack.",
+    },
+    {
+      question: "Tu pushes 5bb depuis SB. Pourquoi tu peux pusher plus large qu'à 10bb ?",
+      options: [
+        { letter: "A", text: "Parce que tu prends plus de risque." },
+        { letter: "B", text: "Parce qu'à 5bb, le vilain BB doit call avec une cote ~3:1, donc avec un range très large (~50% du deck). La fold equity baisse mais ton equity vs le call range augmente — push any two devient parfois profitable." },
+        { letter: "C", text: "Parce que 5bb c'est désespéré." },
+        { letter: "D", text: "Parce que la position SB devient meilleure." },
+      ],
+      correctLetter: "B",
+      explanation: "À 5bb push, vilain BB risque ~4.5bb pour gagner ~6.5bb (pot final). Cote ~1.44:1, equity requise ~41%. Le vilain call ~50% des mains. Hero ne gagne plus par fold (P(fold) ≈ 50%) mais son equity vs un call range large remonte (n'importe quel A est devant la moitié du deck). Push any two peut devenir +EV.",
     },
   ],
 };

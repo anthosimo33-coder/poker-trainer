@@ -223,6 +223,68 @@ export const CANONICAL_RANGES: CanonicalRange[] = [
     notation: "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
     category: "fish",
   },
+
+  // ===== DEFENSE VS PUSH (10) — ce avec quoi un vilain CALL un push all-in =====
+  {
+    slug: "call-vs-push-bb-tight",
+    label: "BB call vs SB push (tight)",
+    notation: "88+, AJs+, AQo+, KQs",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-bb-standard",
+    label: "BB call vs SB push (standard 10bb)",
+    notation: "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-bb-loose",
+    label: "BB call vs SB push (loose, fish)",
+    notation: "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-btn-tight",
+    label: "BTN call vs UTG push 12bb",
+    notation: "TT+, AKs, AKo",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-btn-standard",
+    label: "BTN call vs SB push 10bb",
+    notation: "66+, ATs+, KJs+, AJo+, KQo",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-co-vs-btn",
+    label: "CO call vs BTN push 8bb",
+    notation: "55+, A8s+, KTs+, QJs, AJo+",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-mp-short",
+    label: "MP call vs short stack push",
+    notation: "77+, AJs+, AQo+, KQs",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-sb-tight",
+    label: "SB call vs BTN push (closed action)",
+    notation: "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-bb-vs-btn-15bb",
+    label: "BB call vs BTN push 15bb",
+    notation: "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-push-utg-short",
+    label: "UTG call vs short push (rare)",
+    notation: "TT+, AQs+, AKo",
+    category: "defense",
+  },
 ];
 
 export function getRange(slug: string): CanonicalRange | undefined {

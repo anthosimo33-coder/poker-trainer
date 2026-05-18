@@ -1,0 +1,2862 @@
+[
+  {
+    "id": "m3-1-spot-001",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AA push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 84.3,
+      "evBb": 4.5,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-002",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KK push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 74.7,
+      "evBb": 3.57,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-003",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QQ push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 68.1,
+      "evBb": 2.92,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-004",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JJ push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 61.7,
+      "evBb": 2.3,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-005",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "TT push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 56.4,
+      "evBb": 1.78,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-006",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "99 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 52.3,
+      "evBb": 1.38,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-007",
+    "heroCards": [
+      "8s",
+      "8h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "88 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 49.5,
+      "evBb": 1.11,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-008",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "77 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 47.1,
+      "evBb": 0.87,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-009",
+    "heroCards": [
+      "5s",
+      "5h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "55 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 42.2,
+      "evBb": 0.4,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-010",
+    "heroCards": [
+      "3s",
+      "3h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "33 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 40.5,
+      "evBb": 0.24,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-011",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "22 push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 39.9,
+      "evBb": 0.18,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-012",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKs push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 60.6,
+      "evBb": 2.19,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-013",
+    "heroCards": [
+      "As",
+      "Kh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKo push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 58.6,
+      "evBb": 2,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-014",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQs push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 55.5,
+      "evBb": 1.7,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-015",
+    "heroCards": [
+      "As",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQo push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 53.4,
+      "evBb": 1.49,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-016",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJs push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 50.9,
+      "evBb": 1.25,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-017",
+    "heroCards": [
+      "As",
+      "Jh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJo push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 48.3,
+      "evBb": 1,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-018",
+    "heroCards": [
+      "As",
+      "Ts"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATs push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 46.3,
+      "evBb": 0.8,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-019",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATo push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 43.7,
+      "evBb": 0.55,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-020",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A9s push SB 10bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 42.5,
+      "evBb": 0.43,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-021",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATo push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.5,
+      "evBb": 0.52,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-022",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A9s push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 32.7,
+      "evBb": 0.58,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-023",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A5s push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 33.1,
+      "evBb": 0.6,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-024",
+    "heroCards": [
+      "As",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A2o push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 28.7,
+      "evBb": 0.4,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-025",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQs push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 35.7,
+      "evBb": 0.71,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-026",
+    "heroCards": [
+      "Ks",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQo push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.7,
+      "evBb": 0.53,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-027",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KJs push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 35.2,
+      "evBb": 0.69,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-028",
+    "heroCards": [
+      "Ks",
+      "Td"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KTo push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.1,
+      "evBb": 0.51,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-029",
+    "heroCards": [
+      "Qs",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QJs push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 34.6,
+      "evBb": 0.66,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-030",
+    "heroCards": [
+      "Qs",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QTo push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 30.4,
+      "evBb": 0.47,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-031",
+    "heroCards": [
+      "Js",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JTo push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.7,
+      "evBb": 0.53,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-032",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9s push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 32.9,
+      "evBb": 0.59,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-033",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "98s push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 30.8,
+      "evBb": 0.49,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-034",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "76s push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 30.4,
+      "evBb": 0.47,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-035",
+    "heroCards": [
+      "Tc",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9o push SB 10bb vs BB tight",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 29.5,
+      "evBb": 0.43,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-036",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AA push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 84.7,
+      "evBb": 6.67,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-037",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KK push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 76.2,
+      "evBb": 5.26,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-038",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QQ push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 70.8,
+      "evBb": 4.37,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-039",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JJ push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 66.3,
+      "evBb": 3.63,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-040",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "TT push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 62.3,
+      "evBb": 2.96,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-041",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "99 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 57.7,
+      "evBb": 2.19,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-042",
+    "heroCards": [
+      "8s",
+      "8h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "88 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 54.5,
+      "evBb": 1.67,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-043",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "77 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 52.2,
+      "evBb": 1.29,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-044",
+    "heroCards": [
+      "5s",
+      "5h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "55 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 48.7,
+      "evBb": 0.7,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-045",
+    "heroCards": [
+      "3s",
+      "3h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "33 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 44.9,
+      "evBb": 0.07,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-046",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "22 push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 42.9,
+      "evBb": -0.26,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-047",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKs push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 63.2,
+      "evBb": 3.11,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-048",
+    "heroCards": [
+      "As",
+      "Kh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKo push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 61.2,
+      "evBb": 2.78,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-049",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQs push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 60.1,
+      "evBb": 2.6,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-050",
+    "heroCards": [
+      "As",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQo push SB 10bb vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 57.9,
+      "evBb": 2.24,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-051",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "22 push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 40.9,
+      "evBb": -0.36,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-052",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 61.6,
+      "evBb": 2.83,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-053",
+    "heroCards": [
+      "As",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AKo push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 59.5,
+      "evBb": 2.51,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-054",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 58.1,
+      "evBb": 2.29,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-055",
+    "heroCards": [
+      "As",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQo push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 55.8,
+      "evBb": 1.95,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-056",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 54.4,
+      "evBb": 1.72,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-057",
+    "heroCards": [
+      "As",
+      "Jh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJo push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 52,
+      "evBb": 1.35,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-058",
+    "heroCards": [
+      "As",
+      "Ts"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 50.7,
+      "evBb": 1.15,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-059",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATo push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 48,
+      "evBb": 0.73,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-060",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A9s push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 46.3,
+      "evBb": 0.48,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-061",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A5s push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 43,
+      "evBb": -0.04,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-062",
+    "heroCards": [
+      "As",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A2o push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 37.8,
+      "evBb": -0.84,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-063",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 47.7,
+      "evBb": 0.69,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-064",
+    "heroCards": [
+      "Ks",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQo push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 45.1,
+      "evBb": 0.3,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-065",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-vs-btn-15bb",
+    "villainCallRangeLabel": "BB call vs BTN push 15bb",
+    "villainCallRangeNotation": "33+, A5s+, K9s+, Q9s+, JTs, T9s, A9o+, KJo+, QJo",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KJs push BTN 12bb vs BB",
+    "expected": {
+      "pFold": 0.395,
+      "equityVsCallRange": 44.9,
+      "evBb": 0.26,
+      "combosInCallRange": 240
+    }
+  },
+  {
+    "id": "m3-1-spot-066",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AA push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 84.5,
+      "evBb": 6.14,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-067",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KK push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 74.1,
+      "evBb": 4.64,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-068",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QQ push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 67.8,
+      "evBb": 3.72,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-069",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JJ push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 62.1,
+      "evBb": 2.91,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-070",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "TT push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 57.8,
+      "evBb": 2.28,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-071",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "99 push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 53.6,
+      "evBb": 1.68,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-072",
+    "heroCards": [
+      "8s",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "88 push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 50.8,
+      "evBb": 1.27,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-073",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "77 push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 47.9,
+      "evBb": 0.86,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-074",
+    "heroCards": [
+      "5s",
+      "5h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "55 push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 43.6,
+      "evBb": 0.24,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-075",
+    "heroCards": [
+      "3s",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "villainPosition": "SB",
+    "villainCallRangeSlug": "call-vs-push-sb-tight",
+    "villainCallRangeLabel": "SB call vs BTN push (closed action)",
+    "villainCallRangeNotation": "44+, A7s+, KTs+, QJs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "33 push BTN 15bb vs SB",
+    "expected": {
+      "pFold": 0.542,
+      "equityVsCallRange": 39.5,
+      "evBb": -0.36,
+      "combosInCallRange": 182
+    }
+  },
+  {
+    "id": "m3-1-spot-076",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AKs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 63.2,
+      "evBb": 3.91,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-077",
+    "heroCards": [
+      "As",
+      "Kh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AKo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 61.2,
+      "evBb": 3.57,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-078",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AQs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 59.9,
+      "evBb": 3.34,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-079",
+    "heroCards": [
+      "As",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AQo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 57.8,
+      "evBb": 2.98,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-080",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AJs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 56.9,
+      "evBb": 2.82,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-081",
+    "heroCards": [
+      "As",
+      "Jh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "AJo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 54.7,
+      "evBb": 2.44,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-082",
+    "heroCards": [
+      "As",
+      "Ts"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "ATs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 54.2,
+      "evBb": 2.35,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-083",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "ATo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 51.8,
+      "evBb": 1.93,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-084",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "A9s push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 49.9,
+      "evBb": 1.59,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-085",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "A5s push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 45.5,
+      "evBb": 0.83,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-086",
+    "heroCards": [
+      "As",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "A2o push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 40.2,
+      "evBb": -0.09,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-087",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "KQs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 50.4,
+      "evBb": 1.68,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-088",
+    "heroCards": [
+      "Ks",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "KQo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 47.7,
+      "evBb": 1.21,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-089",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "KJs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 47.5,
+      "evBb": 1.18,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-090",
+    "heroCards": [
+      "Ks",
+      "Td"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "KTo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 42.4,
+      "evBb": 0.29,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-091",
+    "heroCards": [
+      "Qs",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "QJs push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 43.9,
+      "evBb": 0.56,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-092",
+    "heroCards": [
+      "Qs",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "QTo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.2,
+      "evBb": -0.44,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-093",
+    "heroCards": [
+      "Js",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "JTo push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 37.2,
+      "evBb": -0.61,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-094",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "T9s push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.8,
+      "evBb": -0.34,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-095",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 10,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 2.625,
+    "hasAntes": true,
+    "scenarioLabel": "98s push SB 10bb +antes vs BB loose",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.1,
+      "evBb": -0.46,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-096",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQs push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 50.2,
+      "evBb": 0.94,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-097",
+    "heroCards": [
+      "Ks",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQo push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 47.9,
+      "evBb": 0.73,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-098",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KJs push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 47.6,
+      "evBb": 0.71,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-099",
+    "heroCards": [
+      "Ks",
+      "Td"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KTo push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 42.1,
+      "evBb": 0.22,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-100",
+    "heroCards": [
+      "Qs",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QJs push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 43.8,
+      "evBb": 0.37,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-101",
+    "heroCards": [
+      "Qs",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QTo push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.3,
+      "evBb": -0.12,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-102",
+    "heroCards": [
+      "Js",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JTo push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 36.9,
+      "evBb": -0.24,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-103",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9s push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.8,
+      "evBb": -0.07,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-104",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "98s push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.2,
+      "evBb": -0.12,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-105",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "76s push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38,
+      "evBb": -0.14,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-106",
+    "heroCards": [
+      "Tc",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9o push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 35.3,
+      "evBb": -0.38,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-107",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 5,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-loose",
+    "villainCallRangeLabel": "BB call vs SB push (loose, fish)",
+    "villainCallRangeNotation": "22+, A2s+, K7s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "K9o push SB 5bb vs BB (any two zone)",
+    "expected": {
+      "pFold": 0.229,
+      "equityVsCallRange": 38.9,
+      "evBb": -0.06,
+      "combosInCallRange": 306
+    }
+  },
+  {
+    "id": "m3-1-spot-108",
+    "heroCards": [
+      "As",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AQo push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 53.3,
+      "evBb": 1.39,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-109",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJs push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 50.9,
+      "evBb": 1.22,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-110",
+    "heroCards": [
+      "As",
+      "Jh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "AJo push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 48.1,
+      "evBb": 1.03,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-111",
+    "heroCards": [
+      "As",
+      "Ts"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATs push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 46.6,
+      "evBb": 0.92,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-112",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "ATo push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 43.6,
+      "evBb": 0.71,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-113",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A9s push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 42.6,
+      "evBb": 0.64,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-114",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A5s push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 40.6,
+      "evBb": 0.5,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-115",
+    "heroCards": [
+      "As",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "A2o push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 36.2,
+      "evBb": 0.19,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-116",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQs push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 45.7,
+      "evBb": 0.86,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-117",
+    "heroCards": [
+      "Ks",
+      "Qh"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 7,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-standard",
+    "villainCallRangeLabel": "BB call vs SB push (standard 10bb)",
+    "villainCallRangeNotation": "55+, A8s+, KTs+, QTs+, JTs, ATo+, KJo+",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KQo push SB 7bb vs BB standard",
+    "expected": {
+      "pFold": 0.547,
+      "equityVsCallRange": 42.1,
+      "evBb": 0.61,
+      "combosInCallRange": 180
+    }
+  },
+  {
+    "id": "m3-1-spot-118",
+    "heroCards": [
+      "Ks",
+      "Td"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "KTo push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.2,
+      "evBb": 0.66,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-119",
+    "heroCards": [
+      "Qs",
+      "Js"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QJs push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 34.6,
+      "evBb": 0.79,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-120",
+    "heroCards": [
+      "Qs",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "QTo push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 30.5,
+      "evBb": 0.64,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-121",
+    "heroCards": [
+      "Js",
+      "Th"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "JTo push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31.9,
+      "evBb": 0.69,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-122",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9s push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 33,
+      "evBb": 0.73,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-123",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "98s push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 31,
+      "evBb": 0.66,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-124",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "76s push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 30.3,
+      "evBb": 0.63,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-125",
+    "heroCards": [
+      "Tc",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "T9o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 29.5,
+      "evBb": 0.6,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-126",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "K9o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 29,
+      "evBb": 0.59,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-127",
+    "heroCards": [
+      "8s",
+      "7h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "87o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 26.5,
+      "evBb": 0.5,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-128",
+    "heroCards": [
+      "7s",
+      "3h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "73o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 23,
+      "evBb": 0.37,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-129",
+    "heroCards": [
+      "9s",
+      "4h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "94o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 23,
+      "evBb": 0.37,
+      "combosInCallRange": 82
+    }
+  },
+  {
+    "id": "m3-1-spot-130",
+    "heroCards": [
+      "6s",
+      "2h"
+    ],
+    "heroPosition": "SB",
+    "heroStack": 8,
+    "villainPosition": "BB",
+    "villainCallRangeSlug": "call-vs-push-bb-tight",
+    "villainCallRangeLabel": "BB call vs SB push (tight)",
+    "villainCallRangeNotation": "88+, AJs+, AQo+, KQs",
+    "potBefore": 1.5,
+    "hasAntes": false,
+    "scenarioLabel": "62o push SB 8bb vs BB tight (fold equity)",
+    "expected": {
+      "pFold": 0.793,
+      "equityVsCallRange": 23,
+      "evBb": 0.37,
+      "combosInCallRange": 82
+    }
+  }
+]
