@@ -285,6 +285,75 @@ export const CANONICAL_RANGES: CanonicalRange[] = [
     notation: "TT+, AQs+, AKo",
     category: "defense",
   },
+
+  // ===== RANGES TOTAUX VS PUSH (10) — ce avec quoi un vilain « voit » un push
+  // (open / defense complet). La paire totalRange ↔ callRange donne P(fold)
+  // précis : pFold = 1 − call_combos / total_combos. Utilisés par M3.2/M3.3. =====
+  {
+    slug: "total-bb-defense-vs-sb-push-10bb",
+    label: "BB total defense vs SB push 10bb",
+    notation:
+      "22+, A2s+, K7s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 65s, 54s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    category: "defense",
+  },
+  {
+    slug: "total-bb-defense-vs-sb-push-5bb",
+    label: "BB total defense vs SB push 5bb (très large)",
+    notation:
+      "22+, A2s+, K2s+, Q2s+, J2s+, T2s+, 92s+, 82s+, 72s+, 62s+, 52s+, 42s, 32s, A2o+, K2o+, Q3o+, J5o+, T6o+, 95o+, 84o+, 74o+, 63o+, 54o",
+    category: "defense",
+  },
+  {
+    slug: "total-bb-defense-vs-btn-push-12bb",
+    label: "BB total defense vs BTN push 12bb",
+    notation:
+      "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 76s, 65s, A2o+, K9o+, Q9o+, J9o+, T9o",
+    category: "defense",
+  },
+  {
+    slug: "total-btn-call-3bet",
+    label: "BTN total range face 3-bet (call ou 4-bet)",
+    notation: "55+, A9s+, KTs+, QTs+, JTs, T9s, 98s, ATo+, KJo+, QJo",
+    category: "defense",
+  },
+  {
+    slug: "total-co-vs-utg-3bet",
+    label: "CO total range face UTG 3-bet",
+    notation: "TT+, AQs+, AKo, KQs",
+    category: "defense",
+  },
+  {
+    slug: "total-bb-vs-btn-open",
+    label: "BB total continue vs BTN open (call + 3-bet)",
+    notation:
+      "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 65s, 54s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    category: "defense",
+  },
+  {
+    slug: "total-utg-vs-3bet",
+    label: "UTG total continue vs 3-bet (call ou 4-bet)",
+    notation: "99+, AJs+, AQo+, KQs",
+    category: "defense",
+  },
+  {
+    slug: "total-btn-open-vs-cold4bet",
+    label: "BTN total range vs cold 4-bet",
+    notation: "TT+, AJs+, AQo+, KQs",
+    category: "defense",
+  },
+  {
+    slug: "total-bb-vs-co-push",
+    label: "BB total defense vs CO push 12bb",
+    notation:
+      "22+, A2s+, K6s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A4o+, K8o+, Q9o+, J9o+, T9o",
+    category: "defense",
+  },
+  {
+    slug: "total-bb-vs-mp-push",
+    label: "BB total defense vs MP push 10bb",
+    notation: "22+, A2s+, K7s+, Q9s+, J9s+, T9s, 98s, A8o+, KTo+, QTo+, JTo",
+    category: "defense",
+  },
 ];
 
 export function getRange(slug: string): CanonicalRange | undefined {

@@ -1,0 +1,107 @@
+---
+slug: m3-2
+moduleSlug: m3
+submoduleSlug: m3.2
+title: Fold equity et décomposition
+subtitle: La FE est l'arme du joueur sans main.
+order: 2
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module III · Sous-module 2 / 4
+  </div>
+
+# Fold equity et décomposition.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La FE est l&apos;arme du joueur sans main.</em> En M3.1 tu calculais l&apos;EV donnée la P(fold). Ici tu <em>inverses</em> : quelle P(fold) minimum rend le push break-even ?
+</p>
+</div>
+
+<WhyBlock title="La fold equity est l'arme du joueur sans main.">
+
+Quand tu as <K>AA</K>, peu importe la fold equity : tu <em>veux</em> être call. Mais quand tu as <K>72o</K> et que tu pushes 10bb, la fold equity est *tout* ce que tu as.
+
+Comprendre combien de fold equity tu *as besoin* pour rendre un push profitable — et la comparer à combien tu en *as réellement* — c&apos;est savoir quand bluff-push et quand fold. C&apos;est la frontière entre le push light rentable et le suicide.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="L'inversion" title={<>L&apos;inversion <em>mathématique de M3.1.</em></>} />
+
+<Prose>
+
+En M3.1 : `EV = P(fold) × pot + P(call) × evIfCall`. On *donne* P(fold), on calcule l&apos;EV. En M3.2 on fixe `EV = 0` (break-even) et on résout pour P(fold).
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>P(fold) break-even</FormulaLabel> −evIfCall / (pot − evIfCall)
+  <br />
+  <FormulaMuted>Si evIfCall ≥ 0 (le call est déjà +EV) → break-even = 0. Sinon &gt; 0, et plus la main est faible, plus il en faut.</FormulaMuted>
+</Formula>
+
+<SectionHeader num="02" label="L'intuition" title={<>Lire <em>la formule.</em></>} />
+
+<Prose>
+
+Le numérateur **`−evIfCall`** = ce que tu perds en moyenne quand le vilain call. Le dénominateur **`pot − evIfCall`** = ce que tu gagnes par fold *plus* ce que tu évites de perdre par call. Le ratio = la compensation requise par la fold equity. Plus ta main perd cher au showdown, plus le numérateur explose — donc plus tu as besoin qu&apos;il jette.
+
+</Prose>
+
+<SectionHeader num="03" label="Trois zones" title={<>Trois zones <em>de push.</em></>} />
+
+<Formula>
+  <FormulaLabel>Zone 1 — Premium</FormulaLabel> FE requise <K>0 %</K> <FormulaMuted>(AA, KK, QQ vs tight)</FormulaMuted><br/>
+  <FormulaLabel>Zone 2 — Marginale</FormulaLabel> FE requise <K>15-40 %</K> <FormulaMuted>(AJo, KTs, 88, ATo)</FormulaMuted><br/>
+  <FormulaLabel>Zone 3 — Bluff</FormulaLabel> FE requise <K>50-70 %</K> <FormulaMuted>(72o, K2o, 83s)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+**Zone 1** : push à n&apos;importe quelle FE — équivalent à un call, tu veux l&apos;abattage. **Zone 2** : push si FE ≥ seuil, fold sinon. C&apos;est là que la décision est *fine*. **Zone 3** : le *push light* — il ne fonctionne que contre des vilains assez tight pour fold le seuil requis.
+
+</Prose>
+
+<SectionHeader num="04" label="P(fold) réelle" title={<>Estimer <em>la P(fold) du vilain.</em></>} />
+
+<Prose>
+
+La P(fold) réelle = `1 − call_combos / total_combos`. Le `total_combos` est ce avec quoi le vilain *voit* le push (son open range, son range de defense). Exemple : BB defense vs BTN push 10bb — total ≈ 35 % du deck, call ≈ 12 % → P(fold) ≈ `1 − 12/35 ≈ 0.66`. **La décision vit dans l&apos;écart** entre cette P(fold) réelle et la P(fold) break-even.
+
+</Prose>
+
+<SectionHeader num="05" label="Le pattern" title={<>Le pattern <em>à mémoriser.</em></>} />
+
+<Formula>
+  <FormulaLabel>be 0 % · réelle &gt; 50 %</FormulaLabel> <K>push (slam dunk)</K><br/>
+  <FormulaLabel>be 30 % · réelle 60 %</FormulaLabel> <K>push (+EV)</K><br/>
+  <FormulaLabel>be 45 % · réelle 60 %</FormulaLabel> <K>push (juste)</K><br/>
+  <FormulaLabel>be 55 % · réelle 60 %</FormulaLabel> <K>push (marginal)</K><br/>
+  <FormulaLabel>be 60 % · réelle 60 %</FormulaLabel> <K>indifférent</K><br/>
+  <FormulaLabel>be 70 % · réelle 60 %</FormulaLabel> <K>fold</K>
+</Formula>
+
+<Mnemonic keyText="Pas la main, la FE.">
+Push light = pari sur la fold equity. Si tu sais estimer combien tu en as *besoin* et combien tu en as *réellement*, tu sais quand pusher 72o et quand fold A5s. La main ne décide pas — l&apos;écart décide.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges" title={<>Trois erreurs <em>de fold equity.</em></>} />
+
+<Prose>
+
+**1. Sur-estimer la P(fold) réelle.** « Il va sûrement fold » est presque toujours un biais d&apos;optimisme : tu lui donnes ton fold range, pas le sien.
+
+**2. Confondre break-even et profitable.** Break-even = EV 0. Ce n&apos;est *pas* un objectif — tu veux une marge au-dessus du seuil, pas l&apos;atteindre pile.
+
+**3. Oublier l&apos;effective stack.** À 8bb la FE break-even d&apos;une main n&apos;est pas la même qu&apos;à 12bb : les pot odds du vilain bougent, son call range bouge, ton equity vs ce range bouge — tout se déplace ensemble.
+
+</Prose>
+
+<LifeLink title="La FE est le levier du faible.">
+
+En négociation, tu n&apos;as pas toujours la meilleure offre. Mais si tu sais que l&apos;autre partie a *peu d&apos;options*, tu n&apos;as pas besoin de gagner sur les fondamentaux — tu as besoin qu&apos;elle *cède*. C&apos;est exactement la fold equity : ton produit n&apos;est peut-être pas le meilleur, mais ton timing, ton sizing, ta pression peuvent forcer la décision.
+
+Le geste fort, c&apos;est de *quantifier* combien de cession tu as besoin pour rendre ton coup profitable — puis d&apos;estimer honnêtement combien tu en obtiendras. Les meilleurs négociateurs raisonnent en fold equity sans le savoir. Toi, tu vas l&apos;écrire.
+
+</LifeLink>

@@ -266,4 +266,54 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page.getByText(/P\(fold\)/i)).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText(/Equity vs call range/i)).toBeVisible();
   });
+
+  test("M3.2 — flow complet fold equity avec saisie pFoldBreakeven", async ({ page }) => {
+    await page.goto("/module/m3/theory/m3-2");
+    await expect(
+      page.getByText(/Fold equity et décomposition|fold equity/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (cf. S6b/S6c/S6d/S7a) : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m3-2 : réponses correctes B, A, A.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^A/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^A/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m3-2/);
+    // Saisie 1 champ : P(fold) break-even + verdict push +EV/-EV (timeout : gate).
+    await expect(page.getByText(/Quelle FE pour break-even/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/P\(fold\) break-even/i).first()).toBeVisible();
+  });
+
+  test("M3.3 — flow complet EV multi-branches avec saisie 3 champs", async ({ page }) => {
+    await page.goto("/module/m3/theory/m3-3");
+    await expect(
+      page.getByText(/EV composites multi-branches|multi-branches/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m3-3 : réponses correctes B, B, C.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m3-3/);
+    // Saisie décomposée 3 champs : P(fold)+P(call)+P(raise) (timeout : gate).
+    await expect(page.getByText(/Trois branches, une EV/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Somme/i).first()).toBeVisible();
+  });
 });

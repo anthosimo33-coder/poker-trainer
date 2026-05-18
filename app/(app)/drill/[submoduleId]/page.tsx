@@ -16,6 +16,8 @@ import type { EquitySpot } from "@/lib/poker/spot-generators/m2-2-equity";
 import type { MultiwaySpot } from "@/lib/poker/spot-generators/m2-3-multiway";
 import type { VsRangeSpot } from "@/lib/poker/spot-generators/m2-4-vs-range";
 import type { PushFoldSpot } from "@/lib/poker/spot-generators/m3-1-push-fold";
+import type { FoldEquitySpot } from "@/lib/poker/spot-generators/m3-2-fold-equity";
+import type { MultiBranchSpot } from "@/lib/poker/spot-generators/m3-3-multibranch";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -42,6 +44,10 @@ interface UserAnswer {
   equityHu: string;
   pFoldInput: string;
   equityCallInput: string;
+  pFoldBreakevenInput: string;
+  pFoldBranchInput: string;
+  pCallBranchInput: string;
+  pRaiseBranchInput: string;
   decision: Decision;
 }
 
@@ -55,6 +61,10 @@ const EMPTY_ANSWER: UserAnswer = {
   equityHu: "",
   pFoldInput: "",
   equityCallInput: "",
+  pFoldBreakevenInput: "",
+  pFoldBranchInput: "",
+  pCallBranchInput: "",
+  pRaiseBranchInput: "",
   decision: null,
 };
 
@@ -106,9 +116,20 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
 }
+// FoldEquitySpot (M3.2) : discriminé par `villainTotalRangeNotation` +
+// submoduleSlug. PushFoldSpot (M3.1) n'a PAS villainTotalRangeNotation.
+function isFoldEquity(s: GenericSpot): s is FoldEquitySpot {
+  return "villainTotalRangeNotation" in s && s.submoduleSlug === "m3.2";
+}
+// MultiBranchSpot (M3.3) : discriminé par `scenario` + submoduleSlug. Aucun
+// autre spot ne porte `scenario`.
+function isMultiBranch(s: GenericSpot): s is MultiBranchSpot {
+  return "scenario" in s && s.submoduleSlug === "m3.3";
+}
 // PushFoldSpot (M3.1) : discriminé par `villainCallRangeNotation` + heroStack +
-// submoduleSlug. Testé EN PREMIER :
-// isPushFold → isVsRange → isMultiway → isEquity → isOuts → isImplied.
+// submoduleSlug. Ordre des gardes (du plus spécifique au plus large) :
+// isFoldEquity → isMultiBranch → isPushFold → isVsRange → isMultiway →
+// isEquity → isOuts → isImplied.
 function isPushFold(s: GenericSpot): s is PushFoldSpot {
   return (
     "villainCallRangeNotation" in s &&
@@ -243,6 +264,144 @@ function gradeM31(
   };
 }
 
+// ---- M3.2 — fold equity isolée : scoring sur l'erreur de pFoldBreakeven (pts %) ----
+function gradeM32(
+  userPFoldBePct: number,
+  spot: FoldEquitySpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  truePct: number;
+  pFoldActualPct: number;
+  userVerdict: "+EV" | "break-even" | "-EV";
+} {
+  const truePct = Math.round(spot.expected.pFoldBreakEven * 1000) / 10;
+  const signedError = Math.round((userPFoldBePct - truePct) * 10) / 10;
+  const absErr = Math.abs(signedError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 3) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 7) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 15) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 7;
+  const sign = signedError > 0 ? "+" : "";
+  const dir = signedError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 3
+      ? "Excellent"
+      : absErr <= 7
+      ? `Juste (${sign}${signedError} %)`
+      : absErr <= 15
+      ? `Proche (${sign}${signedError} % ${dir})`
+      : `Faux (${sign}${signedError} % ${dir})`;
+  const pFoldActualPct = Math.round(spot.expected.pFoldActual * 1000) / 10;
+  // Verdict avec la FE réelle (donnée) comparée au breakeven saisi par l'user.
+  const userVerdict: "+EV" | "break-even" | "-EV" =
+    pFoldActualPct > userPFoldBePct + 0.5
+      ? "+EV"
+      : pFoldActualPct < userPFoldBePct - 0.5
+      ? "-EV"
+      : "break-even";
+  return {
+    isCorrect,
+    level,
+    signedError,
+    errorColor,
+    errorLabel,
+    truePct,
+    pFoldActualPct,
+    userVerdict,
+  };
+}
+
+// ---- M3.3 — EV composites : EV = Σ Pᵢ × EVᵢ, scoring sur l'erreur d'EV (bb) ----
+function computeUserBranchEV(
+  pFoldPct: number,
+  pCallPct: number,
+  pRaisePct: number,
+  spot: MultiBranchSpot
+): number {
+  return (
+    (pFoldPct / 100) * spot.expected.evIfFold +
+    (pCallPct / 100) * spot.expected.evIfCall +
+    (pRaisePct / 100) * spot.expected.evIfFourBet
+  );
+}
+
+function gradeM33(
+  pFoldPct: number,
+  pCallPct: number,
+  pRaisePct: number,
+  spot: MultiBranchSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  userEV: number;
+  trueEV: number;
+} {
+  const userEV = computeUserBranchEV(pFoldPct, pCallPct, pRaisePct, spot);
+  const trueEV = spot.expected.evBb;
+  const evError = Math.round((userEV - trueEV) * 100) / 100;
+  const absErr = Math.abs(evError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 0.3) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 0.8) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 1.5) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 0.8;
+  const sign = evError > 0 ? "+" : "";
+  const dir = evError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 0.3
+      ? "Excellent"
+      : absErr <= 0.8
+      ? `Juste (${sign}${evError} bb)`
+      : absErr <= 1.5
+      ? `Proche (${sign}${evError} bb ${dir})`
+      : `Faux (${sign}${evError} bb ${dir})`;
+  return { isCorrect, level, signedError: evError, errorColor, errorLabel, userEV, trueEV };
+}
+
+// Libellés des 3 branches M3.3 selon le scénario (l'arbre n'est pas le même).
+function m33BranchLabels(
+  scenario: MultiBranchSpot["scenario"]
+): [string, string, string] {
+  switch (scenario) {
+    case "iso-vs-limp":
+      return ["P(fold)", "P(call)", "P(3-bet)"];
+    case "cold-call-vs-open":
+      return ["P(flop défav.)", "P(flop neutre)", "P(flop fav.)"];
+    default:
+      return ["P(fold)", "P(call)", "P(4-bet)"];
+  }
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -261,6 +420,8 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m2.3": "Equity multiway · Sous-module 3",
   "m2.4": "Equity vs range · Sous-module 4",
   "m3.1": "Push/fold sub-15bb · Sous-module 1",
+  "m3.2": "Fold equity et décomposition · Sous-module 2",
+  "m3.3": "EV composites multi-branches · Sous-module 3",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -272,6 +433,17 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isFoldEquity(spot)) {
+    return parseAnswerNumber(a.pFoldBreakevenInput) !== null;
+  }
+  if (isMultiBranch(spot)) {
+    const pf = parseAnswerNumber(a.pFoldBranchInput);
+    const pc = parseAnswerNumber(a.pCallBranchInput);
+    const pr = parseAnswerNumber(a.pRaiseBranchInput);
+    if (pf === null || pc === null || pr === null) return false;
+    // Saisie décomposée : la somme des 3 branches doit faire 100 % (± 1).
+    return Math.abs(pf + pc + pr - 100) <= 1;
+  }
   if (isPushFold(spot)) {
     return (
       parseAnswerNumber(a.pFoldInput) !== null &&
@@ -307,6 +479,20 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isFoldEquity(spot)) {
+    // Correction dédiée (FoldEquityCorrectionPanel) ; ici seulement isCorrect.
+    const be = parseAnswerNumber(a.pFoldBreakevenInput);
+    if (be === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM32(be, spot).isCorrect, steps: [] };
+  }
+  if (isMultiBranch(spot)) {
+    // Correction dédiée (MultiBranchCorrectionPanel) ; ici seulement isCorrect.
+    const pf = parseAnswerNumber(a.pFoldBranchInput);
+    const pc = parseAnswerNumber(a.pCallBranchInput);
+    const pr = parseAnswerNumber(a.pRaiseBranchInput);
+    if (pf === null || pc === null || pr === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM33(pf, pc, pr, spot).isCorrect, steps: [] };
+  }
   if (isPushFold(spot)) {
     // Correction dédiée (PushFoldCorrectionPanel) ; ici seulement isCorrect.
     const pf = parseAnswerNumber(a.pFoldInput);
@@ -597,6 +783,8 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isFoldEquity(spot)) return null;
+  if (isMultiBranch(spot)) return null;
   if (isPushFold(spot)) return null;
   if (isVsRange(spot)) return null;
   if (isMultiway(spot)) return null;
@@ -796,7 +984,21 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isPushFold(spot)) {
+    if (isFoldEquity(spot)) {
+      // signedError = erreur de pFoldBreakeven en points de %.
+      const be = parseAnswerNumber(answer.pFoldBreakevenInput);
+      if (be !== null) {
+        signedError = gradeM32(be, spot).signedError;
+      }
+    } else if (isMultiBranch(spot)) {
+      // signedError = erreur d'EV en bb (cohérence avec M3.1).
+      const pf = parseAnswerNumber(answer.pFoldBranchInput);
+      const pc = parseAnswerNumber(answer.pCallBranchInput);
+      const pr = parseAnswerNumber(answer.pRaiseBranchInput);
+      if (pf !== null && pc !== null && pr !== null) {
+        signedError = gradeM33(pf, pc, pr, spot).signedError;
+      }
+    } else if (isPushFold(spot)) {
       // signedError = erreur d'EV en bb (la métrique business du module).
       const pf = parseAnswerNumber(answer.pFoldInput);
       const eq = parseAnswerNumber(answer.equityCallInput);
@@ -881,7 +1083,11 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isPushFold(spot) ? (
+        {isFoldEquity(spot) ? (
+          <FoldEquityTable spot={spot} />
+        ) : isMultiBranch(spot) ? (
+          <MultiBranchTable spot={spot} />
+        ) : isPushFold(spot) ? (
           <PushFoldTable spot={spot} />
         ) : isVsRange(spot) ? (
           <VsRangeTable spot={spot} />
@@ -1001,6 +1207,188 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M3.2 — un champ : P(fold) break-even. Verdict push +EV/-EV live (la FE
+  // réelle est donnée par le spot, calculée depuis callRange/totalRange).
+  if (isFoldEquity(spot)) {
+    const be = parseAnswerNumber(answer.pFoldBreakevenInput);
+    const pFoldActualPct = Math.round(spot.expected.pFoldActual * 1000) / 10;
+    const verdict =
+      be === null
+        ? null
+        : pFoldActualPct > be + 0.5
+        ? "+EV"
+        : pFoldActualPct < be - 0.5
+        ? "-EV"
+        : "break-even";
+    const verdictColor =
+      verdict === "+EV"
+        ? "var(--green)"
+        : verdict === "-EV"
+        ? "var(--red)"
+        : "var(--amber)";
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Isole la fold equity
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Quelle FE pour break-even ?
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          La P(fold) <strong className="text-text">minimum</strong> qui rend ce push
+          break-even (EV = 0). La FE réelle est donnée — compare.
+        </p>
+        <Field
+          label="P(fold) break-even"
+          hint="En % — seuil minimum"
+          value={answer.pFoldBreakevenInput}
+          onChange={(v) => setAnswer({ ...answer, pFoldBreakevenInput: v })}
+          placeholder="ex. 52"
+        />
+        <div
+          className="rounded p-3.5 mb-1"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            FE réelle estimée : {fmtPercent(pFoldActualPct)}
+          </div>
+          <div
+            className="text-2xl font-mono font-semibold leading-none"
+            style={{ color: verdict === null ? "var(--text-faint)" : verdictColor }}
+          >
+            {verdict === null ? "—" : `Push ${verdict}`}
+          </div>
+          {verdict !== null && (
+            <div className="text-[11px] text-text-muted mt-1.5 font-mono">
+              {pFoldActualPct.toFixed(1)} % réelle{" "}
+              {verdict === "+EV" ? "≥" : verdict === "-EV" ? "<" : "≈"} {be ?? 0} %
+              breakeven
+            </div>
+          )}
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // M3.3 — saisie décomposée : P(fold) + P(call) + P(raise), somme = 100 %,
+  // EV recomposée en direct (Σ Pᵢ × EVᵢ avec les EV de branche du spot).
+  if (isMultiBranch(spot)) {
+    const [lf, lc, lr] = m33BranchLabels(spot.scenario);
+    const pf = parseAnswerNumber(answer.pFoldBranchInput);
+    const pc = parseAnswerNumber(answer.pCallBranchInput);
+    const pr = parseAnswerNumber(answer.pRaiseBranchInput);
+    const sum = (pf ?? 0) + (pc ?? 0) + (pr ?? 0);
+    const sumOk =
+      pf !== null && pc !== null && pr !== null && Math.abs(sum - 100) <= 1;
+    const liveEv =
+      pf !== null && pc !== null && pr !== null
+        ? computeUserBranchEV(pf, pc, pr, spot)
+        : null;
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Pondère l&apos;arbre
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Trois branches, une EV.
+        </h2>
+        <p className="text-[13px] text-text-muted mb-6 leading-[1.55]">
+          Estime la probabilité de chaque branche du vilain. La somme doit faire{" "}
+          <strong className="text-text">100 %</strong>. L&apos;EV se recompose en direct.
+        </p>
+        <Field
+          label={lf}
+          hint="En %"
+          value={answer.pFoldBranchInput}
+          onChange={(v) => setAnswer({ ...answer, pFoldBranchInput: v })}
+          placeholder="ex. 55"
+        />
+        <Field
+          label={lc}
+          hint="En %"
+          value={answer.pCallBranchInput}
+          onChange={(v) => setAnswer({ ...answer, pCallBranchInput: v })}
+          placeholder="ex. 35"
+        />
+        <Field
+          label={lr}
+          hint="En %"
+          value={answer.pRaiseBranchInput}
+          onChange={(v) => setAnswer({ ...answer, pRaiseBranchInput: v })}
+          placeholder="ex. 10"
+        />
+        <div
+          className="rounded p-3.5 mb-1 flex items-center justify-between"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              Somme
+            </div>
+            <div
+              className="text-lg font-mono font-semibold leading-none"
+              style={{ color: sumOk ? "var(--green)" : "var(--amber)" }}
+            >
+              {(pf === null && pc === null && pr === null) ? "—" : `${sum.toFixed(0)} %`}
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              EV recomposée
+            </div>
+            <div
+              className="text-2xl font-mono font-semibold leading-none"
+              style={{
+                color:
+                  liveEv === null
+                    ? "var(--text-faint)"
+                    : liveEv >= 0
+                    ? "var(--green)"
+                    : "var(--red)",
+              }}
+            >
+              {liveEv === null ? "—" : `${liveEv >= 0 ? "+" : ""}${liveEv.toFixed(2)} bb`}
+            </div>
+          </div>
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M3.1 — saisie décomposée : P(fold) + equity vs call range, EV live.
   if (isPushFold(spot)) {
     const pf = parseAnswerNumber(answer.pFoldInput);
@@ -1399,6 +1787,12 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isFoldEquity(spot)) {
+    return <FoldEquityCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
+  if (isMultiBranch(spot)) {
+    return <MultiBranchCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isPushFold(spot)) {
     return <PushFoldCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -1932,6 +2326,353 @@ function VsRangeCorrectionPanel({
 
       <div className="mt-4">
         <RangeDisplay notation={spot.villainRangeNotation} />
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.2 — table fold equity (hero + call range + total range) =====
+function FoldEquityTable({ spot }: { spot: FoldEquitySpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-green" style={{ boxShadow: "0 0 0 3px var(--green-glow)" }} />
+          Push all-in · fold equity isolée
+        </div>
+        <div className="text-xs font-mono text-text-faint">{spot.heroStack} bb</div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Ta main
+        </div>
+        <div className="flex gap-2">
+          {spot.heroCards.map((c, i) => (
+            <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-5">
+        <PfInfo label="Position" value={spot.heroPosition} />
+        <PfInfo label="Stack" value={`${spot.heroStack} bb`} />
+        <PfInfo label="Vilain" value={spot.villainPosition} />
+        <PfInfo label="Pot avant" value={`${spot.potBefore} bb`} />
+      </div>
+
+      <div className="mb-3">
+        <RangeDisplay
+          notation={spot.villainCallRangeNotation}
+          label={`Call range : ${spot.villainCallRangeLabel}`}
+          comboCount={spot.expected.combosInCallRange}
+        />
+      </div>
+      <div className="mb-5">
+        <RangeDisplay
+          notation={spot.villainTotalRangeNotation}
+          label={`Range total (voit le push) : ${spot.villainTotalRangeLabel}`}
+          comboCount={spot.expected.combosInTotalRange}
+        />
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Quelle est la P(fold) <strong className="text-text">minimum</strong> pour que ce
+          push soit break-even (EV = 0) ? La P(fold) réelle se déduit du call range vs le
+          range total.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.3 — table multi-branches (hero + scénario + call/4-bet range) =====
+const M33_TAG: Record<MultiBranchSpot["scenario"], string> = {
+  "3bet-vs-open": "3-bet vs open · 3 branches",
+  "iso-vs-limp": "Iso-raise vs limp · 3 branches",
+  "squeeze-vs-open-call": "Squeeze vs open+call · 3 branches",
+  "cold-call-vs-open": "Cold-call vs open · flop",
+};
+
+function MultiBranchTable({ spot }: { spot: MultiBranchSpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          {M33_TAG[spot.scenario]}
+        </div>
+        <div className="text-xs font-mono text-text-faint">{spot.effectiveStack} bb eff.</div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Ta main
+        </div>
+        <div className="flex gap-2">
+          {spot.heroCards.map((c, i) => (
+            <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-5">
+        <PfInfo label="Hero" value={spot.heroPosition} />
+        <PfInfo label="Vilain" value={spot.villainPosition} />
+        <PfInfo label="Pot avant" value={`${spot.potBefore} bb`} />
+        <PfInfo label="Ta mise" value={`${spot.heroActionSize} bb`} />
+      </div>
+
+      <div className="mb-3">
+        <RangeDisplay
+          notation={spot.villainCallRangeNotation}
+          label={`Call range : ${spot.villainCallRangeLabel}`}
+        />
+      </div>
+      {spot.villainFourBetRangeNotation && (
+        <div className="mb-5">
+          <RangeDisplay
+            notation={spot.villainFourBetRangeNotation}
+            label={`Relance range : ${spot.villainFourBetRangeLabel ?? ""}`}
+          />
+        </div>
+      )}
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Estime la probabilité de chaque branche du vilain (somme = 100 %). L&apos;EV
+          totale est la somme pondérée Σ P&#8202;ᵢ × EV&#8202;ᵢ.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.2 — correction fold equity =====
+function FoldEquityCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: FoldEquitySpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const be = parseAnswerNumber(answer.pFoldBreakevenInput) ?? 0;
+  const g = gradeM32(be, spot);
+  const e = spot.expected;
+  const profitable = g.pFoldActualPct >= g.truePct;
+  const formula =
+    e.evIfCall >= 0
+      ? "evIfCall ≥ 0 → le push est +EV même si le vilain call 100 % → breakeven 0 %"
+      : `−(${e.evIfCall}) / (${spot.potBefore} − (${e.evIfCall})) = ${(-e.evIfCall).toFixed(2)} / ${(spot.potBefore - e.evIfCall).toFixed(2)} = ${(g.truePct / 100).toFixed(3)} → ${g.truePct.toFixed(1)} %`;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ta réponse</div>
+          <div className="text-3xl font-semibold font-mono leading-none">{fmtPercent(be)}</div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">FE break-even vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {fmtPercent(g.truePct)}
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Hero</Lbl> <Mono>{spot.heroCards.join(" ")}</Mono> ·{" "}
+        <Mono>{spot.heroStack}bb {spot.heroPosition}</Mono>
+        <br />
+        <Lbl>Equity vs call range</Lbl>{" "}
+        <Mono className="!text-purple-300">{fmtPercent(e.equityVsCallRange)}</Mono>{" "}
+        <span className="text-text-muted">({e.combosInCallRange} combos)</span>
+        <br />
+        <Lbl>Pot avant</Lbl> <Mono>{spot.potBefore} bb</Mono> ·{" "}
+        <Lbl>EV si call</Lbl>{" "}
+        <Mono>
+          {e.evIfCall >= 0 ? "+" : ""}
+          {e.evIfCall} bb
+        </Mono>
+        <br />
+        <Lbl>Formule</Lbl> <Mono className="!text-purple-300">{formula}</Mono>
+        <br />
+        <Lbl>P(fold) réelle</Lbl> <Mono>{fmtPercent(g.pFoldActualPct)}</Mono>{" "}
+        <span className="text-text-muted">
+          (1 − {e.combosInCallRange}/{e.combosInTotalRange})
+        </span>
+      </FormulaBox>
+
+      <div
+        className="rounded p-3.5 mt-3 text-[13px] leading-[1.55]"
+        style={{
+          background: profitable ? "var(--green-glow)" : "var(--red-glow)",
+          border: `0.5px solid ${profitable ? "rgba(74,222,128,0.3)" : "rgba(248,113,113,0.3)"}`,
+        }}
+      >
+        <span style={{ color: profitable ? "var(--green)" : "var(--red)" }} className="font-medium">
+          {profitable ? "Push profitable" : "Push NON profitable"}
+        </span>{" "}
+        <span className="text-text-muted">
+          : FE réelle {fmtPercent(g.pFoldActualPct)} {profitable ? "≥" : "<"} breakeven{" "}
+          {fmtPercent(g.truePct)}. Ne confonds pas le seuil break-even avec la P(fold)
+          réelle — la décision vit dans cet écart.
+        </span>
+      </div>
+
+      <div className="mt-4">
+        <RangeDisplay notation={spot.villainCallRangeNotation} />
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.3 — correction multi-branches =====
+function MultiBranchCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: MultiBranchSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const pf = parseAnswerNumber(answer.pFoldBranchInput) ?? 0;
+  const pc = parseAnswerNumber(answer.pCallBranchInput) ?? 0;
+  const pr = parseAnswerNumber(answer.pRaiseBranchInput) ?? 0;
+  const g = gradeM33(pf, pc, pr, spot);
+  const e = spot.expected;
+  const [lf, lc, lr] = m33BranchLabels(spot.scenario);
+  const tf = Math.round(e.pFold * 1000) / 10;
+  const tc = Math.round(e.pCall * 1000) / 10;
+  const tr = Math.round(e.pFourBet * 1000) / 10;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV de ta saisie</div>
+          <div className="text-3xl font-semibold font-mono leading-none">
+            {g.userEV >= 0 ? "+" : ""}
+            {g.userEV.toFixed(2)} bb
+          </div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {g.trueEV >= 0 ? "+" : ""}
+            {g.trueEV.toFixed(2)} bb
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>{lf}</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pf)} · vrai {fmtPercent(tf)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIfFold >= 0 ? "+" : ""}{e.evIfFold} bb</span>
+        <br />
+        <Lbl>{lc}</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pc)} · vrai {fmtPercent(tc)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIfCall >= 0 ? "+" : ""}{e.evIfCall} bb</span>
+        <br />
+        <Lbl>{lr}</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pr)} · vrai {fmtPercent(tr)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIfFourBet >= 0 ? "+" : ""}{e.evIfFourBet} bb</span>
+        <br />
+        <Lbl>EV vraie</Lbl>{" "}
+        <Mono className="!text-purple-300">
+          Σ P&#8202;ᵢ × EV&#8202;ᵢ = {e.evBb >= 0 ? "+" : ""}
+          {e.evBb} bb
+        </Mono>
+      </FormulaBox>
+
+      <div className="text-[12px] text-text-muted mt-3 leading-[1.6]">{e.breakdown}</div>
+
+      <div className="mt-3">
+        <RangeDisplay notation={spot.villainCallRangeNotation} />
       </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">

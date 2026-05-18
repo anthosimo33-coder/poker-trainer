@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { evPushAllIn, evCallAllIn, requiredEquityForCall } from "@/lib/poker/ev";
+import {
+  evPushAllIn,
+  evCallAllIn,
+  requiredEquityForCall,
+  breakEvenPFold,
+  evMultiBranch,
+} from "@/lib/poker/ev";
 import { parseRange } from "@/lib/poker/range-parser";
 
 // Itérations explicites basses : la moyenne sur N combos lisse la variance MC
@@ -69,5 +75,80 @@ describe("requiredEquityForCall", () => {
     expect(req).toBeCloseTo(9.5 / 21, 2);
     expect(req).toBeGreaterThan(0.43);
     expect(req).toBeLessThan(0.47);
+  });
+});
+
+describe("evPushAllIn — avec villainTotalRange", () => {
+  it("KK push 10bb, call ~8% sur defense ~35% : P(fold) précis ≈ 0.8", () => {
+    const totalRange = parseRange(
+      "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o"
+    );
+    const callRange = parseRange("88+, AJs+, AQo+, KQs");
+    const result = evPushAllIn({
+      heroCards: ["Ks", "Kh"],
+      heroStack: 10,
+      villainStack: 10,
+      potBefore: 1.5,
+      villainCallRange: callRange,
+      villainTotalRange: totalRange,
+      iterations: 400,
+    });
+    // pFold = 1 − call_combos / total_combos (déterministe : 82/442 → ~0.814).
+    expect(result.pFold).toBeGreaterThan(0.7);
+    expect(result.pFold).toBeLessThan(0.85);
+  });
+});
+
+describe("breakEvenPFold", () => {
+  it("AA vs tight call range : pFold break-even = 0 (push +EV même si call à 100 %)", () => {
+    const result = breakEvenPFold({
+      heroCards: ["As", "Ah"],
+      heroStack: 10,
+      villainStack: 10,
+      potBefore: 1.5,
+      villainCallRange: parseRange("TT+, AKs, AKo"),
+      iterations: 400,
+    });
+    expect(result.pFoldBreakEven).toBeCloseTo(0, 1);
+    expect(result.evIfCall).toBeGreaterThan(0);
+  });
+
+  it("72o vs tight call range : pFold break-even significatif, evIfCall < 0", () => {
+    const result = breakEvenPFold({
+      heroCards: ["7s", "2h"],
+      heroStack: 10,
+      villainStack: 10,
+      potBefore: 1.5,
+      villainCallRange: parseRange("TT+, AKs, AKo"),
+      iterations: 400,
+    });
+    // Spec attendait < 0.7 ; la vraie valeur MC est ~0.80 (72o n'a que ~19 %
+    // d'equity vs TT+/AKs/AKo → evIfCall ≈ −6 bb → breakeven ≈ 0.80). Borne
+    // haute corrigée à 0.95 (fix principiel : l'intention « FE significative,
+    // call −EV » est préservée ; flaggé dans le rapport).
+    expect(result.pFoldBreakEven).toBeGreaterThan(0.6);
+    expect(result.pFoldBreakEven).toBeLessThan(0.95);
+    expect(result.evIfCall).toBeLessThan(0);
+  });
+});
+
+describe("evMultiBranch", () => {
+  it("3 branches qui somment à 1 : EV = somme pondérée", () => {
+    const result = evMultiBranch([
+      { label: "fold", probability: 0.6, evIfBranch: 5 },
+      { label: "call", probability: 0.3, evIfBranch: -2 },
+      { label: "raise", probability: 0.1, evIfBranch: -8 },
+    ]);
+    // 0.6 × 5 + 0.3 × (−2) + 0.1 × (−8) = 3.0 − 0.6 − 0.8 = 1.6
+    expect(result.evBb).toBeCloseTo(1.6, 1);
+  });
+
+  it("probabilités ne somment pas à 1 : erreur", () => {
+    expect(() =>
+      evMultiBranch([
+        { label: "a", probability: 0.5, evIfBranch: 1 },
+        { label: "b", probability: 0.3, evIfBranch: 2 },
+      ])
+    ).toThrow(/somment/);
   });
 });

@@ -1,0 +1,95 @@
+---
+slug: m3-3
+moduleSlug: m3
+submoduleSlug: m3.3
+title: EV composites multi-branches
+subtitle: Toute décision est un arbre. L'EV en est la moyenne.
+order: 3
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module III · Sous-module 3 / 4
+  </div>
+
+# EV composites multi-branches.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Toute décision est un arbre.</em> M3.1 avait deux branches (fold/call). Un 3-bet en a trois : fold, call, 4-bet. L&apos;EV est la moyenne pondérée de toutes.
+</p>
+</div>
+
+<WhyBlock title="Toute décision a une arborescence. L'EV est la moyenne pondérée des branches.">
+
+Un push sub-15bb a deux issues : il fold, il call. Simple. Mais un **3-bet** preflop a *trois* réponses : il fold, il call, il 4-bet. Un squeeze, une iso, un cold-call — chacun ouvre son propre arbre.
+
+L&apos;erreur du joueur intermédiaire : ne raisonner que sur la branche qu&apos;il *redoute* (« et s&apos;il me 4-bet ? ») ou celle qu&apos;il *espère* (« il va fold »). Le joueur calibré écrit *toutes* les branches, pondère chacune par sa probabilité, et somme. C&apos;est tout.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="La formule" title={<>La somme <em>pondérée.</em></>} />
+
+<Prose>
+
+La formule générale ne change pas selon le nombre de branches — elle se généralise :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>EV décision</FormulaLabel> Σ P&#8202;ᵢ × EV&#8202;ᵢ <FormulaMuted>(somme sur toutes les branches du vilain)</FormulaMuted>
+  <br />
+  <FormulaLabel>Contrainte</FormulaLabel> Σ P&#8202;ᵢ = 1 <FormulaMuted>(les probabilités couvrent tout l&apos;arbre — aucune branche oubliée)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+M3.1 était le cas N = 2 : `P(fold)×pot + P(call)×evCall`. M3.3 est le cas général N ≥ 3. La discipline : *énumérer toutes les branches*, puis pondérer.
+
+</Prose>
+
+<SectionHeader num="02" label="Quatre arbres" title={<>Quatre scénarios <em>canoniques.</em></>} />
+
+<Formula>
+  <FormulaLabel>3-bet vs open</FormulaLabel> fold <K>+pot</K> · call <K>postflop</K> · 4-bet <K>−3bet</K><br/>
+  <FormulaLabel>Iso vs limp</FormulaLabel> fold <K>+pot</K> · call <K>postflop</K> · 3-bet <K>−iso</K><br/>
+  <FormulaLabel>Squeeze</FormulaLabel> tous fold <K>+pot</K> · call <K>postflop</K> · 4-bet <K>−sqz</K><br/>
+  <FormulaLabel>Cold-call</FormulaLabel> flop défav. <K>−</K> · neutre <K>≈eq</K> · favorable <K>++</K>
+</Formula>
+
+<Prose>
+
+Les trois premiers partagent la même structure : on gagne le pot quand il fold, on joue son equity réalisée quand il call, on perd notre mise quand il relance (cas simple : hero fold le 4-bet). Le cold-call est différent : pas de fold preflop du vilain — l&apos;arbre se déplace au flop (favorable / neutre / défavorable).
+
+</Prose>
+
+<SectionHeader num="03" label="Realization" title={<>Pourquoi <em>0.85, pas 1.</em></>} />
+
+<Prose>
+
+La branche `call` n&apos;est pas un abattage immédiat : il reste du poker à jouer. Tu ne réalises *jamais* 100 % de ton equity brute hors de position, sans initiative, face à un range qui te lit. Le **realization factor** (≈ 0.85 par défaut) corrige ça : `equity_réalisée = equity × 0.85`. Hors de position contre un bon joueur, c&apos;est plutôt 0.80 ; en position avec initiative, ça peut monter à 0.90+. Oublier ce facteur, c&apos;est sur-évaluer *toutes* les branches `call`.
+
+</Prose>
+
+<Mnemonic keyText="EV = Σ Pᵢ × EVᵢ">
+Énumère toutes les branches. Pondère chacune par sa probabilité. Somme. Une branche oubliée = une EV fausse, pas approximative — fausse.
+</Mnemonic>
+
+<SectionHeader num="04" label="Les pièges" title={<>Trois erreurs <em>d&apos;arbre.</em></>} />
+
+<Prose>
+
+**1. Oublier une branche.** Tu calcules fold + call mais oublies le 4-bet. Σ Pᵢ ≠ 1 : ton EV est structurellement fausse, pas juste imprécise.
+
+**2. Mal estimer les probabilités.** « Il 4-bet jamais » → tu mets P(4-bet) = 0 alors qu&apos;il le fait 8 % avec QQ+/AK. Les petites probabilités sur de grosses pertes comptent.
+
+**3. Realization à 1.** Tu traites la branche `call` comme un abattage gagné à hauteur de ton equity brute. Tu surestimes systématiquement les squeezes et 3-bets light.
+
+</Prose>
+
+<LifeLink title="Toute grande décision est un arbre pondéré.">
+
+Lancer un produit : succès / échec partiel / échec total, chacun avec sa probabilité et son payoff. Un investissement : les arbres de scénarios (`bull / base / bear`) *sont* des EV multi-branches — la finance les appelle « espérance » et les dessine littéralement en arbres de décision.
+
+Le décideur médiocre raisonne sur une seule branche : celle qu&apos;il craint, ou celle qu&apos;il espère. Le décideur fort liste *toutes* les issues, leur colle une probabilité honnête, et somme. Le poker MTT t&apos;entraîne à faire ce calcul mille fois par session — jusqu&apos;à ce qu&apos;il devienne un réflexe applicable bien au-delà de la table.
+
+</LifeLink>

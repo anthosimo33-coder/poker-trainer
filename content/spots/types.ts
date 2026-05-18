@@ -69,3 +69,61 @@ export interface PrecomputedM31Spot {
     combosInCallRange: number;
   };
 }
+
+export interface PrecomputedM32Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: string;
+  heroStack: number;
+  villainPosition: string;
+  /** Call range slug. */
+  villainCallRangeSlug: string;
+  villainCallRangeLabel: string;
+  villainCallRangeNotation: string;
+  /** Total range slug (pour calcul exact P(fold)). */
+  villainTotalRangeSlug: string;
+  villainTotalRangeLabel: string;
+  villainTotalRangeNotation: string;
+  potBefore: number;
+  scenarioLabel: string;
+  /** « Quelle P(fold) minimum pour que ce push soit break-even ? » */
+  expected: {
+    pFoldBreakEven: number; // 0-1, le seuil minimum
+    pFoldActual: number; // P(fold) réelle (callRange / totalRange)
+    equityVsCallRange: number; // %
+    evIfCall: number; // EV conditionnelle au call
+    isPushProfitable: boolean; // pFoldActual >= pFoldBreakEven
+    evBb: number; // EV total push (référence)
+    combosInCallRange: number;
+    combosInTotalRange: number;
+  };
+}
+
+export interface PrecomputedM33Spot {
+  id: string;
+  heroCards: [Card, Card];
+  scenario: "3bet-vs-open" | "iso-vs-limp" | "squeeze-vs-open-call" | "cold-call-vs-open";
+  heroPosition: string;
+  villainPosition: string;
+  heroStack: number;
+  effectiveStack: number;
+  potBefore: number; // pot avant la décision de hero
+  heroActionSize: number; // taille de la mise (3bet, iso, etc.)
+  villainCallRangeSlug: string;
+  villainCallRangeLabel: string;
+  villainCallRangeNotation: string;
+  villainFourBetRangeSlug?: string; // optionnel, scénarios à 3 branches
+  villainFourBetRangeLabel?: string;
+  villainFourBetRangeNotation?: string;
+  scenarioLabel: string;
+  expected: {
+    pFold: number; // 0-1
+    pCall: number;
+    pFourBet: number; // ou pRaise, 0 si scénario à 2 branches
+    evIfFold: number;
+    evIfCall: number;
+    evIfFourBet: number;
+    evBb: number; // EV totale
+    breakdown: string; // texte explicatif
+  };
+}

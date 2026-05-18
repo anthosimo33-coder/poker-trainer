@@ -20,6 +20,8 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m2-3": () => import("@/content/theory/m2-3.mdx"),
   "m2-4": () => import("@/content/theory/m2-4.mdx"),
   "m3-1": () => import("@/content/theory/m3-1.mdx"),
+  "m3-2": () => import("@/content/theory/m3-2.mdx"),
+  "m3-3": () => import("@/content/theory/m3-3.mdx"),
 };
 
 function TheoryContent() {
@@ -455,6 +457,80 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "À 5bb push, vilain BB risque ~4.5bb pour gagner ~6.5bb (pot final). Cote ~1.44:1, equity requise ~41%. Le vilain call ~50% des mains. Hero ne gagne plus par fold (P(fold) ≈ 50%) mais son equity vs un call range large remonte (n'importe quel A est devant la moitié du deck). Push any two peut devenir +EV.",
+    },
+  ],
+
+  "m3-2": [
+    {
+      question:
+        "Tu as 72o et tu pushes 10bb depuis SB. Ton equity vs call range tight est ~15 %, evIfCall = -3 bb. Quelle est la P(fold) minimum pour que le push soit break-even ?",
+      options: [
+        { letter: "A", text: "0 % (le push est toujours +EV)" },
+        { letter: "B", text: "~67 % (-(-3) / (1.5 - (-3)) = 3 / 4.5 ≈ 0.67)" },
+        { letter: "C", text: "~100 % (il faut absolument que vilain fold)" },
+        { letter: "D", text: "Impossible à calculer sans la P(fold) réelle." },
+      ],
+      correctLetter: "B",
+      explanation: "Formule : pFoldBreakEven = -evIfCall / (pot - evIfCall) = -(-3) / (1.5 - (-3)) = 3 / 4.5 ≈ 0.67. Tu as besoin que vilain fold au moins 67 % du temps. C'est la signature mathématique du push light : tu paries sur la fold equity, pas sur la main.",
+    },
+    {
+      question: "Tu as AA et tu pushes 10bb. evIfCall = +4 bb (tu domines même le call range). Quelle FE breakeven ?",
+      options: [
+        { letter: "A", text: "0 % — le push est +EV même si vilain call 100 % du temps." },
+        { letter: "B", text: "~30 % — il faut toujours un peu de FE." },
+        { letter: "C", text: "~50 % — la moitié du temps." },
+        { letter: "D", text: "~100 % — il faut absolument qu'il fold." },
+      ],
+      correctLetter: "A",
+      explanation: "Quand evIfCall > 0, la formule donne pFoldBreakEven = -evIfCall / (pot - evIfCall) < 0, plancher à 0. Concrètement : tu *veux* être call avec AA. La fold equity est un bonus, pas une nécessité. Push n'importe quelle fréquence de FE.",
+    },
+    {
+      question: "Pourquoi un push 72o à 5bb peut être profitable mais le même push à 12bb est désastreux ?",
+      options: [
+        { letter: "A", text: "À 5bb, vilain call avec ~50 % du deck (pot odds énormes). Ton equity vs ce range très large est ~30 %. evIfCall remonte donc la FE breakeven baisse. À 12bb, vilain call serré (~10 %), ton equity vs ce range très tight chute à ~12 %, evIfCall plonge à -8 bb, FE breakeven monte à ~80 % — irréalisable." },
+        { letter: "B", text: "À 5bb, les ranges sont identiques à 12bb." },
+        { letter: "C", text: "À 5bb, la position SB devient plus forte." },
+        { letter: "D", text: "À 5bb, les antes compensent." },
+      ],
+      correctLetter: "A",
+      explanation: "C'est la signature du push court : à 5bb, vilain ne peut pas fold (pot odds), son range call est très large, ton equity vs ce range remonte. À 12bb, vilain peut fold tight, son call range tight te domine, ton equity s'effondre. La FE breakeven bouge inversement à la stack.",
+    },
+  ],
+
+  "m3-3": [
+    {
+      question:
+        "Tu 3-bet et le vilain peut fold (60 %, tu gagnes +5 bb), call (30 %, EV -2 bb) ou 4-bet (10 %, EV -8 bb). Quelle est l'EV totale du 3-bet ?",
+      options: [
+        { letter: "A", text: "+5 bb (la branche fold domine)" },
+        { letter: "B", text: "+1.6 bb (0.6×5 + 0.3×(-2) + 0.1×(-8))" },
+        { letter: "C", text: "-2 bb (la moyenne des trois EV)" },
+        { letter: "D", text: "0 bb (les branches s'annulent)" },
+      ],
+      correctLetter: "B",
+      explanation: "EV = Σ Pᵢ × EVᵢ = 0.6×5 + 0.3×(-2) + 0.1×(-8) = 3.0 - 0.6 - 0.8 = +1.6 bb. On pondère chaque branche par sa probabilité et on somme — jamais une simple moyenne, jamais une seule branche.",
+    },
+    {
+      question: "Pourquoi appliquer un realization factor (~0.85) à la branche « call » d'un 3-bet ?",
+      options: [
+        { letter: "A", text: "Pour pénaliser arbitrairement les bluffs." },
+        { letter: "B", text: "Parce que la branche call n'est pas un abattage : il reste du poker à jouer, et hors de position sans initiative tu ne réalises jamais 100 % de ton equity brute." },
+        { letter: "C", text: "Parce que les solvers l'exigent." },
+        { letter: "D", text: "Pour compenser les antes." },
+      ],
+      correctLetter: "B",
+      explanation: "L'equity brute suppose un abattage gratuit. En réalité tu joues encore 3 streets : tu te fais bluffer, tu fold le meilleur main parfois, tu ne touches pas. Le realization factor (~0.80 OOP, ~0.90 IP) corrige ce biais. L'oublier surestime tous les call.",
+    },
+    {
+      question: "Quelle est l'erreur structurelle la plus grave dans un calcul d'EV multi-branches ?",
+      options: [
+        { letter: "A", text: "Arrondir les probabilités au pourcent près." },
+        { letter: "B", text: "Utiliser bb plutôt que des jetons réels." },
+        { letter: "C", text: "Oublier une branche (ex. ignorer le 4-bet) : Σ Pᵢ ≠ 1, l'EV n'est pas imprécise mais structurellement fausse." },
+        { letter: "D", text: "Calculer l'equity vs le range total au lieu du call range." },
+      ],
+      correctLetter: "C",
+      explanation: "Une probabilité mal estimée donne une EV imprécise. Une branche oubliée donne une EV fausse : la masse de probabilité ne somme plus à 1, le résultat n'a plus de sens. Énumérer toutes les branches avant de pondérer est non négociable.",
     },
   ],
 };
