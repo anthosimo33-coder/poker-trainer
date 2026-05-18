@@ -196,4 +196,27 @@ test.describe("Drill M1.1 — flow complet", () => {
     // (même garde que completeM11TheoryAndOpenDrill / tests M1.x).
     await expect(page.getByText(/Vilain/i)).toBeVisible({ timeout: 15_000 });
   });
+
+  test("M2.3 — théorie → quick check → drill 3-way", async ({ page }) => {
+    await page.goto("/module/m2/theory/m2-3");
+    await expect(page.getByText(/Equity multiway/i)).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (le spec l'omet) : attendre le modal avant de répondre,
+    // sinon recordCompletion peut être court-circuité (userId pas prêt) — cf. S6b.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m2-3/);
+    // 3 mains visibles (timeout 15s : chaîne gate→completion→session→spot).
+    await expect(page.getByText(/Adversaire 1/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Adversaire 2/i)).toBeVisible();
+  });
 });

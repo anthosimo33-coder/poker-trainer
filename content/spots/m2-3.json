@@ -1,0 +1,3485 @@
+[
+  {
+    "id": "m2-3-spot-001",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 98s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 486,
+      "losses": 417,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-002",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 98s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 44.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 405,
+      "losses": 498,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-003",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 98s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-004",
+    "heroCards": [
+      "8s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 87s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 486,
+      "losses": 417,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-005",
+    "heroCards": [
+      "8s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 87s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 44.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 405,
+      "losses": 498,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-006",
+    "heroCards": [
+      "8s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 87s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-007",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qs"
+    ],
+    "board": [
+      "5s",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw T9s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-008",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 76s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 486,
+      "losses": 417,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-009",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 76s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 44.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 405,
+      "losses": 498,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-010",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 76s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-011",
+    "heroCards": [
+      "Js",
+      "Ts"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw JTs vs over-pair AA vs overs",
+    "expected": {
+      "equity": 58.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 528,
+      "losses": 375,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-012",
+    "heroCards": [
+      "Js",
+      "Ts"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw JTs vs over-pair KK vs overs",
+    "expected": {
+      "equity": 49.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 447,
+      "losses": 456,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-013",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 65s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 487,
+      "losses": 416,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-014",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 65s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 45,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 406,
+      "losses": 497,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-015",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 65s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 622,
+      "losses": 281,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-016",
+    "heroCards": [
+      "5s",
+      "4s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 54s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 487,
+      "losses": 416,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-017",
+    "heroCards": [
+      "5s",
+      "4s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 54s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 45,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 406,
+      "losses": 497,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-018",
+    "heroCards": [
+      "5s",
+      "4s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 54s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 622,
+      "losses": 281,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-019",
+    "heroCards": [
+      "Ts",
+      "8s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qs"
+    ],
+    "board": [
+      "5s",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw T8s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-020",
+    "heroCards": [
+      "9s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 97s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 486,
+      "losses": 417,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-021",
+    "heroCards": [
+      "9s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 97s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 44.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 405,
+      "losses": 498,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-022",
+    "heroCards": [
+      "9s",
+      "7s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 97s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-023",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw J9s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 58.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 528,
+      "losses": 375,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-024",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw J9s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 49.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 447,
+      "losses": 456,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-025",
+    "heroCards": [
+      "8s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "As",
+      "Ah"
+    ],
+    "villain2Cards": [
+      "Kh",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 86s vs over-pair AA vs overs",
+    "expected": {
+      "equity": 53.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 486,
+      "losses": 417,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-026",
+    "heroCards": [
+      "8s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "Kh",
+      "Kd"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 86s vs over-pair KK vs overs",
+    "expected": {
+      "equity": 44.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 405,
+      "losses": 498,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-027",
+    "heroCards": [
+      "8s",
+      "6s"
+    ],
+    "villain1Cards": [
+      "Js",
+      "Jh"
+    ],
+    "villain2Cards": [
+      "As",
+      "Qh"
+    ],
+    "board": [
+      "Qs",
+      "Ks",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw 86s vs over-pair JJ vs overs",
+    "expected": {
+      "equity": 68.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 621,
+      "losses": 282,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-028",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 53.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 481,
+      "losses": 414,
+      "ties": 8
+    }
+  },
+  {
+    "id": "m2-3-spot-029",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 50.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 460,
+      "losses": 443,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-030",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 51.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 469,
+      "losses": 434,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-031",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 423,
+      "losses": 480,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-032",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 423,
+      "losses": 472,
+      "ties": 8
+    }
+  },
+  {
+    "id": "m2-3-spot-033",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 20.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 185,
+      "losses": 718,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-034",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 55.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 499,
+      "losses": 404,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-035",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 55.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 499,
+      "losses": 404,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-036",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 24.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 225,
+      "losses": 678,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-037",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 24.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 225,
+      "losses": 678,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-038",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 54.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 490,
+      "losses": 405,
+      "ties": 8
+    }
+  },
+  {
+    "id": "m2-3-spot-039",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 426,
+      "losses": 477,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-040",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 51.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 463,
+      "losses": 440,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-041",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 39.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 354,
+      "losses": 549,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-042",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 20.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 185,
+      "losses": 718,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-043",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 54.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 495,
+      "losses": 408,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-044",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 54.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 495,
+      "losses": 408,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-045",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 20.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 185,
+      "losses": 718,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-046",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 20.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 185,
+      "losses": 718,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-047",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 419,
+      "losses": 484,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-048",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 428,
+      "losses": 475,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-049",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 38.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 346,
+      "losses": 549,
+      "ties": 8
+    }
+  },
+  {
+    "id": "m2-3-spot-050",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 49.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 451,
+      "losses": 452,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-051",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 49.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 451,
+      "losses": 452,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-052",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 53,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 479,
+      "losses": 424,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-053",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 53,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 479,
+      "losses": 424,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-054",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 45.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 414,
+      "losses": 489,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-055",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 39.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 346,
+      "losses": 541,
+      "ties": 16
+    }
+  },
+  {
+    "id": "m2-3-spot-056",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 49.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 451,
+      "losses": 452,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-057",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 49.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 451,
+      "losses": 452,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-058",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 415,
+      "losses": 488,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-059",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 415,
+      "losses": 488,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-060",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 67.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 607,
+      "losses": 296,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-061",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 71.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 647,
+      "losses": 256,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-062",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 72.6,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 656,
+      "losses": 247,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-063",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 62.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 568,
+      "losses": 335,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-064",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 62.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 568,
+      "losses": 335,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-065",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.1,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 425,
+      "losses": 478,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-066",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.1,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 416,
+      "losses": 487,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-067",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 68,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 614,
+      "losses": 289,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-068",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 63,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 569,
+      "losses": 334,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-069",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 71.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 648,
+      "losses": 255,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-070",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "8d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Qd",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 57.1,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 516,
+      "losses": 387,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-071",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 422,
+      "losses": 481,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-072",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 45.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 413,
+      "losses": 490,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-073",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 422,
+      "losses": 481,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-074",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 428,
+      "losses": 475,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-075",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 55.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 504,
+      "losses": 399,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-076",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 70,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 632,
+      "losses": 271,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-077",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 70,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 632,
+      "losses": 271,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-078",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 67,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 605,
+      "losses": 298,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-079",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 67,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 605,
+      "losses": 298,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-080",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 45.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 414,
+      "losses": 489,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-081",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 55.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 504,
+      "losses": 399,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-082",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 70,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 632,
+      "losses": 271,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-083",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 70,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 632,
+      "losses": 271,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-084",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 62,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 560,
+      "losses": 343,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-085",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 62,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 560,
+      "losses": 343,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-086",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Td",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 75.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 681,
+      "losses": 222,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-087",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.7,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 422,
+      "losses": 481,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-088",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "As",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 47.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 428,
+      "losses": 475,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-089",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 36.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 327,
+      "losses": 564,
+      "ties": 12
+    }
+  },
+  {
+    "id": "m2-3-spot-090",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 42,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 376,
+      "losses": 521,
+      "ties": 6
+    }
+  },
+  {
+    "id": "m2-3-spot-091",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 42,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 376,
+      "losses": 521,
+      "ties": 6
+    }
+  },
+  {
+    "id": "m2-3-spot-092",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 44.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 402,
+      "losses": 501,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-093",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "Td"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 44.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 402,
+      "losses": 501,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-094",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "Td",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 73.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 664,
+      "losses": 239,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-095",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 45.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 414,
+      "losses": 489,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-096",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Td",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 61.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 555,
+      "losses": 348,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-097",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 419,
+      "losses": 484,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-098",
+    "heroCards": [
+      "Ts",
+      "Th"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "9s"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 419,
+      "losses": 484,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-099",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 45,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 403,
+      "losses": 494,
+      "ties": 6
+    }
+  },
+  {
+    "id": "m2-3-spot-100",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 42.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 379,
+      "losses": 515,
+      "ties": 9
+    }
+  },
+  {
+    "id": "m2-3-spot-101",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 43,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 388,
+      "losses": 515,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-102",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 39.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 354,
+      "losses": 549,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-103",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ad",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Qd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 38.6,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 349,
+      "losses": 554,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-104",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "9d",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 61.5,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 555,
+      "losses": 348,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-105",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 39.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 356,
+      "losses": 547,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-106",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Ks",
+      "Ts"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Js",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 38.4,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 347,
+      "losses": 556,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-107",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "9d",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 67.9,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 613,
+      "losses": 290,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-108",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "As",
+      "8s"
+    ],
+    "villain2Cards": [
+      "8h",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Qs",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 46.8,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 423,
+      "losses": 480,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-109",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "Ts",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 36.2,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 321,
+      "losses": 570,
+      "ties": 12
+    }
+  },
+  {
+    "id": "m2-3-spot-110",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "8h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 42,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 376,
+      "losses": 521,
+      "ties": 6
+    }
+  },
+  {
+    "id": "m2-3-spot-111",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "7h",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 42,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 376,
+      "losses": 521,
+      "ties": 6
+    }
+  },
+  {
+    "id": "m2-3-spot-112",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "6s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 38.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 346,
+      "losses": 557,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-113",
+    "heroCards": [
+      "9s",
+      "9h"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "9d"
+    ],
+    "villain2Cards": [
+      "8s",
+      "7s"
+    ],
+    "board": [
+      "5s",
+      "Jd",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "expected": {
+      "equity": 38.3,
+      "method": "exact",
+      "iterations": 903,
+      "wins": 346,
+      "losses": 557,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-114",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "4d"
+    ],
+    "villain2Cards": [
+      "Js",
+      "9s"
+    ],
+    "board": [
+      "Ts",
+      "7d",
+      "6d",
+      "2s"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs nut flush draw vs straight draw (turn)",
+    "expected": {
+      "equity": 54.8,
+      "method": "exact",
+      "iterations": 42,
+      "wins": 23,
+      "losses": 19,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-115",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "4d"
+    ],
+    "villain2Cards": [
+      "Js",
+      "9s"
+    ],
+    "board": [
+      "8s",
+      "7d",
+      "6d",
+      "2s"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs nut flush draw vs straight draw (turn)",
+    "expected": {
+      "equity": 50,
+      "method": "exact",
+      "iterations": 42,
+      "wins": 21,
+      "losses": 21,
+      "ties": 0
+    }
+  },
+  {
+    "id": "m2-3-spot-116",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "villain1Cards": [
+      "Kd",
+      "4d"
+    ],
+    "villain2Cards": [
+      "Js",
+      "9s"
+    ],
+    "board": [
+      "5s",
+      "7d",
+      "6d",
+      "2s"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs nut flush draw vs straight draw (turn)",
+    "expected": {
+      "equity": 50,
+      "method": "exact",
+      "iterations": 42,
+      "wins": 21,
+      "losses": 21,
+      "ties": 0
+    }
+  }
+]

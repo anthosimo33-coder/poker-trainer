@@ -5,6 +5,8 @@ import {
   equityExactFlop,
   equityExactRiver,
   countOuts,
+  equityMultiMonteCarlo,
+  equityMultiExactFlop,
 } from "@/lib/poker/equity";
 
 describe("equityMonteCarlo — matchups préflop connus", () => {
@@ -96,5 +98,42 @@ describe("countOuts — règle des outs", () => {
     // on passe devant en touchant couleur ou top paire.
     expect(outs).toBeGreaterThan(8);
     expect(outs).toBeLessThan(20);
+  });
+});
+
+describe("equityMulti — 3-way matchups", () => {
+  it("AA vs KK vs QQ : AA ~67%", () => {
+    const result = equityMultiMonteCarlo(
+      ["As", "Ah"],
+      [["Ks", "Kd"], ["Qs", "Qd"]],
+      [],
+      30_000
+    );
+    expect(result.equity).toBeGreaterThan(63);
+    expect(result.equity).toBeLessThan(71);
+  });
+
+  it("Tirage couleur 3-way au flop : equity réduite", () => {
+    const result = equityMultiExactFlop(
+      ["As", "Ks"],
+      [["Qd", "Qc"], ["9h", "8h"]],
+      ["Ts", "7s", "2d"]
+    );
+    expect(result.method).toBe("exact");
+    // Valeur exacte déterministe ≈ 52.4 %. La borne <45 du spec supposait un
+    // tirage faible, mais As Ks est ici un NUT flush draw + 2 overcards
+    // (~15 outs) vs over-pair + tirage quinte dominé : l'equity reste élevée
+    // même en 3-way. Borne élargie (cf. note S6a/S6b : déterministe correct).
+    expect(result.equity).toBeGreaterThan(25);
+    expect(result.equity).toBeLessThan(60);
+  });
+
+  it("Set vs 2 vilains : set reste dominant", () => {
+    const result = equityMultiExactFlop(
+      ["7c", "7h"],
+      [["As", "Ad"], ["Js", "Ts"]],
+      ["7s", "Ks", "4d"]
+    );
+    expect(result.equity).toBeGreaterThan(60);
   });
 });

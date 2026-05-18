@@ -12,7 +12,7 @@
  */
 import type { Card } from "./cards";
 import { fullDeck } from "./cards";
-import { evaluateHand, compareHands } from "./evaluator";
+import { evaluateHand, compareHands, determineWinners } from "./evaluator";
 
 /**
  * Résultat d'un calcul d'equity.
@@ -197,4 +197,146 @@ export function countOuts(
     if (flopResult === -1 && turnResult >= 0) outs++;
   }
   return outs;
+}
+
+// ============== MULTI-WAY (N adversaires) ==============
+
+/**
+ * Compare la main hero contre N villains, board complet (5 cartes incluses).
+ *
+ * Écart vs spec (flaggé, même logique que `compareSeven` en S6a) : le spec
+ * proposait `Hand.solve(h)` + `Hand.winners` en réimportant pokersolver. On
+ * réutilise `evaluateHand` + `determineWinners` de `./evaluator` (déjà corrigés
+ * S6a pour le format "10"/"1" et basés sur `Hand.winners`) — DRY, testé, pas
+ * de réimport pokersolver ni de risque de régression du bug de format.
+ *
+ * - "win"  : hero seul gagnant
+ * - "tie"  : hero parmi plusieurs gagnants (split)
+ * - "loss" : hero battu
+ */
+function multiCompare(
+  heroHand: Card[],
+  villainHands: Card[][]
+): "win" | "tie" | "loss" {
+  const evals = [evaluateHand(heroHand), ...villainHands.map((h) => evaluateHand(h))];
+  const winners = determineWinners(evals); // indices des gagnants
+  if (winners.length === 1 && winners[0] === 0) return "win";
+  if (winners.includes(0)) return "tie";
+  return "loss";
+}
+
+/**
+ * Equity multi-way Monte Carlo (board 0-2 cartes).
+ */
+export function equityMultiMonteCarlo(
+  hero: [Card, Card],
+  villains: [Card, Card][],
+  board: Card[] = [],
+  iterations = 100_000
+): EquityResult {
+  if (villains.length === 0) throw new Error("Au moins 1 villain requis");
+  const used = [...hero, ...villains.flat(), ...board];
+  const remaining = remainingDeck(used);
+  const cardsToFlip = 5 - board.length;
+
+  let wins = 0,
+    losses = 0,
+    ties = 0;
+  for (let n = 0; n < iterations; n++) {
+    const deckCopy = remaining.slice();
+    const sampled: Card[] = [];
+    for (let i = 0; i < cardsToFlip; i++) {
+      const idx = i + Math.floor(Math.random() * (deckCopy.length - i));
+      [deckCopy[i], deckCopy[idx]] = [deckCopy[idx], deckCopy[i]];
+      sampled.push(deckCopy[i]);
+    }
+    const fullBoard = [...board, ...sampled];
+    const heroHand = [...hero, ...fullBoard];
+    const villainHands = villains.map((v) => [...v, ...fullBoard]);
+    const result = multiCompare(heroHand, villainHands);
+    if (result === "win") wins++;
+    else if (result === "tie") ties++;
+    else losses++;
+  }
+  const total = wins + losses + ties;
+  const equity = ((wins + ties / 2) / total) * 100;
+  return { equity, wins, losses, ties, total, method: "monte-carlo" };
+}
+
+/**
+ * Equity multi-way exacte au flop (board 3 cartes → 2 cartes manquantes).
+ */
+export function equityMultiExactFlop(
+  hero: [Card, Card],
+  villains: [Card, Card][],
+  board: [Card, Card, Card]
+): EquityResult {
+  if (villains.length === 0) throw new Error("Au moins 1 villain requis");
+  const used = [...hero, ...villains.flat(), ...board];
+  const deck = remainingDeck(used);
+
+  let wins = 0,
+    losses = 0,
+    ties = 0;
+  for (let i = 0; i < deck.length; i++) {
+    for (let j = i + 1; j < deck.length; j++) {
+      const fullBoard = [...board, deck[i], deck[j]];
+      const heroHand = [...hero, ...fullBoard];
+      const villainHands = villains.map((v) => [...v, ...fullBoard]);
+      const result = multiCompare(heroHand, villainHands);
+      if (result === "win") wins++;
+      else if (result === "tie") ties++;
+      else losses++;
+    }
+  }
+  const total = wins + losses + ties;
+  const equity = ((wins + ties / 2) / total) * 100;
+  return { equity, wins, losses, ties, total, method: "exact" };
+}
+
+/**
+ * Equity multi-way exacte au turn (board 4 cartes → 1 carte manquante).
+ */
+export function equityMultiExactRiver(
+  hero: [Card, Card],
+  villains: [Card, Card][],
+  board: [Card, Card, Card, Card]
+): EquityResult {
+  if (villains.length === 0) throw new Error("Au moins 1 villain requis");
+  const used = [...hero, ...villains.flat(), ...board];
+  const deck = remainingDeck(used);
+
+  let wins = 0,
+    losses = 0,
+    ties = 0;
+  for (const river of deck) {
+    const fullBoard = [...board, river];
+    const heroHand = [...hero, ...fullBoard];
+    const villainHands = villains.map((v) => [...v, ...fullBoard]);
+    const result = multiCompare(heroHand, villainHands);
+    if (result === "win") wins++;
+    else if (result === "tie") ties++;
+    else losses++;
+  }
+  const total = wins + losses + ties;
+  const equity = ((wins + ties / 2) / total) * 100;
+  return { equity, wins, losses, ties, total, method: "exact" };
+}
+
+/**
+ * Dispatch automatique multi-way.
+ */
+export function equityMulti(
+  hero: [Card, Card],
+  villains: [Card, Card][],
+  board: Card[] = [],
+  iterations = 100_000
+): EquityResult {
+  if (board.length === 4) {
+    return equityMultiExactRiver(hero, villains, board as [Card, Card, Card, Card]);
+  }
+  if (board.length === 3) {
+    return equityMultiExactFlop(hero, villains, board as [Card, Card, Card]);
+  }
+  return equityMultiMonteCarlo(hero, villains, board, iterations);
 }

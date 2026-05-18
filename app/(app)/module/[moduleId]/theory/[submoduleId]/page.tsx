@@ -17,6 +17,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m1-4": () => import("@/content/theory/m1-4.mdx"),
   "m2-1": () => import("@/content/theory/m2-1.mdx"),
   "m2-2": () => import("@/content/theory/m2-2.mdx"),
+  "m2-3": () => import("@/content/theory/m2-3.mdx"),
 };
 
 function TheoryContent() {
@@ -344,6 +345,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Les tirages combinés sont attirants visuellement (« 15 outs ! ») mais la règle 4 × 15 = 60 % surestime de ~6 points. La vraie equity est ~54 %. Le biais d'optimisme amplifie cette erreur en table.",
+    },
+  ],
+
+  "m2-3": [
+    {
+      question: "En heads-up, ton tirage couleur a ~36 % d'equity. En 3-way (toi vs 2 vilains précis), quelle est ton equity approximative ?",
+      options: [
+        { letter: "A", text: "~36 % (inchangé)" },
+        { letter: "B", text: "~25 % (× 0.7)" },
+        { letter: "C", text: "~12 % (divisé par 3)" },
+        { letter: "D", text: "~50 % (plus de mains à battre = plus d'opportunités)" },
+      ],
+      correctLetter: "B",
+      explanation: "En multiway, certains de tes outs sont morts (donnent une main inférieure à un autre vilain). La règle empirique : × 0.7 pour passer du heads-up au 3-way. Ton ~36 % heads-up devient ~25 % en 3-way.",
+    },
+    {
+      question: "Quel type de main gagne en valeur en multiway par rapport au heads-up ?",
+      options: [
+        { letter: "A", text: "AKo (high cards offsuit)" },
+        { letter: "B", text: "Top paire kicker faible (ex. A♠5♦ sur A♥9♣2♠)" },
+        { letter: "C", text: "Suited connectors (ex. 8♠7♠)" },
+        { letter: "D", text: "Tirage quinte ventrale" },
+      ],
+      correctLetter: "C",
+      explanation: "Les suited connectors valent plus en multiway : ils touchent rarement, mais quand ils touchent (couleur, quinte), le pot est gros (plus de joueurs, plus de mises). Les mains polarisées (fortes ou speculatives) battent les mains marginales.",
+    },
+    {
+      question: "Tu as TPTK (top pair top kicker, ex. A♦K♠ sur A♣9♥2♦) en 3-way au flop. Pourquoi est-ce plus dangereux qu'en heads-up ?",
+      options: [
+        { letter: "A", text: "Ton kicker compte moins en multiway." },
+        { letter: "B", text: "Statistiquement, l'un des deux vilains a plus souvent two pair ou un set que vs un seul vilain." },
+        { letter: "C", text: "Les tirages couleur sont plus fréquents en multiway." },
+        { letter: "D", text: "Ton equity globale baisse à 33 %." },
+      ],
+      correctLetter: "B",
+      explanation: "Multiway, la probabilité que l'un des vilains ait une main qui te bat (set, two pair, slowplay) double en 3-way. TPTK reste favorite face à chaque vilain individuellement, mais perd ~10-15 points d'equity face au range combiné des deux vilains.",
     },
   ],
 };

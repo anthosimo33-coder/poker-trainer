@@ -1,0 +1,107 @@
+---
+slug: m2-3
+moduleSlug: m2
+submoduleSlug: m2.3
+title: Equity multiway
+subtitle: Quand l'équation gagne une inconnue.
+order: 3
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module II · Sous-module 3 / 4
+  </div>
+
+# Equity multiway.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Quand l&apos;équation gagne une inconnue.</em> En heads-up tu cherches une probabilité contre une main. En multiway, contre deux — et tes outs ne te sauvent plus toujours.
+</p>
+</div>
+
+<WhyBlock title="Plus il y a de joueurs, plus il faut être fort pour rester.">
+
+En heads-up, ton equity moyenne au flop est de **50 %** — une main contre une main. Ajoute un adversaire et la moyenne tombe à **33 %** ; un troisième, **25 %**. Ce n&apos;est pas une opinion, c&apos;est de l&apos;arithmétique : le pot se partage entre plus de prétendants.
+
+La conséquence est brutale et contre-intuitive : la plupart de tes outs valent **moins** en multiway, parce que certains donnent une main qui bat un vilain mais en perd un autre. L&apos;intuition heads-up sur-évalue presque tout en multiway.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="Le saut conceptuel" title={<>Une inconnue <em>de plus.</em></>} />
+
+<Prose>
+
+Heads-up = une inconnue (sa main). Multiway = N inconnues. Et l&apos;equity moyenne d&apos;une main au flop multiway est mécaniquement **1/N** : 50 % à deux, 33 % à trois, 25 % à quatre.
+
+Conséquence directe : il faut **plus de force absolue** pour continuer un pot multiway. Une main qui gagne à pile ou face en heads-up est souvent un fold clair à trois.
+
+</Prose>
+
+<SectionHeader num="03" label="Les outs vivants" title={<>Tous tes outs <em>ne sont pas vivants.</em></>} />
+
+<Prose>
+
+Un **out vivant** est une carte qui te fait gagner contre *tous* les vilains à la fois. En heads-up, presque tous tes outs sont vivants. En multiway, certains sont des *contre-outs* : ils complètent ta main… et une meilleure chez un adversaire.
+
+Exemple : `9♠8♠` sur `T♠7♠2♦`. En heads-up vs `KK`, tes 9 piques sont propres → ~36 %. Ajoute `A♥K♥` : maintenant `A♠` et `K♠` te donnent la couleur *mais* en donnent une plus haute à l&apos;adversaire. Outs morts.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Règle empirique</FormulaLabel> outs vivants ≈ outs bruts ÷ <K>1.3</K> <FormulaMuted>en 3-way</FormulaMuted>
+</Formula>
+
+<SectionHeader num="04" label="La règle empirique" title={<>Multiplie, <em>ne recompte pas.</em></>} />
+
+<Prose>
+
+Recompter les outs vivants en table est trop lent. L&apos;approximation pratique part de l&apos;equity heads-up que tu sais déjà estimer (M2.2) :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>3-way</FormulaLabel> equity ≈ equity heads-up × <K>0.7</K><br/>
+  <FormulaLabel>4-way</FormulaLabel> equity ≈ equity heads-up × <K>0.55</K> <FormulaMuted>(hors scope drill, pour mémoire)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Un tirage couleur ~36 % en heads-up devient **~25 %** en 3-way (`36 × 0.7`). Approximation grossière, mais elle donne le bon ordre de grandeur en cinq secondes — assez pour décider.
+
+</Prose>
+
+<Mnemonic keyText="×0.7 à 3 · ×0.55 à 4">
+Pars de ton equity heads-up, multiplie par 0.7 en 3-way, 0.55 en 4-way. Le chiffre exact importe moins que le réflexe : *en multiway, divise ton optimisme*.
+</Mnemonic>
+
+<SectionHeader num="05" label="Gagnantes vs perdantes" title={<>Le multiway <em>trie les mains.</em></>} />
+
+<Prose>
+
+**Gagnent de la valeur** — les paires petites/moyennes (set mining, le pot est énorme quand on touche), les *suited connectors* (couleur + quinte bien dissimulées), les nut flush draws (couleur max, jamais dominée). Elles touchent rarement mais ramassent gros, et plus il y a de joueurs, plus le pot est gros.
+
+**Perdent de la valeur** — `AKo` (rate trop les paires), top paire kicker faible (statistiquement, *l&apos;un* des vilains a souvent mieux), les tirages ventraux (souvent dominés).
+
+La règle de hand selection : en multiway, joue **polarisé** — premiums ou fort potentiel. Évite le milieu mou (broadways offsuit moyens).
+
+</Prose>
+
+<SectionHeader num="06" label="Les pièges classiques" title={<>Trois illusions <em>de table.</em></>} />
+
+<Prose>
+
+**1. Oublier les contre-outs.** « J&apos;ai 9 outs » — non, tu en as 9 *bruts*, peut-être 6 vivants à trois.
+
+**2. Sur-évaluer top paire.** En multiway elle perd ~15-20 points : ce n&apos;est plus « est-ce qu&apos;*il* a mieux ? » mais « est-ce que *l&apos;un des deux* a mieux ? » — probabilité quasi doublée.
+
+**3. Sous-évaluer les suited connectors.** Ils gagnent ~5-10 points en multiway : rares, mais le gros pot multiway paie largement les fois où ils touchent.
+
+</Prose>
+
+<LifeLink title="Plus il y a de joueurs autour de la table, moins ton bluff porte — la vie pareil.">
+
+Un projet à cinq décideurs exige cinq alignements *simultanés*. À deux, deux. La complexité d&apos;alignement croît plus vite que le nombre d&apos;acteurs, et un seul veto suffit à tout bloquer — exactement comme un seul vilain qui te bat suffit à tuer ton equity.
+
+Les bons stratèges *réduisent le nombre de joueurs à convaincre* : clarifier les rôles, supprimer les vetos, séquencer les décisions. Le poker multiway enseigne la même discipline froide : *plus il y a de monde, plus tu dois être réellement fort pour rester dans le coup* — l&apos;espoir ne suffit jamais à trois.
+
+</LifeLink>

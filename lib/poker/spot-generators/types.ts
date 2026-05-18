@@ -4,6 +4,7 @@ import type { ImpliedOddsSpot } from "./m1-3-implied";
 import type { ReverseImpliedSpot } from "./m1-4-reverse-implied";
 import type { OutsSpot } from "./m2-1-outs";
 import type { EquitySpot } from "./m2-2-equity";
+import type { MultiwaySpot } from "./m2-3-multiway";
 
 export type GenericSpot =
   | PotOddsSpot
@@ -11,7 +12,8 @@ export type GenericSpot =
   | ImpliedOddsSpot
   | ReverseImpliedSpot
   | OutsSpot
-  | EquitySpot;
+  | EquitySpot
+  | MultiwaySpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).
