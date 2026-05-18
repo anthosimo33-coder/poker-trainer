@@ -219,4 +219,27 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page.getByText(/Adversaire 1/i)).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText(/Adversaire 2/i)).toBeVisible();
   });
+
+  test("M2.4 — théorie → quick check → drill avec range visualisé", async ({ page }) => {
+    await page.goto("/module/m2/theory/m2-4");
+    await expect(page.getByText(/Equity vs range/i)).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (cf. S6b/S6c) : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m2-4/);
+    // Grille 13×13 visible (timeout 15s : chaîne gate→completion→session→spot).
+    await expect(
+      page.locator('[title="AA"], [title="KK"]').first()
+    ).toBeVisible({ timeout: 15_000 });
+  });
 });

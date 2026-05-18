@@ -13,6 +13,7 @@
 import type { Card } from "./cards";
 import { fullDeck } from "./cards";
 import { evaluateHand, compareHands, determineWinners } from "./evaluator";
+import type { Combo } from "./range-parser";
 
 /**
  * Résultat d'un calcul d'equity.
@@ -339,4 +340,62 @@ export function equityMulti(
     return equityMultiExactFlop(hero, villains, board as [Card, Card, Card]);
   }
   return equityMultiMonteCarlo(hero, villains, board, iterations);
+}
+
+// ============== EQUITY VS RANGE ==============
+
+/**
+ * Equity de hero face à un range = moyenne (poids uniforme) sur chaque combo
+ * valide. Les combos partageant une carte avec hero/board sont ignorés.
+ *
+ * Écart vs spec (flaggé) : le spec appelait `equity(hero, combo, board, …)` par
+ * combo, qui dispatche en énumération EXACTE au flop/turn. Avec ~150 spots ×
+ * ~50-300 combos, l'exact-par-combo est intraitable (incompatible avec
+ * l'estimation « ~5-10 min » du spec, cf. perfs S6a). On appelle directement
+ * `equityMonteCarlo` (itérations contrôlées), ce qui est aussi cohérent avec
+ * le `method: "monte-carlo"` que le spec retourne en dur. La moyenne sur N
+ * combos lisse fortement la variance MC → précision largement suffisante.
+ */
+export function equityVsRange(
+  hero: [Card, Card],
+  villainRange: Combo[],
+  board: Card[] = [],
+  iterations = 10_000
+): EquityResult & { validCombos: number; rejectedCombos: number } {
+  const usedByHero = new Set<Card>([...hero, ...board]);
+  const validCombos = villainRange.filter(
+    ([c1, c2]) => !usedByHero.has(c1) && !usedByHero.has(c2) && c1 !== c2
+  );
+
+  if (validCombos.length === 0) {
+    throw new Error(
+      "Aucun combo valide dans le range (toutes les cartes sont utilisées par hero ou board)"
+    );
+  }
+
+  let totalEquity = 0;
+  let totalWins = 0;
+  let totalLosses = 0;
+  let totalTies = 0;
+  let totalIterations = 0;
+
+  for (const combo of validCombos) {
+    const result = equityMonteCarlo(hero, combo, board, iterations);
+    totalEquity += result.equity;
+    totalWins += result.wins;
+    totalLosses += result.losses;
+    totalTies += result.ties;
+    totalIterations += result.total;
+  }
+
+  return {
+    equity: totalEquity / validCombos.length,
+    wins: totalWins,
+    losses: totalLosses,
+    ties: totalTies,
+    total: totalIterations,
+    method: "monte-carlo",
+    validCombos: validCombos.length,
+    rejectedCombos: villainRange.length - validCombos.length,
+  };
 }

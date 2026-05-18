@@ -1,0 +1,2941 @@
+[
+  {
+    "id": "m2-4-spot-001",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "open-utg-15",
+    "villainRangeLabel": "UTG Open ~15%",
+    "villainRangeNotation": "77+, ATs+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AA vs UTG Open ~15%",
+    "expected": {
+      "equity": 83.8,
+      "comboCount": 113
+    }
+  },
+  {
+    "id": "m2-4-spot-002",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AA vs 3-bet value tight",
+    "expected": {
+      "equity": 84.2,
+      "comboCount": 21
+    }
+  },
+  {
+    "id": "m2-4-spot-003",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AA vs BB defense vs CO open",
+    "expected": {
+      "equity": 84.4,
+      "comboCount": 335
+    }
+  },
+  {
+    "id": "m2-4-spot-004",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "squeeze-tight",
+    "villainRangeLabel": "Squeeze tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AA vs Squeeze tight",
+    "expected": {
+      "equity": 84.3,
+      "comboCount": 21
+    }
+  },
+  {
+    "id": "m2-4-spot-005",
+    "heroCards": [
+      "Ks",
+      "Kd"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KK vs MP Open ~20%",
+    "expected": {
+      "equity": 77.6,
+      "comboCount": 213
+    }
+  },
+  {
+    "id": "m2-4-spot-006",
+    "heroCards": [
+      "Ks",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KK vs 3-bet linéaire moyen",
+    "expected": {
+      "equity": 66,
+      "comboCount": 37
+    }
+  },
+  {
+    "id": "m2-4-spot-007",
+    "heroCards": [
+      "Ks",
+      "Kd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KK vs BB defense vs UTG open",
+    "expected": {
+      "equity": 74.6,
+      "comboCount": 145
+    }
+  },
+  {
+    "id": "m2-4-spot-008",
+    "heroCards": [
+      "Ks",
+      "Kd"
+    ],
+    "villainRangeSlug": "squeeze-medium",
+    "villainRangeLabel": "Squeeze médium",
+    "villainRangeNotation": "TT+, AJs+, AQo+, KQs, A5s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KK vs Squeeze médium",
+    "expected": {
+      "equity": 68.7,
+      "comboCount": 59
+    }
+  },
+  {
+    "id": "m2-4-spot-009",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "QQ vs CO Open ~30%",
+    "expected": {
+      "equity": 73.5,
+      "comboCount": 335
+    }
+  },
+  {
+    "id": "m2-4-spot-010",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "QQ vs 3-bet BTN vs CO polarized",
+    "expected": {
+      "equity": 53,
+      "comboCount": 49
+    }
+  },
+  {
+    "id": "m2-4-spot-011",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "QQ vs Push BTN 12bb",
+    "expected": {
+      "equity": 71.5,
+      "comboCount": 339
+    }
+  },
+  {
+    "id": "m2-4-spot-012",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villainRangeSlug": "4bet-value-tight",
+    "villainRangeLabel": "4-bet value tight",
+    "villainRangeNotation": "QQ+, AKs",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "QQ vs 4-bet value tight",
+    "expected": {
+      "equity": 28.3,
+      "comboCount": 17
+    }
+  },
+  {
+    "id": "m2-4-spot-013",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "JJ vs BTN Open ~45%",
+    "expected": {
+      "equity": 70.2,
+      "comboCount": 501
+    }
+  },
+  {
+    "id": "m2-4-spot-014",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villainRangeSlug": "3bet-bb-vs-btn",
+    "villainRangeLabel": "3-bet BB vs BTN polarized",
+    "villainRangeNotation": "JJ+, AQs+, AKo, A5s-A2s, K6s-K8s, 76s, 65s, 54s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "JJ vs 3-bet BB vs BTN polarized",
+    "expected": {
+      "equity": 55,
+      "comboCount": 79
+    }
+  },
+  {
+    "id": "m2-4-spot-015",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villainRangeSlug": "push-sb-10bb",
+    "villainRangeLabel": "Push SB 10bb",
+    "villainRangeNotation": "22+, A2s+, K3s+, Q8s+, J8s+, T8s+, 98s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "JJ vs Push SB 10bb",
+    "expected": {
+      "equity": 69.1,
+      "comboCount": 435
+    }
+  },
+  {
+    "id": "m2-4-spot-016",
+    "heroCards": [
+      "Js",
+      "Jh"
+    ],
+    "villainRangeSlug": "iso-vs-limp",
+    "villainRangeLabel": "Iso-raise vs limp",
+    "villainRangeNotation": "22+, A2s+, K9s+, Q9s+, JTs, T9s, A9o+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "JJ vs Iso-raise vs limp",
+    "expected": {
+      "equity": 66.4,
+      "comboCount": 257
+    }
+  },
+  {
+    "id": "m2-4-spot-017",
+    "heroCards": [
+      "Ts",
+      "Tc"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "TT vs SB Open ~35%",
+    "expected": {
+      "equity": 65.3,
+      "comboCount": 395
+    }
+  },
+  {
+    "id": "m2-4-spot-018",
+    "heroCards": [
+      "Ts",
+      "Tc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "TT vs BB defense vs BTN open",
+    "expected": {
+      "equity": 67.1,
+      "comboCount": 467
+    }
+  },
+  {
+    "id": "m2-4-spot-019",
+    "heroCards": [
+      "Ts",
+      "Tc"
+    ],
+    "villainRangeSlug": "push-co-15bb",
+    "villainRangeLabel": "Push CO 15bb",
+    "villainRangeNotation": "33+, A2s+, K8s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "TT vs Push CO 15bb",
+    "expected": {
+      "equity": 61.6,
+      "comboCount": 263
+    }
+  },
+  {
+    "id": "m2-4-spot-020",
+    "heroCards": [
+      "Ts",
+      "Tc"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "TT vs Fish 3-bet light",
+    "expected": {
+      "equity": 59.1,
+      "comboCount": 129
+    }
+  },
+  {
+    "id": "m2-4-spot-021",
+    "heroCards": [
+      "9s",
+      "9d"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "99 vs 3-bet value tight",
+    "expected": {
+      "equity": 36,
+      "comboCount": 34
+    }
+  },
+  {
+    "id": "m2-4-spot-022",
+    "heroCards": [
+      "9s",
+      "9d"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "99 vs BB defense vs CO open",
+    "expected": {
+      "equity": 60.4,
+      "comboCount": 377
+    }
+  },
+  {
+    "id": "m2-4-spot-023",
+    "heroCards": [
+      "9s",
+      "9d"
+    ],
+    "villainRangeSlug": "squeeze-tight",
+    "villainRangeLabel": "Squeeze tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "99 vs Squeeze tight",
+    "expected": {
+      "equity": 35.5,
+      "comboCount": 34
+    }
+  },
+  {
+    "id": "m2-4-spot-024",
+    "heroCards": [
+      "9s",
+      "9d"
+    ],
+    "villainRangeSlug": "open-utg-15",
+    "villainRangeLabel": "UTG Open ~15%",
+    "villainRangeNotation": "77+, ATs+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "99 vs UTG Open ~15%",
+    "expected": {
+      "equity": 48.9,
+      "comboCount": 135
+    }
+  },
+  {
+    "id": "m2-4-spot-025",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "77 vs 3-bet linéaire moyen",
+    "expected": {
+      "equity": 32.8,
+      "comboCount": 50
+    }
+  },
+  {
+    "id": "m2-4-spot-026",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "77 vs BB defense vs UTG open",
+    "expected": {
+      "equity": 47.2,
+      "comboCount": 165
+    }
+  },
+  {
+    "id": "m2-4-spot-027",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "villainRangeSlug": "squeeze-medium",
+    "villainRangeLabel": "Squeeze médium",
+    "villainRangeNotation": "TT+, AJs+, AQo+, KQs, A5s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "77 vs Squeeze médium",
+    "expected": {
+      "equity": 40.3,
+      "comboCount": 74
+    }
+  },
+  {
+    "id": "m2-4-spot-028",
+    "heroCards": [
+      "7s",
+      "7h"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "77 vs MP Open ~20%",
+    "expected": {
+      "equity": 48.5,
+      "comboCount": 245
+    }
+  },
+  {
+    "id": "m2-4-spot-029",
+    "heroCards": [
+      "5s",
+      "5c"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "55 vs 3-bet BTN vs CO polarized",
+    "expected": {
+      "equity": 43.1,
+      "comboCount": 50
+    }
+  },
+  {
+    "id": "m2-4-spot-030",
+    "heroCards": [
+      "5s",
+      "5c"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "55 vs Push BTN 12bb",
+    "expected": {
+      "equity": 50,
+      "comboCount": 363
+    }
+  },
+  {
+    "id": "m2-4-spot-031",
+    "heroCards": [
+      "5s",
+      "5c"
+    ],
+    "villainRangeSlug": "4bet-value-tight",
+    "villainRangeLabel": "4-bet value tight",
+    "villainRangeNotation": "QQ+, AKs",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "55 vs 4-bet value tight",
+    "expected": {
+      "equity": 25.2,
+      "comboCount": 22
+    }
+  },
+  {
+    "id": "m2-4-spot-032",
+    "heroCards": [
+      "5s",
+      "5c"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "55 vs CO Open ~30%",
+    "expected": {
+      "equity": 49.5,
+      "comboCount": 371
+    }
+  },
+  {
+    "id": "m2-4-spot-033",
+    "heroCards": [
+      "3s",
+      "3d"
+    ],
+    "villainRangeSlug": "3bet-bb-vs-btn",
+    "villainRangeLabel": "3-bet BB vs BTN polarized",
+    "villainRangeNotation": "JJ+, AQs+, AKo, A5s-A2s, K6s-K8s, 76s, 65s, 54s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "33 vs 3-bet BB vs BTN polarized",
+    "expected": {
+      "equity": 42.3,
+      "comboCount": 82
+    }
+  },
+  {
+    "id": "m2-4-spot-034",
+    "heroCards": [
+      "3s",
+      "3d"
+    ],
+    "villainRangeSlug": "push-sb-10bb",
+    "villainRangeLabel": "Push SB 10bb",
+    "villainRangeNotation": "22+, A2s+, K3s+, Q8s+, J8s+, T8s+, 98s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "33 vs Push SB 10bb",
+    "expected": {
+      "equity": 48.1,
+      "comboCount": 467
+    }
+  },
+  {
+    "id": "m2-4-spot-035",
+    "heroCards": [
+      "3s",
+      "3d"
+    ],
+    "villainRangeSlug": "iso-vs-limp",
+    "villainRangeLabel": "Iso-raise vs limp",
+    "villainRangeNotation": "22+, A2s+, K9s+, Q9s+, JTs, T9s, A9o+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "33 vs Iso-raise vs limp",
+    "expected": {
+      "equity": 44.4,
+      "comboCount": 287
+    }
+  },
+  {
+    "id": "m2-4-spot-036",
+    "heroCards": [
+      "3s",
+      "3d"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "33 vs BTN Open ~45%",
+    "expected": {
+      "equity": 48.3,
+      "comboCount": 531
+    }
+  },
+  {
+    "id": "m2-4-spot-037",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKs vs BB defense vs BTN open",
+    "expected": {
+      "equity": 65.2,
+      "comboCount": 437
+    }
+  },
+  {
+    "id": "m2-4-spot-038",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "push-co-15bb",
+    "villainRangeLabel": "Push CO 15bb",
+    "villainRangeNotation": "33+, A2s+, K8s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKs vs Push CO 15bb",
+    "expected": {
+      "equity": 63.3,
+      "comboCount": 243
+    }
+  },
+  {
+    "id": "m2-4-spot-039",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKs vs Fish 3-bet light",
+    "expected": {
+      "equity": 53.4,
+      "comboCount": 117
+    }
+  },
+  {
+    "id": "m2-4-spot-040",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKs vs SB Open ~35%",
+    "expected": {
+      "equity": 64.7,
+      "comboCount": 374
+    }
+  },
+  {
+    "id": "m2-4-spot-041",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQs vs BB defense vs CO open",
+    "expected": {
+      "equity": 62.3,
+      "comboCount": 353
+    }
+  },
+  {
+    "id": "m2-4-spot-042",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "squeeze-tight",
+    "villainRangeLabel": "Squeeze tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQs vs Squeeze tight",
+    "expected": {
+      "equity": 28.2,
+      "comboCount": 24
+    }
+  },
+  {
+    "id": "m2-4-spot-043",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "open-utg-15",
+    "villainRangeLabel": "UTG Open ~15%",
+    "villainRangeNotation": "77+, ATs+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQs vs UTG Open ~15%",
+    "expected": {
+      "equity": 53.8,
+      "comboCount": 116
+    }
+  },
+  {
+    "id": "m2-4-spot-044",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQs vs 3-bet value tight",
+    "expected": {
+      "equity": 28.3,
+      "comboCount": 24
+    }
+  },
+  {
+    "id": "m2-4-spot-045",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AJs vs BB defense vs UTG open",
+    "expected": {
+      "equity": 48.6,
+      "comboCount": 143
+    }
+  },
+  {
+    "id": "m2-4-spot-046",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "villainRangeSlug": "squeeze-medium",
+    "villainRangeLabel": "Squeeze médium",
+    "villainRangeNotation": "TT+, AJs+, AQo+, KQs, A5s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AJs vs Squeeze médium",
+    "expected": {
+      "equity": 36.9,
+      "comboCount": 58
+    }
+  },
+  {
+    "id": "m2-4-spot-047",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AJs vs MP Open ~20%",
+    "expected": {
+      "equity": 55.6,
+      "comboCount": 213
+    }
+  },
+  {
+    "id": "m2-4-spot-048",
+    "heroCards": [
+      "As",
+      "Js"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AJs vs 3-bet linéaire moyen",
+    "expected": {
+      "equity": 31.8,
+      "comboCount": 39
+    }
+  },
+  {
+    "id": "m2-4-spot-049",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "A5s vs Push BTN 12bb",
+    "expected": {
+      "equity": 47.1,
+      "comboCount": 329
+    }
+  },
+  {
+    "id": "m2-4-spot-050",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "villainRangeSlug": "4bet-value-tight",
+    "villainRangeLabel": "4-bet value tight",
+    "villainRangeNotation": "QQ+, AKs",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "A5s vs 4-bet value tight",
+    "expected": {
+      "equity": 29.9,
+      "comboCount": 18
+    }
+  },
+  {
+    "id": "m2-4-spot-051",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "A5s vs CO Open ~30%",
+    "expected": {
+      "equity": 49.1,
+      "comboCount": 347
+    }
+  },
+  {
+    "id": "m2-4-spot-052",
+    "heroCards": [
+      "As",
+      "5s"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "A5s vs 3-bet BTN vs CO polarized",
+    "expected": {
+      "equity": 40.9,
+      "comboCount": 44
+    }
+  },
+  {
+    "id": "m2-4-spot-053",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "villainRangeSlug": "push-sb-10bb",
+    "villainRangeLabel": "Push SB 10bb",
+    "villainRangeNotation": "22+, A2s+, K3s+, Q8s+, J8s+, T8s+, 98s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQs vs Push SB 10bb",
+    "expected": {
+      "equity": 53.6,
+      "comboCount": 427
+    }
+  },
+  {
+    "id": "m2-4-spot-054",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "villainRangeSlug": "iso-vs-limp",
+    "villainRangeLabel": "Iso-raise vs limp",
+    "villainRangeNotation": "22+, A2s+, K9s+, Q9s+, JTs, T9s, A9o+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQs vs Iso-raise vs limp",
+    "expected": {
+      "equity": 50.6,
+      "comboCount": 255
+    }
+  },
+  {
+    "id": "m2-4-spot-055",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQs vs BTN Open ~45%",
+    "expected": {
+      "equity": 55.2,
+      "comboCount": 491
+    }
+  },
+  {
+    "id": "m2-4-spot-056",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "villainRangeSlug": "3bet-bb-vs-btn",
+    "villainRangeLabel": "3-bet BB vs BTN polarized",
+    "villainRangeNotation": "JJ+, AQs+, AKo, A5s-A2s, K6s-K8s, 76s, 65s, 54s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQs vs 3-bet BB vs BTN polarized",
+    "expected": {
+      "equity": 43.2,
+      "comboCount": 70
+    }
+  },
+  {
+    "id": "m2-4-spot-057",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villainRangeSlug": "push-co-15bb",
+    "villainRangeLabel": "Push CO 15bb",
+    "villainRangeNotation": "33+, A2s+, K8s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "76s vs Push CO 15bb",
+    "expected": {
+      "equity": 37.6,
+      "comboCount": 288
+    }
+  },
+  {
+    "id": "m2-4-spot-058",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "76s vs Fish 3-bet light",
+    "expected": {
+      "equity": 35.4,
+      "comboCount": 132
+    }
+  },
+  {
+    "id": "m2-4-spot-059",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "76s vs SB Open ~35%",
+    "expected": {
+      "equity": 38.3,
+      "comboCount": 422
+    }
+  },
+  {
+    "id": "m2-4-spot-060",
+    "heroCards": [
+      "7s",
+      "6s"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "76s vs BB defense vs BTN open",
+    "expected": {
+      "equity": 40.1,
+      "comboCount": 491
+    }
+  },
+  {
+    "id": "m2-4-spot-061",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villainRangeSlug": "squeeze-tight",
+    "villainRangeLabel": "Squeeze tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "98s vs Squeeze tight",
+    "expected": {
+      "equity": 30.2,
+      "comboCount": 34
+    }
+  },
+  {
+    "id": "m2-4-spot-062",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villainRangeSlug": "open-utg-15",
+    "villainRangeLabel": "UTG Open ~15%",
+    "villainRangeNotation": "77+, ATs+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "98s vs UTG Open ~15%",
+    "expected": {
+      "equity": 34.9,
+      "comboCount": 136
+    }
+  },
+  {
+    "id": "m2-4-spot-063",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "98s vs 3-bet value tight",
+    "expected": {
+      "equity": 29.2,
+      "comboCount": 34
+    }
+  },
+  {
+    "id": "m2-4-spot-064",
+    "heroCards": [
+      "9s",
+      "8s"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "98s vs BB defense vs CO open",
+    "expected": {
+      "equity": 39.7,
+      "comboCount": 385
+    }
+  },
+  {
+    "id": "m2-4-spot-065",
+    "heroCards": [
+      "Ah",
+      "Kd"
+    ],
+    "villainRangeSlug": "squeeze-medium",
+    "villainRangeLabel": "Squeeze médium",
+    "villainRangeNotation": "TT+, AJs+, AQo+, KQs, A5s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKo vs Squeeze médium",
+    "expected": {
+      "equity": 52.3,
+      "comboCount": 54
+    }
+  },
+  {
+    "id": "m2-4-spot-066",
+    "heroCards": [
+      "Ah",
+      "Kd"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKo vs MP Open ~20%",
+    "expected": {
+      "equity": 60.2,
+      "comboCount": 213
+    }
+  },
+  {
+    "id": "m2-4-spot-067",
+    "heroCards": [
+      "Ah",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKo vs 3-bet linéaire moyen",
+    "expected": {
+      "equity": 43,
+      "comboCount": 36
+    }
+  },
+  {
+    "id": "m2-4-spot-068",
+    "heroCards": [
+      "Ah",
+      "Kd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AKo vs BB defense vs UTG open",
+    "expected": {
+      "equity": 56.5,
+      "comboCount": 140
+    }
+  },
+  {
+    "id": "m2-4-spot-069",
+    "heroCards": [
+      "Ah",
+      "Qd"
+    ],
+    "villainRangeSlug": "4bet-value-tight",
+    "villainRangeLabel": "4-bet value tight",
+    "villainRangeNotation": "QQ+, AKs",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQo vs 4-bet value tight",
+    "expected": {
+      "equity": 24.1,
+      "comboCount": 15
+    }
+  },
+  {
+    "id": "m2-4-spot-070",
+    "heroCards": [
+      "Ah",
+      "Qd"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQo vs CO Open ~30%",
+    "expected": {
+      "equity": 59.1,
+      "comboCount": 329
+    }
+  },
+  {
+    "id": "m2-4-spot-071",
+    "heroCards": [
+      "Ah",
+      "Qd"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQo vs 3-bet BTN vs CO polarized",
+    "expected": {
+      "equity": 40.7,
+      "comboCount": 42
+    }
+  },
+  {
+    "id": "m2-4-spot-072",
+    "heroCards": [
+      "Ah",
+      "Qd"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "AQo vs Push BTN 12bb",
+    "expected": {
+      "equity": 59.9,
+      "comboCount": 317
+    }
+  },
+  {
+    "id": "m2-4-spot-073",
+    "heroCards": [
+      "Ah",
+      "Td"
+    ],
+    "villainRangeSlug": "iso-vs-limp",
+    "villainRangeLabel": "Iso-raise vs limp",
+    "villainRangeNotation": "22+, A2s+, K9s+, Q9s+, JTs, T9s, A9o+, KTo+, QTo+, JTo",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "ATo vs Iso-raise vs limp",
+    "expected": {
+      "equity": 51.3,
+      "comboCount": 245
+    }
+  },
+  {
+    "id": "m2-4-spot-074",
+    "heroCards": [
+      "Ah",
+      "Td"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "ATo vs BTN Open ~45%",
+    "expected": {
+      "equity": 57.9,
+      "comboCount": 475
+    }
+  },
+  {
+    "id": "m2-4-spot-075",
+    "heroCards": [
+      "Ah",
+      "Td"
+    ],
+    "villainRangeSlug": "3bet-bb-vs-btn",
+    "villainRangeLabel": "3-bet BB vs BTN polarized",
+    "villainRangeNotation": "JJ+, AQs+, AKo, A5s-A2s, K6s-K8s, 76s, 65s, 54s",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "ATo vs 3-bet BB vs BTN polarized",
+    "expected": {
+      "equity": 43.8,
+      "comboCount": 72
+    }
+  },
+  {
+    "id": "m2-4-spot-076",
+    "heroCards": [
+      "Ah",
+      "Td"
+    ],
+    "villainRangeSlug": "push-sb-10bb",
+    "villainRangeLabel": "Push SB 10bb",
+    "villainRangeNotation": "22+, A2s+, K3s+, Q8s+, J8s+, T8s+, 98s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "ATo vs Push SB 10bb",
+    "expected": {
+      "equity": 57.5,
+      "comboCount": 408
+    }
+  },
+  {
+    "id": "m2-4-spot-077",
+    "heroCards": [
+      "Kh",
+      "Qd"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQo vs Fish 3-bet light",
+    "expected": {
+      "equity": 40.6,
+      "comboCount": 120
+    }
+  },
+  {
+    "id": "m2-4-spot-078",
+    "heroCards": [
+      "Kh",
+      "Qd"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQo vs SB Open ~35%",
+    "expected": {
+      "equity": 51.3,
+      "comboCount": 392
+    }
+  },
+  {
+    "id": "m2-4-spot-079",
+    "heroCards": [
+      "Kh",
+      "Qd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQo vs BB defense vs BTN open",
+    "expected": {
+      "equity": 51.6,
+      "comboCount": 464
+    }
+  },
+  {
+    "id": "m2-4-spot-080",
+    "heroCards": [
+      "Kh",
+      "Qd"
+    ],
+    "villainRangeSlug": "push-co-15bb",
+    "villainRangeLabel": "Push CO 15bb",
+    "villainRangeNotation": "33+, A2s+, K8s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "board": [],
+    "street": "preflop",
+    "scenarioLabel": "KQo vs Push CO 15bb",
+    "expected": {
+      "equity": 47.7,
+      "comboCount": 256
+    }
+  },
+  {
+    "id": "m2-4-spot-081",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ts",
+      "7s",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "NFD + overs vs BTN open",
+    "expected": {
+      "equity": 72.3,
+      "comboCount": 425
+    }
+  },
+  {
+    "id": "m2-4-spot-082",
+    "heroCards": [
+      "Ah",
+      "Ad"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Kh",
+      "8s",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs BB defense",
+    "expected": {
+      "equity": 88.4,
+      "comboCount": 366
+    }
+  },
+  {
+    "id": "m2-4-spot-083",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Jd",
+      "9c",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs CO open",
+    "expected": {
+      "equity": 74.9,
+      "comboCount": 287
+    }
+  },
+  {
+    "id": "m2-4-spot-084",
+    "heroCards": [
+      "Ad",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "Kc",
+      "9s",
+      "5h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair TK vs 3-bet range",
+    "expected": {
+      "equity": 71.4,
+      "comboCount": 31
+    }
+  },
+  {
+    "id": "m2-4-spot-085",
+    "heroCards": [
+      "9c",
+      "8c"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Tc",
+      "7d",
+      "2h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs BTN open",
+    "expected": {
+      "equity": 47.1,
+      "comboCount": 462
+    }
+  },
+  {
+    "id": "m2-4-spot-086",
+    "heroCards": [
+      "Js",
+      "Ts"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "9h",
+      "8d",
+      "2c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD vs BB defense",
+    "expected": {
+      "equity": 44.1,
+      "comboCount": 338
+    }
+  },
+  {
+    "id": "m2-4-spot-087",
+    "heroCards": [
+      "Ac",
+      "Qc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Qd",
+      "7s",
+      "3h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs BB defense",
+    "expected": {
+      "equity": 86.2,
+      "comboCount": 399
+    }
+  },
+  {
+    "id": "m2-4-spot-088",
+    "heroCards": [
+      "7h",
+      "7d"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [
+      "Ah",
+      "Kc",
+      "5s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs 3-bet",
+    "expected": {
+      "equity": 5.9,
+      "comboCount": 21
+    }
+  },
+  {
+    "id": "m2-4-spot-089",
+    "heroCards": [
+      "Kh",
+      "Qh"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "Kd",
+      "8c",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs MP open",
+    "expected": {
+      "equity": 80.5,
+      "comboCount": 189
+    }
+  },
+  {
+    "id": "m2-4-spot-091",
+    "heroCards": [
+      "Td",
+      "Tc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [
+      "9s",
+      "6h",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs UTG defense",
+    "expected": {
+      "equity": 64.6,
+      "comboCount": 146
+    }
+  },
+  {
+    "id": "m2-4-spot-092",
+    "heroCards": [
+      "Ah",
+      "Qd"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Qs",
+      "Tc",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs CO open",
+    "expected": {
+      "equity": 75.8,
+      "comboCount": 281
+    }
+  },
+  {
+    "id": "m2-4-spot-093",
+    "heroCards": [
+      "8s",
+      "7s"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "6s",
+      "5d",
+      "Kc"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs BTN open",
+    "expected": {
+      "equity": 45.3,
+      "comboCount": 462
+    }
+  },
+  {
+    "id": "m2-4-spot-094",
+    "heroCards": [
+      "Ad",
+      "Ac"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Js",
+      "Ts",
+      "9d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs wet board vs BB",
+    "expected": {
+      "equity": 62.9,
+      "comboCount": 346
+    }
+  },
+  {
+    "id": "m2-4-spot-095",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [
+      "Qd",
+      "Tc",
+      "3h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD vs 3-bet polarized",
+    "expected": {
+      "equity": 43,
+      "comboCount": 43
+    }
+  },
+  {
+    "id": "m2-4-spot-096",
+    "heroCards": [
+      "Qc",
+      "Jc"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Tc",
+      "8d",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Gutshot + FD vs CO open",
+    "expected": {
+      "equity": 41.2,
+      "comboCount": 300
+    }
+  },
+  {
+    "id": "m2-4-spot-097",
+    "heroCards": [
+      "As",
+      "Th"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "Td",
+      "7c",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair weak kicker vs BB",
+    "expected": {
+      "equity": 76.9,
+      "comboCount": 320
+    }
+  },
+  {
+    "id": "m2-4-spot-098",
+    "heroCards": [
+      "9d",
+      "9h"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "Ks",
+      "Qd",
+      "2c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs 3-bet",
+    "expected": {
+      "equity": 7.4,
+      "comboCount": 39
+    }
+  },
+  {
+    "id": "m2-4-spot-099",
+    "heroCards": [
+      "Ah",
+      "Kh"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [
+      "Ad",
+      "8s",
+      "3c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs push range",
+    "expected": {
+      "equity": 86.3,
+      "comboCount": 259
+    }
+  },
+  {
+    "id": "m2-4-spot-100",
+    "heroCards": [
+      "Js",
+      "Jd"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "9s",
+      "7h",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs MP open",
+    "expected": {
+      "equity": 72.6,
+      "comboCount": 201
+    }
+  },
+  {
+    "id": "m2-4-spot-101",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "8s",
+      "7d",
+      "Ac"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs BB defense",
+    "expected": {
+      "equity": 42.4,
+      "comboCount": 389
+    }
+  },
+  {
+    "id": "m2-4-spot-102",
+    "heroCards": [
+      "Ac",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [
+      "Qs",
+      "Jh",
+      "Ts"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Broadway draw vs 3-bet",
+    "expected": {
+      "equity": 63.8,
+      "comboCount": 18
+    }
+  },
+  {
+    "id": "m2-4-spot-103",
+    "heroCards": [
+      "6h",
+      "6d"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "6s",
+      "Kc",
+      "4d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Set vs BB defense",
+    "expected": {
+      "equity": 95.2,
+      "comboCount": 365
+    }
+  },
+  {
+    "id": "m2-4-spot-104",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ks",
+      "Js",
+      "5d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "NFD + gutshot vs BTN open",
+    "expected": {
+      "equity": 70.4,
+      "comboCount": 408
+    }
+  },
+  {
+    "id": "m2-4-spot-105",
+    "heroCards": [
+      "Kd",
+      "Kc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [
+      "8h",
+      "5s",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs UTG defense",
+    "expected": {
+      "equity": 80.8,
+      "comboCount": 137
+    }
+  },
+  {
+    "id": "m2-4-spot-106",
+    "heroCards": [
+      "Qh",
+      "Jh"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Td",
+      "9s",
+      "3c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD vs CO open",
+    "expected": {
+      "equity": 45,
+      "comboCount": 289
+    }
+  },
+  {
+    "id": "m2-4-spot-107",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Kd",
+      "9d",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "NFD vs SB open",
+    "expected": {
+      "equity": 54.2,
+      "comboCount": 340
+    }
+  },
+  {
+    "id": "m2-4-spot-108",
+    "heroCards": [
+      "Tc",
+      "Td"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "As",
+      "8h",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs 3-bet",
+    "expected": {
+      "equity": 9.3,
+      "comboCount": 37
+    }
+  },
+  {
+    "id": "m2-4-spot-109",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Qc",
+      "8s",
+      "4h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs BB defense",
+    "expected": {
+      "equity": 80.2,
+      "comboCount": 416
+    }
+  },
+  {
+    "id": "m2-4-spot-110",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "7s",
+      "6d",
+      "Kc"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD vs MP open",
+    "expected": {
+      "equity": 39.2,
+      "comboCount": 211
+    }
+  },
+  {
+    "id": "m2-4-spot-111",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [
+      "9c",
+      "6s",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs fish 3-bet",
+    "expected": {
+      "equity": 83.9,
+      "comboCount": 103
+    }
+  },
+  {
+    "id": "m2-4-spot-112",
+    "heroCards": [
+      "Js",
+      "Ts"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "Qd",
+      "9c",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD vs BB defense",
+    "expected": {
+      "equity": 46.2,
+      "comboCount": 330
+    }
+  },
+  {
+    "id": "m2-4-spot-113",
+    "heroCards": [
+      "Ad",
+      "Kh"
+    ],
+    "villainRangeSlug": "iso-vs-limp",
+    "villainRangeLabel": "Iso-raise vs limp",
+    "villainRangeNotation": "22+, A2s+, K9s+, Q9s+, JTs, T9s, A9o+, KTo+, QTo+, JTo",
+    "board": [
+      "Ac",
+      "7d",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs iso range",
+    "expected": {
+      "equity": 87.2,
+      "comboCount": 210
+    }
+  },
+  {
+    "id": "m2-4-spot-114",
+    "heroCards": [
+      "7c",
+      "7d"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Ks",
+      "Qh",
+      "5c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs BB defense",
+    "expected": {
+      "equity": 50,
+      "comboCount": 430
+    }
+  },
+  {
+    "id": "m2-4-spot-115",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ts",
+      "9s",
+      "2d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "FD + gutshot vs BTN open",
+    "expected": {
+      "equity": 63.4,
+      "comboCount": 439
+    }
+  },
+  {
+    "id": "m2-4-spot-116",
+    "heroCards": [
+      "Qd",
+      "Qs"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [
+      "Ah",
+      "8c",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs 3-bet",
+    "expected": {
+      "equity": 33,
+      "comboCount": 40
+    }
+  },
+  {
+    "id": "m2-4-spot-117",
+    "heroCards": [
+      "Ah",
+      "Jd"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Js",
+      "7c",
+      "4h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs CO open",
+    "expected": {
+      "equity": 78.9,
+      "comboCount": 296
+    }
+  },
+  {
+    "id": "m2-4-spot-118",
+    "heroCards": [
+      "8d",
+      "8c"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "8s",
+      "Td",
+      "2h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Set vs BB defense",
+    "expected": {
+      "equity": 93.2,
+      "comboCount": 356
+    }
+  },
+  {
+    "id": "m2-4-spot-119",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Qs",
+      "8s",
+      "3d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "NFD vs BB defense",
+    "expected": {
+      "equity": 70.5,
+      "comboCount": 393
+    }
+  },
+  {
+    "id": "m2-4-spot-120",
+    "heroCards": [
+      "Tc",
+      "9c"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "8c",
+      "7d",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs SB open",
+    "expected": {
+      "equity": 46.1,
+      "comboCount": 368
+    }
+  },
+  {
+    "id": "m2-4-spot-121",
+    "heroCards": [
+      "Ad",
+      "Qh"
+    ],
+    "villainRangeSlug": "push-co-15bb",
+    "villainRangeLabel": "Push CO 15bb",
+    "villainRangeNotation": "33+, A2s+, K8s+, Q9s+, J9s+, T9s, A8o+, KTo+, QTo+",
+    "board": [
+      "Qd",
+      "9s",
+      "5c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair vs push range",
+    "expected": {
+      "equity": 78.7,
+      "comboCount": 212
+    }
+  },
+  {
+    "id": "m2-4-spot-122",
+    "heroCards": [
+      "Kh",
+      "Kd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [
+      "Ts",
+      "8d",
+      "3c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs UTG defense",
+    "expected": {
+      "equity": 78.2,
+      "comboCount": 132
+    }
+  },
+  {
+    "id": "m2-4-spot-123",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ts",
+      "8d",
+      "2s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs BTN open",
+    "expected": {
+      "equity": 63.8,
+      "comboCount": 452
+    }
+  },
+  {
+    "id": "m2-4-spot-124",
+    "heroCards": [
+      "Ac",
+      "Tc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "Td",
+      "6s",
+      "3h"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Top pair weak kicker vs BB",
+    "expected": {
+      "equity": 78.3,
+      "comboCount": 321
+    }
+  },
+  {
+    "id": "m2-4-spot-125",
+    "heroCards": [
+      "Qs",
+      "Js"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "Ks",
+      "Td",
+      "4s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Gutshot + FD vs 3-bet",
+    "expected": {
+      "equity": 50.1,
+      "comboCount": 33
+    }
+  },
+  {
+    "id": "m2-4-spot-126",
+    "heroCards": [
+      "9d",
+      "8d"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "7d",
+      "6s",
+      "Kc"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Combo draw vs MP open",
+    "expected": {
+      "equity": 41.9,
+      "comboCount": 212
+    }
+  },
+  {
+    "id": "m2-4-spot-127",
+    "heroCards": [
+      "As",
+      "Kd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Ah",
+      "Qs",
+      "7d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Two pair top vs BB defense",
+    "expected": {
+      "equity": 84.2,
+      "comboCount": 358
+    }
+  },
+  {
+    "id": "m2-4-spot-128",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [
+      "As",
+      "Kd",
+      "9c"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Under-pair vs 3-bet",
+    "expected": {
+      "equity": 6,
+      "comboCount": 21
+    }
+  },
+  {
+    "id": "m2-4-spot-129",
+    "heroCards": [
+      "Kc",
+      "Qc"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Jc",
+      "Td",
+      "3s"
+    ],
+    "street": "flop",
+    "scenarioLabel": "OESD + FD vs CO open",
+    "expected": {
+      "equity": 51.4,
+      "comboCount": 289
+    }
+  },
+  {
+    "id": "m2-4-spot-130",
+    "heroCards": [
+      "Ah",
+      "Ad"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Ks",
+      "Js",
+      "8d"
+    ],
+    "street": "flop",
+    "scenarioLabel": "Over-pair vs wet vs BB",
+    "expected": {
+      "equity": 78.2,
+      "comboCount": 352
+    }
+  },
+  {
+    "id": "m2-4-spot-131",
+    "heroCards": [
+      "Ks",
+      "Kc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Qs",
+      "8d",
+      "3c",
+      "5h"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs BB (turn brique)",
+    "expected": {
+      "equity": 86.4,
+      "comboCount": 401
+    }
+  },
+  {
+    "id": "m2-4-spot-132",
+    "heroCards": [
+      "As",
+      "Ks"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ts",
+      "7s",
+      "2d",
+      "9c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "NFD vs BTN (turn brique)",
+    "expected": {
+      "equity": 55.7,
+      "comboCount": 402
+    }
+  },
+  {
+    "id": "m2-4-spot-133",
+    "heroCards": [
+      "Ah",
+      "Ad"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "Kh",
+      "8s",
+      "3d",
+      "2c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs BB (turn brique)",
+    "expected": {
+      "equity": 91.5,
+      "comboCount": 294
+    }
+  },
+  {
+    "id": "m2-4-spot-134",
+    "heroCards": [
+      "Qd",
+      "Qc"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Js",
+      "9d",
+      "4s",
+      "2h"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs CO (turn brique)",
+    "expected": {
+      "equity": 79.1,
+      "comboCount": 283
+    }
+  },
+  {
+    "id": "m2-4-spot-135",
+    "heroCards": [
+      "Ac",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "Kc",
+      "9s",
+      "5h",
+      "3d"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair TK vs 3-bet (turn)",
+    "expected": {
+      "equity": 74.9,
+      "comboCount": 31
+    }
+  },
+  {
+    "id": "m2-4-spot-136",
+    "heroCards": [
+      "Js",
+      "Ts"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "9h",
+      "8d",
+      "2c",
+      "Qs"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Straight vs BB defense (turn)",
+    "expected": {
+      "equity": 96.7,
+      "comboCount": 397
+    }
+  },
+  {
+    "id": "m2-4-spot-137",
+    "heroCards": [
+      "9c",
+      "9d"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [
+      "Ah",
+      "Kc",
+      "7s",
+      "4d"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Under-pair vs 3-bet (turn)",
+    "expected": {
+      "equity": 2.8,
+      "comboCount": 21
+    }
+  },
+  {
+    "id": "m2-4-spot-138",
+    "heroCards": [
+      "As",
+      "Qs"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Ks",
+      "Js",
+      "5d",
+      "2c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "NFD + gutshot vs BTN (turn)",
+    "expected": {
+      "equity": 59.6,
+      "comboCount": 401
+    }
+  },
+  {
+    "id": "m2-4-spot-139",
+    "heroCards": [
+      "Kh",
+      "Qh"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "Kd",
+      "8c",
+      "4s",
+      "9h"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair vs MP (turn)",
+    "expected": {
+      "equity": 79,
+      "comboCount": 182
+    }
+  },
+  {
+    "id": "m2-4-spot-140",
+    "heroCards": [
+      "Td",
+      "Tc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-utg",
+    "villainRangeLabel": "BB defense vs UTG open",
+    "villainRangeNotation": "44+, A8s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo",
+    "board": [
+      "9s",
+      "6h",
+      "2d",
+      "Ac"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Under-pair vs UTG (turn)",
+    "expected": {
+      "equity": 43.5,
+      "comboCount": 129
+    }
+  },
+  {
+    "id": "m2-4-spot-141",
+    "heroCards": [
+      "Ah",
+      "Jh"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Js",
+      "7c",
+      "4h",
+      "2d"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair vs CO (turn brique)",
+    "expected": {
+      "equity": 84.9,
+      "comboCount": 292
+    }
+  },
+  {
+    "id": "m2-4-spot-142",
+    "heroCards": [
+      "8s",
+      "7s"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "6s",
+      "5d",
+      "Kc",
+      "2h"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Straight vs BTN (turn)",
+    "expected": {
+      "equity": 26.2,
+      "comboCount": 454
+    }
+  },
+  {
+    "id": "m2-4-spot-143",
+    "heroCards": [
+      "Ad",
+      "Ac"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Js",
+      "Ts",
+      "9d",
+      "3c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs wet vs BB (turn)",
+    "expected": {
+      "equity": 69.9,
+      "comboCount": 339
+    }
+  },
+  {
+    "id": "m2-4-spot-144",
+    "heroCards": [
+      "Ks",
+      "Js"
+    ],
+    "villainRangeSlug": "3bet-polarized-btn",
+    "villainRangeLabel": "3-bet BTN vs CO polarized",
+    "villainRangeNotation": "QQ+, AKs, AKo, A5s, A4s, K9s, 76s, 65s",
+    "board": [
+      "Qd",
+      "Tc",
+      "3h",
+      "7s"
+    ],
+    "street": "turn",
+    "scenarioLabel": "OESD missed vs 3-bet (turn)",
+    "expected": {
+      "equity": 31.4,
+      "comboCount": 42
+    }
+  },
+  {
+    "id": "m2-4-spot-145",
+    "heroCards": [
+      "Ac",
+      "Tc"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "Td",
+      "7s",
+      "4h",
+      "Kd"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair weak vs BB (turn)",
+    "expected": {
+      "equity": 66.3,
+      "comboCount": 297
+    }
+  },
+  {
+    "id": "m2-4-spot-146",
+    "heroCards": [
+      "Qs",
+      "Qd"
+    ],
+    "villainRangeSlug": "open-sb-35",
+    "villainRangeLabel": "SB Open ~35%",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "8h",
+      "5c",
+      "2s",
+      "Jd"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs SB (turn)",
+    "expected": {
+      "equity": 84.3,
+      "comboCount": 347
+    }
+  },
+  {
+    "id": "m2-4-spot-147",
+    "heroCards": [
+      "Ah",
+      "Kh"
+    ],
+    "villainRangeSlug": "push-btn-12bb",
+    "villainRangeLabel": "Push BTN 12bb",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q9s+, J9s+, T9s, 98s, A5o+, K9o+, QTo+, JTo",
+    "board": [
+      "Ad",
+      "8s",
+      "3c",
+      "5d"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair vs push (turn)",
+    "expected": {
+      "equity": 86.1,
+      "comboCount": 253
+    }
+  },
+  {
+    "id": "m2-4-spot-148",
+    "heroCards": [
+      "Js",
+      "Jc"
+    ],
+    "villainRangeSlug": "open-mp-20",
+    "villainRangeLabel": "MP Open ~20%",
+    "villainRangeNotation": "55+, A9s+, K9s+, Q9s+, J9s+, T8s+, 98s, 87s, ATo+, KTo+, QTo+, JTo",
+    "board": [
+      "9s",
+      "7h",
+      "2d",
+      "4c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs MP (turn)",
+    "expected": {
+      "equity": 80.3,
+      "comboCount": 201
+    }
+  },
+  {
+    "id": "m2-4-spot-149",
+    "heroCards": [
+      "Ks",
+      "Qs"
+    ],
+    "villainRangeSlug": "open-btn-45",
+    "villainRangeLabel": "BTN Open ~45%",
+    "villainRangeNotation": "22+, A2s+, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K8o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Js",
+      "Ts",
+      "4d",
+      "2c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "NFD + OESD vs BTN (turn)",
+    "expected": {
+      "equity": 53.2,
+      "comboCount": 427
+    }
+  },
+  {
+    "id": "m2-4-spot-150",
+    "heroCards": [
+      "Ad",
+      "Kd"
+    ],
+    "villainRangeSlug": "3bet-value-tight",
+    "villainRangeLabel": "3-bet value tight",
+    "villainRangeNotation": "QQ+, AKs, AKo",
+    "board": [
+      "Qs",
+      "Jh",
+      "Ts",
+      "3c"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Broadway vs 3-bet (turn)",
+    "expected": {
+      "equity": 69.7,
+      "comboCount": 18
+    }
+  },
+  {
+    "id": "m2-4-spot-151",
+    "heroCards": [
+      "6h",
+      "6d"
+    ],
+    "villainRangeSlug": "defense-bb-vs-co",
+    "villainRangeLabel": "BB defense vs CO open",
+    "villainRangeNotation": "22+, A2s+, K7s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, A5o+, K9o+, Q9o+, JTo, T9o",
+    "board": [
+      "6s",
+      "Kc",
+      "4d",
+      "9h"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Set vs BB defense (turn)",
+    "expected": {
+      "equity": 96,
+      "comboCount": 345
+    }
+  },
+  {
+    "id": "m2-4-spot-152",
+    "heroCards": [
+      "Th",
+      "Td"
+    ],
+    "villainRangeSlug": "3bet-linear-medium",
+    "villainRangeLabel": "3-bet linéaire moyen",
+    "villainRangeNotation": "TT+, AQs+, AKo",
+    "board": [
+      "As",
+      "8h",
+      "3d",
+      "Qc"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Under-pair vs 3-bet (turn)",
+    "expected": {
+      "equity": 5.2,
+      "comboCount": 33
+    }
+  },
+  {
+    "id": "m2-4-spot-153",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "villainRangeSlug": "fish-3bet-light",
+    "villainRangeLabel": "Fish 3-bet light",
+    "villainRangeNotation": "22+, AJs+, A5s, KJs+, QJs, JTs, T9s, AQo+",
+    "board": [
+      "9c",
+      "6s",
+      "2d",
+      "Kh"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Over-pair vs fish (turn)",
+    "expected": {
+      "equity": 83.1,
+      "comboCount": 96
+    }
+  },
+  {
+    "id": "m2-4-spot-154",
+    "heroCards": [
+      "Kc",
+      "Qd"
+    ],
+    "villainRangeSlug": "defense-bb-vs-btn",
+    "villainRangeLabel": "BB defense vs BTN open",
+    "villainRangeNotation": "22+, A2s+, K5s+, Q8s+, J8s+, T8s+, 97s+, 86s+, 75s+, 64s+, 53s+, 43s, A2o+, K9o+, Q9o+, J9o+, T9o, 98o",
+    "board": [
+      "Qc",
+      "8s",
+      "4h",
+      "2d"
+    ],
+    "street": "turn",
+    "scenarioLabel": "Top pair vs BB (turn brique)",
+    "expected": {
+      "equity": 85.6,
+      "comboCount": 408
+    }
+  },
+  {
+    "id": "m2-4-spot-155",
+    "heroCards": [
+      "Qh",
+      "Jh"
+    ],
+    "villainRangeSlug": "open-co-30",
+    "villainRangeLabel": "CO Open ~30%",
+    "villainRangeNotation": "22+, A2s+, K8s+, Q8s+, J8s+, T8s, 97s+, 87s, 76s, 65s, 54s, A9o+, K9o+, Q9o+, J9o+, T9o",
+    "board": [
+      "Td",
+      "9s",
+      "3c",
+      "Ah"
+    ],
+    "street": "turn",
+    "scenarioLabel": "OESD missed vs CO (turn)",
+    "expected": {
+      "equity": 28.5,
+      "comboCount": 263
+    }
+  }
+]

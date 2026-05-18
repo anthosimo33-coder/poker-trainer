@@ -18,6 +18,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m2-1": () => import("@/content/theory/m2-1.mdx"),
   "m2-2": () => import("@/content/theory/m2-2.mdx"),
   "m2-3": () => import("@/content/theory/m2-3.mdx"),
+  "m2-4": () => import("@/content/theory/m2-4.mdx"),
 };
 
 function TheoryContent() {
@@ -381,6 +382,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Multiway, la probabilité que l'un des vilains ait une main qui te bat (set, two pair, slowplay) double en 3-way. TPTK reste favorite face à chaque vilain individuellement, mais perd ~10-15 points d'equity face au range combiné des deux vilains.",
+    },
+  ],
+
+  "m2-4": [
+    {
+      question: "Tu as AKs face à un open BTN à ~45 % (range très large). Quelle est ton equity approximative ?",
+      options: [
+        { letter: "A", text: "~75 % (AKs domine la plupart des mains)" },
+        { letter: "B", text: "~62 % (favorite mais loin de la domination)" },
+        { letter: "C", text: "~50 % (coin flip global)" },
+        { letter: "D", text: "~40 % (le range BTN est trop large pour AKs)" },
+      ],
+      correctLetter: "B",
+      explanation: "AKs vs BTN open 45 % ≈ 62 %. Tu domines toutes les mains plus faibles (~80 % du range), tu es à 30 % vs AA-KK (rares), à 50 % vs les paires moyennes. La moyenne pondérée tombe à ~62 %.",
+    },
+    {
+      question: "Pourquoi raisonner en range plutôt qu'en main précise est crucial en table ?",
+      options: [
+        { letter: "A", text: "Parce que les solvers le font." },
+        { letter: "B", text: "Parce que tu ne sais jamais quelle main exacte a le vilain — tu connais seulement son range plausible compte tenu de ses actions." },
+        { letter: "C", text: "Parce que c'est plus rapide mentalement." },
+        { letter: "D", text: "Parce que les ranges sont plus stables que les mains." },
+      ],
+      correctLetter: "B",
+      explanation: "Le raisonnement en main précise est fantasmagorique — tu décides contre une carte imaginée. Le raisonnement en range est empirique — tu décides contre la distribution réelle des combos plausibles. C'est la différence entre le drilleur et le joueur.",
+    },
+    {
+      question: "Quel est le biais typique des joueurs intermédiaires face à un range adverse ?",
+      options: [
+        { letter: "A", text: "Sur-estimer la fréquence du nut du range." },
+        { letter: "B", text: "Sous-estimer la fréquence du nut du range." },
+        { letter: "C", text: "Se focaliser sur le meilleur ou le pire combo plutôt que sur la moyenne pondérée." },
+        { letter: "D", text: "Ignorer le range pour ne raisonner qu'en pot odds." },
+      ],
+      correctLetter: "C",
+      explanation: "Le biais d'ancrage : « il a peut-être AA » (pire scénario) ou « il bluffe peut-être » (meilleur scénario). Le bon raisonnement est la moyenne sur tout le range. Calibrer cette moyenne est exactement ce que M2.4 entraîne.",
     },
   ],
 };

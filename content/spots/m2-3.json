@@ -1789,7 +1789,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 67.2,
       "method": "exact",
@@ -1819,7 +1819,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 71.7,
       "method": "exact",
@@ -1849,7 +1849,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 72.6,
       "method": "exact",
@@ -1879,7 +1879,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 62.9,
       "method": "exact",
@@ -1909,7 +1909,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 62.9,
       "method": "exact",
@@ -1999,7 +1999,7 @@
       "5d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 68,
       "method": "exact",
@@ -2029,7 +2029,7 @@
       "5d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 63,
       "method": "exact",
@@ -2059,7 +2059,7 @@
       "5d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 71.8,
       "method": "exact",
@@ -2089,7 +2089,7 @@
       "5d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 57.1,
       "method": "exact",
@@ -2239,7 +2239,7 @@
       "3d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 55.8,
       "method": "exact",
@@ -2269,7 +2269,7 @@
       "3d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 70,
       "method": "exact",
@@ -2299,7 +2299,7 @@
       "3d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 70,
       "method": "exact",
@@ -2329,7 +2329,7 @@
       "3d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 67,
       "method": "exact",
@@ -2359,7 +2359,7 @@
       "3d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 67,
       "method": "exact",
@@ -2419,7 +2419,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 55.8,
       "method": "exact",
@@ -2449,7 +2449,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 70,
       "method": "exact",
@@ -2479,7 +2479,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 70,
       "method": "exact",
@@ -2509,7 +2509,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 62,
       "method": "exact",
@@ -2539,7 +2539,7 @@
       "4d"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 62,
       "method": "exact",
@@ -2569,7 +2569,7 @@
       "4s"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 75.4,
       "method": "exact",
@@ -2809,7 +2809,7 @@
       "5s"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 73.5,
       "method": "exact",
@@ -2869,7 +2869,7 @@
       "4s"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 61.5,
       "method": "exact",
@@ -3109,7 +3109,7 @@
       "3s"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 61.5,
       "method": "exact",
@@ -3199,7 +3199,7 @@
       "5s"
     ],
     "street": "flop",
-    "scenarioLabel": "Over-pair vs tirage couleur vs straight draw",
+    "scenarioLabel": "Set vs tirage couleur vs straight draw",
     "expected": {
       "equity": 67.9,
       "method": "exact",

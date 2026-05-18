@@ -1,0 +1,98 @@
+---
+slug: m2-4
+moduleSlug: m2
+submoduleSlug: m2.4
+title: Equity vs range
+subtitle: La mesure ultime.
+order: 4
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module II · Sous-module 4 / 4
+  </div>
+
+# Equity vs range.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La mesure ultime.</em> Tu ne joues jamais contre une main. Tu joues contre tout ce qu&apos;il peut avoir — une distribution, pas une carte.
+</p>
+</div>
+
+<WhyBlock title="Tu ne joues jamais contre une main. Tu joues contre une distribution.">
+
+Quand le vilain raise UTG, tu ne sais pas qu&apos;il a `AA`. Tu sais qu&apos;il a *l&apos;un des combos de son range UTG* — paires, broadways, suited connectors hauts. Ton equity n&apos;est pas une valeur unique : c&apos;est une **moyenne pondérée** sur tous les combos plausibles.
+
+M2.2 et M2.3 t&apos;ont fait calculer contre une, puis deux mains précises. Utile pour calibrer — mais ce n&apos;est pas le jeu réel. Le jeu réel, c&apos;est *ça* : sentir la moyenne. C&apos;est le saut qui sépare le drilleur du joueur.
+
+</WhyBlock>
+
+<SectionHeader num="02" label="Le saut final" title={<>Une main, <em>puis tout le reste.</em></>} />
+
+<Prose>
+
+La progression du module : **M2.1** equity vs tes outs (intuition). **M2.2** equity vs *une* main (déterministe, lourd). **M2.3** equity vs *deux* mains (3-way). **M2.4** equity vs **N mains** d&apos;un range — chacune avec sa propre equity, moyennées.
+
+Le jeu réel est M2.4. Pas M2.2. Personne ne retourne ses cartes avant la river.
+
+</Prose>
+
+<SectionHeader num="03" label="Lire un range" title={<>La grille <em>de 169 cases.</em></>} />
+
+<Prose>
+
+Un range s&apos;écrit en notation compacte : `22+, A2s+, K9s+, Q9s+, J9s+, T9s, 98s, A8o+, KTo+`. Le `+` veut dire *« et au-dessus »*, `s` *suited*, `o` *offsuit*. Un range de 45 % ≈ 600 combos sur les 1326 possibles.
+
+La représentation universelle est la **grille 13×13** : paires sur la diagonale, suited au-dessus, offsuit en-dessous. Un coup d&apos;œil suffit pour *voir* la forme d&apos;un range — c&apos;est l&apos;outil que le drill M2.4 met sous tes yeux.
+
+</Prose>
+
+<SectionHeader num="04" label="Les patterns" title={<>Ce qu&apos;il faut <em>avoir en tête.</em></>} />
+
+<Formula>
+  <FormulaLabel>AA vs BTN open ~45 %</FormulaLabel> ~<K>85 %</K><br/>
+  <FormulaLabel>AKs vs BTN open ~45 %</FormulaLabel> ~<K>62 %</K> <FormulaMuted>favorite, loin de la domination</FormulaMuted><br/>
+  <FormulaLabel>77 vs UTG open ~15 %</FormulaLabel> ~<K>46 %</K> <FormulaMuted>(range serré → la paire moyenne souffre)</FormulaMuted><br/>
+  <FormulaLabel>QQ vs 3-bet value tight</FormulaLabel> ~<K>36 %</K> <FormulaMuted>(tu es derrière)</FormulaMuted><br/>
+  <FormulaLabel>Tirage couleur vs range d&apos;over-pairs</FormulaLabel> ~<K>38 %</K> <FormulaMuted>(≈ heads-up)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Note le contre-intuitif : `AKs` ne fait que **~62 %** contre un range BTN large. Tu domines 80 % du range, mais tu es underdog vs `AA-KK` et flip vs les paires. La moyenne pondérée *retient* la médiocrité, pas le meilleur cas.
+
+</Prose>
+
+<SectionHeader num="05" label="La calibration vs range" title={<>Sentir la moyenne, <em>pas les extrêmes.</em></>} />
+
+<Prose>
+
+Heads-up, l&apos;erreur typique est le *biais d&apos;optimisme* sur tes outs. Vs range, c&apos;est le **biais d&apos;ancrage** : tu te focalises sur le pire combo (« il a peut-être `AA` ») ou le meilleur (« il bluffe peut-être »). Les deux sont des fantômes.
+
+Calibrer vs range, c&apos;est entraîner la *moyenne* — ni la peur du nut, ni l&apos;espoir du bluff. Le drill mesure ton erreur signée exactement comme M2.2/M2.3 : tu prédis la moyenne, on te donne la vraie, l&apos;écart est ta marge.
+
+</Prose>
+
+<Mnemonic keyText="Pas une main. Un range.">
+Quand tu hésites, demande : *quel est son range, pas sa main*. Cette question vaut plusieurs BB/100 de winrate. Le poker se joue contre une distribution, jamais contre une carte.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges" title={<>Trois fantômes <em>à congédier.</em></>} />
+
+<Prose>
+
+**1. Le pire combo.** « Et s&apos;il a `AA` ? » — il l&apos;a 6 fois sur ~600. Pondère, ne panique pas.
+
+**2. Le meilleur combo.** « Et s&apos;il bluffe ? » — parfois, à une fréquence. Pas à 100 %.
+
+**3. Le range figé.** Un range *bouge* selon les streets et les sizings. L&apos;equity préflop vs range n&apos;est qu&apos;un point de départ : le range se resserre à chaque mise.
+
+</Prose>
+
+<LifeLink title="Penser en distribution, c'est arrêter d'agir contre des fantômes.">
+
+Le piège du business est identique : agir contre *un* scénario imaginé — *« et si ce client refuse ? »* — au lieu de la *distribution* pondérée — *« voici cinq scénarios et leurs probabilités »*. Le premier mode paralyse ou fait sur-réagir ; le second décide.
+
+Les bons stratèges raisonnent en distributions, pas en anecdotes. Le poker l&apos;enseigne par la force : la table te punit *chaque fois* que tu décides contre un seul combo imaginé plutôt que contre l&apos;éventail réel. **Arrête de jouer contre la main que tu crains. Joue contre le range qu&apos;il a.**
+
+</LifeLink>

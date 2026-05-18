@@ -34,3 +34,18 @@ export interface PrecomputedM23Spot {
     ties: number;
   };
 }
+
+export interface PrecomputedM24Spot {
+  id: string;
+  heroCards: [Card, Card];
+  villainRangeSlug: string;
+  villainRangeLabel: string;
+  villainRangeNotation: string;
+  board: Card[];
+  street: "preflop" | "flop" | "turn";
+  scenarioLabel: string;
+  expected: {
+    equity: number;
+    comboCount: number;
+  };
+}

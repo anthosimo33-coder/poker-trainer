@@ -7,7 +7,9 @@ import {
   countOuts,
   equityMultiMonteCarlo,
   equityMultiExactFlop,
+  equityVsRange,
 } from "@/lib/poker/equity";
+import { parseRange } from "@/lib/poker/range-parser";
 
 describe("equityMonteCarlo — matchups préflop connus", () => {
   it("AA vs KK : ~81/19", () => {
@@ -135,5 +137,33 @@ describe("equityMulti — 3-way matchups", () => {
       ["7s", "Ks", "4d"]
     );
     expect(result.equity).toBeGreaterThan(60);
+  });
+});
+
+describe("equityVsRange", () => {
+  // Itérations basses : la moyenne sur N combos lisse la variance MC
+  // (σ_agrégé ≈ σ_combo/√N ≈ 0.2 %), et ça garde chaque test < 5 s (timeout
+  // vitest par défaut). Le spec proposait 5 000/combo → ~12 s pour 78 combos,
+  // incompatible avec le timeout — réduit, précision conservée.
+  it("AA vs range 22+ : ~85%", () => {
+    const range = parseRange("22+");
+    const result = equityVsRange(["As", "Ah"], range, [], 700);
+    expect(result.equity).toBeGreaterThan(80);
+    expect(result.equity).toBeLessThan(88);
+  });
+
+  it("72o vs range AK : ~30%", () => {
+    const range = parseRange("AK");
+    const result = equityVsRange(["7s", "2h"], range, [], 1_500);
+    expect(result.equity).toBeGreaterThan(25);
+    expect(result.equity).toBeLessThan(38);
+  });
+
+  it("combos invalides filtrés (cartes du hero)", () => {
+    const range = parseRange("AA, KK");
+    const result = equityVsRange(["As", "Ah"], range, [], 500);
+    // AA : 5 combos contiennent As/Ah → 1 valide ; KK : 6 valides → ≤ 11.
+    expect(result.validCombos).toBeLessThanOrEqual(11);
+    expect(result.rejectedCombos).toBeGreaterThanOrEqual(1);
   });
 });

@@ -5,6 +5,7 @@ import { generateReverseImpliedSpot } from "./m1-4-reverse-implied";
 import { generateOutsSpot } from "./m2-1-outs";
 import { generateEquitySpot } from "./m2-2-equity";
 import { generateMultiwaySpot } from "./m2-3-multiway";
+import { generateVsRangeSpot } from "./m2-4-vs-range";
 import type { GenericSpot } from "./types";
 
 export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
@@ -15,6 +16,7 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m2.1": generateOutsSpot,
   "m2.2": generateEquitySpot,
   "m2.3": generateMultiwaySpot,
+  "m2.4": generateVsRangeSpot,
 };
 
 export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {

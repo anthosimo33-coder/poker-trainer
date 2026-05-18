@@ -14,6 +14,8 @@ import type { ReverseImpliedSpot } from "@/lib/poker/spot-generators/m1-4-revers
 import type { OutsSpot } from "@/lib/poker/spot-generators/m2-1-outs";
 import type { EquitySpot } from "@/lib/poker/spot-generators/m2-2-equity";
 import type { MultiwaySpot } from "@/lib/poker/spot-generators/m2-3-multiway";
+import type { VsRangeSpot } from "@/lib/poker/spot-generators/m2-4-vs-range";
+import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
 import { urlSlugToDbSlug, moduleSlugFromSubmodule } from "@/lib/slug";
@@ -91,10 +93,14 @@ function isOuts(s: GenericSpot): s is OutsSpot {
 function isEquity(s: GenericSpot): s is EquitySpot {
   return "villainCards" in s && s.submoduleSlug === "m2.2";
 }
-// MultiwaySpot (M2.3) : discriminé par `villain1Cards` + submoduleSlug. Testé
-// EN PREMIER (le plus spécifique) : isMultiway → isEquity → isOuts → isImplied.
+// MultiwaySpot (M2.3) : discriminé par `villain1Cards` + submoduleSlug.
 function isMultiway(s: GenericSpot): s is MultiwaySpot {
   return "villain1Cards" in s && s.submoduleSlug === "m2.3";
+}
+// VsRangeSpot (M2.4) : discriminé par `villainRangeNotation` + submoduleSlug.
+// Testé EN PREMIER : isVsRange → isMultiway → isEquity → isOuts → isImplied.
+function isVsRange(s: GenericSpot): s is VsRangeSpot {
+  return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
 }
 
 // ---- Scoring nuancé M2.2 ----
@@ -156,6 +162,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m2.1": "Outs & règle 4&2 · Sous-module 1",
   "m2.2": "Equity heads-up · Sous-module 2",
   "m2.3": "Equity multiway · Sous-module 3",
+  "m2.4": "Equity vs range · Sous-module 4",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -167,7 +174,7 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
-  if (isMultiway(spot) || isEquity(spot)) {
+  if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
     return parseAnswerNumber(a.equityHu) !== null;
   }
   if (isOuts(spot)) {
@@ -196,7 +203,7 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
-  if (isMultiway(spot) || isEquity(spot)) {
+  if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
     // Rendu de correction dédié (panel M2.2/M2.3) ; ici on ne fournit que
     // isCorrect pour handleValidate. Steps vides (non rendus pour ces modes).
     const ue = parseAnswerNumber(a.equityHu);
@@ -479,6 +486,7 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isVsRange(spot)) return null;
   if (isMultiway(spot)) return null;
   if (isEquity(spot)) return null;
   if (isOuts(spot)) return null;
@@ -676,7 +684,7 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isMultiway(spot) || isEquity(spot)) {
+    if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
       const ue = parseAnswerNumber(answer.equityHu);
       if (ue !== null) {
         signedError = Math.round((ue - spot.expected.equity) * 10) / 10;
@@ -754,7 +762,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isMultiway(spot) ? (
+        {isVsRange(spot) ? (
+          <VsRangeTable spot={spot} />
+        ) : isMultiway(spot) ? (
           <MultiwayTable spot={spot} />
         ) : isEquity(spot) ? (
           <EquityTable spot={spot} />
@@ -870,6 +880,49 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M2.4 — un seul champ : equity moyenne de la main du héros vs le range.
+  if (isVsRange(spot)) {
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Ta réponse
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Estime ton equity.
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          Le vilain a un <strong className="text-text">range défini</strong> (pas une
+          main). Quelle est l&apos;equity <strong className="text-text">moyenne</strong>{" "}
+          de ta main face à ce range ?
+        </p>
+        <Field
+          label="Equity vs range"
+          hint="En pourcentage (0–100)"
+          value={answer.equityHu}
+          onChange={(v) => setAnswer({ ...answer, equityHu: v })}
+          placeholder="ex. 55"
+        />
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M2.3 — un seul champ : equity de la main du héros face à DEUX adversaires.
   if (isMultiway(spot)) {
     return (
@@ -1148,6 +1201,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isVsRange(spot)) {
+    return <VsRangeCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isMultiway(spot)) {
     return <MultiwayCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -1538,6 +1594,144 @@ function MultiwayCorrectionPanel({
           {e.wins} / {e.ties} / {e.losses}
         </Mono>
       </FormulaBox>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M2.4 — table equity vs range (hero + range visualisé) =====
+function VsRangeTable({ spot }: { spot: VsRangeSpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-green" style={{ boxShadow: "0 0 0 3px var(--green-glow)" }} />
+          Vs range · distribution ouverte
+        </div>
+        <div className="text-xs font-mono text-text-faint">{spot.street}</div>
+      </div>
+
+      <div className="grid grid-cols-[auto_1fr] gap-5 mb-7 pb-6" style={{ borderBottom: "0.5px solid rgba(255,255,255,0.05)" }}>
+        <div>
+          <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+            Toi
+          </div>
+          <div className="flex gap-2">
+            {spot.heroCards.map((c, i) => (
+              <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+            ))}
+          </div>
+        </div>
+        <RangeDisplay
+          notation={spot.villainRangeNotation}
+          label={spot.villainRangeLabel}
+          comboCount={spot.expected.comboCount}
+        />
+      </div>
+
+      <div className="mb-6">
+        <div className="font-mono uppercase text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Board · {spot.street}
+        </div>
+        <div className="flex gap-2">
+          {spot.board.map((c, i) => (
+            <PlayingCard key={`b-${c}-${i}`} card={c} dealDelayMs={200 + i * 80} />
+          ))}
+          {Array.from({ length: 5 - spot.board.length }).map((_, i) => (
+            <CardPlaceholder key={`ph-${i}`} />
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded p-5 mt-2" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Le vilain a un range défini. Estime l&apos;equity{" "}
+          <strong className="text-text">moyenne</strong> de ta main vs ce range.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VsRangeCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: VsRangeSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const ue = parseAnswerNumber(answer.equityHu) ?? 0;
+  const g = gradeM22(ue, spot.expected.equity);
+  const e = spot.expected;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ta réponse</div>
+          <div className="text-3xl font-semibold font-mono leading-none">{fmtPercent(ue)}</div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Equity moyenne</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {fmtPercent(e.equity)}
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Hero</Lbl> <Mono>{spot.heroCards.join(" ")}</Mono>
+        <br />
+        <Lbl>Range</Lbl> <Mono>{spot.villainRangeLabel}</Mono>{" "}
+        <Mono className="!text-purple-300">({e.comboCount} combos)</Mono>
+        <br />
+        <Lbl>Board</Lbl>{" "}
+        <Mono>{spot.board.length ? spot.board.join(" ") : "— (préflop)"}</Mono>
+        <br />
+        <Lbl>Méthode</Lbl> <Mono>moyenne pondérée (Monte Carlo / combo)</Mono>
+      </FormulaBox>
+
+      <div className="mt-4">
+        <RangeDisplay notation={spot.villainRangeNotation} />
+      </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">
         <button
