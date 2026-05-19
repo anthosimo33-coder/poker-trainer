@@ -354,6 +354,49 @@ export const CANONICAL_RANGES: CanonicalRange[] = [
     notation: "22+, A2s+, K7s+, Q9s+, J9s+, T9s, 98s, A8o+, KTo+, QTo+, JTo",
     category: "defense",
   },
+
+  // ===== POSTFLOP (M3.4) — c-bet ranges et réactions au check-raise (6). On
+  // garde les catégories existantes (open/defense/3bet) plutôt que d'ajouter
+  // une cat « postflop » : le type union ne change pas, et la fonction de
+  // c-bet/CR colle pédagogiquement aux mêmes axes value/defense/relance. =====
+  {
+    slug: "cbet-btn-vs-bb-wet-board",
+    label: "BTN c-bet sur board drawy",
+    notation:
+      "AA-22, AKs-A2s, KQs-K9s, QJs-Q9s, JTs, T9s, 98s, AKo, AQo, AJo, KQo",
+    category: "open",
+  },
+  {
+    slug: "cbet-btn-vs-bb-dry-board",
+    label: "BTN c-bet sur board dry (small sizing, wider)",
+    notation:
+      "AA-22, AKs-A2s, K2s+, Q5s+, J7s+, T7s+, 96s+, 86s+, 75s+, 64s+, A2o+, K7o+, Q9o+, J9o+, T9o",
+    category: "open",
+  },
+  {
+    slug: "cbet-utg-vs-bb-Khigh",
+    label: "UTG c-bet board K-high",
+    notation: "TT+, AKs, AQs, KQs, KJs, AKo, AQo",
+    category: "open",
+  },
+  {
+    slug: "call-vs-cr-Khigh-tight",
+    label: "Vilain call vs CR sur K-high (tight)",
+    notation: "KK+, AKs, K9s+, AKo",
+    category: "defense",
+  },
+  {
+    slug: "call-vs-cr-Khigh-standard",
+    label: "Vilain call vs CR sur K-high (standard)",
+    notation: "KK+, AKs, K9s+, KQo, AKo",
+    category: "defense",
+  },
+  {
+    slug: "3bet-vs-cr-nuts-only",
+    label: "Vilain 3-bet vs CR (nuts + occasional bluff)",
+    notation: "AA, KK, 22, AKs",
+    category: "3bet",
+  },
 ];
 
 export function getRange(slug: string): CanonicalRange | undefined {

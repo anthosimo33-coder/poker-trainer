@@ -33,9 +33,11 @@
     "precompute:m3-1": "tsx scripts/precompute-m3-1.ts",
     "precompute:m3-2": "tsx scripts/precompute-m3-2.ts",
     "precompute:m3-3": "tsx scripts/precompute-m3-3.ts",
+    "precompute:m3-4": "tsx scripts/precompute-m3-4.ts",
     "screenshots:s6d": "tsx scripts/screenshots-s6d.ts",
     "screenshots:s7a": "tsx scripts/screenshots-s7a.ts",
     "screenshots:s7b": "tsx scripts/screenshots-s7b.ts",
+    "screenshots:s7c": "tsx scripts/screenshots-s7c.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {

@@ -18,6 +18,7 @@ import type { VsRangeSpot } from "@/lib/poker/spot-generators/m2-4-vs-range";
 import type { PushFoldSpot } from "@/lib/poker/spot-generators/m3-1-push-fold";
 import type { FoldEquitySpot } from "@/lib/poker/spot-generators/m3-2-fold-equity";
 import type { MultiBranchSpot } from "@/lib/poker/spot-generators/m3-3-multibranch";
+import type { CheckRaiseSpot } from "@/lib/poker/spot-generators/m3-4-check-raise";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -48,6 +49,9 @@ interface UserAnswer {
   pFoldBranchInput: string;
   pCallBranchInput: string;
   pRaiseBranchInput: string;
+  pFoldCRInput: string;
+  pCallCRInput: string;
+  equityCRInput: string;
   decision: Decision;
 }
 
@@ -65,6 +69,9 @@ const EMPTY_ANSWER: UserAnswer = {
   pFoldBranchInput: "",
   pCallBranchInput: "",
   pRaiseBranchInput: "",
+  pFoldCRInput: "",
+  pCallCRInput: "",
+  equityCRInput: "",
   decision: null,
 };
 
@@ -115,6 +122,14 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
 // VsRangeSpot (M2.4) : discriminé par `villainRangeNotation` + submoduleSlug.
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
+}
+// CheckRaiseSpot (M3.4) : discriminé par `villainCBetRangeNotation` +
+// submoduleSlug. Aucun autre spot n'a `villainCBetRangeNotation`. Testé
+// EN PREMIER (le plus spécifique) :
+// isCheckRaise → isFoldEquity → isMultiBranch → isPushFold → isVsRange →
+// isMultiway → isEquity → isOuts → isImplied.
+function isCheckRaise(s: GenericSpot): s is CheckRaiseSpot {
+  return "villainCBetRangeNotation" in s && s.submoduleSlug === "m3.4";
 }
 // FoldEquitySpot (M3.2) : discriminé par `villainTotalRangeNotation` +
 // submoduleSlug. PushFoldSpot (M3.1) n'a PAS villainTotalRangeNotation.
@@ -402,6 +417,78 @@ function m33BranchLabels(
   }
 }
 
+// ---- M3.4 — check-raise flop : EV postflop avec realization factor ----
+function computeUserCRev(
+  pFoldPct: number,
+  pCallPct: number,
+  equityVsCallPct: number,
+  spot: CheckRaiseSpot
+): number {
+  const pFold = pFoldPct / 100;
+  const pCall = pCallPct / 100;
+  const pThreeBet = Math.max(0, 1 - pFold - pCall);
+  const equity = equityVsCallPct / 100;
+  const equityRealized = equity * spot.expected.realizationFactorUsed;
+  const evIfFold = spot.potPreflop + spot.cbetSize;
+  const potAfterCBet = spot.potPreflop + 2 * spot.cbetSize;
+  const potAfterRaise = potAfterCBet + 2 * spot.raiseSize;
+  const ourInvestPostRaise = spot.effectiveStack - spot.raiseSize;
+  const evIfCall =
+    equityRealized * (potAfterRaise + ourInvestPostRaise) -
+    (1 - equityRealized) * ourInvestPostRaise;
+  const evIf3Bet = -spot.raiseSize;
+  return pFold * evIfFold + pCall * evIfCall + pThreeBet * evIf3Bet;
+}
+
+function gradeM34(
+  pFoldPct: number,
+  pCallPct: number,
+  equityPct: number,
+  spot: CheckRaiseSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  userEV: number;
+  trueEV: number;
+} {
+  const userEV = computeUserCRev(pFoldPct, pCallPct, equityPct, spot);
+  const trueEV = spot.expected.evBb;
+  const evError = Math.round((userEV - trueEV) * 100) / 100;
+  const absErr = Math.abs(evError);
+  // Bandes plus larges qu'M3.1/M3.3 : l'EV postflop varie sur une échelle
+  // plus grande (les pots flop sont plus gros qu'un push 10bb).
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 0.5) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 1.5) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 3) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 1.5;
+  const sign = evError > 0 ? "+" : "";
+  const dir = evError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 0.5
+      ? "Excellent"
+      : absErr <= 1.5
+      ? `Juste (${sign}${evError} bb)`
+      : absErr <= 3
+      ? `Proche (${sign}${evError} bb ${dir})`
+      : `Faux (${sign}${evError} bb ${dir})`;
+  return { isCorrect, level, signedError: evError, errorColor, errorLabel, userEV, trueEV };
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -422,6 +509,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m3.1": "Push/fold sub-15bb · Sous-module 1",
   "m3.2": "Fold equity et décomposition · Sous-module 2",
   "m3.3": "EV composites multi-branches · Sous-module 3",
+  "m3.4": "Check-raise et lignes complexes · Sous-module 4",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -433,6 +521,14 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isCheckRaise(spot)) {
+    const pf = parseAnswerNumber(a.pFoldCRInput);
+    const pc = parseAnswerNumber(a.pCallCRInput);
+    const eq = parseAnswerNumber(a.equityCRInput);
+    if (pf === null || pc === null || eq === null) return false;
+    // p3Bet = 100 − pFold − pCall doit rester ≥ 0 (tolérance ±1).
+    return pf + pc <= 101;
+  }
   if (isFoldEquity(spot)) {
     return parseAnswerNumber(a.pFoldBreakevenInput) !== null;
   }
@@ -479,6 +575,14 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isCheckRaise(spot)) {
+    // Correction dédiée (CheckRaiseCorrectionPanel) ; ici seulement isCorrect.
+    const pf = parseAnswerNumber(a.pFoldCRInput);
+    const pc = parseAnswerNumber(a.pCallCRInput);
+    const eq = parseAnswerNumber(a.equityCRInput);
+    if (pf === null || pc === null || eq === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM34(pf, pc, eq, spot).isCorrect, steps: [] };
+  }
   if (isFoldEquity(spot)) {
     // Correction dédiée (FoldEquityCorrectionPanel) ; ici seulement isCorrect.
     const be = parseAnswerNumber(a.pFoldBreakevenInput);
@@ -783,6 +887,7 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isCheckRaise(spot)) return null;
   if (isFoldEquity(spot)) return null;
   if (isMultiBranch(spot)) return null;
   if (isPushFold(spot)) return null;
@@ -984,7 +1089,14 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isFoldEquity(spot)) {
+    if (isCheckRaise(spot)) {
+      const pf = parseAnswerNumber(answer.pFoldCRInput);
+      const pc = parseAnswerNumber(answer.pCallCRInput);
+      const eq = parseAnswerNumber(answer.equityCRInput);
+      if (pf !== null && pc !== null && eq !== null) {
+        signedError = gradeM34(pf, pc, eq, spot).signedError;
+      }
+    } else if (isFoldEquity(spot)) {
       // signedError = erreur de pFoldBreakeven en points de %.
       const be = parseAnswerNumber(answer.pFoldBreakevenInput);
       if (be !== null) {
@@ -1083,7 +1195,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isFoldEquity(spot) ? (
+        {isCheckRaise(spot) ? (
+          <CheckRaiseTable spot={spot} />
+        ) : isFoldEquity(spot) ? (
           <FoldEquityTable spot={spot} />
         ) : isMultiBranch(spot) ? (
           <MultiBranchTable spot={spot} />
@@ -1207,6 +1321,114 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M3.4 — saisie décomposée : P(fold) + P(call) + equity vs call range.
+  // EV recomposée en direct via le modèle check-raise (avec realizationFactor).
+  if (isCheckRaise(spot)) {
+    const pf = parseAnswerNumber(answer.pFoldCRInput);
+    const pc = parseAnswerNumber(answer.pCallCRInput);
+    const eq = parseAnswerNumber(answer.equityCRInput);
+    const sumPFC = (pf ?? 0) + (pc ?? 0);
+    const p3BetLive = pf !== null && pc !== null ? Math.max(0, 100 - sumPFC) : null;
+    const liveEv =
+      pf !== null && pc !== null && eq !== null
+        ? computeUserCRev(pf, pc, eq, spot)
+        : null;
+    return (
+      <div className="rounded-xl p-7 flex flex-col" style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}>
+        <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: "var(--purple-300)" }}>
+          ◆ Décompose le check-raise
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Trois branches, postflop.
+        </h2>
+        <p className="text-[13px] text-text-muted mb-6 leading-[1.55]">
+          Estime P(fold), P(call) et ton equity vs son call range. P(3-bet) se
+          déduit de 100 % − fold − call. L&apos;EV se recompose avec realization
+          factor {spot.expected.realizationFactorUsed.toFixed(2)}.
+        </p>
+        <Field
+          label="P(fold)"
+          hint="En % — vilain fold sa c-bet face à ton raise"
+          value={answer.pFoldCRInput}
+          onChange={(v) => setAnswer({ ...answer, pFoldCRInput: v })}
+          placeholder="ex. 60"
+        />
+        <Field
+          label="P(call)"
+          hint="En % — vilain call ton check-raise"
+          value={answer.pCallCRInput}
+          onChange={(v) => setAnswer({ ...answer, pCallCRInput: v })}
+          placeholder="ex. 30"
+        />
+        <Field
+          label="Equity vs call range"
+          hint="En % — au flop, vs les mains qui call ta raise"
+          value={answer.equityCRInput}
+          onChange={(v) => setAnswer({ ...answer, equityCRInput: v })}
+          placeholder="ex. 45"
+        />
+        <div
+          className="rounded p-3.5 mb-1 flex items-center justify-between"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              P(3-bet) déduit
+            </div>
+            <div
+              className="text-lg font-mono font-semibold leading-none"
+              style={{
+                color:
+                  p3BetLive === null
+                    ? "var(--text-faint)"
+                    : sumPFC > 101
+                    ? "var(--red)"
+                    : "var(--text)",
+              }}
+            >
+              {p3BetLive === null ? "—" : `${p3BetLive.toFixed(0)} %`}
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              EV recomposée
+            </div>
+            <div
+              className="text-2xl font-mono font-semibold leading-none"
+              style={{
+                color:
+                  liveEv === null
+                    ? "var(--text-faint)"
+                    : liveEv >= 0
+                    ? "var(--green)"
+                    : "var(--red)",
+              }}
+            >
+              {liveEv === null ? "—" : `${liveEv >= 0 ? "+" : ""}${liveEv.toFixed(2)} bb`}
+            </div>
+          </div>
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M3.2 — un champ : P(fold) break-even. Verdict push +EV/-EV live (la FE
   // réelle est donnée par le spot, calculée depuis callRange/totalRange).
   if (isFoldEquity(spot)) {
@@ -1787,6 +2009,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isCheckRaise(spot)) {
+    return <CheckRaiseCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isFoldEquity(spot)) {
     return <FoldEquityCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -2326,6 +2551,207 @@ function VsRangeCorrectionPanel({
 
       <div className="mt-4">
         <RangeDisplay notation={spot.villainRangeNotation} />
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.4 — table check-raise (hero + board flop + 3 ranges) =====
+const M34_TEXTURE_LABEL: Record<CheckRaiseSpot["boardTexture"], string> = {
+  dry: "Board dry",
+  wet: "Board drawy / wet",
+  paired: "Board paired",
+  monotone: "Board monotone",
+};
+const M34_HAND_LABEL: Record<CheckRaiseSpot["heroHandType"], string> = {
+  value: "Value",
+  semibluff: "Semi-bluff",
+  bluff: "Pure bluff",
+};
+
+function CheckRaiseTable({ spot }: { spot: CheckRaiseSpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          Check-raise flop · OOP
+        </div>
+        <div className="text-xs font-mono text-text-faint">{spot.effectiveStack} bb eff.</div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Ta main
+        </div>
+        <div className="flex gap-2">
+          {spot.heroCards.map((c, i) => (
+            <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Flop — {M34_TEXTURE_LABEL[spot.boardTexture]} · {M34_HAND_LABEL[spot.heroHandType]}
+        </div>
+        <div className="flex gap-2">
+          {spot.board.map((c, i) => (
+            <PlayingCard key={`b-${c}-${i}`} card={c} dealDelayMs={200 + i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-5">
+        <PfInfo label="Hero" value={spot.heroPosition} />
+        <PfInfo label="Vilain" value={spot.villainPosition} />
+        <PfInfo label="Pot pre" value={`${spot.potPreflop} bb`} />
+        <PfInfo label="C-bet" value={`${spot.cbetSize} bb`} />
+      </div>
+
+      <div className="mb-3">
+        <RangeDisplay
+          notation={spot.villainCBetRangeNotation}
+          label={`C-bet range : ${spot.villainCBetRangeLabel}`}
+        />
+      </div>
+      <div className="mb-3">
+        <RangeDisplay
+          notation={spot.villainCallVsRaiseRangeNotation}
+          label={`Call vs CR : ${spot.villainCallVsRaiseRangeLabel}`}
+        />
+      </div>
+      <div className="mb-5">
+        <RangeDisplay
+          notation={spot.villain3BetRangeNotation}
+          label={`3-bet vs CR : ${spot.villain3BetRangeLabel}`}
+        />
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Tu check OOP, vilain c-bet {spot.cbetSize} bb, tu raise à {spot.raiseSize} bb.
+          Décompose l&apos;EV : P(fold) + P(call) + ton equity vs son call range.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== M3.4 — correction check-raise =====
+function CheckRaiseCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: CheckRaiseSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const pf = parseAnswerNumber(answer.pFoldCRInput) ?? 0;
+  const pc = parseAnswerNumber(answer.pCallCRInput) ?? 0;
+  const eq = parseAnswerNumber(answer.equityCRInput) ?? 0;
+  const g = gradeM34(pf, pc, eq, spot);
+  const e = spot.expected;
+  const tf = Math.round(e.pFold * 1000) / 10;
+  const tc = Math.round(e.pCall * 1000) / 10;
+  const tr = Math.round(e.pThreeBet * 1000) / 10;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV de ta saisie</div>
+          <div className="text-3xl font-semibold font-mono leading-none">
+            {g.userEV >= 0 ? "+" : ""}
+            {g.userEV.toFixed(2)} bb
+          </div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">EV vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {g.trueEV >= 0 ? "+" : ""}
+            {g.trueEV.toFixed(2)} bb
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>P(fold)</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pf)} · vrai {fmtPercent(tf)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIfFold >= 0 ? "+" : ""}{e.evIfFold} bb</span>
+        <br />
+        <Lbl>P(call)</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(pc)} · vrai {fmtPercent(tc)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIfCall >= 0 ? "+" : ""}{e.evIfCall} bb</span>
+        <br />
+        <Lbl>P(3-bet)</Lbl>{" "}
+        <Mono>
+          déduit {fmtPercent(Math.max(0, 100 - pf - pc))} · vrai {fmtPercent(tr)}
+        </Mono>{" "}
+        <span className="text-text-muted">→ EV branche {e.evIf3Bet} bb</span>
+        <br />
+        <Lbl>Equity vs call</Lbl>{" "}
+        <Mono>
+          toi {fmtPercent(eq)} · vrai {fmtPercent(e.equityVsCallRange)}
+        </Mono>{" "}
+        <span className="text-text-muted">
+          (réalisée × {e.realizationFactorUsed.toFixed(2)} = {fmtPercent(e.equityVsCallRange * e.realizationFactorUsed)})
+        </span>
+        <br />
+        <Lbl>Hero</Lbl> <Mono>{spot.heroCards.join(" ")}</Mono> sur{" "}
+        <Mono>{spot.board.join(" ")}</Mono> ({M34_TEXTURE_LABEL[spot.boardTexture].toLowerCase()})
+        <br />
+        <Lbl>EV vraie</Lbl>{" "}
+        <Mono className="!text-purple-300">
+          Σ Pᵢ × EVᵢ = {e.evBb >= 0 ? "+" : ""}
+          {e.evBb} bb
+        </Mono>
+      </FormulaBox>
+
+      <div className="mt-3">
+        <RangeDisplay notation={spot.villainCallVsRaiseRangeNotation} />
       </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">

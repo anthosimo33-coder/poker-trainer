@@ -22,6 +22,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m3-1": () => import("@/content/theory/m3-1.mdx"),
   "m3-2": () => import("@/content/theory/m3-2.mdx"),
   "m3-3": () => import("@/content/theory/m3-3.mdx"),
+  "m3-4": () => import("@/content/theory/m3-4.mdx"),
 };
 
 function TheoryContent() {
@@ -531,6 +532,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "C",
       explanation: "Une probabilité mal estimée donne une EV imprécise. Une branche oubliée donne une EV fausse : la masse de probabilité ne somme plus à 1, le résultat n'a plus de sens. Énumérer toutes les branches avant de pondérer est non négociable.",
+    },
+  ],
+
+  "m3-4": [
+    {
+      question: "Pourquoi le check-raise est-il l'arme principale d'OOP ?",
+      options: [
+        { letter: "A", text: "Parce qu'il fait fold plus de mains qu'un raise IP." },
+        { letter: "B", text: "Parce qu'il est la seule façon, hors position, de prendre l'initiative agressive sans renoncer à check ses mains marginales." },
+        { letter: "C", text: "Parce que le c-bet adverse est toujours large." },
+        { letter: "D", text: "Parce qu'il est plus rentable que le raise donk." },
+      ],
+      correctLetter: "B",
+      explanation: "OOP, tu réponds aux actions adverses. Le check-raise te permet de transformer une attitude apparemment passive (check) en une attitude agressive sans interrompre le sizing optimal d'OOP. C'est la seule arme qui te donne l'initiative tout en gardant un range de check fort.",
+    },
+    {
+      question: "Tu check-raise un bluff pur (9♠8♣ sur K♥7♦2♠). Vilain c-bet range large (~70 %), call vs raise très tight (~8 %). Pourquoi ce check-raise peut être +EV ?",
+      options: [
+        { letter: "A", text: "Parce que 98o a une bonne equity vs un set." },
+        { letter: "B", text: "Parce que P(fold) ≈ 88 %, et le pot que tu ramasses est suffisant pour compenser les ~12 % où tu te fais call sans equity." },
+        { letter: "C", text: "Parce que tu vas toucher la quinte au turn." },
+        { letter: "D", text: "Parce que le board K♥7♦2♠ est connu pour favoriser OOP." },
+      ],
+      correctLetter: "B",
+      explanation: "C'est l'effet de la fold equity sur un board dry. Vilain c-bet 70 % mais ne défend que ~8 %. 0.88 × pot_apres_cbet ≈ +5 bb de fold equity. Même si tu perds ~3 bb les 12 % du temps où tu es call, la moyenne pondérée reste positive. C'est la signature d'un bon bluff CR : board dry + range advantage + sizing convaincant.",
+    },
+    {
+      question: "Tu check-raise 7♣7♥ pour value sur K♠7♦2♣ vs un c-bet 33 %. Ton equity vs call range est 78 %. Pourquoi l'EV réalisée sera-t-elle inférieure à ce que ton equity brut suggère ?",
+      options: [
+        { letter: "A", text: "Parce que vous serez OOP au turn, et certaines turns rendent ta main moins lisible." },
+        { letter: "B", text: "Parce que vilain peut fold avant le showdown même quand tu touches ta full." },
+        { letter: "C", text: "Parce que vilain hand sera plus lisible (top pair top kicker) et tu pourras extraire plus de value." },
+        { letter: "D", text: "Parce que le realization factor OOP postflop est ~0.80, donc 78 % d'equity ≈ 62 % réalisé en moyenne." },
+      ],
+      correctLetter: "D",
+      explanation: "Le realization factor postflop OOP est ~0.80 : tu ne réalises pas 100 % de ton equity parce que tu joues les rues suivantes les yeux bandés, et tu folderas certaines spots où ton set est encore favorite. 78 % × 0.80 = ~62 % d'equity *réalisée*. C'est la première différence majeure entre preflop (M·I-M·III) et postflop : equity ≠ realization.",
     },
   ],
 };

@@ -162,13 +162,13 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page).toHaveURL(/\/drill\/m2-1/);
   });
 
-  test("Atelier : M·II déverrouillé avec 4 sous-modules dont 3 lockés", async ({ page }) => {
+  test("Atelier : M·II déverrouillé, modules M·IV / M·V encore lockés", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByText("Equity & outs")).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText("Outs et règle des 4&2")).toBeVisible();
-    // 3 sous-modules en "Verrouillé"
+    // S7c : M·III complet → seuls M·IV/M·V restent lockés (≥ 2 « Verrouillé »).
     const lockedCount = await page.getByText("Verrouillé").count();
-    expect(lockedCount).toBeGreaterThanOrEqual(3);
+    expect(lockedCount).toBeGreaterThanOrEqual(2);
   });
 
   test("M2.2 — théorie → quick check → drill avec scoring nuancé", async ({ page }) => {
@@ -315,5 +315,31 @@ test.describe("Drill M1.1 — flow complet", () => {
     // Saisie décomposée 3 champs : P(fold)+P(call)+P(raise) (timeout : gate).
     await expect(page.getByText(/Trois branches, une EV/i)).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText(/Somme/i).first()).toBeVisible();
+  });
+
+  test("M3.4 — flow complet check-raise flop avec saisie décomposée 3 champs", async ({ page }) => {
+    await page.goto("/module/m3/theory/m3-4");
+    await expect(
+      page.getByText(/Check-raise et lignes complexes|check-raise/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready (cf. S6b/S6c/S6d/S7a/S7b) : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m3-4 : réponses correctes B, B, D.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^D/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m3-4/);
+    // Saisie 3 champs : P(fold) + P(call) + Equity vs call range (timeout : gate).
+    await expect(page.getByText(/Trois branches, postflop/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/P\(fold\)/i).first()).toBeVisible();
+    await expect(page.getByText(/Equity vs call range/i).first()).toBeVisible();
   });
 });

@@ -267,3 +267,112 @@ export function ev3BetVs3Branches(params: {
 
   return evMultiBranch(branches);
 }
+
+/**
+ * M3.4 — EV d'un check-raise flop OOP.
+ *
+ * Scénario : hero OOP check, vilain c-bet, hero raise. Trois branches du vilain :
+ *  - fold (proba calculée par taille relative de range)
+ *  - call : hero continue postflop avec equity réalisée (× realizationFactor)
+ *  - 3-bet : hero fold (cas simple, pas de 4-bet hero pour M3.4)
+ *
+ * Conventions de sizing (verbatim spec, simplifié) :
+ *  - `cbetSize` = chips que vilain c-bet
+ *  - `raiseSize` = chips de la raise de hero (hors call) — utilisé tel quel pour
+ *    `evIf3Bet = −raiseSize` et `potAfterRaise = potAfterCBet + 2 × raiseSize`
+ *  - `potAfterCBet = potPreflop + 2 × cbetSize` (hero matche puis raise)
+ *
+ * `realizationFactor` : défaut 0.80 (OOP postflop). Cf. théorie M3.4 : IP ≈
+ * 0.95-1.05, OOP ≈ 0.70-0.85 ; le check-raise donne un slight range advantage
+ * qui justifie 0.80 comme défaut OOP.
+ */
+export function evCheckRaise(params: {
+  heroCards: [Card, Card];
+  potPreflop: number;
+  cbetSize: number;
+  raiseSize: number;
+  effectiveStack: number;
+  villainCBetRange: Combo[];
+  villainCallVsRaiseRange: Combo[];
+  villain3BetRange: Combo[];
+  board: [Card, Card, Card];
+  realizationFactor?: number;
+  iterations?: number;
+}): {
+  evBb: number;
+  pFold: number;
+  pCall: number;
+  pThreeBet: number;
+  equityVsCallRange: number;
+  evIfFold: number;
+  evIfCall: number;
+  evIf3Bet: number;
+} {
+  const {
+    heroCards,
+    potPreflop,
+    cbetSize,
+    raiseSize,
+    effectiveStack,
+    villainCBetRange,
+    villainCallVsRaiseRange,
+    villain3BetRange,
+    board,
+    realizationFactor = 0.8,
+    iterations = 1200,
+  } = params;
+
+  const cbetCombos = villainCBetRange.length;
+  if (cbetCombos === 0) {
+    throw new Error("villainCBetRange est vide");
+  }
+
+  const callCombos = villainCallVsRaiseRange.length;
+  const threeBetCombos = villain3BetRange.length;
+  const foldCombos = cbetCombos - callCombos - threeBetCombos;
+
+  if (foldCombos < 0) {
+    throw new Error("call + 3bet > cbet range total");
+  }
+
+  const pFold = foldCombos / cbetCombos;
+  const pCall = callCombos / cbetCombos;
+  const pThreeBet = threeBetCombos / cbetCombos;
+
+  // Equity vs call range, board flop donné (3 cartes connues).
+  let equityVsCallPct = 0;
+  if (callCombos > 0) {
+    equityVsCallPct = equityVsRange(heroCards, villainCallVsRaiseRange, board, iterations).equity;
+  }
+  const equity = equityVsCallPct / 100;
+  const equityRealized = equity * realizationFactor;
+
+  // Branche 1 — vilain fold : hero ramasse pot_preflop + c-bet vilain (la raise
+  // n'est pas dépensée).
+  const evIfFold = potPreflop + cbetSize;
+
+  // Branche 2 — vilain call la raise : pot postflop évolue, hero joue son
+  // equity réalisée jusqu'au showdown (approximation all-in à terme).
+  const potAfterCBet = potPreflop + 2 * cbetSize;
+  const potAfterRaise = potAfterCBet + 2 * raiseSize;
+  const ourInvestPostRaise = effectiveStack - raiseSize;
+  const evIfCall =
+    equityRealized * (potAfterRaise + ourInvestPostRaise) -
+    (1 - equityRealized) * ourInvestPostRaise;
+
+  // Branche 3 — vilain 3-bet, hero fold : perd la taille de la raise.
+  const evIf3Bet = -raiseSize;
+
+  const evBb = pFold * evIfFold + pCall * evIfCall + pThreeBet * evIf3Bet;
+
+  return {
+    evBb,
+    pFold,
+    pCall,
+    pThreeBet,
+    equityVsCallRange: equityVsCallPct,
+    evIfFold,
+    evIfCall,
+    evIf3Bet,
+  };
+}

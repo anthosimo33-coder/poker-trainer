@@ -1,0 +1,134 @@
+---
+slug: m3-4
+moduleSlug: m3
+submoduleSlug: m3.4
+title: Check-raise et lignes complexes
+subtitle: La voix d'OOP, le premier saut postflop.
+order: 4
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module III · Sous-module 4 / 4
+  </div>
+
+# Check-raise et lignes complexes.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La voix d&apos;OOP, le premier saut postflop.</em> En position, tu réponds. Hors position, tu attends — puis tu check-raise. C&apos;est ta seule arme pour prendre l&apos;initiative sans renoncer à ton range de check.
+</p>
+</div>
+
+<WhyBlock title="Le check-raise est la voix d'OOP.">
+
+En position, tu peux raise une c-bet à volonté : tu as l&apos;info, tu as l&apos;initiative. Hors position, tu *réponds* — tu n&apos;as pas le micro. Le **check-raise** est la seule façon, OOP, de prendre l&apos;initiative agressive *sans* renoncer à ton range de check fort.
+
+C&apos;est pour ça qu&apos;il est polarisé : tu check-raise tes monstres (value) et tes airs avec equity (semi-bluff / bluff pur). Le milieu — top pair faible, tirages marginaux — tu le *call*. Apprendre à calibrer le check-raise, c&apos;est apprendre à parler quand tu n&apos;as pas le micro.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Premier saut" title={<>Du préflop <em>au flop.</em></>} />
+
+<Prose>
+
+M·I à M·III t&apos;ont entraîné sur le preflop : 1 à 3 branches, 1 seule street. M3.4 est le *premier postflop* du trainer. La même équation `EV = Σ Pᵢ × EVᵢ` s&apos;applique — mais avec deux concepts nouveaux : le **board** (3 cartes connues qui changent l&apos;equity) et le **realization factor** (tu ne récupères pas 100 % de ton equity, même quand tu es favorite).
+
+</Prose>
+
+<SectionHeader num="02" label="La structure" title={<>Trois branches, <em>postflop.</em></>} />
+
+<Formula>
+  <FormulaLabel>EV check-raise</FormulaLabel>
+  <br />
+  P(fold) × (pot_pre + c-bet)
+  <br />
+  + P(call) × (equity_réalisée × pot_final − notre_invest_post_raise)
+  <br />
+  + P(3-bet) × (−raise_size)
+  <FormulaMuted>Hero check OOP, vilain c-bet, hero raise. Vilain fold / call / 3-bet (hero fold le 3-bet, cas simple).</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Trois branches, comme M3.3 — mais la nature change. **Fold** : tu ramasses pot preflop + le c-bet du vilain (la raise n&apos;est pas dépensée, vilain l&apos;abandonne). **Call** : tu joues ton equity réalisée pour deux streets supplémentaires. **3-bet** : tu fold, tu perds ta raise.
+
+</Prose>
+
+<SectionHeader num="03" label="Realization" title={<>Equity <em>≠ réalisation.</em></>} />
+
+<Prose>
+
+C&apos;est *la* différence entre preflop et postflop. En preflop all-in, tu vas à l&apos;abattage : ton equity de 60 % = tu gagnes 60 % du temps, point. En postflop, tu joues encore turn et river — et tu joues *les yeux bandés*, surtout OOP.
+
+Le **realization factor** corrige ce biais :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>IP postflop</FormulaLabel> <K>0.95 – 1.05</K> <FormulaMuted>(parfois &gt; 100 %, tu fold les bad rivers, value les bonnes)</FormulaMuted><br />
+  <FormulaLabel>OOP postflop</FormulaLabel> <K>0.70 – 0.85</K> <FormulaMuted>(tu joues sans info, tu fold trop ou tu paies trop)</FormulaMuted><br />
+  <FormulaLabel>Range advantage</FormulaLabel> <K>+0.05 à +0.10</K><br />
+  <FormulaLabel>Range disadvantage</FormulaLabel> <K>−0.05 à −0.10</K>
+</Formula>
+
+<Prose>
+
+Pour les calculs M3.4 : on utilise <K>0.80</K> — OOP par définition (check-raise = OOP), avec le slight range advantage que crée le check-raise lui-même (vilain ne sait plus où tu en es). Ta main a 70 % d&apos;equity vs son call range ? Tu en réaliseras environ 56 %.
+
+</Prose>
+
+<SectionHeader num="04" label="Trois types" title={<>Trois <em>check-raises.</em></>} />
+
+<Formula>
+  <FormulaLabel>Value</FormulaLabel> set, two pair, TPTK, overpair — tu veux être call. EV typique <K>+3 à +8 bb</K>.
+  <br />
+  <FormulaLabel>Semi-bluff</FormulaLabel> FD, OE, combo draw — fold equity + equity vs call. EV <K>+0.5 à +3 bb</K>.
+  <br />
+  <FormulaLabel>Pure bluff</FormulaLabel> air avec range advantage — fold equity *seule*. EV <K>−0.5 à +2 bb</K>.
+</Formula>
+
+<Prose>
+
+Le milieu — TPWK, second pair, tirage faible — *ne check-raise pas*. Tu call. Polariser, c&apos;est la signature d&apos;un check-raise discipliné : si tu mets tes mains marginales dans ton CR range, vilain te lit.
+
+</Prose>
+
+<SectionHeader num="05" label="Board texture" title={<>Le board <em>dicte tout.</em></>} />
+
+<Prose>
+
+**Board dry** (K72r) : le c-bet range du vilain est *large* (il c-bet 65-70 %), mais son call vs raise est *tight* (8-12 %). Fold equity élevée → les bluffs CR fonctionnent.
+
+**Board wet** (T98s) : le c-bet range est plus serré (vilain check-back ses mains moyennes pour control), mais son call vs raise est *plus large* (les draws). Les value CR dominent.
+
+**Board paired** (K77) : très peu de combos qui touchent fort dans son range → fold equity exceptionnelle même contre un c-bet standard.
+
+**Board monotone** (Ks8s2s) : asymétrique — celui qui a une carte de la couleur a un range advantage massif.
+
+</Prose>
+
+<Mnemonic keyText="Check-raise = voix d'OOP">
+En position tu parles librement. Hors position, ton seul outil pour prendre l&apos;initiative est le check-raise. Polarisé, calibré, économe — sinon le vilain te lit. Et n&apos;oublie pas : ton equity brute ment, c&apos;est ta réalisation qui compte.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges" title={<>Quatre erreurs <em>de check-raise.</em></>} />
+
+<Prose>
+
+**1. Over-bluff.** Tu check-raise toutes tes airs ; vilain remarque, ajuste, ton bluff range devient transparent. Polarise — pas en panique, en stratégie.
+
+**2. Oublier la branche 3-bet.** Sur les boards paired ou Axx, vilain a beaucoup plus de monstres que tu ne crois. Il 3-bet ta raise avec sets et overpairs. Ignorer cette branche te coûte sur le long terme.
+
+**3. Sous-estimer le realization factor.** Tu calcules en utilisant ton equity brute de 70 % ; en pratique tu en réalises 56 % OOP. EV apparemment +EV → réellement break-even ou négative.
+
+**4. Ignorer l&apos;effective stack.** À 30bb effectif, check-raise puis call un 3-bet = stack commited. À 100bb, postflop room énorme, le check-raise est moins coûteux en cas de 3-bet. Vérifie toujours combien tu joues *après* le raise.
+
+</Prose>
+
+<LifeLink title="Le check-raise est la stratégie de celui qui n'a pas le micro.">
+
+Dans une réunion où tu n&apos;as pas la parole par défaut — junior, fournisseur en négociation, candidat en entretien — tu *attends* d&apos;abord (let them c-bet). Tu *écoutes* leur position complète. Puis tu prends la parole avec *autorité*, pas en interrompant.
+
+Le bon timing du check-raise mental, c&apos;est celui qui transforme une position défensive en initiative. Ça s&apos;apprend en poker, où chaque mauvais timing coûte des chips et où chaque bon timing rentabilise *sans avoir parlé en premier*. Le silence stratégique précède l&apos;attaque polarisée.
+
+</LifeLink>

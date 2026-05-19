@@ -99,6 +99,41 @@ export interface PrecomputedM32Spot {
   };
 }
 
+export interface PrecomputedM34Spot {
+  id: string;
+  heroCards: [Card, Card];
+  board: [Card, Card, Card]; // flop
+  heroPosition: string; // toujours OOP pour check-raise
+  villainPosition: string;
+  potPreflop: number;
+  cbetSize: number;
+  raiseSize: number;
+  effectiveStack: number;
+  villainCBetRangeSlug: string;
+  villainCBetRangeLabel: string;
+  villainCBetRangeNotation: string;
+  villainCallVsRaiseRangeSlug: string;
+  villainCallVsRaiseRangeLabel: string;
+  villainCallVsRaiseRangeNotation: string;
+  villain3BetRangeSlug: string;
+  villain3BetRangeLabel: string;
+  villain3BetRangeNotation: string;
+  boardTexture: "dry" | "wet" | "monotone" | "paired";
+  heroHandType: "value" | "semibluff" | "bluff";
+  scenarioLabel: string;
+  expected: {
+    pFold: number;
+    pCall: number;
+    pThreeBet: number;
+    equityVsCallRange: number;
+    evIfFold: number;
+    evIfCall: number;
+    evIf3Bet: number;
+    evBb: number;
+    realizationFactorUsed: number;
+  };
+}
+
 export interface PrecomputedM33Spot {
   id: string;
   heroCards: [Card, Card];

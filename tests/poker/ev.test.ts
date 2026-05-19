@@ -5,6 +5,7 @@ import {
   requiredEquityForCall,
   breakEvenPFold,
   evMultiBranch,
+  evCheckRaise,
 } from "@/lib/poker/ev";
 import { parseRange } from "@/lib/poker/range-parser";
 
@@ -150,5 +151,68 @@ describe("evMultiBranch", () => {
         { label: "b", probability: 0.3, evIfBranch: 2 },
       ])
     ).toThrow(/somment/);
+  });
+});
+
+describe("evCheckRaise", () => {
+  it("Set OOP check-raise vs c-bet range large : EV positive et fold equity élevée", () => {
+    const cbetRange = parseRange(
+      "22+, A2s+, K2s+, Q9s+, JTs, T9s, 98s, A8o+, KTo+"
+    );
+    const callRange = parseRange("KK+, AKs, K9s+, KQo");
+    const threeBetRange = parseRange("77, KK");
+    const result = evCheckRaise({
+      heroCards: ["7c", "7h"],
+      potPreflop: 6,
+      cbetSize: 3,
+      raiseSize: 9,
+      effectiveStack: 30,
+      villainCBetRange: cbetRange,
+      villainCallVsRaiseRange: callRange,
+      villain3BetRange: threeBetRange,
+      board: ["7s", "Ks", "2d"],
+      realizationFactor: 0.85,
+      iterations: 400,
+    });
+    expect(result.evBb).toBeGreaterThan(2);
+    expect(result.pFold).toBeGreaterThan(0.4);
+  });
+
+  it("Bluff check-raise pur : equity vs call faible, fold equity domine", () => {
+    const cbetRange = parseRange(
+      "22+, A2s+, K2s+, Q9s+, JTs, T9s, 98s, A8o+, KTo+"
+    );
+    const callRange = parseRange("KK, KQs, KJs, KTs, KQo");
+    const threeBetRange = parseRange("AA, KK");
+    const result = evCheckRaise({
+      heroCards: ["9d", "8c"],
+      potPreflop: 6,
+      cbetSize: 3,
+      raiseSize: 9,
+      effectiveStack: 30,
+      villainCBetRange: cbetRange,
+      villainCallVsRaiseRange: callRange,
+      villain3BetRange: threeBetRange,
+      board: ["Kh", "7c", "2d"],
+      iterations: 400,
+    });
+    expect(result.equityVsCallRange).toBeLessThan(20);
+    expect(result.pFold).toBeGreaterThan(0.5);
+  });
+
+  it("Validation : call + 3-bet > c-bet range → erreur explicite", () => {
+    expect(() =>
+      evCheckRaise({
+        heroCards: ["7c", "7h"],
+        potPreflop: 6,
+        cbetSize: 3,
+        raiseSize: 9,
+        effectiveStack: 30,
+        villainCBetRange: parseRange("AA, KK"),
+        villainCallVsRaiseRange: parseRange("AA"),
+        villain3BetRange: parseRange("KK, QQ"),
+        board: ["7s", "Ks", "2d"],
+      })
+    ).toThrow(/call \+ 3bet/);
   });
 });
