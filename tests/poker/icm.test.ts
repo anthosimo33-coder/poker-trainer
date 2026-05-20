@@ -5,6 +5,8 @@ import {
   chipEquityPercent,
   bubbleFactor,
   icmDecisionCall,
+  positionAdjustedBubbleFactor,
+  ftPayoutSpread,
 } from "@/lib/poker/icm";
 
 describe("icmEquity — cas trivial", () => {
@@ -261,5 +263,102 @@ describe("icmDecisionCall", () => {
     });
     expect(result.shouldCall).toBe(true);
     expect(result.marginPts).toBeGreaterThan(0);
+  });
+});
+
+describe("positionAdjustedBubbleFactor", () => {
+  const baseParams = {
+    players: [
+      { id: "hero", stack: 7000 },
+      { id: "v1", stack: 5000 },
+      { id: "v2", stack: 5000 },
+      { id: "short", stack: 1000 },
+    ],
+    payouts: [50, 30, 20],
+    heroId: "hero",
+    villainId: "v1",
+    pushAmount: 5000,
+  };
+
+  it("0 joueurs left to act : multiplier = 1 (BF = base)", () => {
+    const result = positionAdjustedBubbleFactor({
+      ...baseParams,
+      playersLeftToAct: 0,
+    });
+    expect(result.positionMultiplier).toBeCloseTo(1, 2);
+    expect(result.bubbleFactor).toBeCloseTo(result.baseBubbleFactor, 2);
+  });
+
+  it("3 joueurs left to act : multiplier = 1.45", () => {
+    const result = positionAdjustedBubbleFactor({
+      ...baseParams,
+      playersLeftToAct: 3,
+    });
+    expect(result.positionMultiplier).toBeCloseTo(1.45, 2);
+    expect(result.bubbleFactor).toBeGreaterThan(result.baseBubbleFactor);
+  });
+
+  it("5 joueurs left to act : multiplier = 1.75 (cap)", () => {
+    const result = positionAdjustedBubbleFactor({
+      ...baseParams,
+      playersLeftToAct: 5,
+    });
+    expect(result.positionMultiplier).toBeCloseTo(1.75, 2);
+  });
+
+  it("Au-delà de 5 joueurs : multiplier reste plafonné à 1.75", () => {
+    const r5 = positionAdjustedBubbleFactor({ ...baseParams, playersLeftToAct: 5 });
+    const r8 = positionAdjustedBubbleFactor({ ...baseParams, playersLeftToAct: 8 });
+    expect(r8.positionMultiplier).toBeCloseTo(r5.positionMultiplier, 2);
+  });
+
+  it("BF ajusté borné à 10 (cas dégénéré)", () => {
+    const result = positionAdjustedBubbleFactor({
+      players: [
+        { id: "hero", stack: 1000 },
+        { id: "v1", stack: 9000 },
+        { id: "v2", stack: 9000 },
+        { id: "v3", stack: 9000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "hero",
+      villainId: "v1",
+      pushAmount: 1000,
+      playersLeftToAct: 5,
+    });
+    expect(result.bubbleFactor).toBeLessThanOrEqual(10);
+  });
+
+  it("eq_ICM_required cohérent avec BF ajusté : BF/(BF+1)", () => {
+    const result = positionAdjustedBubbleFactor({
+      ...baseParams,
+      playersLeftToAct: 2,
+    });
+    const expected = (result.bubbleFactor / (result.bubbleFactor + 1)) * 100;
+    expect(result.requiredEquityICM).toBeCloseTo(expected, 1);
+  });
+});
+
+describe("ftPayoutSpread", () => {
+  it("ft-9-standard : ratio 10x", () => {
+    const s = ftPayoutSpread([30, 20, 14, 10, 8, 6, 5, 4, 3]);
+    expect(s.ratio).toBeCloseTo(10, 1);
+    expect(s.topVsBottom).toBe(27);
+  });
+
+  it("ft-9-steep : ratio 40x (très steep)", () => {
+    const s = ftPayoutSpread([40, 22, 13, 9, 6, 4, 3, 2, 1]);
+    expect(s.ratio).toBeCloseTo(40, 1);
+  });
+
+  it("ft-9-flat : ratio 3.7x (compressé)", () => {
+    const s = ftPayoutSpread([22, 17, 14, 11, 9, 8, 7, 6, 6]);
+    expect(s.ratio).toBeLessThan(5);
+  });
+
+  it("Heads-up WTA (1 payout) : ratio = 1", () => {
+    const s = ftPayoutSpread([100]);
+    expect(s.ratio).toBe(1);
+    expect(s.topVsBottom).toBe(0);
   });
 });

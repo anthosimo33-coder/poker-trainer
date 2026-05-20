@@ -4,6 +4,8 @@ import spots3way from "@/content/spots/m2-3.json";
 import spots31 from "@/content/spots/m3-1.json";
 import spots41 from "@/content/spots/m4-1.json";
 import spots42 from "@/content/spots/m4-2.json";
+import spots43 from "@/content/spots/m4-3.json";
+import spots44 from "@/content/spots/m4-4.json";
 
 describe("M2.2 precomputed spots", () => {
   it("contient au moins 100 spots", () => {
@@ -216,5 +218,96 @@ describe("M4.2 precomputed spots", () => {
       const eff = Math.min(hero!.stack, villain!.stack);
       expect(s.pushAmount).toBeLessThanOrEqual(eff);
     }
+  });
+});
+
+describe("M4.3 precomputed spots", () => {
+  it("contient au moins 100 spots", () => {
+    expect(spots43.length).toBeGreaterThanOrEqual(100);
+  });
+
+  it("position multiplier dans [1, 1.75] (heuristique 0.15 × N capped à 0.75)", () => {
+    for (const s of spots43) {
+      expect(s.expected.positionMultiplier).toBeGreaterThanOrEqual(1);
+      expect(s.expected.positionMultiplier).toBeLessThanOrEqual(1.75);
+    }
+  });
+
+  it("BF ajusté ≥ BF base (la position ajoute, ne soustrait jamais)", () => {
+    for (const s of spots43) {
+      expect(s.expected.adjustedBubbleFactor).toBeGreaterThanOrEqual(
+        s.expected.baseBubbleFactor - 0.01
+      );
+    }
+  });
+
+  it("position multiplier cohérent avec playersLeftToAct (0.15 × N, capped 0.75)", () => {
+    for (const s of spots43) {
+      const expectedFactor = Math.min(0.75, 0.15 * s.playersLeftToAct);
+      const expectedMult = 1 + expectedFactor;
+      expect(s.expected.positionMultiplier).toBeCloseTo(expectedMult, 2);
+    }
+  });
+
+  it("SB vs BB (0 derrière) : multiplier = 1.00 exactement", () => {
+    const sbSpots = spots43.filter((s) => s.heroPosition === "SB" && s.playersLeftToAct === 0);
+    expect(sbSpots.length).toBeGreaterThan(0);
+    for (const s of sbSpots) {
+      expect(s.expected.positionMultiplier).toBeCloseTo(1, 2);
+    }
+  });
+
+  it("distribution positions variée (≥ 4 positions)", () => {
+    const positions = new Set(spots43.map((s) => s.heroPosition));
+    expect(positions.size).toBeGreaterThanOrEqual(4);
+  });
+});
+
+describe("M4.4 precomputed spots", () => {
+  it("contient au moins 80 spots", () => {
+    expect(spots44.length).toBeGreaterThanOrEqual(80);
+  });
+
+  it("équités if win > if lose (toujours)", () => {
+    for (const s of spots44) {
+      expect(s.expected.heroEquityIfWin).toBeGreaterThan(s.expected.heroEquityIfLose);
+    }
+  });
+
+  it("rangeOfOutcomes ≈ if_win - if_lose (à 0.15 pts près, arrondis indépendants)", () => {
+    for (const s of spots44) {
+      const computed = s.expected.heroEquityIfWin - s.expected.heroEquityIfLose;
+      expect(Math.abs(s.expected.rangeOfOutcomes - computed)).toBeLessThan(0.15);
+    }
+  });
+
+  it("bubble factor dans [1, 10] (borné)", () => {
+    for (const s of spots44) {
+      expect(s.expected.bubbleFactor).toBeGreaterThanOrEqual(1);
+      expect(s.expected.bubbleFactor).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it("distribution archetypes : ≥ 4 spotTypes représentés", () => {
+    const types = new Set(spots44.map((s) => s.spotType));
+    expect(types.size).toBeGreaterThanOrEqual(4);
+  });
+
+  it("HU WTA : BF ≈ 1 (cash-like)", () => {
+    const huWtaSpots = spots44.filter(
+      (s) => s.spotType === "ft-heads-up" && s.payoutSlug === "wta-2"
+    );
+    expect(huWtaSpots.length).toBeGreaterThan(0);
+    for (const s of huWtaSpots) {
+      expect(s.expected.bubbleFactor).toBeCloseTo(1, 1);
+    }
+  });
+
+  it("FT 9-way steep : BF élevé (> 1.5 pour leader/mid/short)", () => {
+    const steepSpots = spots44.filter((s) => s.payoutSlug === "ft-9-steep");
+    expect(steepSpots.length).toBeGreaterThan(0);
+    const avgBF =
+      steepSpots.reduce((acc, s) => acc + s.expected.bubbleFactor, 0) / steepSpots.length;
+    expect(avgBF).toBeGreaterThan(1.5);
   });
 });

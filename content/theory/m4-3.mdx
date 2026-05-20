@@ -1,0 +1,115 @@
+---
+slug: m4-3
+moduleSlug: m4
+submoduleSlug: m4.3
+title: Adjustments par position
+subtitle: Chaque joueur derrière toi est une mine.
+order: 3
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module IV · Sous-module 3 / 4
+  </div>
+
+# Adjustments par position.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Chaque joueur derrière toi est une mine.</em> La position multiplie le bubble factor. UTG en bulle = 5 mines potentielles ; SB vs BB = 0. Sans cette correction, ton calibrage ICM reste à moitié vrai.
+</p>
+</div>
+
+<WhyBlock title="Chaque joueur derrière toi est une mine.">
+
+En cash, ta position détermine ton range mais pas le *coût* d&apos;une erreur. En bulle ICM, ta position détermine le **BF effectif**. UTG en bulle = chaque joueur derrière toi est une mine potentielle, et tu peux sauter sur n&apos;importe laquelle. SB vs BB = un seul joueur, pas de mine.
+
+Pour calibrer le BF correctement, tu dois multiplier le BF brut (face à *un* vilain) par un **facteur position** qui dépend du nombre de joueurs encore à parler.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Pourquoi la position affecte le BF" title={<>Un vilain <em>devient N vilains.</em></>} />
+
+<Prose>
+
+Le BF brut (M4.2) suppose une décision face à *un* vilain spécifique. Mais quand tu pushes UTG en bulle, tu ne joues pas contre un joueur — tu joues contre *tous les joueurs derrière toi*. Chacun a une probabilité non-nulle d&apos;avoir une main forte qui te call. Chaque joueur additionnel **multiplie** le risque cumulé d&apos;être confronté à un monstre.
+
+L&apos;effet ICM se compose : plus tu as de mines potentielles, plus la probabilité d&apos;exploser monte. Le BF brut sous-estime structurellement le risque en EP.
+
+</Prose>
+
+<SectionHeader num="02" label="La formule" title={<>Position factor <em>linéaire.</em></>} />
+
+<Formula>
+  <FormulaLabel>Position factor</FormulaLabel> 0.15 × playersLeftToAct (plafonné à 0.75)
+  <br />
+  <FormulaLabel>BF ajusté</FormulaLabel> BF_base × (1 + position_factor)
+  <br />
+  <FormulaLabel>Equity ICM requise</FormulaLabel> BF_ajusté / (BF_ajusté + 1)
+  <FormulaMuted>Heuristique linéaire : approximation pédagogique des modèles plus complexes (Holdem Resources, ICMIZER).</FormulaMuted>
+</Formula>
+
+<SectionHeader num="03" label="Valeurs typiques par position" title={<>Cinq <em>scénarios standards.</em></>} />
+
+<Formula>
+  <FormulaLabel>SB vs BB (0 derrière)</FormulaLabel> <K>× 1.00</K> <FormulaMuted>(pas d&apos;adjustment, BF brut)</FormulaMuted>
+  <br />
+  <FormulaLabel>BTN (1-2 derrière)</FormulaLabel> <K>× 1.15 à 1.30</K>
+  <br />
+  <FormulaLabel>CO (2-3 derrière)</FormulaLabel> <K>× 1.30 à 1.45</K>
+  <br />
+  <FormulaLabel>MP (3-4 derrière)</FormulaLabel> <K>× 1.45 à 1.60</K>
+  <br />
+  <FormulaLabel>UTG (5+ derrière)</FormulaLabel> <K>× 1.75</K> <FormulaMuted>(cap)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Le multiplicateur est **plafonné à 1.75** parce qu&apos;au-delà de 5 joueurs derrière, l&apos;effet additionnel devient négligeable (les joueurs supplémentaires ont des probabilités décroissantes d&apos;avoir une main forte ET d&apos;agir derrière toi).
+
+</Prose>
+
+<SectionHeader num="04" label="Conséquences pratiques" title={<>Push tight EP, <em>push light LP.</em></>} />
+
+<Prose>
+
+UTG en bulle : équity ICM requise extrêmement haute (souvent 70-80 %). Tu attends des mains *premium only*. La fold equity sur ta range tight est haute (tout le monde te respecte), mais tes opportunités de push sont rares.
+
+LP (CO/BTN) en bulle : équity requise modérée (60-65 %). Tu peux pusher light les ranges Nash et te retrouver souvent en spot +EV. C&apos;est la position d&apos;où le chip leader extrait le plus de valeur en bulle.
+
+</Prose>
+
+<SectionHeader num="05" label="Le piège du chip leader EP" title={<>Loose en LP, <em>tight en EP.</em></>} />
+
+<Prose>
+
+Pattern classique : le chip leader croit qu&apos;il peut tout se permettre. Il push UTG en bulle avec une range trop large. Un mid stack call avec sa range tight optimale. Le chip leader perd l&apos;échange et son équité ICM s&apos;effondre.
+
+La règle correcte : **le chip leader doit *tighter* en EP**, pas *louser*. Plus tu es exposé (UTG = 5 mines), plus le BF position te tue. Tu loosens en LP où tu n&apos;as que 1-2 mines.
+
+</Prose>
+
+<Mnemonic keyText="BF × position factor">
+Le BF brut est un point de départ. La position le multiplie. Ne pas faire ce calcul = jouer la bulle comme du cash. UTG = × 1.75 (cap), SB vs BB = × 1.00 (référence).
+</Mnemonic>
+
+<SectionHeader num="06" label="Les règles pratiques" title={<>Quatre <em>heuristiques de bulle.</em></>} />
+
+<Prose>
+
+**1. Pousse light depuis LP** (BTN/SB). Position factor faible, equity ICM requise modérée. Ranges Nash applicables avec adjustments mineurs.
+
+**2. Pousse tight depuis EP** (UTG/MP). Position factor élevé, equity ICM requise haute. Réserve aux mains premium.
+
+**3. Call tight depuis EP** (tu peux toujours être squeezé). Quand tu fais limp/open en EP, tu offres au reste de la table la possibilité de squeeze, et le squeezeur exploite ta position contraintive.
+
+**4. Call calibré en BB**. Le BB face à un push n&apos;a personne derrière (sauf squeeze). Position factor = 1.00 face au pusher. Mais attention au range du pusher selon *sa* position : pusher EP = range tight = call BB tight ; pusher BTN = range light = call BB plus light.
+
+</Prose>
+
+<LifeLink title="Plus tu agis tôt, plus tu subis les autres.">
+
+En business, être **first mover en information asymétrique** te désavantage. Si tu déclares ta position avant les autres, tous les autres peuvent réagir avec leur meilleure carte. Ça vaut pour les négociations, les enchères, les positions de marché, les annonces stratégiques.
+
+La règle *« agir tard avec plus d&apos;info »* est universelle, et la **position factor en bulle ICM** en est l&apos;expression mathématique propre. Apprendre à sentir cette pression — *combien plus risqué chaque action devient quand tu as N décideurs derrière toi* — c&apos;est apprendre à calibrer le risque dans tout système séquentiel.
+
+</LifeLink>

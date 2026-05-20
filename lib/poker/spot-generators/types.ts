@@ -12,6 +12,8 @@ import type { MultiBranchSpot } from "./m3-3-multibranch";
 import type { CheckRaiseSpot } from "./m3-4-check-raise";
 import type { ICMSpot } from "./m4-1-icm";
 import type { BubbleFactorSpot } from "./m4-2-bubble-factor";
+import type { PositionBubbleFactorSpot } from "./m4-3-position-bf";
+import type { FinalTableSpot } from "./m4-4-final-table";
 
 export type GenericSpot =
   | PotOddsSpot
@@ -27,7 +29,9 @@ export type GenericSpot =
   | MultiBranchSpot
   | CheckRaiseSpot
   | ICMSpot
-  | BubbleFactorSpot;
+  | BubbleFactorSpot
+  | PositionBubbleFactorSpot
+  | FinalTableSpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).

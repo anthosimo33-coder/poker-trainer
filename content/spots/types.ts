@@ -199,6 +199,64 @@ export interface PrecomputedM42Spot {
   };
 }
 
+export interface PrecomputedM43Spot {
+  id: string;
+  players: ICMPlayer[];
+  heroId: string;
+  villainId: string;
+  payoutSlug: string;
+  payoutLabel: string;
+  payouts: number[];
+  pushAmount: number;
+  /** Position du hero. */
+  heroPosition: "UTG" | "MP" | "CO" | "BTN" | "SB" | "BB";
+  /** Nombre de joueurs encore à parler après le hero (0..5). */
+  playersLeftToAct: number;
+  scenarioLabel: string;
+  spotType: "ep-bubble" | "lp-bubble" | "sb-vs-bb-bubble" | "ep-ft" | "lp-ft";
+  expected: {
+    baseBubbleFactor: number;
+    adjustedBubbleFactor: number;
+    positionMultiplier: number;
+    requiredEquityChip: number;
+    requiredEquityICM: number;
+    heroEquityBefore: number;
+  };
+}
+
+export interface PrecomputedM44Spot {
+  id: string;
+  players: ICMPlayer[];
+  heroId: string;
+  villainId: string;
+  payoutSlug: string;
+  payoutLabel: string;
+  payouts: number[];
+  /** Nombre de joueurs restants en FT. */
+  playersRemaining: number;
+  pushAmount: number;
+  scenarioLabel: string;
+  spotType:
+    | "ft-9way-leader"
+    | "ft-9way-mid"
+    | "ft-9way-short"
+    | "ft-6way"
+    | "ft-3way"
+    | "ft-heads-up";
+  /** Spread des payouts (top - bottom en pts %). */
+  payoutSpread: number;
+  expected: {
+    bubbleFactor: number;
+    requiredEquityChip: number;
+    requiredEquityICM: number;
+    heroEquityBefore: number;
+    heroEquityIfWin: number;
+    heroEquityIfLose: number;
+    /** Différence pédagogique : équité ICM si win - équité ICM si lose. */
+    rangeOfOutcomes: number;
+  };
+}
+
 export interface PrecomputedM33Spot {
   id: string;
   heroCards: [Card, Card];

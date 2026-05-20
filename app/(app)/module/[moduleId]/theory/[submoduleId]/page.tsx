@@ -25,6 +25,8 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m3-4": () => import("@/content/theory/m3-4.mdx"),
   "m4-1": () => import("@/content/theory/m4-1.mdx"),
   "m4-2": () => import("@/content/theory/m4-2.mdx"),
+  "m4-3": () => import("@/content/theory/m4-3.mdx"),
+  "m4-4": () => import("@/content/theory/m4-4.mdx"),
 };
 
 function TheoryContent() {
@@ -642,6 +644,78 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Le BF est asymétrique. Quand le leader push, il risque peu de son stack (effective = min stacks), gain ICM modeste, perte ICM modeste → BF push faible → push light. Quand il call, il risque souvent un gros stack (un autre big stack le call back), perte ICM massive, gain ICM modeste → BF call élevé → call tight. C'est la signature fondamentale du jeu de bulle.",
+    },
+  ],
+
+  "m4-3": [
+    {
+      question: "Tu pushes UTG en bulle 9-way avec 5 joueurs derrière toi. Le BF brut (face à un vilain spécifique) est 1.5. Quel est le BF effectif à utiliser ?",
+      options: [
+        { letter: "A", text: "1.5 (le BF brut s'applique tel quel)" },
+        { letter: "B", text: "~2.6 (1.5 × 1.75 selon la position factor cap)" },
+        { letter: "C", text: "~7.5 (BF × N joueurs)" },
+        { letter: "D", text: "Impossible à calculer sans les ranges adverses" },
+      ],
+      correctLetter: "B",
+      explanation: "Position factor = 0.15 × 5 = 0.75, plafonné. BF_adjusted = 1.5 × 1.75 = 2.625 ≈ 2.6. Pousser UTG en bulle profonde demande une équity ICM requise très haute (~72 %).",
+    },
+    {
+      question: "Pourquoi le chip leader doit-il être prudent en EP en bulle ?",
+      options: [
+        { letter: "A", text: "Parce qu'il a déjà gagné virtuellement." },
+        { letter: "B", text: "Parce que son BF est amplifié par la position : push EP avec 4-5 joueurs derrière = chance élevée qu'un d'eux ait un monstre, et le chip leader a beaucoup à perdre en ICM." },
+        { letter: "C", text: "Parce que c'est convention." },
+        { letter: "D", text: "Parce qu'il doit conserver son image." },
+      ],
+      correctLetter: "B",
+      explanation: "Le chip leader perd à l'ICM (M4.1). Push EP = expose à 4-5 joueurs potentiels avec mains fortes. Le BF position monte à 1.75 × BF_base. Conséquence : tighter en EP, plus loose en LP.",
+    },
+    {
+      question: "SB vs BB en bulle : 0 joueurs derrière. Que devient le position factor ?",
+      options: [
+        { letter: "A", text: "1.00 (pas d'adjustment, BF brut s'applique)" },
+        { letter: "B", text: "0.50 (la position SB est défavorable)" },
+        { letter: "C", text: "1.25 (légère adjust quand même)" },
+        { letter: "D", text: "Dépend du stack" },
+      ],
+      correctLetter: "A",
+      explanation: "Position factor = 0.15 × 0 = 0. Multiplier = 1.00. SB vs BB en bulle = le cas de référence pour le BF brut. Aucun joueur derrière, aucune mine. C'est pourquoi les ranges SB push 10bb sont parmi les mieux étudiés (M·V).",
+    },
+  ],
+
+  "m4-4": [
+    {
+      question: "Table finale 9 joueurs avec payouts steep (40/22/13/9/6/4/3/2/1). Le chip leader (30 % des chips) a quelle équité ICM approximative ?",
+      options: [
+        { letter: "A", text: "30 % (équité = chip equity)" },
+        { letter: "B", text: "~22-25 % (perte significative à l'ICM)" },
+        { letter: "C", text: "40 % (le chip leader prend tout)" },
+        { letter: "D", text: "Impossible à dire sans plus d'info" },
+      ],
+      correctLetter: "B",
+      explanation: "Avec 9 joueurs et payouts très steep, le chip leader perd ~5-8 pts à l'ICM. Sa chip equity 30 % devient ~22-25 % en équité $. C'est l'effet concavité amplifié par les écarts payouts.",
+    },
+    {
+      question: "Pourquoi le mid stack est-il le plus contraint en FT ?",
+      options: [
+        { letter: "A", text: "Parce qu'il joue les pires mains." },
+        { letter: "B", text: "Parce qu'il est squeezé entre le chip leader (BF call élevé contre lui) et le short stack (qui doit risquer). Push trop = risques inutiles ; call trop = perte contre des ranges tight." },
+        { letter: "C", text: "Parce que sa position est mauvaise." },
+        { letter: "D", text: "Parce qu'il a moins de chips." },
+      ],
+      correctLetter: "B",
+      explanation: "Le mid stack en FT est dans une zone morte : il ne peut ni écraser (pas assez de chips), ni attendre indéfiniment (les blinds montent). Sa stratégie optimale : être très sélectif, laisser le short bust, attendre des spots clairement +EV même en ICM.",
+    },
+    {
+      question: "Heads-up FT (2 derniers) avec payouts proches (30/20). Comment évolue le BF ?",
+      options: [
+        { letter: "A", text: "Il reste très élevé car c'est la FT" },
+        { letter: "B", text: "Il revient proche de 1 : l'écart 30/20 est modeste, gagner ≈ perdre en termes d'équité $" },
+        { letter: "C", text: "Il devient infini (winner takes all)" },
+        { letter: "D", text: "Il dépend uniquement des stacks" },
+      ],
+      correctLetter: "B",
+      explanation: "Heads-up FT 30/20 = écart 10 pts. BF ≈ (équité_perdue_si_bust) / (équité_gagnée_si_double). Avec stacks proches, les deux sont modestes et proches. BF tombe à ~1.05-1.15, très proche du cash. C'est pourquoi le HU FT se joue agressif, contrairement à la phase 5-9 joueurs.",
     },
   ],
 };

@@ -21,6 +21,8 @@ import type { MultiBranchSpot } from "@/lib/poker/spot-generators/m3-3-multibran
 import type { CheckRaiseSpot } from "@/lib/poker/spot-generators/m3-4-check-raise";
 import type { ICMSpot } from "@/lib/poker/spot-generators/m4-1-icm";
 import type { BubbleFactorSpot } from "@/lib/poker/spot-generators/m4-2-bubble-factor";
+import type { PositionBubbleFactorSpot } from "@/lib/poker/spot-generators/m4-3-position-bf";
+import type { FinalTableSpot } from "@/lib/poker/spot-generators/m4-4-final-table";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -57,6 +59,9 @@ interface UserAnswer {
   equityIcmInput: string;
   equityChipReqInput: string;
   equityIcmReqInput: string;
+  bfBaseInput: string;
+  bfAdjustedInput: string;
+  equityIcmFtInput: string;
   decision: Decision;
 }
 
@@ -80,6 +85,9 @@ const EMPTY_ANSWER: UserAnswer = {
   equityIcmInput: "",
   equityChipReqInput: "",
   equityIcmReqInput: "",
+  bfBaseInput: "",
+  bfAdjustedInput: "",
+  equityIcmFtInput: "",
   decision: null,
 };
 
@@ -131,10 +139,21 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
 }
+// FinalTableSpot (M4.4) : discriminé par `payoutSpread` + submoduleSlug.
+// Testé EN PREMIER (le plus spécifique). Ordre complet :
+// isFinalTable → isPositionBubbleFactor → isBubbleFactor → isICM → isCheckRaise → ...
+function isFinalTable(s: GenericSpot): s is FinalTableSpot {
+  return "payoutSpread" in s && s.submoduleSlug === "m4.4";
+}
+// PositionBubbleFactorSpot (M4.3) : discriminé par `playersLeftToAct` + submoduleSlug.
+function isPositionBubbleFactor(
+  s: GenericSpot
+): s is PositionBubbleFactorSpot {
+  return "playersLeftToAct" in s && s.submoduleSlug === "m4.3";
+}
 // BubbleFactorSpot (M4.2) : discriminé par `pushAmount` + submoduleSlug.
-// Aucun autre spot n'a `pushAmount`. Testé EN PREMIER (le plus spécifique) :
-// isBubbleFactor → isICM → isCheckRaise → isFoldEquity → isMultiBranch →
-// isPushFold → isVsRange → isMultiway → isEquity → isOuts → isImplied.
+// M4.3 et M4.4 ont AUSSI `pushAmount`, donc on les teste AVANT (isFinalTable +
+// isPositionBubbleFactor d'abord, isBubbleFactor ensuite).
 function isBubbleFactor(s: GenericSpot): s is BubbleFactorSpot {
   return "pushAmount" in s && s.submoduleSlug === "m4.2";
 }
@@ -613,6 +632,112 @@ function gradeM42(
   };
 }
 
+// ---- M4.3 — position-adjusted BF : scoring sur erreur composite BF_base + BF_adj ----
+function gradeM43(
+  userBfBase: number,
+  userBfAdjusted: number,
+  spot: PositionBubbleFactorSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  errorBase: number;
+  errorAdjusted: number;
+  trueBfBase: number;
+  trueBfAdjusted: number;
+} {
+  const trueBfBase = spot.expected.baseBubbleFactor;
+  const trueBfAdjusted = spot.expected.adjustedBubbleFactor;
+  const errorBase = Math.round((userBfBase - trueBfBase) * 100) / 100;
+  const errorAdjusted = Math.round((userBfAdjusted - trueBfAdjusted) * 100) / 100;
+  // Erreur composite : moyenne quadratique sur les deux BF.
+  const combinedError =
+    Math.round(
+      Math.sqrt((errorBase * errorBase + errorAdjusted * errorAdjusted) / 2) * 100
+    ) / 100;
+  let level: EquityLevel;
+  let errorColor: string;
+  if (combinedError <= 0.15) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (combinedError <= 0.4) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (combinedError <= 0.8) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = combinedError <= 0.4;
+  const errorLabel =
+    combinedError <= 0.15
+      ? "Excellent"
+      : combinedError <= 0.4
+      ? `Juste (erreur ${combinedError.toFixed(2)})`
+      : combinedError <= 0.8
+      ? `Proche (erreur ${combinedError.toFixed(2)})`
+      : `Faux (erreur ${combinedError.toFixed(2)})`;
+  return {
+    isCorrect,
+    level,
+    signedError: errorAdjusted,
+    errorColor,
+    errorLabel,
+    errorBase,
+    errorAdjusted,
+    trueBfBase,
+    trueBfAdjusted,
+  };
+}
+
+// ---- M4.4 — équité ICM hero en FT : scoring sur l'erreur (pts %) ----
+function gradeM44(
+  userEquityPct: number,
+  spot: FinalTableSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  truePct: number;
+} {
+  const truePct = spot.expected.heroEquityBefore;
+  const signedError = Math.round((userEquityPct - truePct) * 10) / 10;
+  const absErr = Math.abs(signedError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 1.5) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 3) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 6) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 3;
+  const sign = signedError > 0 ? "+" : "";
+  const dir = signedError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 1.5
+      ? "Excellent"
+      : absErr <= 3
+      ? `Juste (${sign}${signedError} %)`
+      : absErr <= 6
+      ? `Proche (${sign}${signedError} % ${dir})`
+      : `Faux (${sign}${signedError} % ${dir})`;
+  return { isCorrect, level, signedError, errorColor, errorLabel, truePct };
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -636,6 +761,8 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m3.4": "Check-raise et lignes complexes · Sous-module 4",
   "m4.1": "Calcul équité ICM · Sous-module 1",
   "m4.2": "Bubble factor et risk premium · Sous-module 2",
+  "m4.3": "Adjustments par position · Sous-module 3",
+  "m4.4": "Table finale ICM · Sous-module 4",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -647,6 +774,15 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isFinalTable(spot)) {
+    return parseAnswerNumber(a.equityIcmFtInput) !== null;
+  }
+  if (isPositionBubbleFactor(spot)) {
+    return (
+      parseAnswerNumber(a.bfBaseInput) !== null &&
+      parseAnswerNumber(a.bfAdjustedInput) !== null
+    );
+  }
   if (isBubbleFactor(spot)) {
     return (
       parseAnswerNumber(a.equityChipReqInput) !== null &&
@@ -710,6 +846,17 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isFinalTable(spot)) {
+    const eq = parseAnswerNumber(a.equityIcmFtInput);
+    if (eq === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM44(eq, spot).isCorrect, steps: [] };
+  }
+  if (isPositionBubbleFactor(spot)) {
+    const bfBase = parseAnswerNumber(a.bfBaseInput);
+    const bfAdj = parseAnswerNumber(a.bfAdjustedInput);
+    if (bfBase === null || bfAdj === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM43(bfBase, bfAdj, spot).isCorrect, steps: [] };
+  }
   if (isBubbleFactor(spot)) {
     // Correction dédiée (BubbleFactorCorrectionPanel) ; ici seulement isCorrect.
     const eqChip = parseAnswerNumber(a.equityChipReqInput);
@@ -1035,6 +1182,8 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isFinalTable(spot)) return null;
+  if (isPositionBubbleFactor(spot)) return null;
   if (isBubbleFactor(spot)) return null;
   if (isICM(spot)) return null;
   if (isCheckRaise(spot)) return null;
@@ -1239,7 +1388,20 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isBubbleFactor(spot)) {
+    if (isFinalTable(spot)) {
+      // signedError = erreur d'équité ICM en pts %.
+      const eq = parseAnswerNumber(answer.equityIcmFtInput);
+      if (eq !== null) {
+        signedError = gradeM44(eq, spot).signedError;
+      }
+    } else if (isPositionBubbleFactor(spot)) {
+      // signedError = erreur sur BF ajusté (la métrique pédagogique de M4.3).
+      const bfBase = parseAnswerNumber(answer.bfBaseInput);
+      const bfAdj = parseAnswerNumber(answer.bfAdjustedInput);
+      if (bfBase !== null && bfAdj !== null) {
+        signedError = gradeM43(bfBase, bfAdj, spot).signedError;
+      }
+    } else if (isBubbleFactor(spot)) {
       // signedError = erreur d'équité ICM requise en pts % (la plus pédagogique).
       const eqChip = parseAnswerNumber(answer.equityChipReqInput);
       const eqICM = parseAnswerNumber(answer.equityIcmReqInput);
@@ -1358,7 +1520,11 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isBubbleFactor(spot) ? (
+        {isFinalTable(spot) ? (
+          <FinalTableTable spot={spot} />
+        ) : isPositionBubbleFactor(spot) ? (
+          <PositionBubbleFactorTable spot={spot} />
+        ) : isBubbleFactor(spot) ? (
           <BubbleFactorTable spot={spot} />
         ) : isICM(spot) ? (
           <ICMTable spot={spot} />
@@ -1488,6 +1654,166 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M4.4 — saisie 1 champ : équité ICM hero en FT.
+  if (isFinalTable(spot)) {
+    const eq = parseAnswerNumber(answer.equityIcmFtInput);
+    const totalChips = spot.players.reduce((acc, p) => acc + p.stack, 0);
+    const heroPlayer = spot.players.find((pl) => pl.id === spot.heroId);
+    const chipEq = heroPlayer ? (heroPlayer.stack / totalChips) * 100 : 0;
+    return (
+      <div
+        className="rounded-xl p-7 flex flex-col"
+        style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}
+      >
+        <div
+          className="text-[11px] font-mono uppercase tracking-wider mb-2"
+          style={{ color: "var(--purple-300)" }}
+        >
+          ◆ Calcule l&apos;équité ICM en FT
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Quelle est ton équité $ ?
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          {spot.playersRemaining} joueurs restants, payouts{" "}
+          <strong className="text-text">{spot.payoutLabel}</strong>. Spread top-bottom :{" "}
+          {spot.payoutSpread} pts. Estime ton équité ICM en % du prizepool.
+        </p>
+        <Field
+          label="Équité ICM hero (%)"
+          hint="En % du prizepool"
+          value={answer.equityIcmFtInput}
+          onChange={(v) => setAnswer({ ...answer, equityIcmFtInput: v })}
+          placeholder="ex. 22.5"
+        />
+        <div
+          className="rounded p-3.5 mb-1"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            Chip equity hero (référence)
+          </div>
+          <div className="text-2xl font-mono font-semibold leading-none">
+            {chipEq.toFixed(1)} %
+          </div>
+          {eq !== null && (
+            <div className="text-[11px] text-text-muted mt-1.5 font-mono">
+              Écart annoncé : {eq - chipEq >= 0 ? "+" : ""}
+              {(eq - chipEq).toFixed(1)} pts vs chip equity
+            </div>
+          )}
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // M4.3 — saisie 2 champs : BF base + BF ajusté. Position multiplier déduit en live.
+  if (isPositionBubbleFactor(spot)) {
+    const bfBase = parseAnswerNumber(answer.bfBaseInput);
+    const bfAdj = parseAnswerNumber(answer.bfAdjustedInput);
+    const multLive =
+      bfBase !== null && bfBase > 0.01 && bfAdj !== null
+        ? bfAdj / bfBase
+        : null;
+    return (
+      <div
+        className="rounded-xl p-7 flex flex-col"
+        style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}
+      >
+        <div
+          className="text-[11px] font-mono uppercase tracking-wider mb-2"
+          style={{ color: "var(--purple-300)" }}
+        >
+          ◆ Position factor
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          BF brut, BF ajusté.
+        </h2>
+        <p className="text-[13px] text-text-muted mb-6 leading-[1.55]">
+          Position <strong className="text-text">{spot.heroPosition}</strong> avec{" "}
+          <strong className="text-text">{spot.playersLeftToAct}</strong> joueurs derrière.
+          Estime le BF brut (face à un vilain) puis le BF ajusté (incluant position
+          factor = 0.15 × {spot.playersLeftToAct} = {Math.min(0.75, 0.15 * spot.playersLeftToAct).toFixed(2)}).
+        </p>
+        <Field
+          label="BF brut (× 1 vilain)"
+          hint="Sans position factor"
+          value={answer.bfBaseInput}
+          onChange={(v) => setAnswer({ ...answer, bfBaseInput: v })}
+          placeholder="ex. 1.50"
+        />
+        <Field
+          label="BF ajusté (× position)"
+          hint="Avec position factor"
+          value={answer.bfAdjustedInput}
+          onChange={(v) => setAnswer({ ...answer, bfAdjustedInput: v })}
+          placeholder="ex. 2.18"
+        />
+        <div
+          className="rounded p-3.5 mb-1 flex items-center justify-between"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              Multiplier déduit (toi)
+            </div>
+            <div
+              className="text-lg font-mono font-semibold leading-none"
+              style={{ color: multLive === null ? "var(--text-faint)" : "var(--text)" }}
+            >
+              {multLive === null ? "—" : `× ${multLive.toFixed(2)}`}
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+              Multiplier attendu
+            </div>
+            <div
+              className="text-2xl font-mono font-semibold leading-none"
+              style={{ color: "var(--purple-300)" }}
+            >
+              × {spot.expected.positionMultiplier.toFixed(2)}
+            </div>
+          </div>
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M4.2 — saisie 2 champs : équité chip requise + équité ICM requise.
   // Le BF se déduit en live via la relation eq_ICM / (1 - eq_ICM).
   if (isBubbleFactor(spot)) {
@@ -2343,6 +2669,12 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isFinalTable(spot)) {
+    return <FinalTableCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
+  if (isPositionBubbleFactor(spot)) {
+    return <PositionBubbleFactorCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isBubbleFactor(spot)) {
     return <BubbleFactorCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -4150,6 +4482,500 @@ function BubbleFactorCorrectionPanel({
           <strong className="text-text">{e.bubbleFactor.toFixed(2)}</strong>, soit{" "}
           <strong className="text-text">{e.requiredEquityICM.toFixed(0)} %</strong>{" "}
           d&apos;équité ICM requise (vs {e.requiredEquityChip.toFixed(0)} % en chips).
+        </span>
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M4.3 — table position-adjusted BF =====
+const M43_POSITION_LABEL: Record<PositionBubbleFactorSpot["heroPosition"], string> = {
+  UTG: "UTG (early)",
+  MP: "MP (middle)",
+  CO: "CO (late)",
+  BTN: "BTN (button)",
+  SB: "SB (small blind)",
+  BB: "BB (big blind)",
+};
+
+function PositionBubbleFactorTable({ spot }: { spot: PositionBubbleFactorSpot }) {
+  const totalChips = spot.players.reduce((acc, p) => acc + p.stack, 0);
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          Position factor · BF ajusté
+        </div>
+        <div className="text-xs font-mono text-text-faint">
+          {M43_POSITION_LABEL[spot.heroPosition]} · {spot.playersLeftToAct} derrière
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2 mb-5">
+        <PfInfo label="Position" value={spot.heroPosition} />
+        <PfInfo label="Joueurs derrière" value={String(spot.playersLeftToAct)} />
+        <PfInfo label="Push" value={`${spot.pushAmount.toLocaleString("fr-FR")}`} />
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Joueurs en jeu ({spot.players.length})
+        </div>
+        <div className="flex flex-col gap-1.5">
+          {spot.players.map((pl) => {
+            const isHero = pl.id === spot.heroId;
+            const isVillain = pl.id === spot.villainId;
+            const chipPct = (pl.stack / totalChips) * 100;
+            const accentColor = isHero
+              ? "var(--purple-400)"
+              : isVillain
+              ? "var(--amber)"
+              : "var(--text-dim)";
+            const bgColor = isHero
+              ? "var(--purple-glow)"
+              : isVillain
+              ? "var(--amber-glow)"
+              : "var(--surface)";
+            const borderColor = isHero
+              ? "var(--purple-400)"
+              : isVillain
+              ? "rgba(251, 191, 36, 0.4)"
+              : "var(--border)";
+            const labelColor = isHero
+              ? "var(--purple-300)"
+              : isVillain
+              ? "var(--amber)"
+              : "var(--text-muted)";
+            return (
+              <div
+                key={pl.id}
+                className="grid items-center gap-3 px-3.5 py-2 rounded text-[12px]"
+                style={{
+                  gridTemplateColumns: "70px 1fr 80px 50px",
+                  background: bgColor,
+                  border: `0.5px solid ${borderColor}`,
+                }}
+              >
+                <span className="font-mono font-medium" style={{ color: labelColor }}>
+                  {isHero ? "Hero" : isVillain ? "Vilain" : pl.id}
+                </span>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="h-1 rounded-full"
+                    style={{
+                      width: `${Math.min(100, chipPct * 1.4)}%`,
+                      background: accentColor,
+                      opacity: isHero || isVillain ? 1 : 0.5,
+                    }}
+                  />
+                </div>
+                <span className="text-right font-mono">{pl.stack.toLocaleString("fr-FR")}</span>
+                <span className="text-right text-[10px] font-mono text-text-faint">
+                  {chipPct.toFixed(1)}%
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="rounded p-3.5 mb-5"
+        style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}
+      >
+        <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">
+          Structure — {spot.payoutLabel}
+        </div>
+        <div className="font-mono text-[12px] text-text leading-[1.6]">
+          {spot.payouts.map((pp) => `${pp}%`).join(" · ")}
+        </div>
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Hero {spot.heroPosition} push <strong className="text-text">
+          {spot.pushAmount.toLocaleString("fr-FR")}</strong> chips. Avec{" "}
+          <strong className="text-text">{spot.playersLeftToAct}</strong> joueurs derrière,
+          quel est le BF brut puis le BF ajusté ?
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PositionBubbleFactorCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: PositionBubbleFactorSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const ubBase = parseAnswerNumber(answer.bfBaseInput) ?? 0;
+  const ubAdj = parseAnswerNumber(answer.bfAdjustedInput) ?? 0;
+  const g = gradeM43(ubBase, ubAdj, spot);
+  const e = spot.expected;
+  const userMult = ubBase > 0.01 ? ubAdj / ubBase : 0;
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">BF brut (toi)</div>
+          <div className="text-2xl font-semibold font-mono leading-none">{ubBase.toFixed(2)}</div>
+          <div className="text-[11px] font-mono text-text-faint mt-1.5">
+            vrai {g.trueBfBase.toFixed(2)} ({g.errorBase >= 0 ? "+" : ""}{g.errorBase})
+          </div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">BF ajusté (toi)</div>
+          <div className="text-2xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {ubAdj.toFixed(2)}
+          </div>
+          <div className="text-[11px] font-mono text-text-faint mt-1.5">
+            vrai {g.trueBfAdjusted.toFixed(2)} ({g.errorAdjusted >= 0 ? "+" : ""}{g.errorAdjusted})
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="rounded p-3.5 mb-5 flex items-center justify-between"
+        style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+      >
+        <div>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            Multiplier toi
+          </div>
+          <div className="text-lg font-mono font-semibold leading-none">
+            × {userMult.toFixed(2)}
+          </div>
+        </div>
+        <div className="text-right">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            Multiplier vrai
+          </div>
+          <div className="text-2xl font-mono font-semibold leading-none" style={{ color: "var(--purple-300)" }}>
+            × {e.positionMultiplier.toFixed(2)}
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Position</Lbl> <Mono>{spot.heroPosition}</Mono>{" "}
+        <span className="text-text-muted">({spot.playersLeftToAct} joueurs derrière)</span>
+        <br />
+        <Lbl>Position factor</Lbl>{" "}
+        <Mono>0.15 × {spot.playersLeftToAct} = {Math.min(0.75, 0.15 * spot.playersLeftToAct).toFixed(2)}</Mono>
+        <br />
+        <Lbl>BF brut</Lbl>{" "}
+        <Mono className="!text-purple-300">{e.baseBubbleFactor.toFixed(2)}</Mono>{" "}
+        <span className="text-text-muted">(face à 1 vilain)</span>
+        <br />
+        <Lbl>BF ajusté</Lbl>{" "}
+        <Mono>{e.baseBubbleFactor.toFixed(2)} × {e.positionMultiplier.toFixed(2)} = </Mono>
+        <Mono className="!text-purple-300">{e.adjustedBubbleFactor.toFixed(2)}</Mono>
+        <br />
+        <Lbl>Eq ICM requise</Lbl>{" "}
+        <Mono>{e.adjustedBubbleFactor.toFixed(2)} / {(e.adjustedBubbleFactor + 1).toFixed(2)} = </Mono>
+        <Mono className="!text-purple-300">{e.requiredEquityICM.toFixed(1)} %</Mono>
+        <br />
+        <Lbl>Équité hero avant</Lbl> <Mono>{e.heroEquityBefore.toFixed(1)} %</Mono>
+      </FormulaBox>
+
+      <div
+        className="rounded p-3.5 mt-3 text-[13px] leading-[1.55]"
+        style={{
+          background: "var(--surface-strong)",
+          border: "0.5px solid var(--border)",
+        }}
+      >
+        <span className="text-text-muted">
+          Pattern : push <strong className="text-text">{spot.heroPosition}</strong>{" "}
+          avec {spot.playersLeftToAct} joueurs derrière =
+          BF amplifié de <strong className="text-text">+{((e.positionMultiplier - 1) * 100).toFixed(0)} %</strong>.
+          Equity ICM requise grimpe à{" "}
+          <strong className="text-text">{e.requiredEquityICM.toFixed(0)} %</strong>.
+        </span>
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M4.4 — table FT (vue compacte 9 joueurs + payouts) =====
+const M44_SPOT_TYPE_LABEL: Record<FinalTableSpot["spotType"], string> = {
+  "ft-9way-leader": "FT 9 · leader",
+  "ft-9way-mid": "FT 9 · mid",
+  "ft-9way-short": "FT 9 · short",
+  "ft-6way": "FT 6-max",
+  "ft-3way": "FT 3-handed",
+  "ft-heads-up": "FT heads-up",
+};
+
+function FinalTableTable({ spot }: { spot: FinalTableSpot }) {
+  const totalChips = spot.players.reduce((acc, p) => acc + p.stack, 0);
+  // Pour les HU FT avec un "busted" virtuel (stack=1), on filtre l'affichage
+  const visiblePlayers = spot.players.filter((p) => p.stack > 10);
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          Table finale · ICM amplifié
+        </div>
+        <div className="text-xs font-mono text-text-faint">
+          {M44_SPOT_TYPE_LABEL[spot.spotType]}
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          {visiblePlayers.length} joueurs en jeu — push {spot.pushAmount.toLocaleString("fr-FR")}
+        </div>
+        <div className="flex flex-col gap-1">
+          {visiblePlayers.map((pl) => {
+            const isHero = pl.id === spot.heroId;
+            const isVillain = pl.id === spot.villainId;
+            const chipPct = (pl.stack / totalChips) * 100;
+            const accentColor = isHero
+              ? "var(--purple-400)"
+              : isVillain
+              ? "var(--amber)"
+              : "var(--text-dim)";
+            const bgColor = isHero
+              ? "var(--purple-glow)"
+              : isVillain
+              ? "var(--amber-glow)"
+              : "var(--surface)";
+            const borderColor = isHero
+              ? "var(--purple-400)"
+              : isVillain
+              ? "rgba(251, 191, 36, 0.4)"
+              : "var(--border)";
+            const labelColor = isHero
+              ? "var(--purple-300)"
+              : isVillain
+              ? "var(--amber)"
+              : "var(--text-muted)";
+            return (
+              <div
+                key={pl.id}
+                className="grid items-center gap-3 px-3 py-1.5 rounded text-[11px]"
+                style={{
+                  gridTemplateColumns: "60px 1fr 80px 50px",
+                  background: bgColor,
+                  border: `0.5px solid ${borderColor}`,
+                }}
+              >
+                <span className="font-mono font-medium" style={{ color: labelColor }}>
+                  {isHero ? "Hero" : isVillain ? "Vilain" : pl.id}
+                </span>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="h-1 rounded-full"
+                    style={{
+                      width: `${Math.min(100, chipPct * 1.5)}%`,
+                      background: accentColor,
+                      opacity: isHero || isVillain ? 1 : 0.5,
+                    }}
+                  />
+                </div>
+                <span className="text-right font-mono">{pl.stack.toLocaleString("fr-FR")}</span>
+                <span className="text-right text-[10px] font-mono text-text-faint">
+                  {chipPct.toFixed(1)}%
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="rounded p-3.5 mb-5"
+        style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}
+      >
+        <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">
+          {spot.payoutLabel} — spread {spot.payoutSpread} pts
+        </div>
+        <div className="font-mono text-[12px] text-text leading-[1.6]">
+          {spot.payouts.map((pp) => `${pp}%`).join(" · ")}
+        </div>
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Table finale {spot.playersRemaining} joueurs. Spread payouts{" "}
+          <strong className="text-text">{spot.payoutSpread} pts</strong>. Quel est ton
+          équité ICM <strong className="text-text">avant</strong> la décision ?
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FinalTableCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: FinalTableSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const ue = parseAnswerNumber(answer.equityIcmFtInput) ?? 0;
+  const g = gradeM44(ue, spot);
+  const e = spot.expected;
+  const totalChips = spot.players.reduce((acc, pl) => acc + pl.stack, 0);
+  const heroPlayer = spot.players.find((pl) => pl.id === spot.heroId);
+  const chipEq = heroPlayer ? (heroPlayer.stack / totalChips) * 100 : 0;
+  const icmEffect = g.truePct - chipEq;
+  const trendColor = icmEffect >= 0 ? "var(--green)" : "var(--red)";
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ta réponse</div>
+          <div className="text-3xl font-semibold font-mono leading-none">{ue.toFixed(1)} %</div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Équité ICM vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {g.truePct.toFixed(1)} %
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Chip equity hero</Lbl>{" "}
+        <Mono>{chipEq.toFixed(1)} %</Mono>{" "}
+        <span className="text-text-muted">(part naïve)</span>
+        <br />
+        <Lbl>Équité ICM avant</Lbl>{" "}
+        <Mono className="!text-purple-300">{e.heroEquityBefore.toFixed(1)} %</Mono>
+        <br />
+        <Lbl>Effet ICM</Lbl>{" "}
+        <span className="font-mono" style={{ color: trendColor }}>
+          {icmEffect >= 0 ? "+" : ""}
+          {icmEffect.toFixed(1)} pts
+        </span>{" "}
+        <span className="text-text-muted">vs chip equity</span>
+        <br />
+        <Lbl>Si win</Lbl>{" "}
+        <Mono className="!text-green-400">{e.heroEquityIfWin.toFixed(1)} %</Mono>{" "}
+        <span className="text-text-muted">
+          (gain +{(e.heroEquityIfWin - e.heroEquityBefore).toFixed(1)} pts)
+        </span>
+        <br />
+        <Lbl>Si lose</Lbl>{" "}
+        <span className="font-mono" style={{ color: "var(--red)" }}>
+          {e.heroEquityIfLose.toFixed(1)} %
+        </span>{" "}
+        <span className="text-text-muted">
+          (perte −{(e.heroEquityBefore - e.heroEquityIfLose).toFixed(1)} pts)
+        </span>
+        <br />
+        <Lbl>Range outcomes</Lbl>{" "}
+        <Mono>{e.rangeOfOutcomes.toFixed(1)} pts</Mono>{" "}
+        <span className="text-text-muted">d&apos;amplitude (win - lose)</span>
+        <br />
+        <Lbl>Bubble factor</Lbl>{" "}
+        <Mono className="!text-purple-300">{e.bubbleFactor.toFixed(2)}</Mono>
+        <br />
+        <Lbl>Payouts</Lbl>{" "}
+        <Mono>{spot.payouts.map((pp) => `${pp}%`).join(" · ")}</Mono>{" "}
+        <span className="text-text-muted">(spread {spot.payoutSpread} pts)</span>
+      </FormulaBox>
+
+      <div
+        className="rounded p-3.5 mt-3 text-[13px] leading-[1.55]"
+        style={{
+          background: "var(--surface-strong)",
+          border: "0.5px solid var(--border)",
+        }}
+      >
+        <span className="text-text-muted">
+          Pattern <strong className="text-text">{M44_SPOT_TYPE_LABEL[spot.spotType]}</strong> :
+          BF de <strong className="text-text">{e.bubbleFactor.toFixed(2)}</strong>,
+          équité ICM <strong className="text-text">{e.heroEquityBefore.toFixed(0)} %</strong>
+          {icmEffect < 0
+            ? " (le chip leader perd à l'ICM)"
+            : " (le short gagne à l'ICM)"}.
         </span>
       </div>
 

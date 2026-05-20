@@ -162,13 +162,13 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page).toHaveURL(/\/drill\/m2-1/);
   });
 
-  test("Atelier : M·II déverrouillé, modules M·IV / M·V encore lockés", async ({ page }) => {
+  test("Atelier : M·II déverrouillé, seul M·V reste locked (M·IV complet S8c)", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByText("Equity & outs")).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText("Outs et règle des 4&2")).toBeVisible();
-    // S7c : M·III complet → seuls M·IV/M·V restent lockés (≥ 2 « Verrouillé »).
+    // S8c : M·IV 4/4 complet → seul M·V reste locked (≥ 1 « Verrouillé »).
     const lockedCount = await page.getByText("Verrouillé").count();
-    expect(lockedCount).toBeGreaterThanOrEqual(2);
+    expect(lockedCount).toBeGreaterThanOrEqual(1);
   });
 
   test("M2.2 — théorie → quick check → drill avec scoring nuancé", async ({ page }) => {
@@ -394,5 +394,56 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page.getByText(/Équité chip requise/i).first()).toBeVisible();
     await expect(page.getByText(/Équité ICM requise/i).first()).toBeVisible();
     await expect(page.getByText(/Bubble factor déduit/i)).toBeVisible();
+  });
+
+  test("M4.3 — flow complet position factor avec saisie BF base + BF ajusté", async ({ page }) => {
+    await page.goto("/module/m4/theory/m4-3");
+    await expect(
+      page.getByText(/Adjustments par position|position/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m4-3 : réponses correctes B, B, A.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^A/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m4-3/);
+    // Saisie 2 champs : BF brut + BF ajusté (timeout : gate).
+    await expect(page.getByText(/BF brut, BF ajusté/i)).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/BF brut/i).first()).toBeVisible();
+    await expect(page.getByText(/BF ajusté/i).first()).toBeVisible();
+    await expect(page.getByText(/Multiplier attendu/i)).toBeVisible();
+  });
+
+  test("M4.4 — flow complet table finale ICM avec saisie 1 champ équité $", async ({ page }) => {
+    await page.goto("/module/m4/theory/m4-4");
+    await expect(
+      page.getByText(/Table finale ICM|ICM concentré/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m4-4 : réponses correctes B, B, B.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m4-4/);
+    // Saisie 1 champ : équité ICM hero en FT (timeout : gate).
+    await expect(page.getByText(/Quelle est ton équité/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Équité ICM hero/i).first()).toBeVisible();
+    await expect(page.getByText(/Chip equity hero/i)).toBeVisible();
   });
 });

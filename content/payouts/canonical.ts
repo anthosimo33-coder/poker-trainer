@@ -70,6 +70,38 @@ export const CANONICAL_PAYOUTS: PayoutStructure[] = [
     payouts: [14, 10, 9, 8, 8, 7, 7, 6, 6, 5, 5, 5, 4, 3, 3],
     category: "flat",
   },
+  // FT 9 joueurs steep (gros écarts top vs bottom)
+  {
+    slug: "ft-9-steep",
+    label: "Table finale 9 joueurs (steep, MTT €500+)",
+    totalPlayers: 9,
+    payouts: [40, 22, 13, 9, 6, 4, 3, 2, 1],
+    category: "standard",
+  },
+  // FT 9 joueurs flat (petits écarts top vs bottom)
+  {
+    slug: "ft-9-flat",
+    label: "Table finale 9 joueurs (flat, soft tournament)",
+    totalPlayers: 9,
+    payouts: [22, 17, 14, 11, 9, 8, 7, 6, 6],
+    category: "flat",
+  },
+  // FT 6-max (sit & go FT compressed)
+  {
+    slug: "ft-6-standard",
+    label: "Table finale 6-max (sit & go FT)",
+    totalPlayers: 6,
+    payouts: [40, 25, 15, 10, 6, 4],
+    category: "standard",
+  },
+  // FT 3-handed (cas le plus simple ICM)
+  {
+    slug: "ft-3-standard",
+    label: "Table finale 3-handed (sit & go 3-paid)",
+    totalPlayers: 3,
+    payouts: [50, 30, 20],
+    category: "standard",
+  },
 ];
 
 export function getPayout(slug: string): PayoutStructure | undefined {

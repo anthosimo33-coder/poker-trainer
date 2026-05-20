@@ -12,6 +12,8 @@ import { generateMultiBranchSpot } from "./m3-3-multibranch";
 import { generateCheckRaiseSpot } from "./m3-4-check-raise";
 import { generateICMSpot } from "./m4-1-icm";
 import { generateBubbleFactorSpot } from "./m4-2-bubble-factor";
+import { generatePositionBubbleFactorSpot } from "./m4-3-position-bf";
+import { generateFinalTableSpot } from "./m4-4-final-table";
 import type { GenericSpot } from "./types";
 
 export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
@@ -29,6 +31,8 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m3.4": generateCheckRaiseSpot,
   "m4.1": generateICMSpot,
   "m4.2": generateBubbleFactorSpot,
+  "m4.3": generatePositionBubbleFactorSpot,
+  "m4.4": generateFinalTableSpot,
 };
 
 export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {

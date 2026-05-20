@@ -262,6 +262,62 @@ export function requiredEquityICMForCall(params: BubbleFactorParams): number {
 }
 
 /**
+ * Bubble factor ajusté par la position : prend en compte les joueurs restant à parler.
+ *
+ * Plus il y a de joueurs derrière le hero, plus le risque qu'un d'eux ait une main
+ * forte augmente, donc le BF effectif monte.
+ *
+ * Heuristique linéaire : position_factor = 0.15 × playersLeftToAct, plafonné à 0.75
+ * (max 5 joueurs derrière). BF_adjusted = BF_base × (1 + position_factor), borné à 10.
+ */
+export function positionAdjustedBubbleFactor(
+  params: BubbleFactorParams & {
+    /** Nombre de joueurs encore à parler après le hero (0..5). */
+    playersLeftToAct: number;
+  }
+): BubbleFactorResult & { positionMultiplier: number; baseBubbleFactor: number } {
+  const { playersLeftToAct, ...bfParams } = params;
+  const base = bubbleFactor(bfParams);
+
+  // Heuristique : chaque joueur left to act ajoute 15 % au BF, plafonné à 75 %.
+  const positionFactor = Math.min(0.75, 0.15 * Math.max(0, playersLeftToAct));
+  const positionMultiplier = 1 + positionFactor;
+  const adjustedBF = Math.min(10, base.bubbleFactor * positionMultiplier);
+
+  // Recalcul de eq_ICM_required cohérent avec le BF ajusté.
+  const adjustedEquityICM = (adjustedBF / (adjustedBF + 1)) * 100;
+
+  return {
+    ...base,
+    bubbleFactor: adjustedBF,
+    requiredEquityICM: adjustedEquityICM,
+    baseBubbleFactor: base.bubbleFactor,
+    positionMultiplier,
+  };
+}
+
+/**
+ * Helper : écart payout (top vs bottom) sur table finale.
+ * Utilisé pour calibrer l'intuition FT — steep = écarts massifs, flat = compressé.
+ */
+export function ftPayoutSpread(payouts: number[]): {
+  /** payouts[0] / payouts[N-1]. */
+  ratio: number;
+  /** payouts[0] - payouts[N-1] (en pts %). */
+  topVsBottom: number;
+} {
+  if (payouts.length < 2) {
+    return { ratio: 1, topVsBottom: 0 };
+  }
+  const top = payouts[0];
+  const bottom = payouts[payouts.length - 1];
+  return {
+    ratio: top / bottom,
+    topVsBottom: top - bottom,
+  };
+}
+
+/**
  * Décision ICM : étant donnée une équity vs range adverse, le call est-il +EV en ICM ?
  */
 export function icmDecisionCall(

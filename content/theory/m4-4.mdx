@@ -1,0 +1,111 @@
+---
+slug: m4-4
+moduleSlug: m4
+submoduleSlug: m4.4
+title: Table finale ICM
+subtitle: L'ICM concentré.
+order: 4
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module IV · Sous-module 4 / 4
+  </div>
+
+# Table finale ICM.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>L&apos;ICM concentré.</em> 9 joueurs, des écarts payouts massifs, et chaque élimination redistribue brutalement les équités. C&apos;est ici que la concavité de M4.1 prend toute son ampleur.
+</p>
+</div>
+
+<WhyBlock title="La table finale est l'ICM concentré.">
+
+9 joueurs. Chacun connaît exactement combien il gagne s&apos;il est éliminé maintenant (le payout de sa position). Les écarts sont **massifs** : souvent 30 % pour le 1er, 1-3 % pour le 9ème. Le BF y est typiquement 1.5 à 3 selon la structure des payouts.
+
+Le chip leader peut écraser, le short stack doit prendre des risques calculés, les mid stacks sont *compressés* entre les deux. Comprendre la dynamique FT, c&apos;est comprendre comment la concavité de l&apos;ICM s&apos;amplifie quand les payouts sont steep — et comment chaque élimination redessine instantanément l&apos;équilibre.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Pourquoi la FT est différente" title={<>Écarts payouts <em>massifs.</em></>} />
+
+<Prose>
+
+Sur une bulle classique 4-way (3 payés 50/30/20), l&apos;écart top vs bottom payé est de 30 pts. Sur une FT 9 joueurs steep (40/22/13/9/6/4/3/2/1), l&apos;écart est de **39 pts**, et le ratio est de **40×** (1er vs 9ème). Chaque élimination dans la FT augmente significativement l&apos;équité des survivants — beaucoup plus qu&apos;en phase normale du tournoi.
+
+Conséquence : la stratégie devient hyper-spécifique au stack relatif. Tu ne joues pas la FT comme la phase 18-joueurs.
+
+</Prose>
+
+<SectionHeader num="02" label="Les 3 archétypes" title={<>Leader, mid, short — <em>3 jeux différents.</em></>} />
+
+<Formula>
+  <FormulaLabel>Chip leader FT</FormulaLabel> domine, push light (BF push faible), call tight (BF call élevé). Extrait de la pression sur tous les autres.
+  <br />
+  <FormulaLabel>Mid stack FT</FormulaLabel> squeezé entre leader et short. La position la plus contraignante de la FT.
+  <br />
+  <FormulaLabel>Short stack FT</FormulaLabel> doit risquer ; BF reste élevé mais *incompressible* (il faut bien rentrer dans le pot).
+</Formula>
+
+<SectionHeader num="03" label="La compression du mid stack" title={<>Le piège <em>du milieu.</em></>} />
+
+<Prose>
+
+Le mid stack est le **plus mal placé** en FT. Il a quelque chose à perdre (la prochaine place payée qui monte chaque élimination) mais il ne peut pas attendre indéfiniment (les blinds montent, son stack relatif fond).
+
+- **BF élevé en call** : perdre = perte ICM massive (il chute vers le bas du classement).
+- **BF élevé en push** : gain modeste si gagne (il monte d&apos;un cran), perte importante si lose.
+
+Stratégie optimale : **attendre des spots forts** ou *laisser le short bust* avant d&apos;agir. Le mid stack qui prend trop de risques perd plus que celui qui en prend trop peu.
+
+</Prose>
+
+<SectionHeader num="04" label="Steep vs flat" title={<>Connaître <em>la structure.</em></>} />
+
+<Formula>
+  <FormulaLabel>Steep (40/22/13/9/...)</FormulaLabel> BF élevé pour tous, mid stacks paralysés, leader extrait massivement.
+  <br />
+  <FormulaLabel>Standard (30/20/14/10/...)</FormulaLabel> BF modéré (1.5-2.5), gameplay équilibré.
+  <br />
+  <FormulaLabel>Flat (22/17/14/11/...)</FormulaLabel> BF compressé (1.2-1.6), plus proche du cash.
+</Formula>
+
+<Prose>
+
+Connaître la **structure de payouts** est un *prérequis* pour calibrer la FT. Une erreur d&apos;estimation sur la structure = stratégie complètement à côté. Avant de jouer la FT, regarde toujours la table des payouts.
+
+</Prose>
+
+<SectionHeader num="05" label="Heads-up FT" title={<>Les 2 derniers — <em>retour au cash.</em></>} />
+
+<Prose>
+
+Les deux derniers joueurs en FT. Payouts souvent proches (ex. 30/20 = ratio 1.5×). Le BF revient proche de **1** — il y a peu d&apos;écart d&apos;équité $ par victoire/défaite. Tu joues alors quasi-cash : push agressif, call light, jeu de pression.
+
+C&apos;est pourquoi le heads-up FT se joue **agressif**, contrairement à la phase 5-9 joueurs où la prudence ICM domine. Le shift mental quand tu passes de 3-handed à HU est radical : tout d&apos;un coup, ton stack relatif te dit *« joue comme du cash »*.
+
+</Prose>
+
+<Mnemonic keyText="FT = ICM amplifié">
+Les patterns de M4.1 et M4.2 s&apos;appliquent, mais à intensité élevée. Le chip leader perd plus à l&apos;ICM, le short stack gagne plus, chaque élimination redistribue brutalement. Steep ou flat ? La structure dicte tout.
+</Mnemonic>
+
+<SectionHeader num="06" label="Stratégies par archétype" title={<>Trois <em>plans de jeu.</em></>} />
+
+<Prose>
+
+**Chip leader FT** : push light depuis LP, isole les short stacks, évite de risquer face à un autre big. Tu paies la taxe ICM (chip eq > $ eq) — donc tu joues *en exploitant* cette taxe sur tes adversaires, pas en augmentant ton risque.
+
+**Mid stack FT** : patience. Tu attends que le short bust pour monter d&apos;un cran sans rien faire. Tu push uniquement contre des stacks contraints (un short stack avec une range défensive). Tu ne calles jamais à 50/50 face à un autre mid ou un leader.
+
+**Short stack FT** : tu push large depuis toutes les positions. Le BF reste élevé mais ton équité ICM est déjà basse — tu n&apos;as pas grand-chose à perdre, tout à gagner. Tu calles tight mais tu push wide.
+
+</Prose>
+
+<LifeLink title="L'oligopole gagnant.">
+
+Le scénario FT 9 joueurs = un **oligopole**. Quelques acteurs dominants (chip leader), quelques challengers (mid stacks), des outsiders (short stacks). La théorie des jeux dit que cet équilibre est *dynamiquement instable* : chaque élimination redessine les rapports de force.
+
+Apprendre à naviguer ces transitions, c&apos;est apprendre à **anticiper le moment où ta position relative dans n&apos;importe quel système concurrentiel bascule**. En business : l&apos;arrivée d&apos;un nouveau concurrent change la stratégie de tous. En carrière : un départ surprise dans ton équipe redistribue les responsabilités et les opportunités. La FT poker te force à *reconfigurer ta stratégie en temps réel* à chaque changement — une compétence qui se transfère intégralement.
+
+</LifeLink>
