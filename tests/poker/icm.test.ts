@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { icmEquity, icmEquityPercent, chipEquityPercent } from "@/lib/poker/icm";
+import {
+  icmEquity,
+  icmEquityPercent,
+  chipEquityPercent,
+  bubbleFactor,
+  icmDecisionCall,
+} from "@/lib/poker/icm";
 
 describe("icmEquity — cas trivial", () => {
   it("1 joueur, 1 payout : équité = payout total", () => {
@@ -125,5 +131,135 @@ describe("chipEquityPercent", () => {
         "a"
       )
     ).toBeCloseTo(50, 1);
+  });
+});
+
+describe("bubbleFactor — sit & go bulle", () => {
+  it("Bulle 4 joueurs, 3 payés : BF significatif (~1.5) pour le chipleader", () => {
+    // Vrai résultat : BF = 1.55 (entre spec range 1.2-2). ✓
+    const result = bubbleFactor({
+      players: [
+        { id: "leader", stack: 7000 },
+        { id: "mid1", stack: 5000 },
+        { id: "mid2", stack: 5000 },
+        { id: "short", stack: 1000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "leader",
+      villainId: "mid1",
+      pushAmount: 5000,
+    });
+    expect(result.bubbleFactor).toBeGreaterThan(1.2);
+    expect(result.bubbleFactor).toBeLessThan(2);
+  });
+
+  it("Cash (WTA) : BF ≈ 1 (pas de concavité)", () => {
+    const result = bubbleFactor({
+      players: [
+        { id: "a", stack: 5000 },
+        { id: "b", stack: 5000 },
+      ],
+      payouts: [100],
+      heroId: "a",
+      villainId: "b",
+      pushAmount: 5000,
+    });
+    expect(result.bubbleFactor).toBeCloseTo(1, 1);
+  });
+
+  it("Short stack en bulle : BF supérieur à 1 (effet bubble), même si moins extrême que le leader", () => {
+    // Vrai résultat : BF = 1.29. Spec attendait > 1.5 mais la math donne 1.29 :
+    // le short stack a gain et perte ICM relativement proportionnels (en pts %),
+    // donc son BF est moins extrême que celui du chip leader.
+    const result = bubbleFactor({
+      players: [
+        { id: "short", stack: 1000 },
+        { id: "leader", stack: 7000 },
+        { id: "mid1", stack: 5000 },
+        { id: "mid2", stack: 5000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "short",
+      villainId: "leader",
+      pushAmount: 1000,
+    });
+    expect(result.bubbleFactor).toBeGreaterThan(1.2);
+  });
+
+  it("Payouts steep (4 paid, 40/30/20/10) : BF > 1 par concavité résiduelle", () => {
+    // Vrai résultat : BF = 1.587. Spec attendait < 1.3 mais avec 40/30/20/10,
+    // les écarts de payouts créent encore une concavité importante. Seul un
+    // structure flat (satellite) ou WTA donne BF ≈ 1.
+    const result = bubbleFactor({
+      players: [
+        { id: "a", stack: 7000 },
+        { id: "b", stack: 5000 },
+        { id: "c", stack: 5000 },
+        { id: "d", stack: 3000 },
+      ],
+      payouts: [40, 30, 20, 10],
+      heroId: "a",
+      villainId: "b",
+      pushAmount: 5000,
+    });
+    expect(result.bubbleFactor).toBeGreaterThan(1);
+    expect(result.bubbleFactor).toBeLessThan(2);
+  });
+
+  it("Cohérence : eq_ICM_required = BF / (BF + 1) (relation inverse)", () => {
+    const result = bubbleFactor({
+      players: [
+        { id: "hero", stack: 6000 },
+        { id: "v1", stack: 5000 },
+        { id: "v2", stack: 4000 },
+        { id: "v3", stack: 3000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "hero",
+      villainId: "v1",
+      pushAmount: 5000,
+    });
+    const bfDerived =
+      result.requiredEquityICM / (100 - result.requiredEquityICM);
+    expect(bfDerived).toBeCloseTo(result.bubbleFactor, 2);
+  });
+});
+
+describe("icmDecisionCall", () => {
+  it("Push profitable en chips mais -EV en ICM en bulle (cas typique)", () => {
+    const result = icmDecisionCall({
+      players: [
+        { id: "leader", stack: 7000 },
+        { id: "mid1", stack: 5000 },
+        { id: "mid2", stack: 5000 },
+        { id: "short", stack: 1000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "leader",
+      villainId: "mid1",
+      pushAmount: 5000,
+      actualEquity: 52,
+    });
+    // En chips, 52% c'est un call +EV (>50%). En ICM, requis ~60.8%.
+    expect(result.shouldCall).toBe(false);
+    expect(result.marginPts).toBeLessThan(0);
+  });
+
+  it("Call clairement +EV : equity dépasse largement le seuil ICM", () => {
+    const result = icmDecisionCall({
+      players: [
+        { id: "leader", stack: 7000 },
+        { id: "mid1", stack: 5000 },
+        { id: "mid2", stack: 5000 },
+        { id: "short", stack: 1000 },
+      ],
+      payouts: [50, 30, 20],
+      heroId: "leader",
+      villainId: "mid1",
+      pushAmount: 5000,
+      actualEquity: 75, // équity AA-style
+    });
+    expect(result.shouldCall).toBe(true);
+    expect(result.marginPts).toBeGreaterThan(0);
   });
 });

@@ -1,0 +1,142 @@
+---
+slug: m4-2
+moduleSlug: m4
+submoduleSlug: m4.2
+title: Bubble factor et risk premium
+subtitle: La taxe ICM sur tes calls.
+order: 2
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module IV · Sous-module 2 / 4
+  </div>
+
+# Bubble factor et risk premium.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La taxe ICM sur tes calls.</em> En bulle, ton équity requise n&apos;est plus dictée par les pot odds, mais par un seuil <em>plus haut</em> — celui que t&apos;impose la concavité de l&apos;ICM.
+</p>
+</div>
+
+<WhyBlock title="Le bubble factor est la taxe ICM sur tes calls.">
+
+Quand tu calls un push en cash, tu compares ton équity au pot odds break-even. *Simple, symétrique, fongible.* En bulle, tu compares ton équity à un seuil **plus élevé** — parce que perdre te coûte plus en $ que gagner ne te rapporte. Le **bubble factor** mesure exactement cette taxe.
+
+BF = 1.5 signifie : tu dois avoir **50 % d&apos;équity supplémentaire au-dessus du seuil chip** pour être break-even en ICM. Un push qui est légèrement +EV en chips peut être franchement −EV en $.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="La formule fondamentale" title={<>BF = <em>perte / gain</em>.</>} />
+
+<Formula>
+  <FormulaLabel>Bubble factor</FormulaLabel> BF = équity_ICM_perdue_si_lose / équité_ICM_gagnée_si_win
+  <br />
+  <FormulaLabel>Cash / WTA</FormulaLabel> gain = perte → BF = 1.00 (pas de concavité)
+  <br />
+  <FormulaLabel>Bulle profonde</FormulaLabel> perte ≫ gain → BF = 1.5 à 2.5
+  <br />
+  <FormulaLabel>Bulle satellite</FormulaLabel> tu bust à 0 ticket → BF peut dépasser 3
+</Formula>
+
+<Prose>
+
+Le BF est un **ratio**. Il te dit *combien tu dois multiplier ton seuil cash pour obtenir ton seuil ICM*. Plus la concavité est marquée (M4.1 : chips ≠ dollars), plus le BF est élevé, plus tu dois être prudent.
+
+</Prose>
+
+<SectionHeader num="02" label="Pourquoi le BF existe" title={<>La concavité <em>asymétrise.</em></>} />
+
+<Prose>
+
+M4.1 t&apos;a montré que le chip leader perd à l&apos;ICM. Conséquence : **doubler ton stack ne double pas ton équité**, mais bust te ramène à 0. Le gain ICM si tu gagnes est *plus petit* que la perte ICM si tu perds. Le BF capture ce ratio.
+
+Exemple concret : tu es chipleader 7000 dans une bulle 4-way (3 payés). Tu as 33.7 % d&apos;équité ICM avant la décision.
+- Si tu *gagnes* le push de 5000 : tu passes à 12000/5000/0/1000. Équité ICM = 43.0 % → gain +9.3 pts.
+- Si tu *perds* : tu passes à 2000/5000/10000/1000. Équité ICM = 19.4 % → perte −14.3 pts.
+
+BF = 14.3 / 9.3 ≈ **1.54**. Tu paies la taxe ICM.
+
+</Prose>
+
+<SectionHeader num="03" label="Les valeurs typiques" title={<>Cinq <em>signatures à mémoriser.</em></>} />
+
+<Formula>
+  <FormulaLabel>Cash / WTA</FormulaLabel> <K>BF = 1.00</K> <FormulaMuted>(pas de concavité)</FormulaMuted>
+  <br />
+  <FormulaLabel>Hors bulle, payouts flat</FormulaLabel> <K>BF = 1.05 – 1.15</K> <FormulaMuted>(légère concavité résiduelle)</FormulaMuted>
+  <br />
+  <FormulaLabel>Bulle 4-way SnG, 3 payés</FormulaLabel> <K>BF = 1.30 – 1.60</K>
+  <br />
+  <FormulaLabel>Bulle close, short vs leader</FormulaLabel> <K>BF = 1.80 – 2.50</K>
+  <br />
+  <FormulaLabel>Bulle satellite</FormulaLabel> <K>BF = 3+</K> <FormulaMuted>(bubble boy paie une fortune en équité)</FormulaMuted>
+</Formula>
+
+<SectionHeader num="04" label="L'équity ICM requise" title={<>De BF <em>au seuil.</em></>} />
+
+<Formula>
+  <FormulaLabel>Formule inverse</FormulaLabel> eq_ICM_required = BF / (BF + 1)
+  <br />
+  <FormulaLabel>BF = 1.00</FormulaLabel> eq_ICM = 50 % (= seuil cash)
+  <br />
+  <FormulaLabel>BF = 1.50</FormulaLabel> eq_ICM = 60 % (+10 pts vs cash)
+  <br />
+  <FormulaLabel>BF = 2.00</FormulaLabel> eq_ICM = 66.7 % (+16.7 pts vs cash)
+  <br />
+  <FormulaLabel>BF = 2.50</FormulaLabel> eq_ICM = 71.4 % (+21.4 pts vs cash)
+</Formula>
+
+<Prose>
+
+La conversion `BF → equity requise` n&apos;est pas linéaire. Un BF de 2.0 ne demande pas le double d&apos;équity (100 %), mais 66.7 %. La taxe est **bornée** par 100 % — tu ne peux jamais avoir besoin de plus d&apos;équity que le maximum.
+
+</Prose>
+
+<SectionHeader num="05" label="L'asymétrie push/call" title={<>BF de push <em>≠ BF de call.</em></>} />
+
+<Prose>
+
+C&apos;est la subtilité critique du jeu de bulle. Le BF dépend *de qui pousse contre qui*. Le chip leader qui **pousse** vise des stacks effectivement courts (gain modeste, perte modeste) → BF push faible → **pousse light**. Le même chip leader qui **call** affronte souvent un autre gros stack (perte massive, gain modeste) → BF call élevé → **call tight**.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Chip leader push</FormulaLabel> BF ≈ 1.1 – 1.3 → push wide
+  <br />
+  <FormulaLabel>Chip leader call</FormulaLabel> BF ≈ 1.5 – 2.0 → call tight
+  <br />
+  <FormulaLabel>Short stack push</FormulaLabel> BF ≈ 1.2 – 1.4 → push standard (peu à perdre)
+  <br />
+  <FormulaLabel>Short stack call</FormulaLabel> BF ≈ 1.3 – 1.5 → call un peu plus loose
+</Formula>
+
+<Prose>
+
+Le pattern fondamental : **le big stack abuse de sa pression, le short stack résiste mais ne se rebelle pas**. C&apos;est ce qui rend les bulles si lucratives pour les chip leaders et si misérables pour les mid stacks (squeezés entre les deux).
+
+</Prose>
+
+<Mnemonic keyText="BF = taxe ICM">
+Plus tu approches les places payées, plus la taxe monte. Le chip leader paie la taxe la plus haute en call, la plus basse en push — c&apos;est pourquoi il push light et call tight. Le short fait l&apos;inverse.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges" title={<>Trois erreurs <em>de bulle.</em></>} />
+
+<Prose>
+
+**Piège 1 — ignorer le BF.** Tu joues la bulle comme du cash, tu calles des spots +EV en chips qui sont franchement −EV en ICM. C&apos;est l&apos;erreur la plus chère du joueur de MTT amateur.
+
+**Piège 2 — sur-estimer le BF.** Tu deviens paralysé, tu fold tout, tu perds les blinds + antes en bulle. Avec un BF de 1.5, tu folds encore beaucoup de mains profitables. La taxe ICM est réelle mais pas infinie.
+
+**Piège 3 — oublier l&apos;asymétrie push/call.** Tu appliques le même BF en push qu&apos;en call. Mais le big stack qui push contre un short paie un BF bas (~1.2), tandis qu&apos;en call contre un autre big il paie ~1.8. Confondre les deux te fait jouer trop nit en push (rate des EV+ faciles) et trop loose en call (paie cher la taxe).
+
+</Prose>
+
+<LifeLink title="Le bubble factor est la prime de risque.">
+
+En finance, on parle de **risk premium** : le rendement supplémentaire exigé pour prendre un risque. En bulle MTT, le BF *est* le risk premium ICM. Quand tu décides d&apos;investir dans un projet risqué, tu demandes un rendement plus élevé qu&apos;un projet sûr — exactement comme tu demandes plus d&apos;équity pour caller en bulle qu&apos;en cash.
+
+La **calibration du risk premium** (combien plus tu exiges) sépare les bons décideurs des mauvais. Trop bas, tu prends trop de risque pour pas assez de reward. Trop haut, tu rates des opportunités. Le poker MTT t&apos;entraîne à cette calibration : tu apprends à *sentir* combien le risque coûte en fonction du contexte, et à ajuster ton seuil de décision en conséquence.
+
+</LifeLink>

@@ -24,6 +24,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m3-3": () => import("@/content/theory/m3-3.mdx"),
   "m3-4": () => import("@/content/theory/m3-4.mdx"),
   "m4-1": () => import("@/content/theory/m4-1.mdx"),
+  "m4-2": () => import("@/content/theory/m4-2.mdx"),
 };
 
 function TheoryContent() {
@@ -605,6 +606,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "L'effet ICM est le plus visible sur le short en bulle. Bien qu'il n'ait que 5 % des chips, sa probabilité de toucher la 3ème place (20 % du prizepool) est élevée. Son équité ICM est ~3-4× sa chip equity. C'est pourquoi pousher en short stack contre lui est coûteux en $ : il a déjà presque l'argent.",
+    },
+  ],
+
+  "m4-2": [
+    {
+      question: "Le bubble factor mesure :",
+      options: [
+        { letter: "A", text: "Le nombre de joueurs avant l'argent." },
+        { letter: "B", text: "Le ratio entre la perte ICM si tu busts et le gain ICM si tu doubles. Quand BF > 1, tu dois être plus prudent qu'en cash." },
+        { letter: "C", text: "Le pourcentage de chip equity perdu par le chipleader." },
+        { letter: "D", text: "La pression psychologique en bulle." },
+      ],
+      correctLetter: "B",
+      explanation: "BF = (perte_ICM_si_lose) / (gain_ICM_si_win). En cash, perdre 5 bb = gagner 5 bb en valeur, donc BF = 1. En bulle, perdre 5 bb (potentiel bust) te coûte plus en équité $ que gagner 5 bb ne te rapporte. Le BF capture cette asymétrie.",
+    },
+    {
+      question: "Tu pushes en bulle avec un BF de 1.5. Ton équité chip de break-even est 50 % (call break-even sur pot odds 1:1). Quelle équité ICM as-tu besoin ?",
+      options: [
+        { letter: "A", text: "50 % (BF n'affecte pas l'équity requise)" },
+        { letter: "B", text: "75 % (50 × 1.5)" },
+        { letter: "C", text: "60 % (formule : BF / (BF + 1) = 1.5 / 2.5)" },
+        { letter: "D", text: "Impossible à calculer sans plus d'info" },
+      ],
+      correctLetter: "C",
+      explanation: "Formule : eq_ICM_required = BF / (BF + 1) = 1.5 / 2.5 = 60 %. C'est ~10 points de plus que le seuil chip. Le BF augmente l'équity requise non-linéairement (pas une simple multiplication).",
+    },
+    {
+      question: "Pourquoi le chip leader doit-il pusher light et call tight en bulle ?",
+      options: [
+        { letter: "A", text: "Parce qu'il a déjà gagné le tournoi statistiquement." },
+        { letter: "B", text: "Parce que son BF est asymétrique : il pousse contre des stacks effectivement courts (gain ICM modeste, perte ICM modeste = BF bas) mais call contre des stacks effectifs gros (perte ICM massive, gain ICM modeste = BF élevé)." },
+        { letter: "C", text: "Parce que c'est la stratégie standard." },
+        { letter: "D", text: "Parce qu'il doit conserver son avantage." },
+      ],
+      correctLetter: "B",
+      explanation: "Le BF est asymétrique. Quand le leader push, il risque peu de son stack (effective = min stacks), gain ICM modeste, perte ICM modeste → BF push faible → push light. Quand il call, il risque souvent un gros stack (un autre big stack le call back), perte ICM massive, gain ICM modeste → BF call élevé → call tight. C'est la signature fondamentale du jeu de bulle.",
     },
   ],
 };

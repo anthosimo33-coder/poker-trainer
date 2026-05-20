@@ -169,6 +169,36 @@ export interface PrecomputedM41Spot {
   };
 }
 
+export interface PrecomputedM42Spot {
+  id: string;
+  players: ICMPlayer[];
+  heroId: string;
+  villainId: string;
+  payoutSlug: string;
+  payoutLabel: string;
+  payouts: number[];
+  pushAmount: number;
+  scenarioLabel: string;
+  /** Catégorie pédagogique. */
+  spotType:
+    | "bubble-leader-vs-mid"
+    | "bubble-leader-vs-short"
+    | "bubble-short-vs-leader"
+    | "bubble-mid-vs-mid"
+    | "ft-leader"
+    | "ft-mid"
+    | "ft-short"
+    | "satellite";
+  expected: {
+    bubbleFactor: number;
+    requiredEquityChip: number;
+    requiredEquityICM: number;
+    heroEquityBefore: number;
+    heroEquityIfWin: number;
+    heroEquityIfLose: number;
+  };
+}
+
 export interface PrecomputedM33Spot {
   id: string;
   heroCards: [Card, Card];

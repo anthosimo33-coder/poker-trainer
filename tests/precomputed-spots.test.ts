@@ -3,6 +3,7 @@ import spots from "@/content/spots/m2-2.json";
 import spots3way from "@/content/spots/m2-3.json";
 import spots31 from "@/content/spots/m3-1.json";
 import spots41 from "@/content/spots/m4-1.json";
+import spots42 from "@/content/spots/m4-2.json";
 
 describe("M2.2 precomputed spots", () => {
   it("contient au moins 100 spots", () => {
@@ -144,6 +145,76 @@ describe("M4.1 precomputed spots", () => {
     for (const s of spots41) {
       const sum = s.payouts.reduce((a: number, p: number) => a + p, 0);
       expect(sum).toBe(100);
+    }
+  });
+});
+
+describe("M4.2 precomputed spots", () => {
+  it("contient au moins 100 spots", () => {
+    expect(spots42.length).toBeGreaterThanOrEqual(100);
+  });
+
+  it("bubble factor cohérent : tous les spots ont BF entre 1 et 10 (borné)", () => {
+    for (const s of spots42) {
+      expect(s.expected.bubbleFactor).toBeGreaterThanOrEqual(1);
+      expect(s.expected.bubbleFactor).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it("bubble spots ont BF ≥ 1 (concavité ICM)", () => {
+    // Note : certains spots leader-vs-short ont BF très proche de 1 car
+    // le leader risque très peu (perte ICM ≈ gain ICM quand l'écart de stacks
+    // est massif). Le seuil pédagogique est BF > 1, pas une valeur plancher
+    // arbitraire.
+    for (const s of spots42) {
+      if (s.spotType.startsWith("bubble")) {
+        expect(s.expected.bubbleFactor).toBeGreaterThanOrEqual(1);
+      }
+    }
+  });
+
+  it("requiredEquityICM ≥ requiredEquityChip (taxe ICM positive)", () => {
+    for (const s of spots42) {
+      // Pour tous les spots non-WTA, eq_ICM > eq_chip car BF > 1.
+      // (Hors satellite avec stacks équilibrés où BF peut être proche de 1.)
+      expect(s.expected.requiredEquityICM).toBeGreaterThanOrEqual(
+        s.expected.requiredEquityChip - 0.5
+      );
+    }
+  });
+
+  it("toutes les distributions de types représentées (au moins 4 catégories)", () => {
+    const types = new Set(spots42.map((s) => s.spotType));
+    expect(types.size).toBeGreaterThanOrEqual(4);
+  });
+
+  it("relation algébrique : eq_ICM = BF / (BF + 1) (hors clamping BF ∈ {1, 10})", () => {
+    // Le bornage défensif BF ∈ [1, 10] peut décorréler BF et eq_ICM dans les
+    // cas dégénérés (ex. satellite déjà ticketé : gain ICM = 0 → BF cappé à 10
+    // mais eq_ICM = 100 % car loss/loss = 1). Test uniquement le régime
+    // non-clampé.
+    for (const s of spots42) {
+      const bf = s.expected.bubbleFactor;
+      if (bf <= 1 || bf >= 10) continue;
+      const derivedFromBF = (bf / (bf + 1)) * 100;
+      expect(derivedFromBF).toBeCloseTo(s.expected.requiredEquityICM, 0);
+    }
+  });
+
+  it("hero et villain présents dans la liste de joueurs", () => {
+    for (const s of spots42) {
+      const ids = s.players.map((p) => p.id);
+      expect(ids).toContain(s.heroId);
+      expect(ids).toContain(s.villainId);
+    }
+  });
+
+  it("pushAmount ≤ min(stack hero, stack villain)", () => {
+    for (const s of spots42) {
+      const hero = s.players.find((p) => p.id === s.heroId);
+      const villain = s.players.find((p) => p.id === s.villainId);
+      const eff = Math.min(hero!.stack, villain!.stack);
+      expect(s.pushAmount).toBeLessThanOrEqual(eff);
     }
   });
 });
