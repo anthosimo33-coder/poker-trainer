@@ -10,6 +10,7 @@ import { generatePushFoldSpot } from "./m3-1-push-fold";
 import { generateFoldEquitySpot } from "./m3-2-fold-equity";
 import { generateMultiBranchSpot } from "./m3-3-multibranch";
 import { generateCheckRaiseSpot } from "./m3-4-check-raise";
+import { generateICMSpot } from "./m4-1-icm";
 import type { GenericSpot } from "./types";
 
 export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
@@ -25,6 +26,7 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m3.2": generateFoldEquitySpot,
   "m3.3": generateMultiBranchSpot,
   "m3.4": generateCheckRaiseSpot,
+  "m4.1": generateICMSpot,
 };
 
 export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {

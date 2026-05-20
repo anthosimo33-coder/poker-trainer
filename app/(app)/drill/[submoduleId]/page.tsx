@@ -19,6 +19,7 @@ import type { PushFoldSpot } from "@/lib/poker/spot-generators/m3-1-push-fold";
 import type { FoldEquitySpot } from "@/lib/poker/spot-generators/m3-2-fold-equity";
 import type { MultiBranchSpot } from "@/lib/poker/spot-generators/m3-3-multibranch";
 import type { CheckRaiseSpot } from "@/lib/poker/spot-generators/m3-4-check-raise";
+import type { ICMSpot } from "@/lib/poker/spot-generators/m4-1-icm";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -52,6 +53,7 @@ interface UserAnswer {
   pFoldCRInput: string;
   pCallCRInput: string;
   equityCRInput: string;
+  equityIcmInput: string;
   decision: Decision;
 }
 
@@ -72,6 +74,7 @@ const EMPTY_ANSWER: UserAnswer = {
   pFoldCRInput: "",
   pCallCRInput: "",
   equityCRInput: "",
+  equityIcmInput: "",
   decision: null,
 };
 
@@ -123,11 +126,15 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
 }
+// ICMSpot (M4.1) : discriminé par `players` + `payouts` + submoduleSlug.
+// Aucun autre spot n'a `players`. Testé EN PREMIER (le plus spécifique) :
+// isICM → isCheckRaise → isFoldEquity → isMultiBranch → isPushFold →
+// isVsRange → isMultiway → isEquity → isOuts → isImplied.
+function isICM(s: GenericSpot): s is ICMSpot {
+  return "players" in s && "payouts" in s && s.submoduleSlug === "m4.1";
+}
 // CheckRaiseSpot (M3.4) : discriminé par `villainCBetRangeNotation` +
-// submoduleSlug. Aucun autre spot n'a `villainCBetRangeNotation`. Testé
-// EN PREMIER (le plus spécifique) :
-// isCheckRaise → isFoldEquity → isMultiBranch → isPushFold → isVsRange →
-// isMultiway → isEquity → isOuts → isImplied.
+// submoduleSlug. Aucun autre spot n'a `villainCBetRangeNotation`.
 function isCheckRaise(s: GenericSpot): s is CheckRaiseSpot {
   return "villainCBetRangeNotation" in s && s.submoduleSlug === "m3.4";
 }
@@ -489,6 +496,50 @@ function gradeM34(
   return { isCorrect, level, signedError: evError, errorColor, errorLabel, userEV, trueEV };
 }
 
+// ---- M4.1 — équité ICM : scoring sur l'erreur (pts %) ----
+function gradeM41(
+  userEquityPct: number,
+  spot: ICMSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number;
+  errorColor: string;
+  errorLabel: string;
+  truePct: number;
+} {
+  const truePct = spot.expected.heroEquityPercent;
+  const signedError = Math.round((userEquityPct - truePct) * 10) / 10;
+  const absErr = Math.abs(signedError);
+  let level: EquityLevel;
+  let errorColor: string;
+  if (absErr <= 1.5) {
+    level = "excellent";
+    errorColor = "var(--green)";
+  } else if (absErr <= 3) {
+    level = "juste";
+    errorColor = "var(--green)";
+  } else if (absErr <= 6) {
+    level = "proche";
+    errorColor = "var(--amber)";
+  } else {
+    level = "faux";
+    errorColor = "var(--red)";
+  }
+  const isCorrect = absErr <= 3;
+  const sign = signedError > 0 ? "+" : "";
+  const dir = signedError > 0 ? "surestimé" : "sous-estimé";
+  const errorLabel =
+    absErr <= 1.5
+      ? "Excellent"
+      : absErr <= 3
+      ? `Juste (${sign}${signedError} %)`
+      : absErr <= 6
+      ? `Proche (${sign}${signedError} % ${dir})`
+      : `Faux (${sign}${signedError} % ${dir})`;
+  return { isCorrect, level, signedError, errorColor, errorLabel, truePct };
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -510,6 +561,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m3.2": "Fold equity et décomposition · Sous-module 2",
   "m3.3": "EV composites multi-branches · Sous-module 3",
   "m3.4": "Check-raise et lignes complexes · Sous-module 4",
+  "m4.1": "Calcul équité ICM · Sous-module 1",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -521,6 +573,9 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isICM(spot)) {
+    return parseAnswerNumber(a.equityIcmInput) !== null;
+  }
   if (isCheckRaise(spot)) {
     const pf = parseAnswerNumber(a.pFoldCRInput);
     const pc = parseAnswerNumber(a.pCallCRInput);
@@ -575,6 +630,12 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isICM(spot)) {
+    // Correction dédiée (ICMCorrectionPanel) ; ici seulement isCorrect.
+    const eq = parseAnswerNumber(a.equityIcmInput);
+    if (eq === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM41(eq, spot).isCorrect, steps: [] };
+  }
   if (isCheckRaise(spot)) {
     // Correction dédiée (CheckRaiseCorrectionPanel) ; ici seulement isCorrect.
     const pf = parseAnswerNumber(a.pFoldCRInput);
@@ -887,6 +948,7 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isICM(spot)) return null;
   if (isCheckRaise(spot)) return null;
   if (isFoldEquity(spot)) return null;
   if (isMultiBranch(spot)) return null;
@@ -1089,7 +1151,13 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isCheckRaise(spot)) {
+    if (isICM(spot)) {
+      // signedError = erreur d'équité ICM en pts %.
+      const eq = parseAnswerNumber(answer.equityIcmInput);
+      if (eq !== null) {
+        signedError = gradeM41(eq, spot).signedError;
+      }
+    } else if (isCheckRaise(spot)) {
       const pf = parseAnswerNumber(answer.pFoldCRInput);
       const pc = parseAnswerNumber(answer.pCallCRInput);
       const eq = parseAnswerNumber(answer.equityCRInput);
@@ -1195,7 +1263,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isCheckRaise(spot) ? (
+        {isICM(spot) ? (
+          <ICMTable spot={spot} />
+        ) : isCheckRaise(spot) ? (
           <CheckRaiseTable spot={spot} />
         ) : isFoldEquity(spot) ? (
           <FoldEquityTable spot={spot} />
@@ -1321,6 +1391,74 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M4.1 — saisie directe : équité ICM hero en % du prizepool.
+  if (isICM(spot)) {
+    const eq = parseAnswerNumber(answer.equityIcmInput);
+    const chipEq = spot.expected.heroChipEquityPercent;
+    return (
+      <div
+        className="rounded-xl p-7 flex flex-col"
+        style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}
+      >
+        <div
+          className="text-[11px] font-mono uppercase tracking-wider mb-2"
+          style={{ color: "var(--purple-300)" }}
+        >
+          ◆ Calcule l&apos;équité ICM
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Quelle est ton équité $ ?
+        </h2>
+        <p className="text-[13px] text-text-muted mb-7 leading-[1.55]">
+          Estime ton équité <strong className="text-text">ICM</strong> (en % du
+          prizepool). Rappel : ta chip equity ({chipEq.toFixed(1)} %) n&apos;est{" "}
+          <em>pas</em> ton équité $.
+        </p>
+        <Field
+          label="Équité ICM hero (%)"
+          hint="En % du prizepool"
+          value={answer.equityIcmInput}
+          onChange={(v) => setAnswer({ ...answer, equityIcmInput: v })}
+          placeholder="ex. 38.5"
+        />
+        <div
+          className="rounded p-3.5 mb-1"
+          style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}
+        >
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1">
+            Chip equity hero (référence)
+          </div>
+          <div className="text-2xl font-mono font-semibold leading-none">
+            {chipEq.toFixed(1)} %
+          </div>
+          {eq !== null && (
+            <div className="text-[11px] text-text-muted mt-1.5 font-mono">
+              Écart annoncé : {eq - chipEq >= 0 ? "+" : ""}
+              {(eq - chipEq).toFixed(1)} pts vs chip equity
+            </div>
+          )}
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M3.4 — saisie décomposée : P(fold) + P(call) + equity vs call range.
   // EV recomposée en direct via le modèle check-raise (avec realizationFactor).
   if (isCheckRaise(spot)) {
@@ -2009,6 +2147,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isICM(spot)) {
+    return <ICMCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isCheckRaise(spot)) {
     return <CheckRaiseCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -3268,6 +3409,265 @@ function PushFoldCorrectionPanel({
 
       <div className="mt-4">
         <RangeDisplay notation={spot.villainCallRangeNotation} />
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M4.1 — table ICM (snapshot des stacks + payouts) =====
+const M41_SPOT_TYPE_LABEL: Record<ICMSpot["spotType"], string> = {
+  "equal-stacks": "Stacks égaux",
+  "chip-leader": "Chip leader",
+  "short-stack": "Short stack",
+  bubble: "Bulle",
+  "final-table": "Table finale",
+  satellite: "Satellite",
+};
+
+function ICMTable({ spot }: { spot: ICMSpot }) {
+  const totalChips = spot.players.reduce((acc, p) => acc + p.stack, 0);
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          ICM · table snapshot
+        </div>
+        <div className="text-xs font-mono text-text-faint">
+          {M41_SPOT_TYPE_LABEL[spot.spotType]}
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Joueurs en jeu ({spot.players.length})
+        </div>
+        <div className="flex flex-col gap-1.5">
+          {spot.players.map((p) => {
+            const isHero = p.id === spot.heroId;
+            const chipPct = (p.stack / totalChips) * 100;
+            return (
+              <div
+                key={p.id}
+                className="grid items-center gap-3 px-3.5 py-2.5 rounded"
+                style={{
+                  gridTemplateColumns: "60px 1fr 90px 60px",
+                  background: isHero ? "var(--purple-glow)" : "var(--surface)",
+                  border: `0.5px solid ${isHero ? "var(--purple-400)" : "var(--border)"}`,
+                }}
+              >
+                <span
+                  className="text-[12px] font-mono font-medium"
+                  style={{ color: isHero ? "var(--purple-300)" : "var(--text-muted)" }}
+                >
+                  {isHero ? "Hero" : p.id}
+                </span>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="h-1.5 rounded-full"
+                    style={{
+                      width: `${Math.min(100, chipPct * 1.4)}%`,
+                      background: isHero ? "var(--purple-400)" : "var(--text-dim)",
+                      opacity: isHero ? 1 : 0.5,
+                    }}
+                  />
+                </div>
+                <span
+                  className="text-right text-[13px] font-mono"
+                  style={{ color: isHero ? "var(--text)" : "var(--text-muted)" }}
+                >
+                  {p.stack.toLocaleString("fr-FR")}
+                </span>
+                <span
+                  className="text-right text-[11px] font-mono"
+                  style={{ color: "var(--text-faint)" }}
+                >
+                  {chipPct.toFixed(1)} %
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="rounded p-3.5 mb-5"
+        style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}
+      >
+        <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">
+          Structure de payouts — {spot.payoutLabel}
+        </div>
+        <div className="font-mono text-[13px] text-text leading-[1.6]">
+          {spot.payouts.map((p) => `${p}%`).join(" · ")}
+        </div>
+        <div className="text-[11px] text-text-faint font-mono mt-1.5">
+          {spot.payouts.length} place{spot.payouts.length > 1 ? "s" : ""} payée
+          {spot.payouts.length > 1 ? "s" : ""} sur {spot.players.length} joueur
+          {spot.players.length > 1 ? "s" : ""}
+        </div>
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Quelle est ton équité <strong className="text-text">ICM</strong> (en % du
+          prizepool) ? Rappel : équité ICM ≠ chip equity à cause de la concavité.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== M4.1 — correction ICM (décomposition chip vs ICM equity) =====
+function ICMCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: ICMSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  const ue = parseAnswerNumber(answer.equityIcmInput) ?? 0;
+  const g = gradeM41(ue, spot);
+  const e = spot.expected;
+  const trend = e.icmEffect >= 0 ? "gagne" : "perd";
+  const trendColor = e.icmEffect >= 0 ? "var(--green)" : "var(--red)";
+  const totalChipsAll = spot.players.reduce((acc, p) => acc + p.stack, 0);
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.level}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ta réponse</div>
+          <div className="text-3xl font-semibold font-mono leading-none">{ue.toFixed(1)} %</div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Équité ICM vraie</div>
+          <div className="text-3xl font-semibold font-mono leading-none" style={{ color: g.errorColor }}>
+            {g.truePct.toFixed(1)} %
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Hero stack</Lbl>{" "}
+        <Mono>
+          {(spot.players.find((p) => p.id === spot.heroId)?.stack ?? 0).toLocaleString("fr-FR")} chips
+        </Mono>{" "}
+        <span className="text-text-muted">
+          / {totalChipsAll.toLocaleString("fr-FR")} total
+        </span>
+        <br />
+        <Lbl>Chip equity</Lbl>{" "}
+        <Mono>{e.heroChipEquityPercent.toFixed(1)} %</Mono>{" "}
+        <span className="text-text-muted">(part naïve, 1 chip = 1 unité)</span>
+        <br />
+        <Lbl>Effet ICM</Lbl>{" "}
+        <span className="font-mono" style={{ color: trendColor }}>
+          {e.icmEffect >= 0 ? "+" : ""}
+          {e.icmEffect.toFixed(1)} pts
+        </span>{" "}
+        <span className="text-text-muted">
+          (hero {trend} à l&apos;ICM par rapport à sa chip equity)
+        </span>
+        <br />
+        <Lbl>Équité ICM vraie</Lbl>{" "}
+        <Mono className="!text-purple-300">{e.heroEquityPercent.toFixed(1)} %</Mono>
+        <br />
+        <Lbl>Payouts</Lbl> <Mono>{spot.payouts.map((p) => `${p}%`).join(" · ")}</Mono>{" "}
+        <span className="text-text-muted">({spot.payoutLabel})</span>
+      </FormulaBox>
+
+      <div className="mt-3">
+        <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-2">
+          Équités ICM de la table
+        </div>
+        <div className="flex flex-col gap-1">
+          {spot.players.map((p) => {
+            const isHero = p.id === spot.heroId;
+            const eqPct = e.allEquities[p.id] ?? 0;
+            const cEq = (p.stack / totalChipsAll) * 100;
+            const diff = eqPct - cEq;
+            return (
+              <div
+                key={p.id}
+                className="grid items-center gap-3 px-3 py-1.5 rounded text-[12px] font-mono"
+                style={{
+                  gridTemplateColumns: "60px 1fr 70px 70px",
+                  background: isHero ? "var(--purple-glow)" : "transparent",
+                  border: `0.5px solid ${isHero ? "var(--purple-400)" : "var(--border)"}`,
+                  color: isHero ? "var(--text)" : "var(--text-muted)",
+                }}
+              >
+                <span style={{ color: isHero ? "var(--purple-300)" : "var(--text-faint)" }}>
+                  {isHero ? "Hero" : p.id}
+                </span>
+                <span className="text-text-faint">{p.stack.toLocaleString("fr-FR")} chips</span>
+                <span className="text-right">{eqPct.toFixed(1)} %</span>
+                <span
+                  className="text-right text-[10px]"
+                  style={{ color: diff >= 0 ? "var(--green)" : "var(--red)" }}
+                >
+                  {diff >= 0 ? "+" : ""}
+                  {diff.toFixed(1)}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="rounded p-3.5 mt-4 text-[13px] leading-[1.55]"
+        style={{
+          background: "var(--surface-strong)",
+          border: "0.5px solid var(--border)",
+        }}
+      >
+        <span className="text-text-muted">
+          Pattern à mémoriser : un {M41_SPOT_TYPE_LABEL[spot.spotType].toLowerCase()}{" "}
+          {e.icmEffect >= 0 ? "gagne" : "perd"} typiquement{" "}
+          <strong className="text-text">{Math.abs(e.icmEffect).toFixed(1)} pts</strong> à
+          l&apos;ICM par rapport à sa chip equity. C&apos;est la signature de la
+          concavité.
+        </span>
       </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">

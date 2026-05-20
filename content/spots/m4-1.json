@@ -1,0 +1,6275 @@
+[
+  {
+    "id": "m4-1-spot-001",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal sit&go 9-max",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-002",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal stacks moyens",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-003",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 10000
+      },
+      {
+        "id": "v2",
+        "stack": 10000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal stacks profonds",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-004",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "bubble-18-3paid",
+    "payoutLabel": "Bulle 18 joueurs, 3 payés (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal bulle 18j (3 payés)",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-005",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "4-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 18.5,
+      "heroChipEquityPercent": 25,
+      "icmEffect": -6.5,
+      "allEquities": {
+        "hero": 18.5,
+        "v1": 18.5,
+        "v2": 18.5,
+        "v3": 18.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-006",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "4-way égal bulle 3 payés",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 25,
+      "heroChipEquityPercent": 25,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 25,
+        "v1": 25,
+        "v2": 25,
+        "v3": 25
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-007",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 7500
+      },
+      {
+        "id": "v1",
+        "stack": 7500
+      },
+      {
+        "id": "v2",
+        "stack": 7500
+      },
+      {
+        "id": "v3",
+        "stack": 7500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "4-way égal proche FT",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 18.5,
+      "heroChipEquityPercent": 25,
+      "icmEffect": -6.5,
+      "allEquities": {
+        "hero": 18.5,
+        "v1": 18.5,
+        "v2": 18.5,
+        "v3": 18.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-008",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 4000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "5-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 16.4,
+      "heroChipEquityPercent": 20,
+      "icmEffect": -3.6,
+      "allEquities": {
+        "hero": 16.4,
+        "v1": 16.4,
+        "v2": 16.4,
+        "v3": 16.4,
+        "v4": 16.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-009",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 4000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "5-way égal sit&go (3 payés)",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 20,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 20,
+        "v1": 20,
+        "v2": 20,
+        "v3": 20,
+        "v4": 20
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-010",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "flat-15percent",
+    "payoutLabel": "MTT flat (top 15 %)",
+    "payouts": [
+      14,
+      10,
+      9,
+      8,
+      8,
+      7,
+      7,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      3,
+      3
+    ],
+    "scenarioLabel": "5-way égal MTT flat",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 9.8,
+      "heroChipEquityPercent": 20,
+      "icmEffect": -10.2,
+      "allEquities": {
+        "hero": 9.8,
+        "v1": 9.8,
+        "v2": 9.8,
+        "v3": 9.8,
+        "v4": 9.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-011",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "6-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 14.7,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": -2,
+      "allEquities": {
+        "hero": 14.7,
+        "v1": 14.7,
+        "v2": 14.7,
+        "v3": 14.7,
+        "v4": 14.7,
+        "v5": 14.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-012",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-6-standard",
+    "payoutLabel": "Sit & go 6-max (65/35)",
+    "payouts": [
+      65,
+      35
+    ],
+    "scenarioLabel": "6-way égal sit&go 6-max (65/35)",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 16.7,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 16.7,
+        "v1": 16.7,
+        "v2": 16.7,
+        "v3": 16.7,
+        "v4": 16.7,
+        "v5": 16.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-013",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      },
+      {
+        "id": "v2",
+        "stack": 8000
+      },
+      {
+        "id": "v3",
+        "stack": 8000
+      },
+      {
+        "id": "v4",
+        "stack": 8000
+      },
+      {
+        "id": "v5",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "6-way égal proche FT",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 14.7,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": -2,
+      "allEquities": {
+        "hero": 14.7,
+        "v1": 14.7,
+        "v2": 14.7,
+        "v3": 14.7,
+        "v4": 14.7,
+        "v5": 14.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-014",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3500
+      },
+      {
+        "id": "v1",
+        "stack": 3500
+      },
+      {
+        "id": "v2",
+        "stack": 3500
+      },
+      {
+        "id": "v3",
+        "stack": 3500
+      },
+      {
+        "id": "v4",
+        "stack": 3500
+      },
+      {
+        "id": "v5",
+        "stack": 3500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "6-way égal stacks moyens FT",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 14.7,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": -2,
+      "allEquities": {
+        "hero": 14.7,
+        "v1": 14.7,
+        "v2": 14.7,
+        "v3": 14.7,
+        "v4": 14.7,
+        "v5": 14.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-015",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 4500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 4500
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      },
+      {
+        "id": "v5",
+        "stack": 4500
+      },
+      {
+        "id": "v6",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "7-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 13.3,
+      "heroChipEquityPercent": 14.3,
+      "icmEffect": -1,
+      "allEquities": {
+        "hero": 13.3,
+        "v1": 13.3,
+        "v2": 13.3,
+        "v3": 13.3,
+        "v4": 13.3,
+        "v5": 13.3,
+        "v6": 13.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-016",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 4500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 4500
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      },
+      {
+        "id": "v5",
+        "stack": 4500
+      },
+      {
+        "id": "v6",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "flat-15percent",
+    "payoutLabel": "MTT flat (top 15 %)",
+    "payouts": [
+      14,
+      10,
+      9,
+      8,
+      8,
+      7,
+      7,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      3,
+      3
+    ],
+    "scenarioLabel": "7-way égal MTT flat",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 9,
+      "heroChipEquityPercent": 14.3,
+      "icmEffect": -5.3,
+      "allEquities": {
+        "hero": 9,
+        "v1": 9,
+        "v2": 9,
+        "v3": 9,
+        "v4": 9,
+        "v5": 9,
+        "v6": 9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-017",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 7000
+      },
+      {
+        "id": "v1",
+        "stack": 7000
+      },
+      {
+        "id": "v2",
+        "stack": 7000
+      },
+      {
+        "id": "v3",
+        "stack": 7000
+      },
+      {
+        "id": "v4",
+        "stack": 7000
+      },
+      {
+        "id": "v5",
+        "stack": 7000
+      },
+      {
+        "id": "v6",
+        "stack": 7000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "7-way égal proche FT",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 13.3,
+      "heroChipEquityPercent": 14.3,
+      "icmEffect": -1,
+      "allEquities": {
+        "hero": 13.3,
+        "v1": 13.3,
+        "v2": 13.3,
+        "v3": 13.3,
+        "v4": 13.3,
+        "v5": 13.3,
+        "v6": 13.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-018",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "8-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 12.1,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": -0.4,
+      "allEquities": {
+        "hero": 12.1,
+        "v1": 12.1,
+        "v2": 12.1,
+        "v3": 12.1,
+        "v4": 12.1,
+        "v5": 12.1,
+        "v6": 12.1,
+        "v7": 12.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-019",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "flat-15percent",
+    "payoutLabel": "MTT flat (top 15 %)",
+    "payouts": [
+      14,
+      10,
+      9,
+      8,
+      8,
+      7,
+      7,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      3,
+      3
+    ],
+    "scenarioLabel": "8-way égal MTT flat",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 8.6,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": -3.9,
+      "allEquities": {
+        "hero": 8.6,
+        "v1": 8.6,
+        "v2": 8.6,
+        "v3": 8.6,
+        "v4": 8.6,
+        "v5": 8.6,
+        "v6": 8.6,
+        "v7": 8.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-020",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 10000
+      },
+      {
+        "id": "v2",
+        "stack": 10000
+      },
+      {
+        "id": "v3",
+        "stack": 10000
+      },
+      {
+        "id": "v4",
+        "stack": 10000
+      },
+      {
+        "id": "v5",
+        "stack": 10000
+      },
+      {
+        "id": "v6",
+        "stack": 10000
+      },
+      {
+        "id": "v7",
+        "stack": 10000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "8-way égal proche FT stacks profonds",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 12.1,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": -0.4,
+      "allEquities": {
+        "hero": 12.1,
+        "v1": 12.1,
+        "v2": 12.1,
+        "v3": 12.1,
+        "v4": 12.1,
+        "v5": 12.1,
+        "v6": 12.1,
+        "v7": 12.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-021",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "9-way égal table finale",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 11.1,
+      "heroChipEquityPercent": 11.1,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 11.1,
+        "v1": 11.1,
+        "v2": 11.1,
+        "v3": 11.1,
+        "v4": 11.1,
+        "v5": 11.1,
+        "v6": 11.1,
+        "v7": 11.1,
+        "v8": 11.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-022",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      },
+      {
+        "id": "v2",
+        "stack": 8000
+      },
+      {
+        "id": "v3",
+        "stack": 8000
+      },
+      {
+        "id": "v4",
+        "stack": 8000
+      },
+      {
+        "id": "v5",
+        "stack": 8000
+      },
+      {
+        "id": "v6",
+        "stack": 8000
+      },
+      {
+        "id": "v7",
+        "stack": 8000
+      },
+      {
+        "id": "v8",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "9-way égal FT stacks moyens",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 11.1,
+      "heroChipEquityPercent": 11.1,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 11.1,
+        "v1": 11.1,
+        "v2": 11.1,
+        "v3": 11.1,
+        "v4": 11.1,
+        "v5": 11.1,
+        "v6": 11.1,
+        "v7": 11.1,
+        "v8": 11.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-023",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "HU égal WTA",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 50,
+      "heroChipEquityPercent": 50,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 50,
+        "v1": 50
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-024",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 10000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "HU égal WTA stacks profonds",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 50,
+      "heroChipEquityPercent": 50,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 50,
+        "v1": 50
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-025",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "HU égal WTA stacks courts",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 50,
+      "heroChipEquityPercent": 50,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 50,
+        "v1": 50
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-026",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 1500
+      },
+      {
+        "id": "v2",
+        "stack": 1500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal stacks courts (1500)",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-027",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 15000
+      },
+      {
+        "id": "v1",
+        "stack": 15000
+      },
+      {
+        "id": "v2",
+        "stack": 15000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "3-way égal stacks énormes (15000)",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 33.3,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 33.3,
+        "v1": 33.3,
+        "v2": 33.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-028",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6500
+      },
+      {
+        "id": "v1",
+        "stack": 6500
+      },
+      {
+        "id": "v2",
+        "stack": 6500
+      },
+      {
+        "id": "v3",
+        "stack": 6500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "4-way égal FT stacks 6500",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 18.5,
+      "heroChipEquityPercent": 25,
+      "icmEffect": -6.5,
+      "allEquities": {
+        "hero": 18.5,
+        "v1": 18.5,
+        "v2": 18.5,
+        "v3": 18.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-029",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 2500
+      },
+      {
+        "id": "v2",
+        "stack": 2500
+      },
+      {
+        "id": "v3",
+        "stack": 2500
+      },
+      {
+        "id": "v4",
+        "stack": 2500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "5-way égal FT stacks 2500",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 16.4,
+      "heroChipEquityPercent": 20,
+      "icmEffect": -3.6,
+      "allEquities": {
+        "hero": 16.4,
+        "v1": 16.4,
+        "v2": 16.4,
+        "v3": 16.4,
+        "v4": 16.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-030",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 12000
+      },
+      {
+        "id": "v2",
+        "stack": 12000
+      },
+      {
+        "id": "v3",
+        "stack": 12000
+      },
+      {
+        "id": "v4",
+        "stack": 12000
+      },
+      {
+        "id": "v5",
+        "stack": 12000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "6-way égal proche FT stacks 12000",
+    "spotType": "equal-stacks",
+    "expected": {
+      "heroEquityPercent": 14.7,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": -2,
+      "allEquities": {
+        "hero": 14.7,
+        "v1": 14.7,
+        "v2": 14.7,
+        "v3": 14.7,
+        "v4": 14.7,
+        "v5": 14.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-031",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 2500
+      },
+      {
+        "id": "v2",
+        "stack": 2500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 3-way (67 % des chips)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 42.7,
+      "heroChipEquityPercent": 66.7,
+      "icmEffect": -24,
+      "allEquities": {
+        "hero": 42.7,
+        "v1": 28.7,
+        "v2": 28.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-032",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 1500
+      },
+      {
+        "id": "v2",
+        "stack": 1500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader écrasant 3-way (80 % des chips)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 45.8,
+      "heroChipEquityPercent": 80,
+      "icmEffect": -34.2,
+      "allEquities": {
+        "hero": 45.8,
+        "v1": 27.1,
+        "v2": 27.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-033",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader confortable 3-way (53 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 39.3,
+      "heroChipEquityPercent": 53.3,
+      "icmEffect": -14.1,
+      "allEquities": {
+        "hero": 39.3,
+        "v1": 29,
+        "v2": 31.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-034",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 2000
+      },
+      {
+        "id": "v2",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 3-way (60 % des chips)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 41,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -19,
+      "allEquities": {
+        "hero": 41,
+        "v1": 29.5,
+        "v2": 29.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-035",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 9000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "bubble-18-3paid",
+    "payoutLabel": "Bulle 18 joueurs, 3 payés (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader bulle 3-way (60 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 41,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -19,
+      "allEquities": {
+        "hero": 41,
+        "v1": 29.5,
+        "v2": 29.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-036",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 4-way FT (50 % des chips)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 23.6,
+      "heroChipEquityPercent": 50,
+      "icmEffect": -26.4,
+      "allEquities": {
+        "hero": 23.6,
+        "v1": 17.9,
+        "v2": 16.3,
+        "v3": 16.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-037",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 4-way FT (60 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 25.2,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -34.8,
+      "allEquities": {
+        "hero": 25.2,
+        "v1": 16.9,
+        "v2": 16.9,
+        "v3": 14.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-038",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 4-way SnG (40 %, 3 payés)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 33,
+      "heroChipEquityPercent": 40,
+      "icmEffect": -7,
+      "allEquities": {
+        "hero": 33,
+        "v1": 22.3,
+        "v2": 22.3,
+        "v3": 22.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-039",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 15000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 4-way proche FT (60 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 25.2,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -34.8,
+      "allEquities": {
+        "hero": 25.2,
+        "v1": 15.8,
+        "v2": 15.8,
+        "v3": 17.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-040",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 3500
+      },
+      {
+        "id": "v3",
+        "stack": 3500
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 5-way FT (40 % des chips)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 21.5,
+      "heroChipEquityPercent": 40,
+      "icmEffect": -18.5,
+      "allEquities": {
+        "hero": 21.5,
+        "v1": 15.5,
+        "v2": 14.8,
+        "v3": 14.8,
+        "v4": 15.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-041",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 15000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 5-way FT (50 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 23.4,
+      "heroChipEquityPercent": 50,
+      "icmEffect": -26.6,
+      "allEquities": {
+        "hero": 23.4,
+        "v1": 15,
+        "v2": 15,
+        "v3": 15,
+        "v4": 13.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-042",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      },
+      {
+        "id": "v4",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 5-way SnG (50 %, 3 payés)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 36.4,
+      "heroChipEquityPercent": 50,
+      "icmEffect": -13.6,
+      "allEquities": {
+        "hero": 36.4,
+        "v1": 15.9,
+        "v2": 15.9,
+        "v3": 15.9,
+        "v4": 15.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-043",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 15000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      },
+      {
+        "id": "v5",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 6-way FT (43 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 21.9,
+      "heroChipEquityPercent": 42.9,
+      "icmEffect": -21,
+      "allEquities": {
+        "hero": 21.9,
+        "v1": 13.2,
+        "v2": 13.2,
+        "v3": 13.2,
+        "v4": 13.2,
+        "v5": 13.2
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-044",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 20000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      },
+      {
+        "id": "v5",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 6-way FT (50 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 23.3,
+      "heroChipEquityPercent": 50,
+      "icmEffect": -26.7,
+      "allEquities": {
+        "hero": 23.3,
+        "v1": 12.9,
+        "v2": 12.9,
+        "v3": 12.9,
+        "v4": 12.9,
+        "v5": 12.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-045",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 3500
+      },
+      {
+        "id": "v2",
+        "stack": 3500
+      },
+      {
+        "id": "v3",
+        "stack": 3500
+      },
+      {
+        "id": "v4",
+        "stack": 3500
+      },
+      {
+        "id": "v5",
+        "stack": 3500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-6-standard",
+    "payoutLabel": "Sit & go 6-max (65/35)",
+    "payouts": [
+      65,
+      35
+    ],
+    "scenarioLabel": "Chipleader 6-way SnG (41 %, 2 payés)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 36,
+      "heroChipEquityPercent": 40.7,
+      "icmEffect": -4.7,
+      "allEquities": {
+        "hero": 36,
+        "v1": 12.8,
+        "v2": 12.8,
+        "v3": 12.8,
+        "v4": 12.8,
+        "v5": 12.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-046",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 20000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      },
+      {
+        "id": "v5",
+        "stack": 4000
+      },
+      {
+        "id": "v6",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 7-way FT (45 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 22.3,
+      "heroChipEquityPercent": 45.5,
+      "icmEffect": -23.1,
+      "allEquities": {
+        "hero": 22.3,
+        "v1": 11.8,
+        "v2": 11.8,
+        "v3": 11.8,
+        "v4": 11.8,
+        "v5": 11.8,
+        "v6": 11.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-047",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 25000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 7-way FT (45 % gros stacks)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 22.3,
+      "heroChipEquityPercent": 45.5,
+      "icmEffect": -23.1,
+      "allEquities": {
+        "hero": 22.3,
+        "v1": 11.8,
+        "v2": 11.8,
+        "v3": 11.8,
+        "v4": 11.8,
+        "v5": 11.8,
+        "v6": 11.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-048",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 20000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 8-way FT (36 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 20.2,
+      "heroChipEquityPercent": 36.4,
+      "icmEffect": -16.2,
+      "allEquities": {
+        "hero": 20.2,
+        "v1": 11,
+        "v2": 11,
+        "v3": 11,
+        "v4": 11,
+        "v5": 11,
+        "v6": 11,
+        "v7": 11
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-049",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 30000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 9-way FT (43 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 21.6,
+      "heroChipEquityPercent": 42.9,
+      "icmEffect": -21.2,
+      "allEquities": {
+        "hero": 21.6,
+        "v1": 9.8,
+        "v2": 9.8,
+        "v3": 9.8,
+        "v4": 9.8,
+        "v5": 9.8,
+        "v6": 9.8,
+        "v7": 9.8,
+        "v8": 9.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-050",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 25000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 9-way FT (38 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 20.6,
+      "heroChipEquityPercent": 38.5,
+      "icmEffect": -17.9,
+      "allEquities": {
+        "hero": 20.6,
+        "v1": 9.9,
+        "v2": 9.9,
+        "v3": 9.9,
+        "v4": 9.9,
+        "v5": 9.9,
+        "v6": 9.9,
+        "v7": 9.9,
+        "v8": 9.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-051",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 7000
+      },
+      {
+        "id": "v1",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "Chipleader HU 70 % WTA",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 70,
+      "heroChipEquityPercent": 70,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 70,
+        "v1": 30
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-052",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8500
+      },
+      {
+        "id": "v1",
+        "stack": 1500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "Chipleader HU 85 % WTA",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 85,
+      "heroChipEquityPercent": 85,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 85,
+        "v1": 15
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-053",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 1500
+      },
+      {
+        "id": "v2",
+        "stack": 1500
+      },
+      {
+        "id": "v3",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 4-way bulle (60 %, 3 payés)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 40.4,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -19.6,
+      "allEquities": {
+        "hero": 40.4,
+        "v1": 21.8,
+        "v2": 21.8,
+        "v3": 16
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-054",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 2000
+      },
+      {
+        "id": "v2",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Chipleader 3-way (67 % stacks moyens)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 42.7,
+      "heroChipEquityPercent": 66.7,
+      "icmEffect": -24,
+      "allEquities": {
+        "hero": 42.7,
+        "v1": 28.7,
+        "v2": 28.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-055",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 9000
+      },
+      {
+        "id": "v1",
+        "stack": 2500
+      },
+      {
+        "id": "v2",
+        "stack": 2500
+      },
+      {
+        "id": "v3",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 4-way FT (60 %) + 1 short",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 25.2,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -34.8,
+      "allEquities": {
+        "hero": 25.2,
+        "v1": 17.7,
+        "v2": 17.7,
+        "v3": 13.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-056",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 14000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 3000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 4-way proche FT (56 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 24.6,
+      "heroChipEquityPercent": 56,
+      "icmEffect": -31.4,
+      "allEquities": {
+        "hero": 24.6,
+        "v1": 18.3,
+        "v2": 15.6,
+        "v3": 15.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-057",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 16000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 5-way FT (53 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 24,
+      "heroChipEquityPercent": 53.3,
+      "icmEffect": -29.3,
+      "allEquities": {
+        "hero": 24,
+        "v1": 15.3,
+        "v2": 15.3,
+        "v3": 15.3,
+        "v4": 12.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-058",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 18000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      },
+      {
+        "id": "v5",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 6-way FT (50 % avec short)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 23.3,
+      "heroChipEquityPercent": 50,
+      "icmEffect": -26.7,
+      "allEquities": {
+        "hero": 23.3,
+        "v1": 13.6,
+        "v2": 13.6,
+        "v3": 13.6,
+        "v4": 13.6,
+        "v5": 10.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-059",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 22000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader 5-way FT (55 % stacks variés)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 24.3,
+      "heroChipEquityPercent": 55,
+      "icmEffect": -30.7,
+      "allEquities": {
+        "hero": 24.3,
+        "v1": 16.1,
+        "v2": 15.1,
+        "v3": 13.9,
+        "v4": 12.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-060",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 30000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 2000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Chipleader dominant 5-way FT (60 %)",
+    "spotType": "chip-leader",
+    "expected": {
+      "heroEquityPercent": 25.1,
+      "heroChipEquityPercent": 60,
+      "icmEffect": -34.9,
+      "allEquities": {
+        "hero": 25.1,
+        "v1": 17,
+        "v2": 15.4,
+        "v3": 13.5,
+        "v4": 11
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-061",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 5500
+      },
+      {
+        "id": "v2",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 3-way SnG (10 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 24.7,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 14.7,
+      "allEquities": {
+        "hero": 24.7,
+        "v1": 35.6,
+        "v2": 39.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-062",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 3-way SnG (10 % vs 2 stacks moyens)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 24.6,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 14.6,
+      "allEquities": {
+        "hero": 24.6,
+        "v1": 37.7,
+        "v2": 37.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-063",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 3-way SnG (13 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 26.2,
+      "heroChipEquityPercent": 13.3,
+      "icmEffect": 12.9,
+      "allEquities": {
+        "hero": 26.2,
+        "v1": 34.3,
+        "v2": 39.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-064",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 7500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 3-way SnG (17 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 27.5,
+      "heroChipEquityPercent": 16.7,
+      "icmEffect": 10.8,
+      "allEquities": {
+        "hero": 27.5,
+        "v1": 34,
+        "v2": 38.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-065",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 3-way SnG (5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 22.4,
+      "heroChipEquityPercent": 5,
+      "icmEffect": 17.4,
+      "allEquities": {
+        "hero": 22.4,
+        "v1": 38.2,
+        "v2": 39.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-066",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 8500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 4-way FT (7.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 13.3,
+      "heroChipEquityPercent": 7.5,
+      "icmEffect": 5.8,
+      "allEquities": {
+        "hero": 13.3,
+        "v1": 19.1,
+        "v2": 19.1,
+        "v3": 22.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-067",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 4-way FT (10 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 14.2,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 4.2,
+      "allEquities": {
+        "hero": 14.2,
+        "v1": 17.7,
+        "v2": 20.1,
+        "v3": 22
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-068",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 10000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 4-way FT (5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 12.4,
+      "heroChipEquityPercent": 5,
+      "icmEffect": 7.4,
+      "allEquities": {
+        "hero": 12.4,
+        "v1": 18.3,
+        "v2": 19.5,
+        "v3": 23.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-069",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 8500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 4-way proche FT (7.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 13.3,
+      "heroChipEquityPercent": 7.5,
+      "icmEffect": 5.8,
+      "allEquities": {
+        "hero": 13.3,
+        "v1": 18.5,
+        "v2": 19.7,
+        "v3": 22.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-070",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 7500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 4-way proche FT (12.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 15,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": 2.5,
+      "allEquities": {
+        "hero": 15,
+        "v1": 18.2,
+        "v2": 19.4,
+        "v3": 21.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-071",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 5-way FT (7.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 11.8,
+      "heroChipEquityPercent": 7.5,
+      "icmEffect": 4.3,
+      "allEquities": {
+        "hero": 11.8,
+        "v1": 16.7,
+        "v2": 18.1,
+        "v3": 18.1,
+        "v4": 17.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-072",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 5-way FT (10 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 12.9,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 2.9,
+      "allEquities": {
+        "hero": 12.9,
+        "v1": 16.6,
+        "v2": 17.3,
+        "v3": 18,
+        "v4": 17.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-073",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 5-way FT (5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 10.7,
+      "heroChipEquityPercent": 5,
+      "icmEffect": 5.7,
+      "allEquities": {
+        "hero": 10.7,
+        "v1": 16.8,
+        "v2": 17.5,
+        "v3": 18.8,
+        "v4": 18.2
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-074",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 4500
+      },
+      {
+        "id": "v4",
+        "stack": 3500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 5-way FT (12.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 13.9,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": 1.4,
+      "allEquities": {
+        "hero": 13.9,
+        "v1": 17.3,
+        "v2": 17.9,
+        "v3": 17.3,
+        "v4": 15.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-075",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 6-way FT (6.7 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 10.3,
+      "heroChipEquityPercent": 6.7,
+      "icmEffect": 3.6,
+      "allEquities": {
+        "hero": 10.3,
+        "v1": 14.3,
+        "v2": 14.9,
+        "v3": 15.5,
+        "v4": 14.9,
+        "v5": 18
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-076",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      },
+      {
+        "id": "v5",
+        "stack": 7500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 6-way FT (5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9.3,
+      "heroChipEquityPercent": 5,
+      "icmEffect": 4.3,
+      "allEquities": {
+        "hero": 9.3,
+        "v1": 14.4,
+        "v2": 15,
+        "v3": 15.6,
+        "v4": 16.1,
+        "v5": 17.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-077",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 6-way FT (10 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 11.9,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 1.9,
+      "allEquities": {
+        "hero": 11.9,
+        "v1": 14.1,
+        "v2": 15.4,
+        "v3": 15.9,
+        "v4": 14.8,
+        "v5": 15.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-078",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 5500
+      },
+      {
+        "id": "v5",
+        "stack": 6000
+      },
+      {
+        "id": "v6",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 7-way FT (7.4 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9.8,
+      "heroChipEquityPercent": 7.1,
+      "icmEffect": 2.7,
+      "allEquities": {
+        "hero": 9.8,
+        "v1": 13.4,
+        "v2": 14,
+        "v3": 14.5,
+        "v4": 14,
+        "v5": 14.5,
+        "v6": 12.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-079",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6500
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 7-way FT (5.7 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9,
+      "heroChipEquityPercent": 5.7,
+      "icmEffect": 3.3,
+      "allEquities": {
+        "hero": 9,
+        "v1": 13.4,
+        "v2": 14,
+        "v3": 15.1,
+        "v4": 14.6,
+        "v5": 13.4,
+        "v6": 13.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-080",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      },
+      {
+        "id": "v5",
+        "stack": 5500
+      },
+      {
+        "id": "v6",
+        "stack": 5500
+      },
+      {
+        "id": "v7",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 8-way FT (6.3 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 8.7,
+      "heroChipEquityPercent": 6.3,
+      "icmEffect": 2.5,
+      "allEquities": {
+        "hero": 8.7,
+        "v1": 12.2,
+        "v2": 12.8,
+        "v3": 13.3,
+        "v4": 13.3,
+        "v5": 12.8,
+        "v6": 12.8,
+        "v7": 11
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-081",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 6500
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5500
+      },
+      {
+        "id": "v7",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 8-way FT (7.5 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9.4,
+      "heroChipEquityPercent": 7.3,
+      "icmEffect": 2.1,
+      "allEquities": {
+        "hero": 9.4,
+        "v1": 12,
+        "v2": 12.6,
+        "v3": 13.2,
+        "v4": 13.7,
+        "v5": 12,
+        "v6": 12.6,
+        "v7": 11.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-082",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      },
+      {
+        "id": "v5",
+        "stack": 6500
+      },
+      {
+        "id": "v6",
+        "stack": 5500
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 9-way FT (4.4 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 7,
+      "heroChipEquityPercent": 4.4,
+      "icmEffect": 2.5,
+      "allEquities": {
+        "hero": 7,
+        "v1": 10.6,
+        "v2": 11.2,
+        "v3": 11.8,
+        "v4": 12.3,
+        "v5": 12.8,
+        "v6": 11.8,
+        "v7": 11.2,
+        "v8": 11.2
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-083",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      },
+      {
+        "id": "v5",
+        "stack": 6000
+      },
+      {
+        "id": "v6",
+        "stack": 5500
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 9-way FT (7.8 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9.3,
+      "heroChipEquityPercent": 7.8,
+      "icmEffect": 1.5,
+      "allEquities": {
+        "hero": 9.3,
+        "v1": 11.2,
+        "v2": 11.8,
+        "v3": 11.8,
+        "v4": 12.3,
+        "v5": 12.3,
+        "v6": 11.8,
+        "v7": 11.2,
+        "v8": 8.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-084",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "Short HU 20 % WTA",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 20,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 20,
+        "v1": 80
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-085",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 8500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "wta-2",
+    "payoutLabel": "Heads-up WTA",
+    "payouts": [
+      100
+    ],
+    "scenarioLabel": "Short HU 15 % WTA",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 15,
+      "heroChipEquityPercent": 15,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 15,
+        "v1": 85
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-086",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      },
+      {
+        "id": "v5",
+        "stack": 3500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Short 6-way FT (10 % stacks moyens)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 11.7,
+      "heroChipEquityPercent": 9.6,
+      "icmEffect": 2.1,
+      "allEquities": {
+        "hero": 11.7,
+        "v1": 15.7,
+        "v2": 15,
+        "v3": 16.9,
+        "v4": 15,
+        "v5": 13.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-087",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      },
+      {
+        "id": "v4",
+        "stack": 4500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 5-way SnG bulle (7 %, 3 payés)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 8.1,
+      "heroChipEquityPercent": 6.8,
+      "icmEffect": 1.3,
+      "allEquities": {
+        "hero": 8.1,
+        "v1": 25.6,
+        "v2": 21,
+        "v3": 24.2,
+        "v4": 21
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-088",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 5500
+      },
+      {
+        "id": "v2",
+        "stack": 7000
+      },
+      {
+        "id": "v3",
+        "stack": 5500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Short 4-way SnG bulle (10 %, 3 payés)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 12.8,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 2.8,
+      "allEquities": {
+        "hero": 12.8,
+        "v1": 27.9,
+        "v2": 31.4,
+        "v3": 27.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-089",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 4000
+      },
+      {
+        "id": "v2",
+        "stack": 6500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 5500
+      },
+      {
+        "id": "v5",
+        "stack": 4500
+      },
+      {
+        "id": "v6",
+        "stack": 5500
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Micro-short 8-way FT (2.6 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 6.2,
+      "heroChipEquityPercent": 2.6,
+      "icmEffect": 3.6,
+      "allEquities": {
+        "hero": 6.2,
+        "v1": 11.4,
+        "v2": 14.3,
+        "v3": 13.8,
+        "v4": 13.3,
+        "v5": 12.1,
+        "v6": 13.3,
+        "v7": 12.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-090",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 500
+      },
+      {
+        "id": "v1",
+        "stack": 4500
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Micro-short 5-way FT (2.2 %)",
+    "spotType": "short-stack",
+    "expected": {
+      "heroEquityPercent": 9.3,
+      "heroChipEquityPercent": 2.3,
+      "icmEffect": 7,
+      "allEquities": {
+        "hero": 9.3,
+        "v1": 17.2,
+        "v2": 18.5,
+        "v3": 19.1,
+        "v4": 17.9
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-091",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero chipleader + 1 short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 34.3,
+      "heroChipEquityPercent": 40,
+      "icmEffect": -5.7,
+      "allEquities": {
+        "hero": 34.3,
+        "v1": 30.5,
+        "v2": 28.1,
+        "v3": 7.2
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-092",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero co-chipleader",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 28.4,
+      "heroChipEquityPercent": 30,
+      "icmEffect": -1.6,
+      "allEquities": {
+        "hero": 28.4,
+        "v1": 28.4,
+        "v2": 25.6,
+        "v3": 17.5
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-093",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way égale",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 25,
+      "heroChipEquityPercent": 25,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 25,
+        "v1": 25,
+        "v2": 25,
+        "v3": 25
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-094",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 7000
+      },
+      {
+        "id": "v1",
+        "stack": 5500
+      },
+      {
+        "id": "v2",
+        "stack": 4500
+      },
+      {
+        "id": "v3",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero chipleader confortable",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 30.9,
+      "heroChipEquityPercent": 35,
+      "icmEffect": -4.1,
+      "allEquities": {
+        "hero": 30.9,
+        "v1": 27.2,
+        "v2": 24.1,
+        "v3": 17.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-095",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 5500
+      },
+      {
+        "id": "v2",
+        "stack": 6500
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero 2ème short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 17.6,
+      "heroChipEquityPercent": 15,
+      "icmEffect": 2.6,
+      "allEquities": {
+        "hero": 17.6,
+        "v1": 27.1,
+        "v2": 29.7,
+        "v3": 25.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-096",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero short stack",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 12.7,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 2.7,
+      "allEquities": {
+        "hero": 12.7,
+        "v1": 29.1,
+        "v2": 29.1,
+        "v3": 29.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-097",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1500
+      },
+      {
+        "id": "v1",
+        "stack": 6500
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "sng-9-standard",
+    "payoutLabel": "Sit & go 9-max (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle 4-way, hero micro-short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 10,
+      "heroChipEquityPercent": 7.5,
+      "icmEffect": 2.5,
+      "allEquities": {
+        "hero": 10,
+        "v1": 30.8,
+        "v2": 29.6,
+        "v3": 29.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-098",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "bubble-18-3paid",
+    "payoutLabel": "Bulle 18 joueurs, 3 payés (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle MTT 18j (3 payés), hero chipleader",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 28.1,
+      "heroChipEquityPercent": 30,
+      "icmEffect": -1.9,
+      "allEquities": {
+        "hero": 28.1,
+        "v1": 25.2,
+        "v2": 25.2,
+        "v3": 21.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-099",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2500
+      },
+      {
+        "id": "v1",
+        "stack": 5500
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "bubble-18-3paid",
+    "payoutLabel": "Bulle 18 joueurs, 3 payés (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle MTT 18j, hero short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 15.2,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": 2.7,
+      "allEquities": {
+        "hero": 15.2,
+        "v1": 27.4,
+        "v2": 28.7,
+        "v3": 28.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-100",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "bubble-18-3paid",
+    "payoutLabel": "Bulle 18 joueurs, 3 payés (50/30/20)",
+    "payouts": [
+      50,
+      30,
+      20
+    ],
+    "scenarioLabel": "Bulle MTT 18j, stacks égaux",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 25,
+      "heroChipEquityPercent": 25,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 25,
+        "v1": 25,
+        "v2": 25,
+        "v3": 25
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-101",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 10000
+      },
+      {
+        "id": "v2",
+        "stack": 9000
+      },
+      {
+        "id": "v3",
+        "stack": 8000
+      },
+      {
+        "id": "v4",
+        "stack": 7000
+      },
+      {
+        "id": "v5",
+        "stack": 6000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 4000
+      },
+      {
+        "id": "v8",
+        "stack": 3000
+      },
+      {
+        "id": "v9",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT (10 restants 9 payés), hero chipleader",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 14.5,
+      "heroChipEquityPercent": 18.5,
+      "icmEffect": -3.9,
+      "allEquities": {
+        "hero": 14.5,
+        "v1": 13.3,
+        "v2": 12.6,
+        "v3": 11.8,
+        "v4": 11,
+        "v5": 10.1,
+        "v6": 9.1,
+        "v7": 8,
+        "v8": 6.7,
+        "v9": 2.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-102",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 12000
+      },
+      {
+        "id": "v2",
+        "stack": 10000
+      },
+      {
+        "id": "v3",
+        "stack": 9000
+      },
+      {
+        "id": "v4",
+        "stack": 8000
+      },
+      {
+        "id": "v5",
+        "stack": 7000
+      },
+      {
+        "id": "v6",
+        "stack": 6000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 4000
+      },
+      {
+        "id": "v9",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT (10 restants 9 payés), hero micro-short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 2.7,
+      "heroChipEquityPercent": 1.5,
+      "icmEffect": 1.2,
+      "allEquities": {
+        "hero": 2.7,
+        "v1": 14.5,
+        "v2": 13.3,
+        "v3": 12.6,
+        "v4": 11.8,
+        "v5": 11,
+        "v6": 10.1,
+        "v7": 9.1,
+        "v8": 8,
+        "v9": 6.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-103",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6500
+      },
+      {
+        "id": "v1",
+        "stack": 6500
+      },
+      {
+        "id": "v2",
+        "stack": 6500
+      },
+      {
+        "id": "v3",
+        "stack": 6500
+      },
+      {
+        "id": "v4",
+        "stack": 6500
+      },
+      {
+        "id": "v5",
+        "stack": 6500
+      },
+      {
+        "id": "v6",
+        "stack": 6500
+      },
+      {
+        "id": "v7",
+        "stack": 6500
+      },
+      {
+        "id": "v8",
+        "stack": 6500
+      },
+      {
+        "id": "v9",
+        "stack": 6500
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "near-ft-10-9paid",
+    "payoutLabel": "Bulle FT (10 restants, 9 payés)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT (10 restants), stacks égaux",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 10,
+      "heroChipEquityPercent": 10,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 10,
+        "v1": 10,
+        "v2": 10,
+        "v3": 10,
+        "v4": 10,
+        "v5": 10,
+        "v6": 10,
+        "v7": 10,
+        "v8": 10,
+        "v9": 10
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-104",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 8000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT 5-way, hero chipleader",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 20.2,
+      "heroChipEquityPercent": 33.3,
+      "icmEffect": -13.1,
+      "allEquities": {
+        "hero": 20.2,
+        "v1": 17.2,
+        "v2": 17.2,
+        "v3": 17.2,
+        "v4": 10.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-105",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6500
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT 5-way, hero short",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 10.2,
+      "heroChipEquityPercent": 4.2,
+      "icmEffect": 6.1,
+      "allEquities": {
+        "hero": 10.2,
+        "v1": 17.1,
+        "v2": 17.7,
+        "v3": 18.8,
+        "v4": 18.2
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-106",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT 5-way, hero stack moyen",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 16.7,
+      "heroChipEquityPercent": 20.8,
+      "icmEffect": -4.2,
+      "allEquities": {
+        "hero": 16.7,
+        "v1": 16.7,
+        "v2": 16.7,
+        "v3": 16.7,
+        "v4": 15.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-107",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5500
+      },
+      {
+        "id": "v3",
+        "stack": 6500
+      },
+      {
+        "id": "v4",
+        "stack": 4000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT 5-way, hero 4ème stack",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 13.9,
+      "heroChipEquityPercent": 12.5,
+      "icmEffect": 1.4,
+      "allEquities": {
+        "hero": 13.9,
+        "v1": 16.8,
+        "v2": 17.4,
+        "v3": 18.5,
+        "v4": 15.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-108",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "Bulle FT 5-way, hero chipleader confortable",
+    "spotType": "bubble",
+    "expected": {
+      "heroEquityPercent": 17.9,
+      "heroChipEquityPercent": 25,
+      "icmEffect": -7.1,
+      "allEquities": {
+        "hero": 17.9,
+        "v1": 16.7,
+        "v2": 16.7,
+        "v3": 16.7,
+        "v4": 13.8
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-109",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 30000
+      },
+      {
+        "id": "v1",
+        "stack": 25000
+      },
+      {
+        "id": "v2",
+        "stack": 20000
+      },
+      {
+        "id": "v3",
+        "stack": 15000
+      },
+      {
+        "id": "v4",
+        "stack": 10000
+      },
+      {
+        "id": "v5",
+        "stack": 8000
+      },
+      {
+        "id": "v6",
+        "stack": 7000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero chipleader (24 %)",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 17,
+      "heroChipEquityPercent": 24.4,
+      "icmEffect": -7.4,
+      "allEquities": {
+        "hero": 17,
+        "v1": 15.7,
+        "v2": 14.2,
+        "v3": 12.4,
+        "v4": 10.2,
+        "v5": 9.1,
+        "v6": 8.5,
+        "v7": 7.3,
+        "v8": 5.7
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-110",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 3000
+      },
+      {
+        "id": "v1",
+        "stack": 30000
+      },
+      {
+        "id": "v2",
+        "stack": 25000
+      },
+      {
+        "id": "v3",
+        "stack": 20000
+      },
+      {
+        "id": "v4",
+        "stack": 15000
+      },
+      {
+        "id": "v5",
+        "stack": 10000
+      },
+      {
+        "id": "v6",
+        "stack": 8000
+      },
+      {
+        "id": "v7",
+        "stack": 7000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero short (2.4 %)",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 5.7,
+      "heroChipEquityPercent": 2.4,
+      "icmEffect": 3.3,
+      "allEquities": {
+        "hero": 5.7,
+        "v1": 17,
+        "v2": 15.7,
+        "v3": 14.2,
+        "v4": 12.4,
+        "v5": 10.2,
+        "v6": 9.1,
+        "v7": 8.5,
+        "v8": 7.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-111",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 12000
+      },
+      {
+        "id": "v2",
+        "stack": 12000
+      },
+      {
+        "id": "v3",
+        "stack": 12000
+      },
+      {
+        "id": "v4",
+        "stack": 12000
+      },
+      {
+        "id": "v5",
+        "stack": 12000
+      },
+      {
+        "id": "v6",
+        "stack": 12000
+      },
+      {
+        "id": "v7",
+        "stack": 12000
+      },
+      {
+        "id": "v8",
+        "stack": 12000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, stacks égaux",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 11.1,
+      "heroChipEquityPercent": 11.1,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 11.1,
+        "v1": 11.1,
+        "v2": 11.1,
+        "v3": 11.1,
+        "v4": 11.1,
+        "v5": 11.1,
+        "v6": 11.1,
+        "v7": 11.1,
+        "v8": 11.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-112",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 20000
+      },
+      {
+        "id": "v1",
+        "stack": 20000
+      },
+      {
+        "id": "v2",
+        "stack": 15000
+      },
+      {
+        "id": "v3",
+        "stack": 15000
+      },
+      {
+        "id": "v4",
+        "stack": 10000
+      },
+      {
+        "id": "v5",
+        "stack": 10000
+      },
+      {
+        "id": "v6",
+        "stack": 8000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero co-chipleader",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 14.7,
+      "heroChipEquityPercent": 18.5,
+      "icmEffect": -3.8,
+      "allEquities": {
+        "hero": 14.7,
+        "v1": 14.7,
+        "v2": 12.8,
+        "v3": 12.8,
+        "v4": 10.5,
+        "v5": 10.5,
+        "v6": 9.3,
+        "v7": 7.3,
+        "v8": 7.3
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-113",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 10000
+      },
+      {
+        "id": "v1",
+        "stack": 15000
+      },
+      {
+        "id": "v2",
+        "stack": 20000
+      },
+      {
+        "id": "v3",
+        "stack": 18000
+      },
+      {
+        "id": "v4",
+        "stack": 12000
+      },
+      {
+        "id": "v5",
+        "stack": 10000
+      },
+      {
+        "id": "v6",
+        "stack": 8000
+      },
+      {
+        "id": "v7",
+        "stack": 8000
+      },
+      {
+        "id": "v8",
+        "stack": 7000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero stack moyen",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 10.3,
+      "heroChipEquityPercent": 9.3,
+      "icmEffect": 1,
+      "allEquities": {
+        "hero": 10.3,
+        "v1": 12.7,
+        "v2": 14.6,
+        "v3": 13.9,
+        "v4": 11.3,
+        "v5": 10.3,
+        "v6": 9.2,
+        "v7": 9.2,
+        "v8": 8.6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-114",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 40000
+      },
+      {
+        "id": "v1",
+        "stack": 15000
+      },
+      {
+        "id": "v2",
+        "stack": 15000
+      },
+      {
+        "id": "v3",
+        "stack": 12000
+      },
+      {
+        "id": "v4",
+        "stack": 10000
+      },
+      {
+        "id": "v5",
+        "stack": 8000
+      },
+      {
+        "id": "v6",
+        "stack": 6000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 3000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero chipleader dominant (35 %)",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 19.9,
+      "heroChipEquityPercent": 35.1,
+      "icmEffect": -15.2,
+      "allEquities": {
+        "hero": 19.9,
+        "v1": 13,
+        "v2": 13,
+        "v3": 11.7,
+        "v4": 10.7,
+        "v5": 9.6,
+        "v6": 8.3,
+        "v7": 7.6,
+        "v8": 6
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-115",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 5000
+      },
+      {
+        "id": "v1",
+        "stack": 5000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 5000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, stacks égaux courts",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 11.1,
+      "heroChipEquityPercent": 11.1,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 11.1,
+        "v1": 11.1,
+        "v2": 11.1,
+        "v3": 11.1,
+        "v4": 11.1,
+        "v5": 11.1,
+        "v6": 11.1,
+        "v7": 11.1,
+        "v8": 11.1
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-116",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 25000
+      },
+      {
+        "id": "v1",
+        "stack": 25000
+      },
+      {
+        "id": "v2",
+        "stack": 25000
+      },
+      {
+        "id": "v3",
+        "stack": 25000
+      },
+      {
+        "id": "v4",
+        "stack": 5000
+      },
+      {
+        "id": "v5",
+        "stack": 5000
+      },
+      {
+        "id": "v6",
+        "stack": 5000
+      },
+      {
+        "id": "v7",
+        "stack": 5000
+      },
+      {
+        "id": "v8",
+        "stack": 5000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "ft-9-standard",
+    "payoutLabel": "Table finale 9 joueurs (MTT standard)",
+    "payouts": [
+      30,
+      20,
+      14,
+      10,
+      8,
+      6,
+      5,
+      4,
+      3
+    ],
+    "scenarioLabel": "FT 9 joueurs, hero parmi 4 chipleaders",
+    "spotType": "final-table",
+    "expected": {
+      "heroEquityPercent": 15.7,
+      "heroChipEquityPercent": 20,
+      "icmEffect": -4.3,
+      "allEquities": {
+        "hero": 15.7,
+        "v1": 15.7,
+        "v2": 15.7,
+        "v3": 15.7,
+        "v4": 7.4,
+        "v5": 7.4,
+        "v6": 7.4,
+        "v7": 7.4,
+        "v8": 7.4
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-117",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 12000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 1000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "satellite-5tickets",
+    "payoutLabel": "Satellite 5 tickets égaux",
+    "payouts": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "scenarioLabel": "Satellite 5 tickets, hero chipleader",
+    "spotType": "satellite",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 40,
+      "icmEffect": -20,
+      "allEquities": {
+        "hero": 20,
+        "v1": 20,
+        "v2": 20,
+        "v3": 20,
+        "v4": 20
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-118",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 1000
+      },
+      {
+        "id": "v1",
+        "stack": 8000
+      },
+      {
+        "id": "v2",
+        "stack": 5000
+      },
+      {
+        "id": "v3",
+        "stack": 4000
+      },
+      {
+        "id": "v4",
+        "stack": 12000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "satellite-5tickets",
+    "payoutLabel": "Satellite 5 tickets égaux",
+    "payouts": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "scenarioLabel": "Satellite 5 tickets, hero micro-short (bulle)",
+    "spotType": "satellite",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 3.3,
+      "icmEffect": 16.7,
+      "allEquities": {
+        "hero": 20,
+        "v1": 20,
+        "v2": 20,
+        "v3": 20,
+        "v4": 20
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-119",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 6000
+      },
+      {
+        "id": "v1",
+        "stack": 6000
+      },
+      {
+        "id": "v2",
+        "stack": 6000
+      },
+      {
+        "id": "v3",
+        "stack": 6000
+      },
+      {
+        "id": "v4",
+        "stack": 6000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "satellite-5tickets",
+    "payoutLabel": "Satellite 5 tickets égaux",
+    "payouts": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "scenarioLabel": "Satellite 5 tickets, stacks égaux (5 payés sur 5)",
+    "spotType": "satellite",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 20,
+      "icmEffect": 0,
+      "allEquities": {
+        "hero": 20,
+        "v1": 20,
+        "v2": 20,
+        "v3": 20,
+        "v4": 20
+      }
+    }
+  },
+  {
+    "id": "m4-1-spot-120",
+    "players": [
+      {
+        "id": "hero",
+        "stack": 2000
+      },
+      {
+        "id": "v1",
+        "stack": 7000
+      },
+      {
+        "id": "v2",
+        "stack": 7000
+      },
+      {
+        "id": "v3",
+        "stack": 7000
+      },
+      {
+        "id": "v4",
+        "stack": 7000
+      }
+    ],
+    "heroId": "hero",
+    "payoutSlug": "satellite-5tickets",
+    "payoutLabel": "Satellite 5 tickets égaux",
+    "payouts": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "scenarioLabel": "Satellite 5 tickets, hero short (bulle satellite)",
+    "spotType": "satellite",
+    "expected": {
+      "heroEquityPercent": 20,
+      "heroChipEquityPercent": 6.7,
+      "icmEffect": 13.3,
+      "allEquities": {
+        "hero": 20,
+        "v1": 20,
+        "v2": 20,
+        "v3": 20,
+        "v4": 20
+      }
+    }
+  }
+]

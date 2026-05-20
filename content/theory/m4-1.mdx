@@ -1,0 +1,133 @@
+---
+slug: m4-1
+moduleSlug: m4
+submoduleSlug: m4.1
+title: Calcul équité ICM
+subtitle: Tes chips ne valent pas leur valeur affichée.
+order: 1
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module IV · Sous-module 1 / 4
+  </div>
+
+# Calcul équité ICM.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Tes chips ne valent pas leur valeur affichée.</em> Le passage du cash au MTT, c&apos;est la fin de l&apos;équation `1 chip = 1 $`. ICM te dit ce que ta pile vaut vraiment.
+</p>
+</div>
+
+<WhyBlock title="Tes chips ne valent pas leur valeur affichée.">
+
+En cash, **1 chip = 1 $**. Peu importe ton stack. La valeur est fongible. En MTT, **1 chip ≠ 1 unité de prizepool**. Pourquoi ? Parce que tu ne peux pas tout perdre (les premières places paient peu importe la suite) et tu ne peux pas tout gagner (le 2ème prend une grosse part).
+
+La fonction *stack → équité $* est **concave** : monotone croissante mais avec rendement décroissant. Comprendre ICM, c&apos;est passer de *« j&apos;ai 50 % des chips, je vaux 50 % du prizepool »* (faux) à *« j&apos;ai 50 % des chips, je vaux 38 % du prizepool »* (vrai). C&apos;est la différence entre un joueur de bulle et un joueur de cash.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Le saut conceptuel" title={<>Chips <em>≠ dollars.</em></>} />
+
+<Prose>
+
+En cash, les chips sont fongibles : peu importe ton stack, **1 chip vaut 1 $**. Tu peux racheter, retirer, transférer — la valeur est constante. En MTT, c&apos;est radicalement différent. Les places payées sont fixées à l&apos;avance, le 1er prend la plus grosse part, les éliminés ne touchent rien (ou un payout fixe). La valeur d&apos;une chip dépend alors de qui a les autres chips et de la structure de payouts restante.
+
+**Conséquence directe** : un push qui est +EV en chips peut être *−EV en $*. Et inversement, des spots break-even en chip EV peuvent être très −EV en $ (bulle). C&apos;est la zone où l&apos;intuition naïve te trahit.
+
+</Prose>
+
+<SectionHeader num="02" label="La concavité" title={<>La fonction <em>est concave.</em></>} />
+
+<Prose>
+
+Si tu **doubles** tes chips, tu ne doubles pas ton équité $ — tu en gagnes moins du double. Si tu **perds la moitié**, tu ne perds pas la moitié de ton équité — tu en perds moins. C&apos;est la signature mathématique de l&apos;ICM, et c&apos;est ce qui crée le **bubble factor** (que tu travailleras en M4.2).
+
+Cette concavité a deux conséquences pratiques que tu vas internaliser :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Chip leader</FormulaLabel> son équité ICM est <K>toujours</K> inférieure à son chip equity.
+  <br />
+  <FormulaLabel>Short stack</FormulaLabel> son équité ICM est <K>toujours</K> supérieure à sa chip equity.
+  <br />
+  <FormulaLabel>Stack moyen</FormulaLabel> équité ICM <K>≈</K> chip equity (l&apos;ICM joue à la marge).
+</Formula>
+
+<SectionHeader num="03" label="Malmuth-Harville" title={<>L&apos;algorithme <em>de référence.</em></>} />
+
+<Prose>
+
+L&apos;algorithme standard pour calculer l&apos;équité ICM s&apos;appelle **Malmuth-Harville**. La logique est récursive et belle dans sa simplicité :
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>P(joueur i finit 1er)</FormulaLabel> stack_i / total_chips
+  <br />
+  <FormulaLabel>P(joueur i finit 2ème)</FormulaLabel> Σ pour j ≠ i de [stack_j / total × stack_i / (total − stack_j)]
+  <br />
+  <FormulaLabel>P(joueur i finit kème)</FormulaLabel> récursion sur les joueurs restants
+  <br />
+  <FormulaLabel>Équité $</FormulaLabel> Σ_position payout_position × P(finir à cette position)
+  <FormulaMuted>L&apos;algorithme assume que la probabilité de finir à une position donnée est proportionnelle au stack restant.</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Tu n&apos;auras pas à calculer ça à la main en partie — c&apos;est ce que fait l&apos;app pour toi. Mais comprendre la logique est essentiel : la valeur de chaque chip est *pondérée par les payouts restants à atteindre*. Plus tu te rapproches du dernier payé, plus les chips se redistribuent défensivement.
+
+</Prose>
+
+<SectionHeader num="04" label="Les patterns" title={<>Trois <em>signatures à mémoriser.</em></>} />
+
+<Formula>
+  <FormulaLabel>3-way équal (5000/5000/5000)</FormulaLabel> payouts 50/30/20 → ICM <K>33.3 / 33.3 / 33.3</K> <FormulaMuted>(moyenne des payouts)</FormulaMuted>
+  <br />
+  <FormulaLabel>3-way (5000/3000/2000)</FormulaLabel> → ICM <K>38.4 / 32.8 / 28.9</K> <FormulaMuted>(chip eq 50/30/20)</FormulaMuted>
+  <br />
+  <FormulaLabel>3-way leader (8000/1000/1000)</FormulaLabel> → ICM <K>45.8 / 27.1 / 27.1</K> <FormulaMuted>(chip eq 80/10/10)</FormulaMuted>
+  <br />
+  <FormulaLabel>Bulle 4-way (7000/5000/5000/1000)</FormulaLabel> → ICM <K>33.7 / 29.2 / 29.2 / 7.8</K> <FormulaMuted>(chip eq 38.9/27.8/27.8/5.6)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Le pattern clé : **le chip leader perd toujours à l&apos;ICM, le short stack gagne toujours**. Sur le 8000/1000/1000, le chipleader passe de 80 % de chip equity à 45.8 % d&apos;équité ICM — une perte de **34 points**. Sur la bulle, le short à 5.6 % de chip equity remonte à 7.8 % d&apos;équité ICM — un gain de 40 % de sa valeur nominale.
+
+</Prose>
+
+<SectionHeader num="05" label="Les pièges d'intuition" title={<>Trois <em>biais qui ruinent.</em></>} />
+
+<Prose>
+
+**Piège 1 — surestimer le chip leader.** *« J&apos;ai 50 % des chips, je vaux 50 %. »* Faux : plutôt 38-42 %. Ce biais te pousse à jouer trop loose en chipleader, à risquer trop pour des spots marginaux. Tu *crois* que tu domines, mais ton équité réelle est bien plus modeste.
+
+**Piège 2 — sous-estimer le short stack.** *« J&apos;ai 10 % des chips, je vaux 10 %. »* Faux : en bulle, tu vaux peut-être 18-25 %. Ce biais te pousse à pusher trop tôt, à brûler la fold equity passive que tu détiens *en étant simplement vivant*. Le short qui survit jusqu&apos;à la bulle a déjà beaucoup d&apos;équité — sa valeur est dans son existence, pas dans son agression.
+
+**Piège 3 — ignorer la structure de payouts.** Les payouts *flat* (satellite : 5 tickets égaux) et *steep* (winner-takes-all) produisent des équités ICM radicalement différentes pour les *mêmes* stacks. En satellite, ton chip leader vaut juste un peu plus qu&apos;un short ; en WTA, son chip equity = son équité $. Identifier la structure est non négociable avant tout calcul.
+
+</Prose>
+
+<Mnemonic keyText="Chips ≠ dollars">
+ICM le sait. La valeur affichée n&apos;est pas la valeur réelle. Ton intuition naïve te ment systématiquement : tu surestimes ton stack si tu es chipleader, tu sous-estimes si tu es short. La concavité corrige.
+</Mnemonic>
+
+<SectionHeader num="06" label="Pourquoi c'est crucial" title={<>Le pont vers <em>la décision.</em></>} />
+
+<Prose>
+
+En cash, tu joues pour **maximiser ton chip EV**. La métrique est simple : +EV en chips = +EV en $. En MTT, tu joues pour **maximiser ton $ EV**. Les deux divergent dès que tu approches les places payées, et la divergence explose en bulle et table finale.
+
+M4.1 est la fondation. C&apos;est l&apos;outil de calibration qui te permet de comparer chip EV et $ EV, et d&apos;internaliser à quel point ils peuvent s&apos;écarter. M4.2 te donnera le **bubble factor** (le multiplicateur de risque), M4.3 les **ajustements par position**, M4.4 la **table finale**. Sans M4.1, le reste flotte dans le vide.
+
+</Prose>
+
+<LifeLink title="L'utilité marginale décroissante.">
+
+En économie classique, la **loi de l&apos;utilité marginale décroissante** dit que la valeur d&apos;une unité supplémentaire d&apos;une ressource décroît avec sa quantité accumulée. Le millionième dollar vaut moins que le premier. Le dixième café de la journée vaut moins que le premier. C&apos;est *exactement* la même mathématique que l&apos;ICM.
+
+En business, en investissement, en gestion de risque : raisonner en **équité ajustée** (valeur réelle pondérée par les contraintes structurelles) plutôt qu&apos;en **quantité brute** (chips, cash, parts de marché brutes) sépare les opérateurs des amateurs. ICM est l&apos;école pratique de ce raisonnement : tu apprends à voir la valeur *réelle* derrière la valeur *nominale*.
+
+</LifeLink>

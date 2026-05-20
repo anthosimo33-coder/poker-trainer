@@ -67,8 +67,13 @@ const MODULES: ModuleDef[] = [
     badge: "M·IV",
     title: "ICM — bulle & table finale",
     desc: "Pondération Malmuth-Harville, bubble factor, payouts MTT",
-    available: false,
-    submodules: [],
+    available: true,
+    submodules: [
+      { slug: "m4.1", urlSlug: "m4-1", title: "Calcul équité ICM", available: true },
+      { slug: "m4.2", urlSlug: "m4-2", title: "Bubble factor et risk premium", available: false },
+      { slug: "m4.3", urlSlug: "m4-3", title: "Adjustments par position", available: false },
+      { slug: "m4.4", urlSlug: "m4-4", title: "Table finale ICM", available: false },
+    ],
   },
   {
     slug: "m5",

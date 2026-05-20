@@ -1,4 +1,5 @@
 import type { Card } from "@/lib/poker/cards";
+import type { ICMPlayer } from "@/lib/poker/icm";
 
 export interface PrecomputedM22Spot {
   id: string;
@@ -131,6 +132,40 @@ export interface PrecomputedM34Spot {
     evIf3Bet: number;
     evBb: number;
     realizationFactorUsed: number;
+  };
+}
+
+export interface PrecomputedM41Spot {
+  id: string;
+  /** Tous les joueurs en jeu (hero + adversaires). */
+  players: ICMPlayer[];
+  /** Identifiant de hero dans `players`. */
+  heroId: string;
+  /** Slug de la structure de payouts utilisée. */
+  payoutSlug: string;
+  /** Label lisible (dénormalisé). */
+  payoutLabel: string;
+  /** Payouts en % (dénormalisé). */
+  payouts: number[];
+  /** Description pédagogique du spot (ex. "Bulle 4 joueurs, tu es chipleader"). */
+  scenarioLabel: string;
+  /** Type de spot pour pédagogie. */
+  spotType:
+    | "equal-stacks"
+    | "chip-leader"
+    | "short-stack"
+    | "bubble"
+    | "final-table"
+    | "satellite";
+  expected: {
+    /** Équité ICM de hero en % du prizepool. */
+    heroEquityPercent: number;
+    /** Équité chip de hero en % du total chips (pour comparaison). */
+    heroChipEquityPercent: number;
+    /** Effet ICM : différence absolue entre chip equity et ICM equity (en pts %). */
+    icmEffect: number;
+    /** Équités ICM des autres joueurs. */
+    allEquities: Record<string, number>;
   };
 }
 

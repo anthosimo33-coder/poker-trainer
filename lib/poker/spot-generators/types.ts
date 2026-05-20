@@ -10,6 +10,7 @@ import type { PushFoldSpot } from "./m3-1-push-fold";
 import type { FoldEquitySpot } from "./m3-2-fold-equity";
 import type { MultiBranchSpot } from "./m3-3-multibranch";
 import type { CheckRaiseSpot } from "./m3-4-check-raise";
+import type { ICMSpot } from "./m4-1-icm";
 
 export type GenericSpot =
   | PotOddsSpot
@@ -23,7 +24,8 @@ export type GenericSpot =
   | PushFoldSpot
   | FoldEquitySpot
   | MultiBranchSpot
-  | CheckRaiseSpot;
+  | CheckRaiseSpot
+  | ICMSpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).

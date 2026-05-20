@@ -342,4 +342,30 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page.getByText(/P\(fold\)/i).first()).toBeVisible();
     await expect(page.getByText(/Equity vs call range/i).first()).toBeVisible();
   });
+
+  test("M4.1 — flow complet ICM avec saisie 1 champ équité $", async ({ page }) => {
+    await page.goto("/module/m4/theory/m4-1");
+    await expect(
+      page.getByText(/Calcul équité ICM|ICM/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    // Garde page-ready : attendre le modal avant de répondre.
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m4-1 : réponses correctes B, B, B.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m4-1/);
+    // Saisie 1 champ : équité ICM hero (en % du prizepool) (timeout : gate).
+    await expect(page.getByText(/Quelle est ton équité/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText(/Équité ICM hero/i).first()).toBeVisible();
+    await expect(page.getByText(/Chip equity hero/i)).toBeVisible();
+  });
 });

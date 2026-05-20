@@ -23,6 +23,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m3-2": () => import("@/content/theory/m3-2.mdx"),
   "m3-3": () => import("@/content/theory/m3-3.mdx"),
   "m3-4": () => import("@/content/theory/m3-4.mdx"),
+  "m4-1": () => import("@/content/theory/m4-1.mdx"),
 };
 
 function TheoryContent() {
@@ -568,6 +569,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "D",
       explanation: "Le realization factor postflop OOP est ~0.80 : tu ne réalises pas 100 % de ton equity parce que tu joues les rues suivantes les yeux bandés, et tu folderas certaines spots où ton set est encore favorite. 78 % × 0.80 = ~62 % d'equity *réalisée*. C'est la première différence majeure entre preflop (M·I-M·III) et postflop : equity ≠ realization.",
+    },
+  ],
+
+  "m4-1": [
+    {
+      question: "Pourquoi en MTT 1 chip ne vaut-il pas 1 unité de prizepool ?",
+      options: [
+        { letter: "A", text: "Parce que les chips ont une valeur fictive." },
+        { letter: "B", text: "Parce que la fonction stack → équité $ est concave : tu ne peux pas tout perdre (places payées) ni tout gagner (le 2ème prend une part). La valeur marginale décroît avec le stack." },
+        { letter: "C", text: "Parce que les payouts ne sont pas connus à l'avance." },
+        { letter: "D", text: "Parce que la variance brouille la valeur." },
+      ],
+      correctLetter: "B",
+      explanation: "La concavité est la propriété fondamentale de l'ICM. Plus tu accumules de chips, moins chaque chip supplémentaire vaut. Conséquence : le chip leader perd à l'ICM, le short stack gagne. C'est pourquoi 50 % des chips ≠ 50 % du prizepool.",
+    },
+    {
+      question: "3 joueurs, stacks égaux à 5000, payouts 50/30/20. Quelle est l'équité ICM de chacun ?",
+      options: [
+        { letter: "A", text: "50/30/20 (chip leader prend tout)" },
+        { letter: "B", text: "33.3 / 33.3 / 33.3 (avec stacks égaux, équité = moyenne des payouts)" },
+        { letter: "C", text: "50/50/0 (deux premiers seulement)" },
+        { letter: "D", text: "Impossible à dire sans plus d'info" },
+      ],
+      correctLetter: "B",
+      explanation: "Stacks égaux ⇒ chaque joueur a la même probabilité de finir à chaque position. Équité = (50 + 30 + 20) / 3 = 33.3 %. C'est le baseline : tout écart de cette valeur révèle le pouvoir prédictif de ton stack relatif.",
+    },
+    {
+      question: "Bulle 4 joueurs, 3 payés. Stacks : 8000 / 6000 / 5000 / 1000. Le short (1000 chips) a 5 % de chip equity. Quelle est probablement son équité ICM ?",
+      options: [
+        { letter: "A", text: "~5 % (égal à sa chip equity)" },
+        { letter: "B", text: "~15 % (significativement plus que sa chip equity, car la 3ème place lui est presque garantie)" },
+        { letter: "C", text: "~0 % (il va éliminer en bulle)" },
+        { letter: "D", text: "~25 % (équité égale parmi les payés)" },
+      ],
+      correctLetter: "B",
+      explanation: "L'effet ICM est le plus visible sur le short en bulle. Bien qu'il n'ait que 5 % des chips, sa probabilité de toucher la 3ème place (20 % du prizepool) est élevée. Son équité ICM est ~3-4× sa chip equity. C'est pourquoi pousher en short stack contre lui est coûteux en $ : il a déjà presque l'argent.",
     },
   ],
 };
