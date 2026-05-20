@@ -194,6 +194,109 @@ export function rangePercentage(notation: string): number {
 }
 
 /**
+ * Vérifie si une main spécifique est dans un range donné (notation).
+ * Hand format : 2 cartes (ex. ["As", "Kh"]). L'ordre des cartes n'importe pas.
+ */
+export function isInRange(hand: [Card, Card], rangeNotation: string): boolean {
+  const combos = parseRange(rangeNotation);
+  const handKey = [hand[0], hand[1]].sort().join("-");
+  for (const combo of combos) {
+    const comboKey = [combo[0], combo[1]].sort().join("-");
+    if (comboKey === handKey) return true;
+  }
+  return false;
+}
+
+export interface RangeMembership {
+  inRange: [Card, Card][];
+  outOfRange: [Card, Card][];
+  totalTested: number;
+  membershipPercentage: number;
+}
+
+/**
+ * Pour un set de hands testées, retourne lesquelles sont dans le range et
+ * lesquelles ne le sont pas.
+ */
+export function rangeMembership(
+  hands: [Card, Card][],
+  rangeNotation: string
+): RangeMembership {
+  const inRange: [Card, Card][] = [];
+  const outOfRange: [Card, Card][] = [];
+  for (const hand of hands) {
+    if (isInRange(hand, rangeNotation)) {
+      inRange.push(hand);
+    } else {
+      outOfRange.push(hand);
+    }
+  }
+  return {
+    inRange,
+    outOfRange,
+    totalTested: hands.length,
+    membershipPercentage:
+      hands.length > 0 ? (inRange.length / hands.length) * 100 : 0,
+  };
+}
+
+export interface NashComparison {
+  totalSpots: number;
+  correctChoices: number;
+  pushedButShouldFold: [Card, Card][];
+  foldedButShouldPush: [Card, Card][];
+  userPushPercentage: number;
+  nashPushPercentage: number;
+  /** userPush% - nashPush% (positif = over-push, négatif = under-push). */
+  signedRangeDelta: number;
+  accuracy: number;
+}
+
+/**
+ * Compare les choix du user à un range Nash de référence.
+ */
+export function compareToNash(
+  spots: Array<{ hand: [Card, Card]; userAction: "push" | "fold" }>,
+  nashRangeNotation: string
+): NashComparison {
+  let correct = 0;
+  const pushedButShouldFold: [Card, Card][] = [];
+  const foldedButShouldPush: [Card, Card][] = [];
+  let userPushCount = 0;
+  let nashPushCount = 0;
+
+  for (const spot of spots) {
+    const nashSaysPush = isInRange(spot.hand, nashRangeNotation);
+    if (nashSaysPush) nashPushCount++;
+    if (spot.userAction === "push") userPushCount++;
+
+    const correctChoice =
+      (spot.userAction === "push" && nashSaysPush) ||
+      (spot.userAction === "fold" && !nashSaysPush);
+    if (correctChoice) {
+      correct++;
+    } else if (spot.userAction === "push" && !nashSaysPush) {
+      pushedButShouldFold.push(spot.hand);
+    } else {
+      foldedButShouldPush.push(spot.hand);
+    }
+  }
+
+  const total = spots.length;
+  return {
+    totalSpots: total,
+    correctChoices: correct,
+    pushedButShouldFold,
+    foldedButShouldPush,
+    userPushPercentage: total > 0 ? (userPushCount / total) * 100 : 0,
+    nashPushPercentage: total > 0 ? (nashPushCount / total) * 100 : 0,
+    signedRangeDelta:
+      total > 0 ? ((userPushCount - nashPushCount) / total) * 100 : 0,
+    accuracy: total > 0 ? (correct / total) * 100 : 0,
+  };
+}
+
+/**
  * Convertit le range en grille 13×13 (true = main dans le range).
  * Diagonale = paires ; au-dessus = suited ; en-dessous = offsuit.
  */

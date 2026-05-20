@@ -23,6 +23,7 @@ import type { ICMSpot } from "@/lib/poker/spot-generators/m4-1-icm";
 import type { BubbleFactorSpot } from "@/lib/poker/spot-generators/m4-2-bubble-factor";
 import type { PositionBubbleFactorSpot } from "@/lib/poker/spot-generators/m4-3-position-bf";
 import type { FinalTableSpot } from "@/lib/poker/spot-generators/m4-4-final-table";
+import type { NashPushSpot } from "@/lib/poker/spot-generators/m5-1-nash-push";
 import { RangeDisplay } from "@/components/poker/RangeDisplay";
 import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
@@ -62,6 +63,7 @@ interface UserAnswer {
   bfBaseInput: string;
   bfAdjustedInput: string;
   equityIcmFtInput: string;
+  nashActionInput: "push" | "fold" | null;
   decision: Decision;
 }
 
@@ -88,6 +90,7 @@ const EMPTY_ANSWER: UserAnswer = {
   bfBaseInput: "",
   bfAdjustedInput: "",
   equityIcmFtInput: "",
+  nashActionInput: null,
   decision: null,
 };
 
@@ -139,9 +142,21 @@ function isMultiway(s: GenericSpot): s is MultiwaySpot {
 function isVsRange(s: GenericSpot): s is VsRangeSpot {
   return "villainRangeNotation" in s && s.submoduleSlug === "m2.4";
 }
+// NashPushSpot (M5.1) : discriminé par `nashAction` dans expected + submoduleSlug.
+// Testé EN PREMIER. Ordre complet :
+// isNashPush → isFinalTable → isPositionBubbleFactor → isBubbleFactor → isICM →
+// isCheckRaise → isFoldEquity → isMultiBranch → isPushFold → isVsRange →
+// isMultiway → isEquity → isOuts → isImplied.
+function isNashPush(s: GenericSpot): s is NashPushSpot {
+  // PotOddsSpot (m1.1) n'a pas `submoduleSlug`. On vérifie d'abord la présence
+  // de `category` (unique à NashPushSpot dans GenericSpot), puis `submoduleSlug`.
+  return (
+    "category" in s &&
+    "submoduleSlug" in s &&
+    (s as NashPushSpot).submoduleSlug === "m5.1"
+  );
+}
 // FinalTableSpot (M4.4) : discriminé par `payoutSpread` + submoduleSlug.
-// Testé EN PREMIER (le plus spécifique). Ordre complet :
-// isFinalTable → isPositionBubbleFactor → isBubbleFactor → isICM → isCheckRaise → ...
 function isFinalTable(s: GenericSpot): s is FinalTableSpot {
   return "payoutSpread" in s && s.submoduleSlug === "m4.4";
 }
@@ -738,6 +753,34 @@ function gradeM44(
   return { isCorrect, level, signedError, errorColor, errorLabel, truePct };
 }
 
+// ---- M5.1 — Nash push range : scoring binaire (push/fold correct ou non) ----
+function gradeM51(
+  userAction: "push" | "fold",
+  spot: NashPushSpot
+): {
+  isCorrect: boolean;
+  level: EquityLevel;
+  signedError: number; // +1 = over-push, -1 = under-push, 0 = correct
+  errorColor: string;
+  errorLabel: string;
+  nashAction: "push" | "fold";
+} {
+  const nashAction = spot.expected.nashAction;
+  const isCorrect = userAction === nashAction;
+  let signedError = 0;
+  if (!isCorrect) {
+    signedError = userAction === "push" ? 1 : -1;
+  }
+  const level: EquityLevel = isCorrect ? "excellent" : "faux";
+  const errorColor: string = isCorrect ? "var(--green)" : "var(--red)";
+  const errorLabel = isCorrect
+    ? `Correct (Nash : ${nashAction})`
+    : userAction === "push"
+    ? "Sur-push (Nash dit fold)"
+    : "Sous-push (Nash dit push)";
+  return { isCorrect, level, signedError, errorColor, errorLabel, nashAction };
+}
+
 interface CorrStep {
   num: string;
   label: string;
@@ -763,6 +806,7 @@ const SUBMODULE_TITLES: Record<string, string> = {
   "m4.2": "Bubble factor et risk premium · Sous-module 2",
   "m4.3": "Adjustments par position · Sous-module 3",
   "m4.4": "Table finale ICM · Sous-module 4",
+  "m5.1": "SB push range Nash sub-15bb · Sous-module 1",
 };
 
 const MODULE_ROMAN: Record<string, string> = {
@@ -774,6 +818,9 @@ const MODULE_ROMAN: Record<string, string> = {
 };
 
 function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
+  if (isNashPush(spot)) {
+    return a.nashActionInput !== null;
+  }
   if (isFinalTable(spot)) {
     return parseAnswerNumber(a.equityIcmFtInput) !== null;
   }
@@ -846,6 +893,10 @@ function canValidate(spot: GenericSpot, a: UserAnswer): boolean {
 }
 
 function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: CorrStep[] } {
+  if (isNashPush(spot)) {
+    if (a.nashActionInput === null) return { isCorrect: false, steps: [] };
+    return { isCorrect: gradeM51(a.nashActionInput, spot).isCorrect, steps: [] };
+  }
   if (isFinalTable(spot)) {
     const eq = parseAnswerNumber(a.equityIcmFtInput);
     if (eq === null) return { isCorrect: false, steps: [] };
@@ -1182,6 +1233,7 @@ function grade(spot: GenericSpot, a: UserAnswer): { isCorrect: boolean; steps: C
 function actionFor(spot: GenericSpot): ReactNode {
   // EquitySpot/OutsSpot ont leur énoncé rendu inline (jamais via actionFor) ;
   // ces gardes assurent la totalité de type (pas de potBb ni positions).
+  if (isNashPush(spot)) return null;
   if (isFinalTable(spot)) return null;
   if (isPositionBubbleFactor(spot)) return null;
   if (isBubbleFactor(spot)) return null;
@@ -1388,7 +1440,12 @@ function DrillContent() {
     // Erreur signée (calibration tracking) : pour M2.1, écart estimation
     // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
     let signedError: number | undefined;
-    if (isFinalTable(spot)) {
+    if (isNashPush(spot)) {
+      // signedError = +1 (over-push) / -1 (under-push) / 0 (correct)
+      if (answer.nashActionInput !== null) {
+        signedError = gradeM51(answer.nashActionInput, spot).signedError;
+      }
+    } else if (isFinalTable(spot)) {
       // signedError = erreur d'équité ICM en pts %.
       const eq = parseAnswerNumber(answer.equityIcmFtInput);
       if (eq !== null) {
@@ -1520,7 +1577,9 @@ function DrillContent() {
       </div>
 
       <div className="grid grid-cols-[1.3fr_1fr] gap-8">
-        {isFinalTable(spot) ? (
+        {isNashPush(spot) ? (
+          <NashPushTable spot={spot} />
+        ) : isFinalTable(spot) ? (
           <FinalTableTable spot={spot} />
         ) : isPositionBubbleFactor(spot) ? (
           <PositionBubbleFactorTable spot={spot} />
@@ -1654,6 +1713,93 @@ function AnswerPanel({
   canSubmit: boolean;
   onValidate: () => void;
 }) {
+  // M5.1 — UX binaire : 2 boutons Push / Fold (pas de saisie numérique).
+  if (isNashPush(spot)) {
+    const chosen = answer.nashActionInput;
+    return (
+      <div
+        className="rounded-xl p-7 flex flex-col"
+        style={{ background: "var(--surface)", border: "0.5px solid var(--border)" }}
+      >
+        <div
+          className="text-[11px] font-mono uppercase tracking-wider mb-2"
+          style={{ color: "var(--purple-300)" }}
+        >
+          ◆ Décision binaire — Nash range
+        </div>
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-2">
+          Push ou fold ?
+        </h2>
+        <p className="text-[13px] text-text-muted mb-6 leading-[1.55]">
+          Tu es SB avec <strong className="text-text">{spot.heroStack} bb</strong>.
+          Vilain BB (Nash). Pas de saisie — juste choisir entre les deux actions
+          mémorisées.
+        </p>
+        <div className="flex flex-col gap-3 mb-2">
+          <button
+            onClick={() => setAnswer({ ...answer, nashActionInput: "push" })}
+            className="rounded p-5 text-left transition-all duration-200 hover:-translate-y-px"
+            style={{
+              background:
+                chosen === "push" ? "var(--purple-glow)" : "var(--surface-strong)",
+              border: `0.5px solid ${
+                chosen === "push" ? "var(--purple-400)" : "var(--border)"
+              }`,
+              color: chosen === "push" ? "var(--text)" : "var(--text-muted)",
+              boxShadow:
+                chosen === "push"
+                  ? "0 0 0 0.5px var(--purple-400), 0 0 16px var(--purple-glow)"
+                  : "none",
+            }}
+          >
+            <div className="text-xl font-bold tracking-[-0.02em]">PUSH</div>
+            <div className="text-[11px] font-mono text-text-faint mt-1">
+              All-in {spot.heroStack} bb
+            </div>
+          </button>
+          <button
+            onClick={() => setAnswer({ ...answer, nashActionInput: "fold" })}
+            className="rounded p-5 text-left transition-all duration-200 hover:-translate-y-px"
+            style={{
+              background:
+                chosen === "fold" ? "var(--purple-glow)" : "var(--surface-strong)",
+              border: `0.5px solid ${
+                chosen === "fold" ? "var(--purple-400)" : "var(--border)"
+              }`,
+              color: chosen === "fold" ? "var(--text)" : "var(--text-muted)",
+              boxShadow:
+                chosen === "fold"
+                  ? "0 0 0 0.5px var(--purple-400), 0 0 16px var(--purple-glow)"
+                  : "none",
+            }}
+          >
+            <div className="text-xl font-bold tracking-[-0.02em]">FOLD</div>
+            <div className="text-[11px] font-mono text-text-faint mt-1">
+              Abandonner les blinds (−0.5 bb)
+            </div>
+          </button>
+        </div>
+        <div className="mt-auto pt-6 flex gap-2.5">
+          <button
+            onClick={onValidate}
+            disabled={!canSubmit}
+            className={cn(
+              "flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200",
+              canSubmit ? "hover:-translate-y-px" : "opacity-40 cursor-not-allowed"
+            )}
+            style={{
+              background: "var(--purple-500)",
+              border: "0.5px solid var(--purple-500)",
+              boxShadow: canSubmit ? "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)" : "none",
+            }}
+          >
+            Valider la réponse →
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // M4.4 — saisie 1 champ : équité ICM hero en FT.
   if (isFinalTable(spot)) {
     const eq = parseAnswerNumber(answer.equityIcmFtInput);
@@ -2669,6 +2815,9 @@ function CorrectionPanel({
   answer: UserAnswer;
   onNext: () => void;
 }) {
+  if (isNashPush(spot)) {
+    return <NashPushCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
+  }
   if (isFinalTable(spot)) {
     return <FinalTableCorrectionPanel spot={spot} answer={answer} onNext={onNext} />;
   }
@@ -4977,6 +5126,139 @@ function FinalTableCorrectionPanel({
             ? " (le chip leader perd à l'ICM)"
             : " (le short gagne à l'ICM)"}.
         </span>
+      </div>
+
+      <div className="mt-auto pt-6 flex gap-2.5">
+        <button
+          onClick={onNext}
+          className="flex-1 px-5 py-3 rounded text-[13px] font-medium tracking-[-0.01em] text-white transition-all duration-200 hover:-translate-y-px"
+          style={{
+            background: "var(--purple-500)",
+            border: "0.5px solid var(--purple-500)",
+            boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+          }}
+        >
+          Spot suivant →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ===== M5.1 — table Nash push (hero cards + stack + SB vs BB) =====
+function NashPushTable({ spot }: { spot: NashPushSpot }) {
+  return (
+    <div
+      className="relative rounded-xl overflow-hidden p-7"
+      style={{
+        background: "linear-gradient(180deg, #0F1815 0%, #0A1410 100%)",
+        border: "0.5px solid var(--border-strong)",
+        boxShadow: "inset 0 0 60px rgba(0,0,0,0.4)",
+      }}
+    >
+      <div className="absolute inset-3 rounded-2xl pointer-events-none" style={{ border: "0.5px solid rgba(255,255,255,0.04)" }} />
+      <div className="relative z-10 flex justify-between items-center mb-6">
+        <div
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs"
+          style={{ background: "var(--surface)", border: "0.5px solid var(--border)", color: "var(--text-muted)" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--purple-400)", boxShadow: "0 0 0 3px var(--purple-glow)" }} />
+          Nash push range · sub-15bb
+        </div>
+        <div className="text-xs font-mono text-text-faint">SB push first vs BB</div>
+      </div>
+
+      <div className="mb-7">
+        <div className="font-mono uppercase tracking-wider text-text-faint mb-2.5" style={{ fontSize: 10, letterSpacing: "0.08em" }}>
+          Ta main
+        </div>
+        <div className="flex gap-2">
+          {spot.heroCards.map((c, i) => (
+            <PlayingCard key={`h-${c}-${i}`} card={c} dealDelayMs={i * 80} />
+          ))}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-2 mb-6">
+        <PfInfo label="Position" value="SB" />
+        <PfInfo label="Stack" value={`${spot.heroStack} bb`} />
+        <PfInfo label="Vilain" value="BB" />
+        <PfInfo label="Pot avant" value={`${spot.potBefore} bb`} />
+      </div>
+
+      <div className="rounded p-5" style={{ background: "rgba(0,0,0,0.3)", border: "0.5px solid var(--border)" }}>
+        <div className="text-text mb-2" style={{ fontSize: 15, lineHeight: 1.55 }}>
+          <BetTag>{spot.scenarioLabel}</BetTag>
+        </div>
+        <div className="text-text-muted" style={{ fontSize: 13 }}>
+          Tu es SB avec <strong className="text-text">{spot.heroStack} bb</strong>.
+          Vilain BB joue Nash. Push ou fold ? <em>Pas de saisie — c&apos;est mémorisation.</em>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ===== M5.1 — correction Nash push (court, montre simplement le verdict + range) =====
+function NashPushCorrectionPanel({
+  spot,
+  answer,
+  onNext,
+}: {
+  spot: NashPushSpot;
+  answer: UserAnswer;
+  onNext: () => void;
+}) {
+  if (answer.nashActionInput === null) {
+    return null;
+  }
+  const g = gradeM51(answer.nashActionInput, spot);
+  const handStr = spot.heroCards.join(" ");
+  return (
+    <div
+      className="rounded-xl p-7 flex flex-col"
+      style={{ background: "var(--surface)", border: `0.5px solid ${g.errorColor}` }}
+    >
+      <div className="text-[11px] font-mono uppercase tracking-wider mb-2" style={{ color: g.errorColor }}>
+        ◆ {g.isCorrect ? "Correct" : "Incorrect"}
+      </div>
+      <h2 className="text-2xl font-semibold tracking-[-0.025em] leading-tight mb-6">
+        {g.errorLabel}
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: "0.5px solid var(--border)" }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Ton choix</div>
+          <div className="text-2xl font-semibold font-mono leading-none uppercase">
+            {answer.nashActionInput}
+          </div>
+        </div>
+        <div className="rounded p-4" style={{ background: "var(--surface-strong)", border: `0.5px solid ${g.errorColor}` }}>
+          <div className="text-[10px] font-mono uppercase tracking-wider text-text-faint mb-1.5">Nash</div>
+          <div className="text-2xl font-semibold font-mono leading-none uppercase" style={{ color: g.errorColor }}>
+            {g.nashAction}
+          </div>
+        </div>
+      </div>
+
+      <FormulaBox>
+        <Lbl>Hero</Lbl> <Mono>{handStr}</Mono> ·{" "}
+        <Mono>SB {spot.heroStack}bb</Mono>
+        <br />
+        <Lbl>Main dans range Nash</Lbl>{" "}
+        <Mono className={spot.expected.handInRange ? "!text-green-400" : "!text-red"}>
+          {spot.expected.handInRange ? "OUI (push)" : "NON (fold)"}
+        </Mono>
+        <br />
+        <Lbl>Range Nash {spot.heroStack}bb</Lbl>
+        <br />
+        <span className="text-[12px] text-text-muted leading-[1.7]">
+          {spot.expected.nashRangeNotation}
+        </span>
+      </FormulaBox>
+
+      <div className="mt-4">
+        <RangeDisplay notation={spot.expected.nashRangeNotation} />
       </div>
 
       <div className="mt-auto pt-6 flex gap-2.5">

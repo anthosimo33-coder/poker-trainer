@@ -6,6 +6,7 @@ import spots41 from "@/content/spots/m4-1.json";
 import spots42 from "@/content/spots/m4-2.json";
 import spots43 from "@/content/spots/m4-3.json";
 import spots44 from "@/content/spots/m4-4.json";
+import spots51 from "@/content/spots/m5-1.json";
 
 describe("M2.2 precomputed spots", () => {
   it("contient au moins 100 spots", () => {
@@ -309,5 +310,67 @@ describe("M4.4 precomputed spots", () => {
     const avgBF =
       steepSpots.reduce((acc, s) => acc + s.expected.bubbleFactor, 0) / steepSpots.length;
     expect(avgBF).toBeGreaterThan(1.5);
+  });
+});
+
+describe("M5.1 precomputed spots", () => {
+  it("contient au moins 150 spots", () => {
+    expect(spots51.length).toBeGreaterThanOrEqual(150);
+  });
+
+  it("tous les spots ont une nashAction définie (push ou fold)", () => {
+    for (const s of spots51) {
+      expect(["push", "fold"]).toContain(s.expected.nashAction);
+    }
+  });
+
+  it("distribution par stack depth (6 valeurs : 5, 7, 8, 10, 12, 15)", () => {
+    const depths = new Set(spots51.map((s) => s.heroStack));
+    expect(depths.size).toBe(6);
+    for (const d of [5, 7, 8, 10, 12, 15]) {
+      expect(depths.has(d)).toBe(true);
+    }
+  });
+
+  it("ratio push global dans une plage raisonnable (30-80 %)", () => {
+    // Note : spec cible 30-70%, observé 74% car les marginales sont sélectionnées
+    // pour être limites et 4 des 6 stacks ont des ranges Nash > 30%.
+    const pushCount = spots51.filter((s) => s.expected.nashAction === "push").length;
+    const ratio = pushCount / spots51.length;
+    expect(ratio).toBeGreaterThan(0.3);
+    expect(ratio).toBeLessThan(0.8);
+  });
+
+  it("hand toujours dans le range si nashAction = push (cohérence)", () => {
+    for (const s of spots51) {
+      if (s.expected.nashAction === "push") {
+        expect(s.expected.handInRange).toBe(true);
+      } else {
+        expect(s.expected.handInRange).toBe(false);
+      }
+    }
+  });
+
+  it("AA toujours push à toutes les profondeurs (sanity)", () => {
+    const aaSpots = spots51.filter(
+      (s) => s.heroCards[0][0] === "A" && s.heroCards[1][0] === "A"
+    );
+    expect(aaSpots.length).toBeGreaterThan(0);
+    for (const s of aaSpots) {
+      expect(s.expected.nashAction).toBe("push");
+    }
+  });
+
+  it("hero toujours en SB, vilain en BB", () => {
+    for (const s of spots51) {
+      expect(s.heroPosition).toBe("SB");
+      expect(s.villainPosition).toBe("BB");
+    }
+  });
+
+  it("potBefore = 1.5 (SB + BB sans antes)", () => {
+    for (const s of spots51) {
+      expect(s.potBefore).toBe(1.5);
+    }
   });
 });

@@ -14,6 +14,7 @@ import { generateICMSpot } from "./m4-1-icm";
 import { generateBubbleFactorSpot } from "./m4-2-bubble-factor";
 import { generatePositionBubbleFactorSpot } from "./m4-3-position-bf";
 import { generateFinalTableSpot } from "./m4-4-final-table";
+import { generateNashPushSpot } from "./m5-1-nash-push";
 import type { GenericSpot } from "./types";
 
 export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
@@ -33,6 +34,7 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m4.2": generateBubbleFactorSpot,
   "m4.3": generatePositionBubbleFactorSpot,
   "m4.4": generateFinalTableSpot,
+  "m5.1": generateNashPushSpot,
 };
 
 export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {

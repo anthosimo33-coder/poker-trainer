@@ -38,6 +38,7 @@
     "precompute:m4-2": "tsx scripts/precompute-m4-2.ts",
     "precompute:m4-3": "tsx scripts/precompute-m4-3.ts",
     "precompute:m4-4": "tsx scripts/precompute-m4-4.ts",
+    "precompute:m5-1": "tsx scripts/precompute-m5-1.ts",
     "screenshots:s6d": "tsx scripts/screenshots-s6d.ts",
     "screenshots:s7a": "tsx scripts/screenshots-s7a.ts",
     "screenshots:s7b": "tsx scripts/screenshots-s7b.ts",
@@ -45,6 +46,7 @@
     "screenshots:s8a": "tsx scripts/screenshots-s8a.ts",
     "screenshots:s8b": "tsx scripts/screenshots-s8b.ts",
     "screenshots:s8c": "tsx scripts/screenshots-s8c.ts",
+    "screenshots:s9a": "tsx scripts/screenshots-s9a.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {

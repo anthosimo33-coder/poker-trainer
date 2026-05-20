@@ -257,6 +257,25 @@ export interface PrecomputedM44Spot {
   };
 }
 
+export interface PrecomputedM51Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: "SB";
+  villainPosition: "BB";
+  /** Stack effectif en bb (5, 7, 8, 10, 12, 15). */
+  heroStack: number;
+  villainStack: number;
+  /** Pot avant push (SB + BB blinds). */
+  potBefore: number;
+  scenarioLabel: string;
+  category: "obvious-push" | "obvious-fold" | "marginal-push" | "marginal-fold";
+  expected: {
+    nashAction: "push" | "fold";
+    nashRangeNotation: string;
+    handInRange: boolean;
+  };
+}
+
 export interface PrecomputedM33Spot {
   id: string;
   heroCards: [Card, Card];

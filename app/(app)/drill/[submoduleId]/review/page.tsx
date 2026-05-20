@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useMemo } from "react";
 import { useSearchParams, useParams } from "next/navigation";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -9,12 +9,18 @@ import Link from "next/link";
 import { fmtPercent } from "@/lib/utils";
 import { fmtDuration } from "@/lib/format";
 import { urlSlugToDbSlug } from "@/lib/slug";
+import {
+  NashRangeReview,
+  type SpotResult,
+} from "@/components/poker/NashRangeReview";
+import type { Card } from "@/lib/poker/cards";
 
 const SUBMODULE_TITLES: Record<string, string> = {
   "m1.1": "Pot odds · Sous-module 1",
   "m1.2": "Conversion ratio ↔ % · Sous-module 2",
   "m1.3": "Cotes implicites · Sous-module 3",
   "m1.4": "Reverse implied odds · Sous-module 4",
+  "m5.1": "SB push range Nash · Sous-module 1",
 };
 
 function ReviewContent() {
@@ -24,6 +30,42 @@ function ReviewContent() {
   const search = useSearchParams();
   const sessionId = search.get("session") as Id<"sessions"> | null;
   const data = useQuery(api.sessions.getSessionWithSpots, sessionId ? { sessionId } : "skip");
+
+  // M5.1 — grouper les attempts par stack depth pour rendre une NashRangeReview
+  // par groupe. Doit être appelé AVANT tout early return (règle des hooks).
+  const m51Groups = useMemo(() => {
+    if (dbSubmoduleSlug !== "m5.1" || !data) return null;
+    const groups: Record<number, { notation: string; results: SpotResult[] }> = {};
+    for (const a of data.attempts) {
+      const snap = a.spotSnapshot as unknown as
+        | {
+            heroCards?: [Card, Card];
+            heroStack?: number;
+            expected?: { nashRangeNotation?: string };
+          }
+        | undefined;
+      const userAns = a.userAnswer as unknown as
+        | { nashActionInput?: "push" | "fold" }
+        | undefined;
+      if (
+        !snap?.heroCards ||
+        !snap?.heroStack ||
+        !snap?.expected?.nashRangeNotation ||
+        !userAns?.nashActionInput
+      ) {
+        continue;
+      }
+      const stack = snap.heroStack;
+      if (!groups[stack]) {
+        groups[stack] = { notation: snap.expected.nashRangeNotation, results: [] };
+      }
+      groups[stack].results.push({
+        hand: snap.heroCards,
+        userAction: userAns.nashActionInput,
+      });
+    }
+    return groups;
+  }, [data, dbSubmoduleSlug]);
 
   if (!sessionId) {
     return (
@@ -66,7 +108,7 @@ function ReviewContent() {
           {session.correctSpots} sur {session.totalSpots} réussis.
         </h1>
         <p className="text-base text-text-muted max-w-[540px]">
-          Module I · {SUBMODULE_TITLES[dbSubmoduleSlug] ?? dbSubmoduleSlug}
+          {SUBMODULE_TITLES[dbSubmoduleSlug] ?? dbSubmoduleSlug}
         </p>
       </header>
 
@@ -76,6 +118,28 @@ function ReviewContent() {
         <ReviewMetric label="Ratés à re-drill" value={String(ratedAttempts.length)} color={ratedAttempts.length > 0 ? "var(--amber)" : "var(--green)"} />
       </section>
 
+      {m51Groups && Object.keys(m51Groups).length > 0 && (
+        <section className="mb-12">
+          <div className="flex justify-between items-center mb-5">
+            <span className="text-sm font-mono uppercase tracking-wider text-text-muted">
+              Calibration Nash par stack depth
+            </span>
+          </div>
+          <div className="flex flex-col gap-6">
+            {Object.entries(m51Groups)
+              .sort(([a], [b]) => Number(a) - Number(b))
+              .map(([stack, group]) => (
+                <NashRangeReview
+                  key={stack}
+                  results={group.results}
+                  nashRangeNotation={group.notation}
+                  stackDepth={Number(stack)}
+                />
+              ))}
+          </div>
+        </section>
+      )}
+
       <div className="flex justify-between items-center mb-5">
         <span className="text-sm font-mono uppercase tracking-wider text-text-muted">
           Détail des spots
@@ -83,28 +147,43 @@ function ReviewContent() {
       </div>
 
       <section className="flex flex-col gap-2 mb-12">
-        {attempts.map((att, i) => (
-          <div
-            key={att._id}
-            className="grid items-center gap-4 px-5 py-4 rounded-lg"
-            style={{ gridTemplateColumns: "32px 60px 1fr auto", background: "var(--surface)", border: "0.5px solid var(--border)" }}
-          >
-            <span className="font-mono text-xs text-text-faint">{String(i + 1).padStart(2, "0")}</span>
-            <span
-              className="text-xs font-medium px-2 py-1 rounded text-center"
-              style={{
-                background: att.isCorrect ? "var(--green-glow)" : "var(--red-glow)",
-                color: att.isCorrect ? "var(--green)" : "var(--red)",
-              }}
+        {attempts.map((att, i) => {
+          const snap = att.spotSnapshot as unknown as
+            | { potBb?: number; betBb?: number; heroStack?: number; heroCards?: [Card, Card] }
+            | undefined;
+          const exp = att.expected as unknown as
+            | { requiredEquity?: number; nashAction?: "push" | "fold" }
+            | undefined;
+          const userAns = att.userAnswer as unknown as
+            | { nashActionInput?: "push" | "fold" }
+            | undefined;
+          // M5.1 : affichage spécifique (main + stack + action)
+          const isM51Spot = exp?.nashAction !== undefined;
+          return (
+            <div
+              key={att._id}
+              className="grid items-center gap-4 px-5 py-4 rounded-lg"
+              style={{ gridTemplateColumns: "32px 60px 1fr auto", background: "var(--surface)", border: "0.5px solid var(--border)" }}
             >
-              {att.isCorrect ? "✓ OK" : "✗ KO"}
-            </span>
-            <span className="text-sm text-text-muted">
-              Pot {att.spotSnapshot?.potBb}bb · bet {att.spotSnapshot?.betBb}bb · attendu {fmtPercent(att.expected?.requiredEquity ?? 0)}
-            </span>
-            <span className="text-xs font-mono text-text-faint">{fmtDuration(att.timeMs)}</span>
-          </div>
-        ))}
+              <span className="font-mono text-xs text-text-faint">{String(i + 1).padStart(2, "0")}</span>
+              <span
+                className="text-xs font-medium px-2 py-1 rounded text-center"
+                style={{
+                  background: att.isCorrect ? "var(--green-glow)" : "var(--red-glow)",
+                  color: att.isCorrect ? "var(--green)" : "var(--red)",
+                }}
+              >
+                {att.isCorrect ? "✓ OK" : "✗ KO"}
+              </span>
+              <span className="text-sm text-text-muted">
+                {isM51Spot && snap?.heroCards
+                  ? `${snap.heroCards.join(" ")} · ${snap.heroStack}bb SB · toi : ${userAns?.nashActionInput?.toUpperCase() ?? "—"} · Nash : ${exp?.nashAction?.toUpperCase()}`
+                  : `Pot ${snap?.potBb}bb · bet ${snap?.betBb}bb · attendu ${fmtPercent(exp?.requiredEquity ?? 0)}`}
+              </span>
+              <span className="text-xs font-mono text-text-faint">{fmtDuration(att.timeMs)}</span>
+            </div>
+          );
+        })}
       </section>
 
       <div className="flex gap-3">

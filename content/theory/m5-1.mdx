@@ -1,0 +1,137 @@
+---
+slug: m5-1
+moduleSlug: m5
+submoduleSlug: m5.1
+title: SB push range Nash sub-15bb
+subtitle: Sub-15bb, le poker devient des mathématiques.
+order: 1
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module V · Sous-module 1 / 4
+  </div>
+
+# SB push range Nash sub-15bb.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Sub-15bb, le poker devient des mathématiques.</em> Le jeu push/fold est résolu — il existe pour chaque stack un range optimal qui s&apos;exécute sans réfléchir. Ton travail : le mémoriser.
+</p>
+</div>
+
+<WhyBlock title="Sub-15bb, le poker devient des mathématiques.">
+
+À 100bb, le poker est un jeu d&apos;inférence sur 100+ rues hypothétiques — c&apos;est un *art*. À 10bb, c&apos;est binaire : push ou fold. Cette simplicité radicale permet aux solvers de calculer des **équilibres de Nash exacts**.
+
+Apprendre ces ranges, c&apos;est mémoriser la vérité mathématique du jeu court — la seule où l&apos;intuition ne suffit plus, mais où la mémoire suffit. Tu n&apos;as pas besoin de comprendre *pourquoi* A8o push à 10bb : tu dois savoir qu&apos;il push, point.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Pourquoi Nash existe à court stack" title={<>L&apos;arbre <em>de décision réduit.</em></>} />
+
+<Prose>
+
+Le jeu push/fold a une structure minimale : 2 décisions pour SB (push ou fold), 2 pour BB (call ou fold). L&apos;espace de stratégies est trivial. Un solver trouve l&apos;équilibre exact en quelques itérations.
+
+À 100bb, chaque street ajoute des sizings, des bluffs, des semi-bluffs, des floats. L&apos;arbre devient exponentiel et même les solvers modernes (GTO+, PioSolver) atteignent leurs limites. Le poker complet *n&apos;est pas* mathématiquement résolu — sauf à sub-15bb. C&apos;est pourquoi M·V existe en module séparé.
+
+</Prose>
+
+<SectionHeader num="02" label="Le format Nash SB vs BB" title={<>Un <em>équilibre circulaire.</em></>} />
+
+<Prose>
+
+Le scénario standard : SB première décision (push first), BB répond (call ou fold). Si SB push, BB compare son équité vs le range push SB connu et décide. Si SB fold, il perd ses blinds.
+
+</Prose>
+
+<Formula>
+  <FormulaLabel>Range Nash SB push</FormulaLabel> mains pour lesquelles push est +EV étant donné le call range Nash BB
+  <br />
+  <FormulaLabel>Range Nash BB call</FormulaLabel> mains pour lesquelles call est +EV étant donné le push range Nash SB
+  <FormulaMuted>C&apos;est circulaire — mais l&apos;équilibre est unique. Le solver itère jusqu&apos;à convergence.</FormulaMuted>
+</Formula>
+
+<SectionHeader num="03" label="Les patterns par stack" title={<>Six <em>profondeurs canoniques.</em></>} />
+
+<Formula>
+  <FormulaLabel>5 bb</FormulaLabel> <K>~76 %</K> du deck <FormulaMuted>(quasi any-two, push aggressif)</FormulaMuted>
+  <br />
+  <FormulaLabel>7 bb</FormulaLabel> <K>~51 %</K>
+  <br />
+  <FormulaLabel>8 bb</FormulaLabel> <K>~41 %</K>
+  <br />
+  <FormulaLabel>10 bb</FormulaLabel> <K>~33 %</K> <FormulaMuted>(référence à mémoriser en premier)</FormulaMuted>
+  <br />
+  <FormulaLabel>12 bb</FormulaLabel> <K>~25 %</K>
+  <br />
+  <FormulaLabel>15 bb</FormulaLabel> <K>~18 %</K> <FormulaMuted>(range premium-ish)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Plus la stack est courte, plus on push large parce que :
+- **La fold equity reste élevée** : BB doit risquer son stack avec une équité requise haute (le call coûte ~50 % de son stack à 5bb push).
+- **Notre equity réalisée ≈ equity brute** : pas de jeu postflop pour fold les bad runouts.
+
+Plus la stack monte, plus BB peut caller serré et nous attendre avec une main forte. La fold equity baisse, les mains marginales perdent leur edge, le range push se resserre.
+
+</Prose>
+
+<SectionHeader num="04" label="Les mains piliers" title={<>À <em>mémoriser en priorité.</em></>} />
+
+<Formula>
+  <FormulaLabel>Toujours push (≥ 5bb)</FormulaLabel> 22+, A2s+, A2o+, KQo, KJo, KTs+
+  <br />
+  <FormulaLabel>Push à partir de 10bb</FormulaLabel> 22+, A2s+, K8s+, Q9s+, J9s+, A8o+, KTo+
+  <br />
+  <FormulaLabel>Push à 15bb (premium uniquement)</FormulaLabel> 22+, A4s+, K9s+, AJo+, KQo
+</Formula>
+
+<Prose>
+
+Le range 10bb est le point d&apos;ancrage à mémoriser en premier — c&apos;est le push le plus fréquent en pratique (bulle SnG, MTT tard). Les autres se déduisent par comparaison : plus court → ajoute des marginales, plus profond → enlève les marginales.
+
+</Prose>
+
+<SectionHeader num="05" label="Les seuils non-intuitifs" title={<>Cinq <em>pièges fréquents.</em></>} />
+
+<Prose>
+
+**A2o** : push à 10bb mais fold à 15bb (perte de fold equity sur la transition).
+
+**KJo** : push à 12bb mais fold à 15bb (le BB call avec KQ, AJ, AQ).
+
+**22-44** : push à toute profondeur 5-15bb (equity vs call range stable, fold equity ramène le bénéfice).
+
+**Suited connectors mid (T9s, 98s)** : push 8-10bb (fold equity + equity solide), fold 12bb+ (BB call A-rag domine).
+
+**A5s vs A8o** : A5s a souvent meilleure équité vs call range que A8o (wheel + suited + meilleure connection avec range Broadway).
+
+</Prose>
+
+<SectionHeader num="06" label="Les pièges classiques" title={<>Quatre <em>erreurs à éviter.</em></>} />
+
+<Prose>
+
+**1. Sous-push par peur de la variance.** Le coût ICM de fold les +EV chips est inférieur au coût de variance. Tu *dois* push selon le range Nash — la variance fait partie du contrat.
+
+**2. Sur-push trash.** Push 72o à 10bb avec call range standard est −EV. La fold equity insuffisante ne couvre pas l&apos;equity perdue.
+
+**3. Ignorer le stack effectif.** Le range SB push n&apos;est pas le même selon que BB a 8bb ou 25bb. Effective stack = min(SB, BB). Si BB est plus court, son range call s&apos;élargit (pot odds meilleures pour lui).
+
+**4. Confondre push first SB vs push 3-bet.** Le range push first SB (vs BB seul) n&apos;est pas le même que le push 3-bet (après un open BTN ou autre). Le 3-bet push est plus tight car il y a déjà du commitment dans le pot.
+
+</Prose>
+
+<Mnemonic keyText="Court stack = mémoire">
+À 100bb, intuition. À 10bb, mémorisation. Les ranges Nash sub-15bb sont la vérité mathématique du jeu court. Les mémoriser, c&apos;est arrêter de réfléchir et commencer à exécuter — 3 secondes par décision, pattern recognition pure.
+</Mnemonic>
+
+<LifeLink title="L'expertise est la mémorisation des cas résolus.">
+
+Aux échecs, l&apos;expertise est largement la mémorisation des **ouvertures** (~50 coups standards) et des **finales** (positions clés). En médecine, les protocoles thérapeutiques pour les pathologies fréquentes sont *appris par cœur* — la créativité est réservée aux cas atypiques. En droit, la jurisprudence est une bibliothèque de cas résolus à reconnaître.
+
+Dans tout domaine mature, l&apos;expertise est largement de la **recognition + exécution**, pas de la *créativité*. Le poker MTT sub-15bb est l&apos;école de cette discipline : tu as 3 secondes, tu reconnais le pattern, tu exécutes. La &laquo; créativité &raquo; est pour les gens qui n&apos;ont pas mémorisé. Ce module t&apos;apprend la rigueur de la mémorisation comme outil de domination — applicable partout où des cas résolus existent.
+
+</LifeLink>

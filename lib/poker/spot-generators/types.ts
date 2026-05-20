@@ -14,6 +14,7 @@ import type { ICMSpot } from "./m4-1-icm";
 import type { BubbleFactorSpot } from "./m4-2-bubble-factor";
 import type { PositionBubbleFactorSpot } from "./m4-3-position-bf";
 import type { FinalTableSpot } from "./m4-4-final-table";
+import type { NashPushSpot } from "./m5-1-nash-push";
 
 export type GenericSpot =
   | PotOddsSpot
@@ -31,7 +32,8 @@ export type GenericSpot =
   | ICMSpot
   | BubbleFactorSpot
   | PositionBubbleFactorSpot
-  | FinalTableSpot;
+  | FinalTableSpot
+  | NashPushSpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).

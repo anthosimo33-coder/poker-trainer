@@ -80,8 +80,13 @@ const MODULES: ModuleDef[] = [
     badge: "M·V",
     title: "Ranges Nash push/fold",
     desc: "L'arsenal sub-15bb : mémorisation des ranges optimales",
-    available: false,
-    submodules: [],
+    available: true,
+    submodules: [
+      { slug: "m5.1", urlSlug: "m5-1", title: "SB push range Nash", available: true },
+      { slug: "m5.2", urlSlug: "m5-2", title: "BB call vs SB push", available: false },
+      { slug: "m5.3", urlSlug: "m5-3", title: "BTN/CO push", available: false },
+      { slug: "m5.4", urlSlug: "m5-4", title: "Call vs push hors SB", available: false },
+    ],
   },
 ];
 

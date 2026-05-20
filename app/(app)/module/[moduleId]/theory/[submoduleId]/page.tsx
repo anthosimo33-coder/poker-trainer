@@ -27,6 +27,7 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m4-2": () => import("@/content/theory/m4-2.mdx"),
   "m4-3": () => import("@/content/theory/m4-3.mdx"),
   "m4-4": () => import("@/content/theory/m4-4.mdx"),
+  "m5-1": () => import("@/content/theory/m5-1.mdx"),
 };
 
 function TheoryContent() {
@@ -716,6 +717,42 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Heads-up FT 30/20 = écart 10 pts. BF ≈ (équité_perdue_si_bust) / (équité_gagnée_si_double). Avec stacks proches, les deux sont modestes et proches. BF tombe à ~1.05-1.15, très proche du cash. C'est pourquoi le HU FT se joue agressif, contrairement à la phase 5-9 joueurs.",
+    },
+  ],
+
+  "m5-1": [
+    {
+      question: "Pourquoi le push/fold sub-15bb est-il mathématiquement résolu (Nash equilibrium) alors que le poker 100bb ne l'est pas ?",
+      options: [
+        { letter: "A", text: "Parce qu'à court stack, le random est plus important." },
+        { letter: "B", text: "Parce que l'espace de stratégies est minuscule (push/fold × call/fold) et le solver trouve l'équilibre exact. À 100bb, l'arbre de décision multi-streets devient intractable même pour les solvers." },
+        { letter: "C", text: "Parce que les pros ont déjà mémorisé tous les spots." },
+        { letter: "D", text: "Parce que le pot est plus petit." },
+      ],
+      correctLetter: "B",
+      explanation: "Le Nash sub-15bb est calculable parce que le jeu est binaire : push ou fold. À 100bb, chaque street ajoute des branches exponentiellement, et le solver atteint ses limites. C'est pourquoi sub-15bb est enseigné en ranges Nash, et 100bb en heuristiques.",
+    },
+    {
+      question: "Tu es SB avec 8bb. Range Nash push = ~41 % du deck. Pourquoi push aussi large ?",
+      options: [
+        { letter: "A", text: "Parce que tu as peu à perdre." },
+        { letter: "B", text: "Parce que la fold equity est très élevée : BB doit risquer son stack avec une équité requise haute (call coûte ~7.5bb pour gagner ~9.5bb). Conséquence : son call range est ~15-20 %, ton fold equity ~80 %." },
+        { letter: "C", text: "Parce que la position SB est avantageuse." },
+        { letter: "D", text: "Parce que les blinds montent." },
+      ],
+      correctLetter: "B",
+      explanation: "À 8bb push, BB doit caller avec équité requise ~44 % (pot odds), donc range serré ~20 %. Hero ramasse les blinds ~80 % du temps. Même avec une main marginale comme A5o (~35 % vs call range), l'EV reste positive grâce à la fold equity dominante.",
+    },
+    {
+      question: "À 15bb, le range push devient ~18 % (range premium-ish). Pourquoi le range se resserre ?",
+      options: [
+        { letter: "A", text: "Parce que le hero a peur de perdre." },
+        { letter: "B", text: "Parce qu'à 15bb, le BB peut caller plus large (équité requise ~37 %, range call ~25 %). La fold equity chute, et les mains marginales perdent leur edge. Seules les mains premium gardent leur EV positive." },
+        { letter: "C", text: "Parce que c'est convention." },
+        { letter: "D", text: "Parce que les blinds sont moins importantes proportionnellement." },
+      ],
+      correctLetter: "B",
+      explanation: "Plus le stack monte, plus BB peut caller large (call coûte moins relativement au prize). Fold equity baisse → mains marginales deviennent −EV. Push à 15bb se limite aux mains qui ont equity solide vs call range standard.",
     },
   ],
 };

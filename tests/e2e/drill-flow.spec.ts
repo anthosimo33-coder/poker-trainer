@@ -446,4 +446,29 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page.getByText(/Équité ICM hero/i).first()).toBeVisible();
     await expect(page.getByText(/Chip equity hero/i)).toBeVisible();
   });
+
+  test("M5.1 — flow complet Nash push range avec 2 boutons binaires", async ({ page }) => {
+    await page.goto("/module/m5/theory/m5-1");
+    await expect(
+      page.getByText(/SB push range Nash|Nash/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m5-1 : réponses correctes B, B, B.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m5-1/);
+    // Drill M5.1 : 2 boutons binaires PUSH / FOLD (paradigme unique au module).
+    await expect(page.getByText(/Push ou fold/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole("button", { name: /^PUSH/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^FOLD/i })).toBeVisible();
+  });
 });
