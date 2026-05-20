@@ -1,0 +1,4562 @@
+[
+  {
+    "id": "m5-2-spot-001",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 5bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-002",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 5bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-003",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 5bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-004",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 5bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-005",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 5bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-006",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-007",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-008",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-009",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-010",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-011",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-012",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-013",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-014",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-015",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-016",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-017",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-018",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-019",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-020",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-021",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-022",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-023",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-024",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-025",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-026",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-027",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-028",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-029",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-030",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-031",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-032",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-033",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-034",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-035",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-036",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-037",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-038",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 5,
+    "villainStack": 5,
+    "pushAmount": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 5bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 95s+, 85s+, 75s+, 65s, A2o+, K4o+, Q7o+, J7o+, T7o+, 97o+, 87o, 76o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-039",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 7bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-040",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 7bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-041",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 7bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-042",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 7bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-043",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 7bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-044",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-045",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-046",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-047",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-048",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-049",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-050",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-051",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-052",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-053",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-054",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-055",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-056",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-057",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-058",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-059",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-060",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-061",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-062",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-063",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-064",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-065",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-066",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-067",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-068",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-069",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-070",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-071",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-072",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-073",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-074",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-075",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-076",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 7,
+    "villainStack": 7,
+    "pushAmount": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K4s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-077",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 8bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-078",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 8bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-079",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 8bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-080",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 8bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-081",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 8bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-082",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-083",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-084",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-085",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-086",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-087",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-088",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-089",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-090",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-091",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-092",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-093",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-094",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-095",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-096",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-097",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-098",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-099",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-100",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-101",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-102",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-103",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-104",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-105",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-106",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-107",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-108",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-109",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-110",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-111",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-112",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-113",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-114",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 8,
+    "villainStack": 8,
+    "pushAmount": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A4o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-115",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 10bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-116",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 10bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-117",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 10bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-118",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 10bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-119",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 10bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-120",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-121",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-122",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-123",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-124",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-125",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-126",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-127",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-128",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-129",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-130",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-131",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-132",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-133",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-134",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-135",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-136",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-137",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-138",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-139",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-140",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-141",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-142",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-143",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-144",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-145",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-146",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-147",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-148",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-149",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-150",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-151",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-152",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 10,
+    "villainStack": 10,
+    "pushAmount": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-153",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 12bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-154",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 12bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-155",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 12bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-156",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 12bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-157",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 12bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-158",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-159",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-160",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-161",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-162",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-163",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-164",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-165",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-166",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-167",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-168",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-169",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-170",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-171",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-172",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-173",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-174",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-175",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-176",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-177",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-178",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-179",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-180",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-181",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-182",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-183",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-184",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-185",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-186",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-187",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-188",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-189",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-190",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 12,
+    "villainStack": 12,
+    "pushAmount": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A3s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-191",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 15bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-192",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 15bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-193",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium call BB 15bb",
+    "category": "obvious-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-194",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 15bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-195",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BB 15bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-196",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-197",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-198",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-199",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-200",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-201",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-202",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-203",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-204",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-205",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-206",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-207",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-208",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-209",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-210",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-211",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-212",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-213",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-214",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-215",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-216",
+    "heroCards": [
+      "Kh",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-217",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-218",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-219",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-220",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-221",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-222",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-call",
+    "expected": {
+      "nashAction": "call",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-2-spot-223",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-224",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-225",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-226",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-227",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-2-spot-228",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BB",
+    "villainPosition": "SB",
+    "heroStack": 15,
+    "villainStack": 15,
+    "pushAmount": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BB 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  }
+]

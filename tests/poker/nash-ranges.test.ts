@@ -8,6 +8,18 @@ import {
   NASH_SB_PUSH_RANGES,
   getNashSBPushRange,
 } from "@/content/ranges/nash-sb-push";
+import {
+  NASH_BB_CALL_RANGES,
+  getNashBBCallRange,
+} from "@/content/ranges/nash-bb-call";
+import {
+  NASH_BTN_PUSH_RANGES,
+  getNashBTNPushRange,
+} from "@/content/ranges/nash-btn-push";
+import {
+  NASH_POSITION_DEFENSE_RANGES,
+  getNashPositionDefense,
+} from "@/content/ranges/nash-position-defense";
 import type { Card } from "@/lib/poker/cards";
 
 describe("isInRange", () => {
@@ -138,5 +150,97 @@ describe("compareToNash", () => {
     expect(result.signedRangeDelta).toBeLessThan(0);
     expect(result.foldedButShouldPush).toHaveLength(2);
     expect(result.accuracy).toBeCloseTo(33.33, 1);
+  });
+});
+
+describe("NASH_BB_CALL_RANGES", () => {
+  it("contient 6 ranges (stacks 5, 7, 8, 10, 12, 15)", () => {
+    expect(NASH_BB_CALL_RANGES.length).toBe(6);
+  });
+
+  it("BB call à 5bb > BB call à 10bb > BB call à 15bb (décroissant)", () => {
+    expect(getNashBBCallRange(5)!.combos).toBeGreaterThan(getNashBBCallRange(10)!.combos);
+    expect(getNashBBCallRange(10)!.combos).toBeGreaterThan(getNashBBCallRange(15)!.combos);
+  });
+
+  it("BB call < SB push pour même stack (tight call vs large push)", () => {
+    for (const depth of [5, 7, 8, 10, 12, 15]) {
+      const bbCall = getNashBBCallRange(depth)!.percentageOfDeck;
+      const sbPush = getNashSBPushRange(depth)!.percentageOfDeck;
+      expect(bbCall).toBeLessThan(sbPush);
+    }
+  });
+
+  it("AA toujours dans BB call à toutes les profondeurs", () => {
+    for (const r of NASH_BB_CALL_RANGES) {
+      expect(isInRange(["As", "Ah"], r.notation)).toBe(true);
+    }
+  });
+});
+
+describe("NASH_BTN_PUSH_RANGES", () => {
+  it("contient 6 ranges", () => {
+    expect(NASH_BTN_PUSH_RANGES.length).toBe(6);
+  });
+
+  it("BTN push < SB push pour même stack (1 joueur derrière en plus)", () => {
+    for (const depth of [5, 7, 8, 10, 12]) {
+      // À 15bb les deux ranges convergent (même range '33+, A7s+, ...')
+      const btnPush = getNashBTNPushRange(depth)!.percentageOfDeck;
+      const sbPush = getNashSBPushRange(depth)!.percentageOfDeck;
+      expect(btnPush).toBeLessThan(sbPush);
+    }
+  });
+
+  it("BTN push décroissant 5 > 10 > 15bb", () => {
+    expect(getNashBTNPushRange(5)!.combos).toBeGreaterThan(getNashBTNPushRange(10)!.combos);
+    expect(getNashBTNPushRange(10)!.combos).toBeGreaterThan(getNashBTNPushRange(15)!.combos);
+  });
+
+  it("AA toujours push BTN", () => {
+    for (const r of NASH_BTN_PUSH_RANGES) {
+      expect(isInRange(["As", "Ah"], r.notation)).toBe(true);
+    }
+  });
+});
+
+describe("NASH_POSITION_DEFENSE_RANGES", () => {
+  it("Décroissance par position à 10bb : BB > SB > BTN > CO > MP", () => {
+    const bb = getNashPositionDefense("BB", 10)!.percentageOfDeck;
+    const sb = getNashPositionDefense("SB", 10)!.percentageOfDeck;
+    const btn = getNashPositionDefense("BTN", 10)!.percentageOfDeck;
+    const co = getNashPositionDefense("CO", 10)!.percentageOfDeck;
+    const mp = getNashPositionDefense("MP", 10)!.percentageOfDeck;
+    expect(bb).toBeGreaterThan(sb);
+    expect(sb).toBeGreaterThan(btn);
+    expect(btn).toBeGreaterThan(co);
+    expect(co).toBeGreaterThan(mp);
+  });
+
+  it("Décroissance par position à 15bb : BB > SB > BTN > CO ≥ MP", () => {
+    const bb = getNashPositionDefense("BB", 15)!.percentageOfDeck;
+    const sb = getNashPositionDefense("SB", 15)!.percentageOfDeck;
+    const btn = getNashPositionDefense("BTN", 15)!.percentageOfDeck;
+    const co = getNashPositionDefense("CO", 15)!.percentageOfDeck;
+    const mp = getNashPositionDefense("MP", 15)!.percentageOfDeck;
+    expect(bb).toBeGreaterThan(sb);
+    expect(sb).toBeGreaterThan(btn);
+    expect(btn).toBeGreaterThan(co);
+    // CO 15bb (99+, AJs+, AQo+) = MP 15bb (99+, AJs+, AQo+) — strictement égaux
+    expect(co).toBeGreaterThanOrEqual(mp);
+  });
+
+  it("Decay 15bb vs 10bb par position : tighter à 15bb", () => {
+    for (const pos of ["BB", "SB", "BTN", "CO", "MP"] as const) {
+      const r10 = getNashPositionDefense(pos, 10)!;
+      const r15 = getNashPositionDefense(pos, 15)!;
+      expect(r15.combos).toBeLessThanOrEqual(r10.combos);
+    }
+  });
+
+  it("AA dans tous les call ranges (toujours snap call)", () => {
+    for (const r of NASH_POSITION_DEFENSE_RANGES) {
+      expect(isInRange(["As", "Ah"], r.notation)).toBe(true);
+    }
   });
 });

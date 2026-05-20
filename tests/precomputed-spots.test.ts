@@ -7,6 +7,9 @@ import spots42 from "@/content/spots/m4-2.json";
 import spots43 from "@/content/spots/m4-3.json";
 import spots44 from "@/content/spots/m4-4.json";
 import spots51 from "@/content/spots/m5-1.json";
+import spots52 from "@/content/spots/m5-2.json";
+import spots53 from "@/content/spots/m5-3.json";
+import spots54 from "@/content/spots/m5-4.json";
 
 describe("M2.2 precomputed spots", () => {
   it("contient au moins 100 spots", () => {
@@ -372,5 +375,127 @@ describe("M5.1 precomputed spots", () => {
     for (const s of spots51) {
       expect(s.potBefore).toBe(1.5);
     }
+  });
+});
+
+describe("M5.2 precomputed spots (BB call)", () => {
+  it("contient au moins 150 spots", () => {
+    expect(spots52.length).toBeGreaterThanOrEqual(150);
+  });
+
+  it("tous les spots ont nashAction call|fold", () => {
+    for (const s of spots52) {
+      expect(["call", "fold"]).toContain(s.expected.nashAction);
+    }
+  });
+
+  it("hero toujours BB, vilain toujours SB", () => {
+    for (const s of spots52) {
+      expect(s.heroPosition).toBe("BB");
+      expect(s.villainPosition).toBe("SB");
+    }
+  });
+
+  it("distribution 6 stack depths", () => {
+    const depths = new Set(spots52.map((s) => s.heroStack));
+    expect(depths.size).toBe(6);
+  });
+
+  it("AA toujours call", () => {
+    const aaSpots = spots52.filter(
+      (s) => s.heroCards[0][0] === "A" && s.heroCards[1][0] === "A"
+    );
+    for (const s of aaSpots) expect(s.expected.nashAction).toBe("call");
+  });
+
+  it("ratio call/fold cohérent (30-80 %)", () => {
+    const callCount = spots52.filter((s) => s.expected.nashAction === "call").length;
+    const ratio = callCount / spots52.length;
+    expect(ratio).toBeGreaterThan(0.3);
+    expect(ratio).toBeLessThan(0.8);
+  });
+});
+
+describe("M5.3 precomputed spots (BTN push)", () => {
+  it("contient au moins 150 spots", () => {
+    expect(spots53.length).toBeGreaterThanOrEqual(150);
+  });
+
+  it("tous les spots BTN", () => {
+    for (const s of spots53) expect(s.heroPosition).toBe("BTN");
+  });
+
+  it("tous les spots ont nashAction push|fold", () => {
+    for (const s of spots53) {
+      expect(["push", "fold"]).toContain(s.expected.nashAction);
+    }
+  });
+
+  it("distribution 6 stack depths", () => {
+    const depths = new Set(spots53.map((s) => s.heroStack));
+    expect(depths.size).toBe(6);
+  });
+
+  it("AA toujours push", () => {
+    const aaSpots = spots53.filter(
+      (s) => s.heroCards[0][0] === "A" && s.heroCards[1][0] === "A"
+    );
+    for (const s of aaSpots) expect(s.expected.nashAction).toBe("push");
+  });
+
+  it("ratio push/fold cohérent (30-80 %)", () => {
+    const pushCount = spots53.filter((s) => s.expected.nashAction === "push").length;
+    const ratio = pushCount / spots53.length;
+    expect(ratio).toBeGreaterThan(0.3);
+    expect(ratio).toBeLessThan(0.8);
+  });
+});
+
+describe("M5.4 precomputed spots (position defense)", () => {
+  it("contient au moins 100 spots", () => {
+    expect(spots54.length).toBeGreaterThanOrEqual(100);
+  });
+
+  it("5 positions représentées : BB, SB, BTN, CO, MP", () => {
+    const positions = new Set(spots54.map((s) => s.heroPosition));
+    expect(positions.size).toBe(5);
+    for (const p of ["BB", "SB", "BTN", "CO", "MP"]) {
+      expect(positions.has(p)).toBe(true);
+    }
+  });
+
+  it("2 stacks représentés : 10, 15", () => {
+    const stacks = new Set(spots54.map((s) => s.heroStack));
+    expect(stacks.size).toBe(2);
+    expect(stacks.has(10)).toBe(true);
+    expect(stacks.has(15)).toBe(true);
+  });
+
+  it("AA toujours call", () => {
+    const aaSpots = spots54.filter(
+      (s) => s.heroCards[0][0] === "A" && s.heroCards[1][0] === "A"
+    );
+    for (const s of aaSpots) expect(s.expected.nashAction).toBe("call");
+  });
+
+  it("villainPosition cohérente avec heroPosition (chaîne BB→SB, SB→BTN, BTN→CO, CO→MP, MP→UTG)", () => {
+    const expectedMap: Record<string, string> = {
+      BB: "SB",
+      SB: "BTN",
+      BTN: "CO",
+      CO: "MP",
+      MP: "UTG",
+    };
+    for (const s of spots54) {
+      expect(s.villainPosition).toBe(expectedMap[s.heroPosition]);
+    }
+  });
+
+  it("ratio call/fold cohérent (20-70 %)", () => {
+    // MP/CO call tight, BB call large → moyenne probablement vers 40-50%
+    const callCount = spots54.filter((s) => s.expected.nashAction === "call").length;
+    const ratio = callCount / spots54.length;
+    expect(ratio).toBeGreaterThan(0.2);
+    expect(ratio).toBeLessThan(0.7);
   });
 });

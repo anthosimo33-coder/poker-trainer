@@ -1,0 +1,122 @@
+---
+slug: m5-4
+moduleSlug: m5
+submoduleSlug: m5.4
+title: Call ranges par position
+subtitle: La position détermine combien tu paies la prudence.
+order: 4
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module V · Sous-module 4 / 4
+  </div>
+
+# Call ranges par position.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>La position détermine combien tu paies la prudence.</em> BB call large face à un push. MP call premium uniquement. Entre les deux, une hiérarchie stricte que le solver te donne.
+</p>
+</div>
+
+<WhyBlock title="La position détermine combien tu paies la prudence.">
+
+En BB face à un push, tu as **déjà investi 1bb** et **il n&apos;y a plus de joueurs derrière**. Tu peux call large. En CO face à un push, tu as investi **0bb** mais **3 joueurs sont derrière toi** et chacun peut squeezer. Tu dois call tight, presque uniquement avec ta range value.
+
+La position transforme un range &laquo; moyen &raquo; en range &laquo; large &raquo; (BB) ou &laquo; premium &raquo; (MP) selon où tu es assis. C&apos;est la **généralisation** de M5.2 (BB call) à toutes les positions.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="La hiérarchie defense" title={<>{"BB > SB > BTN > CO > MP"}, <em>monotone.</em></>} />
+
+<Prose>
+
+À chaque position, deux effets se cumulent :
+- **Pot odds** : combien tu as déjà investi détermine ton seuil d&apos;equity requise.
+- **Squeeze risk** : combien de joueurs derrière toi peuvent over-call et te punir.
+
+BB est doublement privilégié : il a investi 1bb (pot odds favorables) ET aucun joueur derrière. SB a investi 0.5bb et personne derrière (closed action si BB fold). BTN/CO/MP sont à 0bb investi avec N joueurs derrière → tighter monotone à mesure que N augmente.
+
+</Prose>
+
+<SectionHeader num="02" label="Les call ranges canoniques" title={<>Dix <em>ranges à mémoriser.</em></>} />
+
+<Formula>
+  <FormulaLabel>BB defense 10bb</FormulaLabel> <K>~24 %</K> <FormulaMuted>(22+, A2s+, K8s+, Q9s+, JTs, T9s, A7o+, K9o+, QTo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>SB defense 10bb</FormulaLabel> <K>~17 %</K> <FormulaMuted>(33+, A4s+, K9s+, QTs+, JTs, A9o+, KJo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>BTN defense 10bb</FormulaLabel> <K>~14 %</K> <FormulaMuted>(44+, A5s+, KJs+, QJs, ATo+, KJo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>CO defense 10bb</FormulaLabel> <K>~9 %</K> <FormulaMuted>(66+, A8s+, KJs+, AJo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>MP defense 10bb</FormulaLabel> <K>~7 %</K> <FormulaMuted>(77+, AJs+, AQo+, KQs — premium only)</FormulaMuted>
+</Formula>
+
+<SectionHeader num="03" label="Le squeeze risk" title={<>Combien de joueurs <em>peuvent te punir.</em></>} />
+
+<Prose>
+
+Quand tu call en CO face à un push MP, tu exposes le pot à 3 joueurs derrière (BTN, SB, BB) qui peuvent **squeezer** avec une main forte. Tu te retrouves alors face à 2 ranges adverses (le pusher initial + le squeezer), et ton equity chute drastiquement.
+
+Plus tu es early, plus le risque squeeze est élevé. C&apos;est pourquoi MP/UTG defense est **purement value** : tu n&apos;appelles qu&apos;avec des mains qui peuvent encore gagner face à un range squeeze tight (typiquement QQ+/AK).
+
+</Prose>
+
+<SectionHeader num="04" label="Stack profondeur" title={<>15bb <em>resserre tout.</em></>} />
+
+<Formula>
+  <FormulaLabel>BB 15bb</FormulaLabel> <K>~12 %</K> <FormulaMuted>(33+, A7s+, KTs+, QJs, AJo+, KQo)</FormulaMuted>
+  <br />
+  <FormulaLabel>SB 15bb</FormulaLabel> <K>~8 %</K> <FormulaMuted>(55+, A9s+, KJs+, QJs, AJo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>BTN 15bb</FormulaLabel> <K>~6 %</K> <FormulaMuted>(77+, A9s+, KJs+, AJo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>CO 15bb</FormulaLabel> <K>~4 %</K> <FormulaMuted>(99+, AJs+, AQo+)</FormulaMuted>
+  <br />
+  <FormulaLabel>MP 15bb</FormulaLabel> <K>~4 %</K> <FormulaMuted>(99+, AJs+, AQo+ — comme CO, convergence)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+À 15bb, toutes les positions resserrent significativement leur defense. Le push range adverse est plus tight (12-18 %), donc rempli de mains plus fortes. Conséquence : seules les mains qui battent objectivement un range premium méritent de call. À 15bb, CO et MP convergent vers le même range (99+/AJs+/AQo+).
+
+</Prose>
+
+<SectionHeader num="05" label="Mains piliers par position" title={<>Cinq <em>cheat sheets.</em></>} />
+
+<Prose>
+
+**BB** : large, beaucoup de mains spéculatives (suited connectors, A-rag, broadways offsuit). Tu défends parce que tu as l&apos;investissement et personne derrière.
+
+**SB** : tight version du BB. Pas de A-rag offsuit, pas de suited connectors faibles. Plus de paires et de broadways.
+
+**BTN** : medium. Tu calle 44+, A5s+, ATo+. Plus de A-x suited, moins d&apos;offsuit faibles.
+
+**CO** : tight. 66+, AJo+, A8s+. Tu ne calle plus avec des A-rag.
+
+**MP** : ultra-premium. 77+, AJs+, AQo+, KQs. Quasiment uniquement les mains qui battent une range squeeze (QQ+/AK).
+
+</Prose>
+
+<Mnemonic keyText="BB > SB > BTN > CO > MP">
+La hiérarchie call par position est monotone décroissante. BB call ~3× plus large que MP à 10bb (24 % vs 7 %). C&apos;est la pénalité du squeeze risk + l&apos;avantage du pot odds investi.
+</Mnemonic>
+
+<SectionHeader num="06" label="Le piège du 'BB peut tout caller'" title={<>Defense large <em>≠ defense any-two.</em></>} />
+
+<Prose>
+
+Erreur fréquente : &laquo; je suis BB, je defends 50 % &raquo;. Faux. Même en BB, le call range à 10bb est ~24 % du deck — beaucoup, mais pas la moitié. À 15bb, ce n&apos;est plus que 12 %. Les pot odds favorables ne suffisent pas à justifier un call avec n&apos;importe quoi face à un range push standard.
+
+La &laquo; defense large &raquo; n&apos;est pas synonyme de &laquo; defense any-two &raquo;. Tu calle des mains avec equity réelle : paires, A-x suited, broadways. Tu folds le bas du deck (62o, 84o, etc.) même en BB.
+
+</Prose>
+
+<LifeLink title="La hiérarchie temporelle des décisions.">
+
+**Premier à parler** = plus de risques cachés, plus de prudence. **Dernier à parler** = toute l&apos;information disponible, plus de liberté. Dans une réunion, un conseil d&apos;administration, une vente aux enchères, une négociation salariale : la position dans la séquence détermine la qualité de ta décision.
+
+Les gens qui **attendent stratégiquement** exploitent cette asymétrie ; ceux qui se précipitent la subissent. Le poker MTT te force à internaliser cette hiérarchie : UTG est le pire endroit pour ouvrir light, BTN est le meilleur pour stealer. C&apos;est la **valeur du tour de parole**, transposable dans tout système séquentiel à incomplete information.
+
+</LifeLink>

@@ -162,13 +162,16 @@ test.describe("Drill M1.1 — flow complet", () => {
     await expect(page).toHaveURL(/\/drill\/m2-1/);
   });
 
-  test("Atelier : M·II déverrouillé, seul M·V reste locked (M·IV complet S8c)", async ({ page }) => {
+  test("Atelier : M·II déverrouillé + tous modules accessibles (M·V complet S9b)", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByText("Equity & outs")).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText("Outs et règle des 4&2")).toBeVisible();
-    // S8c : M·IV 4/4 complet → seul M·V reste locked (≥ 1 « Verrouillé »).
-    const lockedCount = await page.getByText("Verrouillé").count();
-    expect(lockedCount).toBeGreaterThanOrEqual(1);
+    // S9b : M·V 4/4 complet → 5 modules sur 5 unlocked, plus aucun « Verrouillé »
+    // au niveau MODULE. Mais les sous-modules futurs peuvent rester locked dans S10+.
+    // Pour l'instant, on assert que M·V title est visible + que les 4 sous-modules m5.x sont rendus.
+    await expect(page.getByText("Ranges Nash push/fold")).toBeVisible();
+    await expect(page.getByText("SB push range Nash").first()).toBeVisible();
+    await expect(page.getByText("BB call vs SB push").first()).toBeVisible();
   });
 
   test("M2.2 — théorie → quick check → drill avec scoring nuancé", async ({ page }) => {
@@ -469,6 +472,78 @@ test.describe("Drill M1.1 — flow complet", () => {
     // Drill M5.1 : 2 boutons binaires PUSH / FOLD (paradigme unique au module).
     await expect(page.getByText(/Push ou fold/i).first()).toBeVisible({ timeout: 15_000 });
     await expect(page.getByRole("button", { name: /^PUSH/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^FOLD/i })).toBeVisible();
+  });
+
+  test("M5.2 — flow complet BB call vs SB push avec 2 boutons CALL/FOLD", async ({ page }) => {
+    await page.goto("/module/m5/theory/m5-2");
+    await expect(
+      page.getByText(/BB call|décision la plus chère/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m5-2 : réponses correctes B, B, B.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m5-2/);
+    await expect(page.getByText(/Call ou fold/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole("button", { name: /^CALL/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^FOLD/i })).toBeVisible();
+  });
+
+  test("M5.3 — flow complet BTN push avec 2 boutons PUSH/FOLD", async ({ page }) => {
+    await page.goto("/module/m5/theory/m5-3");
+    await expect(
+      page.getByText(/BTN push|joueur derrière/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m5-3 : réponses correctes B, C, B.
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m5-3/);
+    await expect(page.getByText(/Push ou fold/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole("button", { name: /^PUSH/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^FOLD/i })).toBeVisible();
+  });
+
+  test("M5.4 — flow complet position defense avec 2 boutons CALL/FOLD", async ({ page }) => {
+    await page.goto("/module/m5/theory/m5-4");
+    await expect(
+      page.getByText(/Call ranges par position|hiérarchie/i).first()
+    ).toBeVisible({ timeout: 15_000 });
+
+    await page.getByRole("button", { name: /Passer le quick check/ }).click();
+    await expect(page.getByText(/Question 1/)).toBeVisible();
+    // m5-4 : réponses correctes C, A, B.
+    await page.getByRole("button", { name: /^C/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^A/ }).first().click();
+    await page.getByRole("button", { name: /Suivant/ }).click();
+    await page.getByRole("button", { name: /^B/ }).first().click();
+    await page.getByRole("button", { name: /Valider mes réponses/ }).click();
+
+    await expect(page.getByText(/Quick check validé/)).toBeVisible();
+    await page.getByRole("link", { name: /Démarrer le drill/ }).click();
+    await expect(page).toHaveURL(/\/drill\/m5-4/);
+    await expect(page.getByText(/Call ou fold/i).first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole("button", { name: /^CALL/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /^FOLD/i })).toBeVisible();
   });
 });

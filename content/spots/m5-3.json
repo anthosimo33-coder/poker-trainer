@@ -1,0 +1,4286 @@
+[
+  {
+    "id": "m5-3-spot-001",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 5bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-002",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 5bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-003",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 5bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-004",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 5bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-005",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 5bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-006",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-007",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-008",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-009",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-010",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-011",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-012",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-013",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-014",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-015",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-016",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-017",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-018",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-019",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-020",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-021",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-022",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-023",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-024",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-025",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-026",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-027",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-028",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-029",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-030",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-031",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-032",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-033",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-034",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-035",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-036",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-037",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-038",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-039",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-040",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-041",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-042",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 5,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 5bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K2s+, Q2s+, J5s+, T6s+, 96s+, 86s+, 75s+, 65s, A2o+, K6o+, Q8o+, J8o+, T8o+, 98o, 87o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-043",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 7bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-044",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 7bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-045",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 7bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-046",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 7bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-047",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 7bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-048",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-049",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-050",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-051",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-052",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-053",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-054",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-055",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-056",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-057",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-058",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-059",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-060",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-061",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-062",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-063",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-064",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-065",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-066",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-067",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-068",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-069",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-070",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-071",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-072",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-073",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-074",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-075",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-076",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-077",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-078",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-079",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-080",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-081",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-082",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-083",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-084",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 7,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 7bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K5s+, Q7s+, J8s+, T8s+, 98s, 87s, A2o+, K8o+, Q9o+, J9o+, T9o",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-085",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 8bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-086",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 8bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-087",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 8bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-088",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 8bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-089",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 8bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-090",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-091",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-092",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-093",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-094",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-095",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-096",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-097",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-098",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-099",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-100",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-101",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-102",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-103",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-104",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-105",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-106",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-107",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-108",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-109",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-110",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-111",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-112",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-113",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-114",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-115",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-116",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-117",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-118",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-119",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-120",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-121",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-122",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-123",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-124",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-125",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-126",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 8,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 8bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A2s+, K7s+, Q8s+, J9s+, T9s, 98s, A5o+, K9o+, Q9o+, JTo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-127",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 10bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-128",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 10bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-129",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 10bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-130",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 10bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-131",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 10bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-132",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-133",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-134",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-135",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-136",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-137",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-138",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-139",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-140",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-141",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-142",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-143",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-144",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-145",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-146",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-147",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-148",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-149",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-150",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-151",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-152",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-153",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-154",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-155",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-156",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-157",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-158",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-159",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-160",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-161",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-162",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-163",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-164",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-165",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-166",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-167",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-168",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 10,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 10bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A4s+, K8s+, Q9s+, JTs, T9s, A8o+, K9o+, QTo+",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-169",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 12bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-170",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 12bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-171",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 12bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-172",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 12bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-173",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 12bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-174",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-175",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-176",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-177",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-178",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-179",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-180",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-181",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-182",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-183",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-184",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-185",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-186",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-187",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-188",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-189",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-190",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-191",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-192",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-193",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-194",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-195",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-196",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-197",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-198",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-199",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-200",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-201",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-202",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-203",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-204",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-205",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-206",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-207",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-208",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-209",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-210",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 12,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 12bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-211",
+    "heroCards": [
+      "As",
+      "Ah"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 15bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-212",
+    "heroCards": [
+      "Ks",
+      "Kh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 15bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-213",
+    "heroCards": [
+      "Qs",
+      "Qh"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Premium push BTN 15bb",
+    "category": "obvious-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-214",
+    "heroCards": [
+      "7s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 15bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-215",
+    "heroCards": [
+      "8c",
+      "3d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Trash hand BTN 15bb",
+    "category": "obvious-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-216",
+    "heroCards": [
+      "6s",
+      "6h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-217",
+    "heroCards": [
+      "5c",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-218",
+    "heroCards": [
+      "4h",
+      "4s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-219",
+    "heroCards": [
+      "3d",
+      "3c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-220",
+    "heroCards": [
+      "2s",
+      "2h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-221",
+    "heroCards": [
+      "As",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-222",
+    "heroCards": [
+      "Ad",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-223",
+    "heroCards": [
+      "Ah",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-224",
+    "heroCards": [
+      "As",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-225",
+    "heroCards": [
+      "Ac",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-226",
+    "heroCards": [
+      "Ad",
+      "2s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-227",
+    "heroCards": [
+      "As",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-228",
+    "heroCards": [
+      "Ad",
+      "5d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-229",
+    "heroCards": [
+      "Ah",
+      "3h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-230",
+    "heroCards": [
+      "Ts",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-231",
+    "heroCards": [
+      "9h",
+      "8h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-232",
+    "heroCards": [
+      "8c",
+      "7c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-233",
+    "heroCards": [
+      "7d",
+      "6d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-234",
+    "heroCards": [
+      "6s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-235",
+    "heroCards": [
+      "5h",
+      "4h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-236",
+    "heroCards": [
+      "Ks",
+      "9h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-237",
+    "heroCards": [
+      "Kc",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-238",
+    "heroCards": [
+      "Ks",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-239",
+    "heroCards": [
+      "Kh",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-240",
+    "heroCards": [
+      "Qs",
+      "Jc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-241",
+    "heroCards": [
+      "Qh",
+      "9d"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-242",
+    "heroCards": [
+      "Jc",
+      "Th"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-243",
+    "heroCards": [
+      "Js",
+      "8c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-244",
+    "heroCards": [
+      "Ks",
+      "Qd"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-push",
+    "expected": {
+      "nashAction": "push",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": true
+    }
+  },
+  {
+    "id": "m5-3-spot-245",
+    "heroCards": [
+      "Qh",
+      "Tc"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-246",
+    "heroCards": [
+      "Js",
+      "Td"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-247",
+    "heroCards": [
+      "Js",
+      "9s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-248",
+    "heroCards": [
+      "9h",
+      "7h"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-249",
+    "heroCards": [
+      "8c",
+      "6c"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-250",
+    "heroCards": [
+      "7s",
+      "5s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-251",
+    "heroCards": [
+      "Qs",
+      "8s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  },
+  {
+    "id": "m5-3-spot-252",
+    "heroCards": [
+      "Js",
+      "7s"
+    ],
+    "heroPosition": "BTN",
+    "heroStack": 15,
+    "potBefore": 1.5,
+    "scenarioLabel": "Marginal BTN 15bb",
+    "category": "marginal-fold",
+    "expected": {
+      "nashAction": "fold",
+      "nashRangeNotation": "33+, A7s+, KTs+, QJs, AJo+, KQo",
+      "handInRange": false
+    }
+  }
+]

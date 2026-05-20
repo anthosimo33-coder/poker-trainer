@@ -83,9 +83,9 @@ const MODULES: ModuleDef[] = [
     available: true,
     submodules: [
       { slug: "m5.1", urlSlug: "m5-1", title: "SB push range Nash", available: true },
-      { slug: "m5.2", urlSlug: "m5-2", title: "BB call vs SB push", available: false },
-      { slug: "m5.3", urlSlug: "m5-3", title: "BTN/CO push", available: false },
-      { slug: "m5.4", urlSlug: "m5-4", title: "Call vs push hors SB", available: false },
+      { slug: "m5.2", urlSlug: "m5-2", title: "BB call vs SB push", available: true },
+      { slug: "m5.3", urlSlug: "m5-3", title: "BTN push range Nash", available: true },
+      { slug: "m5.4", urlSlug: "m5-4", title: "Call ranges par position", available: true },
     ],
   },
 ];

@@ -28,6 +28,9 @@ const THEORY_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> 
   "m4-3": () => import("@/content/theory/m4-3.mdx"),
   "m4-4": () => import("@/content/theory/m4-4.mdx"),
   "m5-1": () => import("@/content/theory/m5-1.mdx"),
+  "m5-2": () => import("@/content/theory/m5-2.mdx"),
+  "m5-3": () => import("@/content/theory/m5-3.mdx"),
+  "m5-4": () => import("@/content/theory/m5-4.mdx"),
 };
 
 function TheoryContent() {
@@ -753,6 +756,114 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
       ],
       correctLetter: "B",
       explanation: "Plus le stack monte, plus BB peut caller large (call coûte moins relativement au prize). Fold equity baisse → mains marginales deviennent −EV. Push à 15bb se limite aux mains qui ont equity solide vs call range standard.",
+    },
+  ],
+
+  "m5-2": [
+    {
+      question: "Pourquoi le range BB call est-il typiquement plus tight que le range SB push pour le même stack ?",
+      options: [
+        { letter: "A", text: "Parce que BB est en position défavorable postflop." },
+        { letter: "B", text: "Parce que quand BB call, il n'a plus de fold equity : il doit gagner au showdown. SB push capture la valeur des plis adverses ; BB call doit avoir équity vraie." },
+        { letter: "C", text: "Parce que les blinds sont déjà investis." },
+        { letter: "D", text: "Parce que c'est la convention solver." },
+      ],
+      correctLetter: "B",
+      explanation: "Le push capte deux sources d'EV : fold equity + showdown equity. Le call ne capte qu'une : showdown. Donc le call range exige une equity moyenne plus élevée vs le push range, ce qui le rend mécaniquement plus tight.",
+    },
+    {
+      question: "SB push à 10bb avec un range Nash ~33 %. Quel est le range Nash BB call approximatif ?",
+      options: [
+        { letter: "A", text: "~33 % (équilibre symétrique)" },
+        { letter: "B", text: "~24 % (significativement plus tight que le push)" },
+        { letter: "C", text: "~50 % (BB doit défendre large)" },
+        { letter: "D", text: "Dépend uniquement de la main de BB" },
+      ],
+      correctLetter: "B",
+      explanation: "À 10bb push standard, SB push ~33 % et BB call ~24 %. Le ratio call/push ≈ 0.73. BB doit avoir une equity solide vs le range push (qui contient beaucoup de mains marginales) pour justifier le call.",
+    },
+    {
+      question: "À 5bb push, BB call avec ~56 % du deck (extrêmement large). Pourquoi ?",
+      options: [
+        { letter: "A", text: "Parce que BB n'a rien à perdre." },
+        { letter: "B", text: "Parce que les pot odds sont énormes (call 4.5bb pour gagner 6.5bb) et le push range de SB est très large (~76 %). Equity requise tombe à ~41 %, beaucoup de mains la satisfont." },
+        { letter: "C", text: "Parce que le tournoi est presque fini." },
+        { letter: "D", text: "Parce que SB bluffe systématiquement à court stack." },
+      ],
+      correctLetter: "B",
+      explanation: "À 5bb : pot odds 1.44:1, equity requise ~41 %. Face à un range push très large (~76 %), beaucoup de mains marginales (A6o, K9s, 87s) ont assez d'equity. C'est pourquoi BB call any A, any pair, beaucoup de broadways suited.",
+    },
+  ],
+
+  "m5-3": [
+    {
+      question: "Pourquoi le range BTN push est-il plus tight que le range SB push pour le même stack ?",
+      options: [
+        { letter: "A", text: "Parce que BTN n'a pas l'initiative en bulle." },
+        { letter: "B", text: "Parce que BTN a 2 joueurs derrière (SB + BB) au lieu de 1 pour SB push (BB uniquement). Chaque joueur additionnel ajoute une probabilité de call avec une main forte." },
+        { letter: "C", text: "Parce que la position BTN est moins agressive." },
+        { letter: "D", text: "Parce que les blinds montent moins vite." },
+      ],
+      correctLetter: "B",
+      explanation: "BTN push = 2 joueurs derrière, donc fold equity divisée approximativement par 2 vs SB push. Conséquence : range push BTN ≈ 70 % du range push SB. À 10bb : SB pousse ~33 %, BTN pousse ~23 %.",
+    },
+    {
+      question: "À 5bb, le range push BTN devient ~48 % (très proche du range SB ~76 %). Pourquoi cette convergence ?",
+      options: [
+        { letter: "A", text: "Parce qu'à très court stack, les pot odds dominent la fold equity." },
+        { letter: "B", text: "Parce que BTN bluffe plus à 5bb." },
+        { letter: "C", text: "Parce que les blinds représentent une part énorme du pot, donc SB+BB doivent caller avec equity requise ~41 % chacun, range très tight ~10 % chacun. La fold equity reste élevée même face à 2 joueurs derrière." },
+        { letter: "D", text: "Parce que c'est tradition." },
+      ],
+      correctLetter: "C",
+      explanation: "À 5bb push, SB+BB doivent caller avec equity requise ~41 %, donc range étroit ~10 % combiné. Hero ramasse les blinds ~80 % du temps. Convergence des ranges SB/BTN parce que la fold equity domine sur les deux positions.",
+    },
+    {
+      question: "Tu as A5o sur BTN avec 12bb effective. Range Nash BTN push à 12bb = ~19 %. A5o est dedans ou pas ?",
+      options: [
+        { letter: "A", text: "Oui (tout A est push à BTN court stack)" },
+        { letter: "B", text: "Non (A5o n'est pas dans le range Nash BTN 12bb)" },
+        { letter: "C", text: "Push uniquement si SB+BB sont tight" },
+        { letter: "D", text: "Impossible à dire sans plus d'info" },
+      ],
+      correctLetter: "B",
+      explanation: "Range BTN 12bb = '22+, A6s+, K9s+, QTs+, JTs, A9o+, KTo+, QJo'. A5o n'est pas dans ce range (le seuil offsuit commence à A9o+). À SB 12bb, A5o n'est pas non plus dans le range (qui commence à A7o+). A5o nécessite stacks plus courts ou meilleur kicker.",
+    },
+  ],
+
+  "m5-4": [
+    {
+      question: "Tu fais face à un push 10bb. Tu es CO. Quel est ton range call approximatif ?",
+      options: [
+        { letter: "A", text: "~22 % (comme BB)" },
+        { letter: "B", text: "~16 % (comme SB)" },
+        { letter: "C", text: "~9 % (très tight, premium pairs + AJs+)" },
+        { letter: "D", text: "Dépend uniquement du pusher" },
+      ],
+      correctLetter: "C",
+      explanation: "CO call vs push 10bb = ~9 % (66+, A8s+, KJs+, AJo+). Pourquoi tight ? Tu as 3 joueurs derrière (BTN+SB+BB), chacun peut squeezer. Un seul squeeze et tu deviens vulnerable. C'est pourquoi CO call ≈ 1/3 du BB call.",
+    },
+    {
+      question: "Quelle position défend (call) le plus large face à un push ?",
+      options: [
+        { letter: "A", text: "BB (déjà investi 1bb, plus de joueurs derrière)" },
+        { letter: "B", text: "SB (closed action après BB)" },
+        { letter: "C", text: "BTN (position dominante)" },
+        { letter: "D", text: "UTG (1ère à parler donc plus large)" },
+      ],
+      correctLetter: "A",
+      explanation: "BB defend le plus large car (1) il a déjà investi 1bb (pot odds favorables), (2) aucun joueur ne peut squeezer derrière lui (action close). Range BB defense 10bb ~24 % vs SB ~17 % vs BTN ~14 % vs CO ~9 % vs MP ~7 %. Décroissance monotone.",
+    },
+    {
+      question: "Tu es MP avec AKo face à un push UTG de 10bb. Que dit Nash ?",
+      options: [
+        { letter: "A", text: "Fold (AKo est trop marginal vs range UTG)" },
+        { letter: "B", text: "Call (AKo est dans le range MP call premium)" },
+        { letter: "C", text: "Dépend du stack UTG" },
+        { letter: "D", text: "Push (raise)" },
+      ],
+      correctLetter: "B",
+      explanation: "MP call vs UTG push 10bb = '77+, AJs+, AQo+, KQs'. AKo (= AQo+ qui inclut AKo) y est. Pourquoi ? AKo a ~40 % equity vs un range push UTG large, pot odds 1:2 (requis ~33 %). Le call est +EV même avec joueurs derrière, car le range UTG est tight et AKo bat la majorité.",
     },
   ],
 };

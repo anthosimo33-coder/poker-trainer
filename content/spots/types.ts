@@ -276,6 +276,58 @@ export interface PrecomputedM51Spot {
   };
 }
 
+export interface PrecomputedM52Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: "BB";
+  villainPosition: "SB";
+  heroStack: number;
+  villainStack: number;
+  /** Ce que SB a poussé (= heroStack en effective stack). */
+  pushAmount: number;
+  potBefore: number;
+  scenarioLabel: string;
+  category: "obvious-call" | "obvious-fold" | "marginal-call" | "marginal-fold";
+  expected: {
+    nashAction: "call" | "fold";
+    nashRangeNotation: string;
+    handInRange: boolean;
+  };
+}
+
+export interface PrecomputedM53Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: "BTN";
+  heroStack: number;
+  potBefore: number;
+  scenarioLabel: string;
+  category: "obvious-push" | "obvious-fold" | "marginal-push" | "marginal-fold";
+  expected: {
+    nashAction: "push" | "fold";
+    nashRangeNotation: string;
+    handInRange: boolean;
+  };
+}
+
+export interface PrecomputedM54Spot {
+  id: string;
+  heroCards: [Card, Card];
+  heroPosition: "BB" | "SB" | "BTN" | "CO" | "MP";
+  /** Qui a pushé (varie selon la position du hero). */
+  villainPosition: "SB" | "BTN" | "CO" | "MP" | "UTG";
+  heroStack: number;
+  pushAmount: number;
+  potBefore: number;
+  scenarioLabel: string;
+  category: "obvious-call" | "obvious-fold" | "marginal-call" | "marginal-fold";
+  expected: {
+    nashAction: "call" | "fold";
+    nashRangeNotation: string;
+    handInRange: boolean;
+  };
+}
+
 export interface PrecomputedM33Spot {
   id: string;
   heroCards: [Card, Card];

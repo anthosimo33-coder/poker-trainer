@@ -1,0 +1,127 @@
+---
+slug: m5-3
+moduleSlug: m5
+submoduleSlug: m5.3
+title: BTN push range Nash
+subtitle: Un joueur derrière en plus, et le range chute.
+order: 3
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module V · Sous-module 3 / 4
+  </div>
+
+# BTN push range Nash.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Un joueur derrière en plus, et le range chute.</em> Passer de SB push (1 joueur derrière) à BTN push (2 joueurs derrière) divise la fold equity. Le range Nash se resserre mathématiquement.
+</p>
+</div>
+
+<WhyBlock title="Un joueur derrière en plus, et le range chute.">
+
+Passer de SB push (1 joueur derrière : BB) à BTN push (2 joueurs derrière : SB + BB) coupe approximativement la fold equity de moitié. Là où SB pousse 33 % à 10bb, BTN pousse seulement 23 %.
+
+La règle est **mathématique** : chaque joueur additionnel derrière multiplie le risque que quelqu&apos;un call avec une main forte. Donc le range push doit être *plus serré*. C&apos;est la même logique que le **position factor en M4.3** appliquée à un range Nash exact au lieu d&apos;un multiplicateur heuristique.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Le coût d'un joueur derrière" title={<>Fold equity <em>divisée par 2.</em></>} />
+
+<Prose>
+
+Quand SB push, il a *un* joueur (BB) qui peut call. Probabilité call ≈ range BB call (souvent ~22 % à 10bb). Probabilité tout le monde fold ≈ 78 %.
+
+Quand BTN push, il a *deux* joueurs (SB, BB) qui peuvent call indépendamment. Probabilité au moins un call ≈ 1 − (1 − P_SB_call)(1 − P_BB_call). Si P_SB_call = 15 % et P_BB_call = 22 %, alors P(au moins un call) ≈ 34 %. Fold equity tombe à 66 % vs 78 % en SB.
+
+Conséquence directe : pour rester +EV, le BTN push range doit être plus tight pour avoir une equity moyenne plus haute vs le call combiné.
+
+</Prose>
+
+<SectionHeader num="02" label="Les patterns par stack" title={<>Six <em>profondeurs canoniques.</em></>} />
+
+<Formula>
+  <FormulaLabel>5 bb</FormulaLabel> <K>~48 %</K> du deck <FormulaMuted>(SB push 76 %, ratio ~0.63)</FormulaMuted>
+  <br />
+  <FormulaLabel>7 bb</FormulaLabel> <K>~36 %</K>
+  <br />
+  <FormulaLabel>8 bb</FormulaLabel> <K>~29 %</K>
+  <br />
+  <FormulaLabel>10 bb</FormulaLabel> <K>~23 %</K> <FormulaMuted>(référence, SB push 33 %, ratio ~0.70)</FormulaMuted>
+  <br />
+  <FormulaLabel>12 bb</FormulaLabel> <K>~19 %</K>
+  <br />
+  <FormulaLabel>15 bb</FormulaLabel> <K>~12 %</K> <FormulaMuted>(convergence avec SB 15bb, range premium)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Ratio BTN/SB push : ~0.63 à 5bb, ~0.70 à 10bb, ~0.67 à 15bb. **Approximation pratique : BTN push ≈ 70 % du range SB push** pour le même stack. Cohérent sur toute la gamme 5-15bb.
+
+</Prose>
+
+<SectionHeader num="03" label="Les mains qui sortent du range" title={<>Frontière <em>SB → BTN.</em></>} />
+
+<Prose>
+
+À 10bb, qu&apos;est-ce qui sort entre SB push (33 %) et BTN push (23 %) ?
+
+- **A5o, A6o, A7o** sortent (A8o reste dans BTN)
+- **K8o, KJs, Q9s** sortent (mais Q9s reste juste à 12bb)
+- **76s, 65s** sortent (87s reste)
+- **97s, 86s** sortent
+- **JTo, KTo** restent dans les deux
+
+À 12bb, la frontière se déplace : A6s sort de BTN (reste juste dans SB), K9s reste dans les deux, JTs reste dans les deux. C&apos;est la zone de calibration la plus subtile.
+
+</Prose>
+
+<SectionHeader num="04" label="Convergence à très court stack" title={<>BTN push ≈ SB push <em>à 5bb.</em></>} />
+
+<Prose>
+
+À 5bb, la différence BTN/SB se réduit (ratio ~0.63 vs ~0.70 à 10bb). Pourquoi ? Parce qu&apos;à très court stack, **la fold equity domine sur les deux positions** : SB+BB combinés doivent caller avec equity requise ~41 % chacun, donc range très tight (~10 % chacun). Hero ramasse les blinds ~80 % du temps depuis BTN aussi.
+
+C&apos;est pourquoi à 5bb, BTN push 48 % du deck — quasi-similaire à SB push (76 %). La pression des blinds force tout le monde à serrer leur call range, ce qui restaure la fold equity du pusher BTN.
+
+</Prose>
+
+<SectionHeader num="05" label="Le piège du BTN steal" title={<>Push ≠ steal <em>en 100bb.</em></>} />
+
+<Prose>
+
+Attention à ne pas confondre **BTN push sub-15bb** (mémorisé ici) avec **BTN steal 100bb** (qui se fait en open-raise 2-3bb, pas en all-in). Le range steal 100bb est ~40-50 % du deck — beaucoup plus large que le BTN push 15bb (~12 %). Les deux ranges servent des objectifs différents :
+
+- **Steal 100bb** : ramasser les blinds par fold equity, jouer postflop si call.
+- **Push sub-15bb** : éviter le postflop entièrement, miser sur fold equity + equity directe au showdown.
+
+Confondre les deux = leak majeur sub-15bb (push trop large) ou conservatisme excessif 100bb (steal trop tight).
+
+</Prose>
+
+<Mnemonic keyText="BTN push = SB push × 0.7">
+Approximation : le range BTN est environ 70 % de la taille du range SB pour le même stack. À 10bb : SB 33 %, BTN 23 %. C&apos;est la pénalité mathématique d&apos;un joueur supplémentaire derrière.
+</Mnemonic>
+
+<SectionHeader num="06" label="La règle générale" title={<>Plus d&apos;audience, <em>plus tight.</em></>} />
+
+<Prose>
+
+**Règle universelle de push N-handed** : push range à position P = push range à position P+1 × ~0.7 (pour un joueur derrière supplémentaire). Donc :
+
+- CO push (3 joueurs derrière) ≈ BTN push × 0.7 ≈ 16 % à 10bb
+- MP push (4 joueurs derrière) ≈ CO push × 0.7 ≈ 11 % à 10bb
+- UTG push (5 joueurs derrière) ≈ MP push × 0.7 ≈ 8 % à 10bb
+
+Ces valeurs sont des **approximations** mais elles donnent l&apos;ordre de grandeur. Si tu mémorises SB push (M5.1) et BTN push (ici), tu as une intuition correcte pour toutes les positions.
+
+</Prose>
+
+<LifeLink title="Le coût exponentiel de l'audience.">
+
+Plus tu **parles devant de gens**, plus l&apos;erreur coûte cher (risque réputationnel × N auditeurs). Plus tu **pushes avec de joueurs derrière**, plus l&apos;erreur coûte cher (risque de call × N adversaires). Les deux dynamiques exigent un *standard plus haut* à mesure que l&apos;audience grandit.
+
+Cette règle est universelle dans les systèmes où plusieurs acteurs peuvent vérifier ou contester ta décision : présentation publique, vote en conseil, déclaration médiatique, allocation budgétaire défendable. Le poker MTT te force à l&apos;internaliser : *plus il y a de gens à te juger, plus tu dois être sûr*. Ce n&apos;est pas du conservatisme — c&apos;est de la calibration au coût réel.
+
+</LifeLink>

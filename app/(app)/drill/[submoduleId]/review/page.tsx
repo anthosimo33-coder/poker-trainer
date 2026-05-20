@@ -31,37 +31,73 @@ function ReviewContent() {
   const sessionId = search.get("session") as Id<"sessions"> | null;
   const data = useQuery(api.sessions.getSessionWithSpots, sessionId ? { sessionId } : "skip");
 
-  // M5.1 — grouper les attempts par stack depth pour rendre une NashRangeReview
-  // par groupe. Doit être appelé AVANT tout early return (règle des hooks).
-  const m51Groups = useMemo(() => {
-    if (dbSubmoduleSlug !== "m5.1" || !data) return null;
-    const groups: Record<number, { notation: string; results: SpotResult[] }> = {};
+  // M5.x — grouper les attempts par stack depth (M5.1/5.2/5.3) ou par position
+  // (M5.4) pour rendre une NashRangeReview par groupe. Doit être appelé AVANT
+  // tout early return (règle des hooks). La clé de groupement varie selon le
+  // submodule mais on retourne un format uniforme {label, notation, results}.
+  type GroupKey = string;
+  const nashGroups = useMemo(() => {
+    if (!data) return null;
+    if (!["m5.1", "m5.2", "m5.3", "m5.4"].includes(dbSubmoduleSlug)) return null;
+
+    const groups: Record<
+      GroupKey,
+      { label: string; stackDepth: number; notation: string; results: SpotResult[] }
+    > = {};
+
     for (const a of data.attempts) {
       const snap = a.spotSnapshot as unknown as
         | {
             heroCards?: [Card, Card];
             heroStack?: number;
+            heroPosition?: string;
             expected?: { nashRangeNotation?: string };
           }
         | undefined;
       const userAns = a.userAnswer as unknown as
-        | { nashActionInput?: "push" | "fold" }
+        | {
+            nashActionInput?: "push" | "fold";
+            nashCallActionInput?: "call" | "fold";
+          }
         | undefined;
       if (
         !snap?.heroCards ||
         !snap?.heroStack ||
-        !snap?.expected?.nashRangeNotation ||
-        !userAns?.nashActionInput
+        !snap?.expected?.nashRangeNotation
       ) {
         continue;
       }
-      const stack = snap.heroStack;
-      if (!groups[stack]) {
-        groups[stack] = { notation: snap.expected.nashRangeNotation, results: [] };
+      // Action user : push pour M5.1/M5.3, call pour M5.2/M5.4.
+      // On normalise vers "push"/"fold" pour NashRangeReview (qui ne distingue pas).
+      const rawAction =
+        dbSubmoduleSlug === "m5.2" || dbSubmoduleSlug === "m5.4"
+          ? userAns?.nashCallActionInput
+          : userAns?.nashActionInput;
+      if (!rawAction) continue;
+      const normalizedAction: "push" | "fold" =
+        rawAction === "fold" ? "fold" : "push";
+
+      // Clé de groupement : position pour M5.4, stack sinon
+      let key: GroupKey;
+      let label: string;
+      if (dbSubmoduleSlug === "m5.4") {
+        key = `${snap.heroPosition ?? "?"}-${snap.heroStack}`;
+        label = `${snap.heroPosition ?? "?"} defense · ${snap.heroStack} bb`;
+      } else {
+        key = `${snap.heroStack}bb`;
+        label = `${snap.heroStack} bb`;
       }
-      groups[stack].results.push({
+      if (!groups[key]) {
+        groups[key] = {
+          label,
+          stackDepth: snap.heroStack,
+          notation: snap.expected.nashRangeNotation,
+          results: [],
+        };
+      }
+      groups[key].results.push({
         hand: snap.heroCards,
-        userAction: userAns.nashActionInput,
+        userAction: normalizedAction,
       });
     }
     return groups;
@@ -118,22 +154,23 @@ function ReviewContent() {
         <ReviewMetric label="Ratés à re-drill" value={String(ratedAttempts.length)} color={ratedAttempts.length > 0 ? "var(--amber)" : "var(--green)"} />
       </section>
 
-      {m51Groups && Object.keys(m51Groups).length > 0 && (
+      {nashGroups && Object.keys(nashGroups).length > 0 && (
         <section className="mb-12">
           <div className="flex justify-between items-center mb-5">
             <span className="text-sm font-mono uppercase tracking-wider text-text-muted">
-              Calibration Nash par stack depth
+              Calibration Nash {dbSubmoduleSlug === "m5.4" ? "par position" : "par stack depth"}
             </span>
           </div>
           <div className="flex flex-col gap-6">
-            {Object.entries(m51Groups)
-              .sort(([a], [b]) => Number(a) - Number(b))
-              .map(([stack, group]) => (
+            {Object.entries(nashGroups)
+              .sort(([, a], [, b]) => a.label.localeCompare(b.label))
+              .map(([key, group]) => (
                 <NashRangeReview
-                  key={stack}
+                  key={key}
                   results={group.results}
                   nashRangeNotation={group.notation}
-                  stackDepth={Number(stack)}
+                  stackDepth={group.stackDepth}
+                  label={group.label}
                 />
               ))}
           </div>
@@ -149,16 +186,27 @@ function ReviewContent() {
       <section className="flex flex-col gap-2 mb-12">
         {attempts.map((att, i) => {
           const snap = att.spotSnapshot as unknown as
-            | { potBb?: number; betBb?: number; heroStack?: number; heroCards?: [Card, Card] }
+            | {
+                potBb?: number;
+                betBb?: number;
+                heroStack?: number;
+                heroCards?: [Card, Card];
+                heroPosition?: string;
+              }
             | undefined;
           const exp = att.expected as unknown as
-            | { requiredEquity?: number; nashAction?: "push" | "fold" }
+            | { requiredEquity?: number; nashAction?: "push" | "fold" | "call" }
             | undefined;
           const userAns = att.userAnswer as unknown as
-            | { nashActionInput?: "push" | "fold" }
+            | {
+                nashActionInput?: "push" | "fold";
+                nashCallActionInput?: "call" | "fold";
+              }
             | undefined;
-          // M5.1 : affichage spécifique (main + stack + action)
-          const isM51Spot = exp?.nashAction !== undefined;
+          // M5.x : affichage spécifique (main + position + stack + action)
+          const isNashSpot = exp?.nashAction !== undefined;
+          const userActionM5 =
+            userAns?.nashCallActionInput ?? userAns?.nashActionInput;
           return (
             <div
               key={att._id}
@@ -176,8 +224,8 @@ function ReviewContent() {
                 {att.isCorrect ? "✓ OK" : "✗ KO"}
               </span>
               <span className="text-sm text-text-muted">
-                {isM51Spot && snap?.heroCards
-                  ? `${snap.heroCards.join(" ")} · ${snap.heroStack}bb SB · toi : ${userAns?.nashActionInput?.toUpperCase() ?? "—"} · Nash : ${exp?.nashAction?.toUpperCase()}`
+                {isNashSpot && snap?.heroCards
+                  ? `${snap.heroCards.join(" ")} · ${snap.heroPosition ?? "?"} ${snap.heroStack}bb · toi : ${userActionM5?.toUpperCase() ?? "—"} · Nash : ${exp?.nashAction?.toUpperCase()}`
                   : `Pot ${snap?.potBb}bb · bet ${snap?.betBb}bb · attendu ${fmtPercent(exp?.requiredEquity ?? 0)}`}
               </span>
               <span className="text-xs font-mono text-text-faint">{fmtDuration(att.timeMs)}</span>

@@ -19,8 +19,10 @@ interface Props {
   results: SpotResult[];
   /** Notation du range Nash de référence. */
   nashRangeNotation: string;
-  /** Profondeur de stack pour le titre. */
+  /** Profondeur de stack pour le titre par défaut. */
   stackDepth: number;
+  /** Label personnalisé (ex. "BB defense · 10 bb"). Optionnel, par défaut `${stackDepth} bb`. */
+  label?: string;
 }
 
 /**
@@ -69,7 +71,7 @@ const STATUS_COLORS: Record<CellStatus, { bg: string; border?: string }> = {
   "out-not-tested": { bg: "rgba(255, 255, 255, 0.04)", border: "rgba(255, 255, 255, 0.08)" },
 };
 
-export function NashRangeReview({ results, nashRangeNotation, stackDepth }: Props) {
+export function NashRangeReview({ results, nashRangeNotation, stackDepth, label }: Props) {
   const nashGrid = rangeToGrid(nashRangeNotation);
 
   // Indexer les results par hand cell key
@@ -108,10 +110,10 @@ export function NashRangeReview({ results, nashRangeNotation, stackDepth }: Prop
             className="text-[11px] font-mono uppercase tracking-wider mb-1.5"
             style={{ color: "var(--purple-300)" }}
           >
-            Review · SB push range Nash
+            Review · range Nash
           </div>
           <h2 className="text-[24px] font-semibold tracking-[-0.02em] leading-tight">
-            Calibration {stackDepth} bb
+            {label ?? `Calibration ${stackDepth} bb`}
           </h2>
         </div>
         <div className="text-right">

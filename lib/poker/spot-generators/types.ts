@@ -15,6 +15,9 @@ import type { BubbleFactorSpot } from "./m4-2-bubble-factor";
 import type { PositionBubbleFactorSpot } from "./m4-3-position-bf";
 import type { FinalTableSpot } from "./m4-4-final-table";
 import type { NashPushSpot } from "./m5-1-nash-push";
+import type { BBCallSpot } from "./m5-2-bb-call";
+import type { BTNPushSpot } from "./m5-3-btn-push";
+import type { PositionDefenseSpot } from "./m5-4-position-defense";
 
 export type GenericSpot =
   | PotOddsSpot
@@ -33,7 +36,10 @@ export type GenericSpot =
   | BubbleFactorSpot
   | PositionBubbleFactorSpot
   | FinalTableSpot
-  | NashPushSpot;
+  | NashPushSpot
+  | BBCallSpot
+  | BTNPushSpot
+  | PositionDefenseSpot;
 
 /**
  * Champs minimum présents sur tous les spots (pour un affichage générique de table).

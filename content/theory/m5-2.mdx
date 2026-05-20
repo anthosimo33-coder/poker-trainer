@@ -1,0 +1,116 @@
+---
+slug: m5-2
+moduleSlug: m5
+submoduleSlug: m5.2
+title: BB call vs SB push
+subtitle: Le call est la décision la plus chère.
+order: 2
+---
+
+<div className="text-center pb-16 mb-16 border-b border-border">
+  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6" style={{ background: "var(--purple-glow)", border: "0.5px solid rgba(167, 139, 250, 0.2)", color: "var(--purple-300)", fontFamily: "var(--font-geist-mono)", fontSize: 12 }}>
+    ◆ Module V · Sous-module 2 / 4
+  </div>
+
+# BB call vs SB push.
+
+<p className="text-[17px] text-text-muted tracking-[-0.01em] max-w-[600px] mx-auto">
+  <em>Le call est la décision la plus chère du push/fold.</em> Quand tu pushes, tu gagnes en faisant fold OU en gagnant au showdown. Quand tu calles, tu ne gagnes qu&apos;en gagnant au showdown.
+</p>
+</div>
+
+<WhyBlock title="Le call est la décision la plus chère du push/fold.">
+
+Quand SB pousse, il a **deux façons de gagner** : tu fold (~70 % du temps en moyenne), ou tu call et il a la meilleure main au showdown. Quand toi BB tu call, tu n&apos;as **qu&apos;une façon de gagner** : avoir la meilleure main au showdown. La fold equity disparaît côté BB.
+
+C&apos;est pourquoi le range Nash BB call est typiquement *plus tight* que le range Nash SB push — il ne capte plus la valeur des plis adverses. C&apos;est le **miroir mathématique** de M5.1 : même structure binaire, mais avec une asymétrie de valeur.
+
+</WhyBlock>
+
+<SectionHeader num="01" label="Le miroir mathématique" title={<>Push et call <em>ne sont pas symétriques.</em></>} />
+
+<Prose>
+
+M5.1 t&apos;a appris le range Nash SB push — la première moitié de l&apos;équation. M5.2 te donne l&apos;autre moitié : le range Nash BB call. Les deux ranges sont calculés simultanément par le solver : ils convergent ensemble vers l&apos;équilibre Nash unique.
+
+Mais ils ne sont pas symétriques. Le push *capte* deux sources d&apos;EV (fold equity + showdown equity), le call *ne capte* qu&apos;une (showdown). Mécaniquement, le call range exige une equity moyenne plus haute, ce qui le rend plus serré.
+
+</Prose>
+
+<SectionHeader num="02" label="Pourquoi le call range est tight" title={<>Equity pure, <em>pas fold equity.</em></>} />
+
+<Formula>
+  <FormulaLabel>SB push EV</FormulaLabel> P(BB fold) × pot + P(BB call) × [equity × pot_final − stack]
+  <br />
+  <FormulaLabel>BB call EV</FormulaLabel> equity × pot_final − call_amount
+  <br />
+  <FormulaMuted>La branche P(BB fold) n&apos;apparaît pas dans l&apos;EV du call BB — d&apos;où le tightening.</FormulaMuted>
+</Formula>
+
+<SectionHeader num="03" label="Les patterns par stack" title={<>Six <em>profondeurs canoniques.</em></>} />
+
+<Formula>
+  <FormulaLabel>5 bb</FormulaLabel> <K>~56 %</K> du deck <FormulaMuted>(pot odds énormes, call large)</FormulaMuted>
+  <br />
+  <FormulaLabel>7 bb</FormulaLabel> <K>~37 %</K>
+  <br />
+  <FormulaLabel>8 bb</FormulaLabel> <K>~30 %</K>
+  <br />
+  <FormulaLabel>10 bb</FormulaLabel> <K>~24 %</K> <FormulaMuted>(référence, à comparer à SB push ~33 %)</FormulaMuted>
+  <br />
+  <FormulaLabel>12 bb</FormulaLabel> <K>~20 %</K>
+  <br />
+  <FormulaLabel>15 bb</FormulaLabel> <K>~12 %</K> <FormulaMuted>(très tight, presque premium uniquement)</FormulaMuted>
+</Formula>
+
+<Prose>
+
+Comparaison directe avec SB push : à 10bb, SB push 33 %, BB call 24 %. Ratio ~0.73. Le call range est environ 70-75 % du push range pour le même stack. À 15bb : SB push 18 %, BB call 12 % (ratio ~0.65, le call devient encore plus exigeant relativement).
+
+</Prose>
+
+<SectionHeader num="04" label="Mains piliers BB call" title={<>À <em>mémoriser en priorité.</em></>} />
+
+<Formula>
+  <FormulaLabel>Toujours call (≥ 5bb)</FormulaLabel> 22+, A2s+, A2o+, KJo+, KTs+, QJs
+  <br />
+  <FormulaLabel>Call à partir de 10bb</FormulaLabel> 22+, A2s+, K8s+, Q9s+, A7o+, K9o+
+  <br />
+  <FormulaLabel>Call à 15bb (tight)</FormulaLabel> 33+, A7s+, KTs+, QJs, AJo+, KQo
+</Formula>
+
+<SectionHeader num="05" label="L'effet de la stack" title={<>Pot odds <em>vs equity range.</em></>} />
+
+<Prose>
+
+À très court stack (5bb), les **pot odds** dominent. Tu calls avec ~41 % equity requise — beaucoup de mains marginales satisfont ce seuil face à un range push large (~76 %). C&apos;est pourquoi le call range BB peut atteindre 56 % du deck à 5bb.
+
+À profondeur élevée (15bb), les pot odds sont moins favorables (~37 % equity requise) ET le range push SB est plus tight (~18 %), donc rempli de mains plus fortes. Le call range chute à 12 %. C&apos;est la **double pression** : moins de pot odds + range adverse plus fort = call beaucoup plus tight.
+
+</Prose>
+
+<Mnemonic keyText="Call = équity pure">
+Le call ne capte pas la fold equity. Tu dois gagner au showdown. C&apos;est pourquoi le call range Nash BB est ~70-75 % du push range Nash SB. Mémorise les deux : le push pour quand tu pousses, le call pour quand tu réponds.
+</Mnemonic>
+
+<SectionHeader num="06" label="Les pièges classiques" title={<>Quatre <em>erreurs de call.</em></>} />
+
+<Prose>
+
+**1. Over-call avec un range trop loose.** Tu confonds &laquo; J&apos;ai un Ace, je dois call &raquo; avec la réalité Nash. A5o à 12bb est un *fold* en BB face à un push standard — tu n&apos;as pas l&apos;equity nécessaire.
+
+**2. Under-call par peur de la variance.** Tu fold KQo à 8bb face à un push. Mais Nash dit call : pot odds + equity vs un range large = +EV. Le poker court stack force la variance ; la fuite mathématique est de la subir avec discipline.
+
+**3. Confondre push range et call range.** Tu mémorises seulement le push range et tu l&apos;appliques au call → over-call de 5-10 % de mains. Le tightening call/push n&apos;est pas optionnel.
+
+**4. Ignorer la profondeur.** A8o est call à 5bb (pot odds énormes) mais fold à 12bb (range push tight, equity insuffisante). Toujours regarder le stack effectif avant de décider.
+
+</Prose>
+
+<LifeLink title="Accepter une offre = perdre toute optionalité.">
+
+Quand tu **déclines** une opportunité, tu gardes 100 % d&apos;optionalité future. Quand tu **acceptes**, tu engages des ressources et fermes des options alternatives. Le call en push/fold = la même logique : accepter le risque immédiat de showdown ferme toute autre voie de victoire (la fold equity).
+
+C&apos;est pourquoi les bons décideurs sont *conservateurs en commitment* et *libéraux en exploration*. La décision **accept** exige plus d&apos;evidence que la décision **decline**. Ce module t&apos;entraîne à internaliser ce principe sur 6 stack depths × N mains : à quel moment l&apos;evidence est suffisante pour accepter le risque ?
+
+</LifeLink>
