@@ -45,6 +45,10 @@ export default defineSchema({
     // drills juste/faux purs (M1.1 ratio exact) ne le renseignent pas, et les
     // attempts M1.x existants restent valides sans migration.
     signedError: v.optional(v.number()),
+    // Niveau de score nuancé ("excellent"|"juste"|"proche"|"faux"). Alimente le
+    // mapping qualité SM-2 (S10). Optionnel : les attempts d'avant S10 restent
+    // valides ; le leak detector retombe alors sur isCorrect.
+    scoreLevel: v.optional(v.string()),
     attemptedAt: v.number(),
     // Pour spaced repetition (S6+)
     nextReviewAt: v.optional(v.number()),
@@ -84,6 +88,53 @@ export default defineSchema({
   })
     .index("by_user", ["userId"])
     .index("by_user_active", ["userId", "active"]),
+
+  // === SM-2 spaced repetition (S10) : un état de révision par (user, pattern). ===
+  patternProgress: defineTable({
+    userId: v.id("users"),
+    patternId: v.string(),
+    easinessFactor: v.number(),
+    interval: v.number(),
+    repetition: v.number(),
+    nextReviewAt: v.number(),
+    lastReviewedAt: v.number(),
+    attemptsCount: v.number(),
+    // Dernier attempt traité — garde-fou d'idempotence (re-run ne ré-avance pas SM-2).
+    lastAttemptId: v.optional(v.id("spotAttempts")),
+  })
+    .index("by_user_pattern", ["userId", "patternId"])
+    .index("by_user_due", ["userId", "nextReviewAt"]),
+
+  // === Leak detection (S10) : un leak actif (resolvedAt absent) ou résolu par pattern. ===
+  leaks: defineTable({
+    userId: v.id("users"),
+    patternId: v.string(),
+    patternLabel: v.string(),
+    submoduleSlug: v.string(),
+    severity: v.string(), // "minor" | "moderate" | "severe"
+    reasons: v.array(
+      v.union(
+        v.object({
+          type: v.literal("low-accuracy"),
+          accuracy: v.number(),
+          threshold: v.number(),
+        }),
+        v.object({
+          type: v.literal("signed-bias-high"),
+          median: v.number(),
+          threshold: v.number(),
+          direction: v.union(v.literal("over"), v.literal("under")),
+        })
+      )
+    ),
+    attemptsAnalyzed: v.number(),
+    accuracy: v.number(),
+    signedErrorMedian: v.number(),
+    detectedAt: v.number(),
+    resolvedAt: v.optional(v.number()), // absent = leak actif
+  })
+    .index("by_user_active", ["userId", "resolvedAt"])
+    .index("by_user_pattern", ["userId", "patternId"]),
 
   // === Leçon (seedée en S5, table définie pour cohérence) ===
   lessonBooks: defineTable({

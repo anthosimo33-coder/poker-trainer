@@ -11,6 +11,14 @@
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
+    /* Les fonctions Convex partagent du code applicatif (engines SM-2/leak,
+     * catalogue de patterns). On reproduit l'alias `@/` et la résolution JSON
+     * du tsconfig racine pour que le typecheck Convex suive ce graphe. */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../*"]
+    },
+    "resolveJsonModule": true,
 
     /* These compiler options are required by Convex */
     "target": "ESNext",

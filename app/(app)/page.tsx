@@ -110,6 +110,7 @@ const STATUS_STYLES = {
 export default function AtelierPage() {
   const { userId } = useCurrentUser();
   const globalStats = useQuery(api.attempts.getGlobalStats, userId ? { userId } : "skip");
+  const activeLeaks = useQuery(api.patterns.listActiveLeaks, userId ? { userId } : "skip");
 
   return (
     <main className="max-w-[1200px] mx-auto px-8 pt-12 pb-24">
@@ -144,7 +145,11 @@ export default function AtelierPage() {
         />
         <MetricCard label="Spots drillés" value={globalStats?.totalAttempts?.toString() ?? "0"} />
         <MetricCard label="Streak" value={globalStats?.currentStreakDays?.toString() ?? "0"} unit="j" />
-        <MetricCard label="Fuites actives" value="—" hint="Détection en S+" />
+        <MetricCard
+          label="Fuites actives"
+          value={activeLeaks ? activeLeaks.length.toString() : "—"}
+          hint={activeLeaks && activeLeaks.length > 0 ? "Voir Mes leaks →" : undefined}
+        />
       </section>
 
       <div className="flex justify-between items-center mb-5">

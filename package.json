@@ -51,6 +51,7 @@
     "screenshots:s8c": "tsx scripts/screenshots-s8c.ts",
     "screenshots:s9a": "tsx scripts/screenshots-s9a.ts",
     "screenshots:s9b": "tsx scripts/screenshots-s9b.ts",
+    "screenshots:s10": "tsx scripts/screenshots-s10.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {

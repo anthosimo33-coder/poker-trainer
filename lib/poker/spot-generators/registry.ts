@@ -20,7 +20,10 @@ import { generateBTNPushSpot } from "./m5-3-btn-push";
 import { generatePositionDefenseSpot } from "./m5-4-position-defense";
 import type { GenericSpot } from "./types";
 
-export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
+/** Un générateur de spot accepte un RNG optionnel (défaut Math.random). */
+export type SpotGenerator = (rng?: () => number) => GenericSpot;
+
+export const SPOT_GENERATORS: Record<string, SpotGenerator> = {
   "m1.1": generatePotOddsSpot,
   "m1.2": generatePotOddsConversionSpot,
   "m1.3": generateImpliedOddsSpot,
@@ -43,6 +46,6 @@ export const SPOT_GENERATORS: Record<string, () => GenericSpot> = {
   "m5.4": generatePositionDefenseSpot,
 };
 
-export function getGenerator(submoduleSlug: string): (() => GenericSpot) | null {
+export function getGenerator(submoduleSlug: string): SpotGenerator | null {
   return SPOT_GENERATORS[submoduleSlug] ?? null;
 }

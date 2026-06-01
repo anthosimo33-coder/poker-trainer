@@ -14,6 +14,8 @@ export const recordAttempt = mutation({
     hintUsed: v.boolean(),
     // Erreur signée optionnelle (cf. schema spotAttempts.signedError).
     signedError: v.optional(v.number()),
+    // Niveau de score nuancé optionnel (cf. schema spotAttempts.scoreLevel).
+    scoreLevel: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("spotAttempts", {

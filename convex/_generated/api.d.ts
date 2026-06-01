@@ -10,6 +10,7 @@
 
 import type * as attempts from "../attempts.js";
 import type * as lessons from "../lessons.js";
+import type * as patterns from "../patterns.js";
 import type * as seed from "../seed.js";
 import type * as sessions from "../sessions.js";
 import type * as theoryCompletions from "../theoryCompletions.js";
@@ -24,6 +25,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   attempts: typeof attempts;
   lessons: typeof lessons;
+  patterns: typeof patterns;
   seed: typeof seed;
   sessions: typeof sessions;
   theoryCompletions: typeof theoryCompletions;

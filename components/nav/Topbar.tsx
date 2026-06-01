@@ -9,6 +9,7 @@ const NAV = [
   { href: "/lesson", label: "Leçon" },
   { href: "/theory", label: "Théorie" },
   { href: "/drill", label: "Drill" },
+  { href: "/leaks", label: "Mes leaks" },
 ] as const;
 
 export function Topbar() {

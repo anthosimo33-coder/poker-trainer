@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, Suspense, type ReactNode } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback, Suspense, type ReactNode } from "react";
 import { useSearchParams, useParams } from "next/navigation";
 import { useMutation, useQuery } from "convex/react";
 import Link from "next/link";
 import { PokerTable } from "@/components/poker/PokerTable";
 import { PlayingCard } from "@/components/poker/PlayingCard";
 import { getGenerator } from "@/lib/poker/spot-generators/registry";
+import { selectSpot } from "@/lib/drill/spot-selector";
+import { PATTERNS_BY_ID } from "@/content/patterns/definitions";
 import type { GenericSpot } from "@/lib/poker/spot-generators/types";
 import type { PotOddsConversionSpot } from "@/lib/poker/spot-generators/m1-2-conversion";
 import type { ImpliedOddsSpot } from "@/lib/poker/spot-generators/m1-3-implied";
@@ -1425,6 +1427,106 @@ function questionFor(spot: GenericSpot): string {
   return "Calcule la cote du pot, l'equity requise pour caller, et donne ta décision.";
 }
 
+/**
+ * Calcule l'erreur signée (calibration) ET le niveau de score (mapping qualité
+ * SM-2) d'un attempt. Source unique pour `recordAttempt` : le niveau vient du
+ * grader nuancé quand il existe, sinon il est dérivé de isCorrect (M1.x/M2.1).
+ */
+function computeAttemptMetrics(
+  spot: GenericSpot,
+  answer: UserAnswer
+): { signedError?: number; scoreLevel: EquityLevel } {
+  if (isBBCall(spot)) {
+    if (answer.nashCallActionInput !== null) {
+      const g = gradeM52(answer.nashCallActionInput, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isBTNPush(spot)) {
+    if (answer.nashActionInput !== null) {
+      const g = gradeM53(answer.nashActionInput, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isPositionDefense(spot)) {
+    if (answer.nashCallActionInput !== null) {
+      const g = gradeM54(answer.nashCallActionInput, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isNashPush(spot)) {
+    if (answer.nashActionInput !== null) {
+      const g = gradeM51(answer.nashActionInput, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isFinalTable(spot)) {
+    const eq = parseAnswerNumber(answer.equityIcmFtInput);
+    if (eq !== null) {
+      const g = gradeM44(eq, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isPositionBubbleFactor(spot)) {
+    const bfBase = parseAnswerNumber(answer.bfBaseInput);
+    const bfAdj = parseAnswerNumber(answer.bfAdjustedInput);
+    if (bfBase !== null && bfAdj !== null) {
+      const g = gradeM43(bfBase, bfAdj, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isBubbleFactor(spot)) {
+    const eqChip = parseAnswerNumber(answer.equityChipReqInput);
+    const eqICM = parseAnswerNumber(answer.equityIcmReqInput);
+    if (eqChip !== null && eqICM !== null) {
+      const g = gradeM42(eqChip, eqICM, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isICM(spot)) {
+    const eq = parseAnswerNumber(answer.equityIcmInput);
+    if (eq !== null) {
+      const g = gradeM41(eq, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isCheckRaise(spot)) {
+    const pf = parseAnswerNumber(answer.pFoldCRInput);
+    const pc = parseAnswerNumber(answer.pCallCRInput);
+    const eq = parseAnswerNumber(answer.equityCRInput);
+    if (pf !== null && pc !== null && eq !== null) {
+      const g = gradeM34(pf, pc, eq, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isFoldEquity(spot)) {
+    const be = parseAnswerNumber(answer.pFoldBreakevenInput);
+    if (be !== null) {
+      const g = gradeM32(be, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isMultiBranch(spot)) {
+    const pf = parseAnswerNumber(answer.pFoldBranchInput);
+    const pc = parseAnswerNumber(answer.pCallBranchInput);
+    const pr = parseAnswerNumber(answer.pRaiseBranchInput);
+    if (pf !== null && pc !== null && pr !== null) {
+      const g = gradeM33(pf, pc, pr, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isPushFold(spot)) {
+    const pf = parseAnswerNumber(answer.pFoldInput);
+    const eq = parseAnswerNumber(answer.equityCallInput);
+    if (pf !== null && eq !== null) {
+      const g = gradeM31(pf, eq, spot);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
+    const ue = parseAnswerNumber(answer.equityHu);
+    if (ue !== null) {
+      const g = gradeM22(ue, spot.expected.equity);
+      return { signedError: g.signedError, scoreLevel: g.level };
+    }
+  } else if (isOuts(spot)) {
+    const ue = parseAnswerNumber(answer.equityInput);
+    const signedError =
+      ue !== null ? Math.round((ue - spot.expected.equityApprox) * 10) / 10 : undefined;
+    return { signedError, scoreLevel: grade(spot, answer).isCorrect ? "excellent" : "faux" };
+  }
+  // M1.1-M1.4 (et garde-fou) : scoring exact, niveau dérivé de isCorrect.
+  return { scoreLevel: grade(spot, answer).isCorrect ? "excellent" : "faux" };
+}
+
 function DrillContent() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -1432,6 +1534,11 @@ function DrillContent() {
   const dbSubmoduleSlug = urlSlugToDbSlug(urlSubmoduleId);
   const moduleSlug = moduleSlugFromSubmodule(dbSubmoduleSlug);
   const isRetryMode = searchParams.get("mode") === "retry";
+  // S10 — priorisation : `?priorityMode=off` désactive (drill « pratique pure »,
+  // utile aux tests e2e) ; `?focusPattern=ID` cible un unique pattern (depuis /leaks).
+  const priorityMode = searchParams.get("priorityMode") !== "off";
+  const focusPattern = searchParams.get("focusPattern");
+  const focusDef = focusPattern ? PATTERNS_BY_ID[focusPattern] ?? null : null;
 
   const { userId, isReady } = useCurrentUser();
   const completion = useQuery(
@@ -1452,8 +1559,42 @@ function DrillContent() {
   const recordAttempt = useMutation(api.attempts.recordAttempt);
   const addSpotToSession = useMutation(api.sessions.addSpotToSession);
   const endSession = useMutation(api.sessions.endSession);
+  const updateAfterAttempt = useMutation(api.patterns.updateAfterAttempt);
+
+  // Inputs de priorisation : leaks actifs + patterns dus (SM-2) pour ce sous-module.
+  // `sessionNow` est figé au montage : une query Convex ne peut pas appeler Date.now(),
+  // et un argument stable évite les refetch en boucle.
+  const [sessionNow] = useState(() => Date.now());
+  const activeLeaksRaw = useQuery(api.patterns.listActiveLeaks, userId ? { userId } : "skip");
+  const duePatternsRaw = useQuery(
+    api.patterns.listDuePatterns,
+    userId ? { userId, now: sessionNow, submoduleSlug: dbSubmoduleSlug } : "skip"
+  );
+  const leaksForSub = useMemo(
+    () => (activeLeaksRaw ?? []).filter((l) => l.submoduleSlug === dbSubmoduleSlug),
+    [activeLeaksRaw, dbSubmoduleSlug]
+  );
+  const duePatterns = useMemo(() => duePatternsRaw ?? [], [duePatternsRaw]);
+  // En mode priorité (hors focus), on attend que les inputs soient chargés pour
+  // que le tout premier spot puisse déjà cibler un leak/une révision.
+  const prioReady =
+    !priorityMode ||
+    focusPattern !== null ||
+    (activeLeaksRaw !== undefined && duePatternsRaw !== undefined);
 
   const generator = getGenerator(dbSubmoduleSlug);
+
+  // Tire le prochain spot : focus mode, sinon priorisation 60/40, sinon aléatoire.
+  const pickSpot = useCallback(
+    (): GenericSpot =>
+      selectSpot(
+        dbSubmoduleSlug,
+        priorityMode ? leaksForSub : [],
+        priorityMode ? duePatterns : [],
+        focusPattern
+      ),
+    [dbSubmoduleSlug, priorityMode, focusPattern, leaksForSub, duePatterns]
+  );
   const isTheoryCompleted =
     completion !== undefined && completion !== null && completion.quickCheckScore >= 2;
 
@@ -1491,11 +1632,11 @@ function DrillContent() {
       } else if (retrySpots && retrySpots.length === 0) {
         window.location.href = `/drill/${urlSubmoduleId}`;
       }
-    } else {
-      setSpot(generator());
+    } else if (prioReady) {
+      setSpot(pickSpot());
       startedAtRef.current = Date.now();
     }
-  }, [spot, sessionId, isRetryMode, retrySpots, spotIndex, generator, urlSubmoduleId]);
+  }, [spot, sessionId, isRetryMode, retrySpots, spotIndex, generator, urlSubmoduleId, prioReady, pickSpot]);
 
   const stats = useMemo(() => {
     const correct = attempts.filter((a) => a.isCorrect).length;
@@ -1568,91 +1709,9 @@ function DrillContent() {
     if (!spot || !userId || !sessionId) return;
     const result = grade(spot, answer);
     const timeMs = Date.now() - startedAtRef.current;
-    // Erreur signée (calibration tracking) : pour M2.1, écart estimation
-    // d'equity − vraie valeur. Optionnel ailleurs (juste/faux pur).
-    let signedError: number | undefined;
-    if (isBBCall(spot)) {
-      if (answer.nashCallActionInput !== null) {
-        signedError = gradeM52(answer.nashCallActionInput, spot).signedError;
-      }
-    } else if (isBTNPush(spot)) {
-      if (answer.nashActionInput !== null) {
-        signedError = gradeM53(answer.nashActionInput, spot).signedError;
-      }
-    } else if (isPositionDefense(spot)) {
-      if (answer.nashCallActionInput !== null) {
-        signedError = gradeM54(answer.nashCallActionInput, spot).signedError;
-      }
-    } else if (isNashPush(spot)) {
-      // signedError = +1 (over-push) / -1 (under-push) / 0 (correct)
-      if (answer.nashActionInput !== null) {
-        signedError = gradeM51(answer.nashActionInput, spot).signedError;
-      }
-    } else if (isFinalTable(spot)) {
-      // signedError = erreur d'équité ICM en pts %.
-      const eq = parseAnswerNumber(answer.equityIcmFtInput);
-      if (eq !== null) {
-        signedError = gradeM44(eq, spot).signedError;
-      }
-    } else if (isPositionBubbleFactor(spot)) {
-      // signedError = erreur sur BF ajusté (la métrique pédagogique de M4.3).
-      const bfBase = parseAnswerNumber(answer.bfBaseInput);
-      const bfAdj = parseAnswerNumber(answer.bfAdjustedInput);
-      if (bfBase !== null && bfAdj !== null) {
-        signedError = gradeM43(bfBase, bfAdj, spot).signedError;
-      }
-    } else if (isBubbleFactor(spot)) {
-      // signedError = erreur d'équité ICM requise en pts % (la plus pédagogique).
-      const eqChip = parseAnswerNumber(answer.equityChipReqInput);
-      const eqICM = parseAnswerNumber(answer.equityIcmReqInput);
-      if (eqChip !== null && eqICM !== null) {
-        signedError = gradeM42(eqChip, eqICM, spot).signedError;
-      }
-    } else if (isICM(spot)) {
-      // signedError = erreur d'équité ICM en pts %.
-      const eq = parseAnswerNumber(answer.equityIcmInput);
-      if (eq !== null) {
-        signedError = gradeM41(eq, spot).signedError;
-      }
-    } else if (isCheckRaise(spot)) {
-      const pf = parseAnswerNumber(answer.pFoldCRInput);
-      const pc = parseAnswerNumber(answer.pCallCRInput);
-      const eq = parseAnswerNumber(answer.equityCRInput);
-      if (pf !== null && pc !== null && eq !== null) {
-        signedError = gradeM34(pf, pc, eq, spot).signedError;
-      }
-    } else if (isFoldEquity(spot)) {
-      // signedError = erreur de pFoldBreakeven en points de %.
-      const be = parseAnswerNumber(answer.pFoldBreakevenInput);
-      if (be !== null) {
-        signedError = gradeM32(be, spot).signedError;
-      }
-    } else if (isMultiBranch(spot)) {
-      // signedError = erreur d'EV en bb (cohérence avec M3.1).
-      const pf = parseAnswerNumber(answer.pFoldBranchInput);
-      const pc = parseAnswerNumber(answer.pCallBranchInput);
-      const pr = parseAnswerNumber(answer.pRaiseBranchInput);
-      if (pf !== null && pc !== null && pr !== null) {
-        signedError = gradeM33(pf, pc, pr, spot).signedError;
-      }
-    } else if (isPushFold(spot)) {
-      // signedError = erreur d'EV en bb (la métrique business du module).
-      const pf = parseAnswerNumber(answer.pFoldInput);
-      const eq = parseAnswerNumber(answer.equityCallInput);
-      if (pf !== null && eq !== null) {
-        signedError = gradeM31(pf, eq, spot).signedError;
-      }
-    } else if (isVsRange(spot) || isMultiway(spot) || isEquity(spot)) {
-      const ue = parseAnswerNumber(answer.equityHu);
-      if (ue !== null) {
-        signedError = Math.round((ue - spot.expected.equity) * 10) / 10;
-      }
-    } else if (isOuts(spot)) {
-      const ue = parseAnswerNumber(answer.equityInput);
-      if (ue !== null) {
-        signedError = Math.round((ue - spot.expected.equityApprox) * 10) / 10;
-      }
-    }
+    // S10 : erreur signée (calibration) + niveau de score (mapping qualité SM-2),
+    // calculés en une passe (cf. computeAttemptMetrics).
+    const { signedError, scoreLevel } = computeAttemptMetrics(spot, answer);
     const attemptId = await recordAttempt({
       userId,
       submoduleSlug: dbSubmoduleSlug,
@@ -1663,9 +1722,12 @@ function DrillContent() {
       isCorrect: result.isCorrect,
       timeMs,
       hintUsed: false,
+      scoreLevel,
       ...(signedError !== undefined ? { signedError } : {}),
     });
     await addSpotToSession({ sessionId, attemptId, orderIndex: spotIndex - 1, isCorrect: result.isCorrect });
+    // SM-2 + leak detection sur les patterns matchés par cet attempt.
+    await updateAfterAttempt({ attemptId });
     setAttempts((prev) => [...prev, { spotId: spot.id, isCorrect: result.isCorrect, timeMs }]);
     setShowCorrection(true);
   }
@@ -1679,7 +1741,7 @@ function DrillContent() {
     if (isRetryMode && retrySpots) {
       setSpot(retrySpots[spotIndex]);
     } else if (generator) {
-      setSpot(generator());
+      setSpot(pickSpot());
     }
     startedAtRef.current = Date.now();
     setAnswer(EMPTY_ANSWER);
@@ -1689,6 +1751,22 @@ function DrillContent() {
 
   return (
     <main className="max-w-[1200px] mx-auto px-8 py-12">
+      {focusDef && (
+        <div
+          className="mb-6 flex items-center gap-3 rounded px-4 py-3"
+          style={{
+            background: "var(--purple-glow)",
+            border: "0.5px solid rgba(167, 139, 250, 0.3)",
+          }}
+        >
+          <span className="text-[15px]">🎯</span>
+          <div className="text-[13px]">
+            <span className="font-mono uppercase tracking-wider text-purple-300">Focus pattern</span>
+            <span className="text-text-muted"> · spots ciblés uniquement</span>
+            <div className="text-text font-medium">{focusDef.label}</div>
+          </div>
+        </div>
+      )}
       <div className="flex justify-between items-end mb-10 pb-6" style={{ borderBottom: "0.5px solid var(--border)" }}>
         <div>
           <div className="text-[11px] font-mono uppercase tracking-wider text-text-faint mb-2 flex items-center gap-2">
