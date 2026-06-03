@@ -34,7 +34,7 @@ import { fmtPercent, fmtRatio, fmtBb, cn } from "@/lib/utils";
 import { fmtDurationCompact, fmtDurationCompactUnit } from "@/lib/format";
 import { urlSlugToDbSlug, moduleSlugFromSubmodule } from "@/lib/slug";
 import { api } from "@/convex/_generated/api";
-import { useCurrentUser } from "@/lib/auth/useCurrentUser";
+import { useEnsuredUserId } from "@/hooks/useEnsuredUserId";
 import type { Id } from "@/convex/_generated/dataModel";
 
 interface Attempt {
@@ -1540,7 +1540,7 @@ function DrillContent() {
   const focusPattern = searchParams.get("focusPattern");
   const focusDef = focusPattern ? PATTERNS_BY_ID[focusPattern] ?? null : null;
 
-  const { userId, isReady } = useCurrentUser();
+  const { userId, isReady, ensureUserId } = useEnsuredUserId();
   const completion = useQuery(
     api.theoryCompletions.getCompletion,
     userId ? { userId, submoduleSlug: dbSubmoduleSlug } : "skip"
@@ -1553,6 +1553,7 @@ function DrillContent() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   const [spotIndex, setSpotIndex] = useState(1);
   const [sessionId, setSessionId] = useState<Id<"sessions"> | null>(null);
+  const [pending, setPending] = useState(false);
   const startedAtRef = useRef<number>(Date.now());
 
   const startSession = useMutation(api.sessions.startSession);
@@ -1615,12 +1616,28 @@ function DrillContent() {
     }
   }, [isRetryMode, retrySpots]);
 
-  // Start session — UNIQUEMENT si théorie validée ou mode rejeu (fix S4a : plus de session zombie)
+  // Start session — UNIQUEMENT si théorie validée ou mode rejeu (fix S4a : plus de
+  // session zombie). S11 : on attend l'identité via ensureUserId (plus de garde
+  // `!userId` qui skippait l'écriture sous latence d'auth).
   useEffect(() => {
-    if (!isReady || !userId || sessionId) return;
+    if (sessionId) return;
     if (!isTheoryCompleted && !isRetryMode) return;
-    startSession({ userId, moduleSlug, submoduleSlug: dbSubmoduleSlug }).then(setSessionId);
-  }, [isReady, userId, sessionId, isTheoryCompleted, isRetryMode, moduleSlug, dbSubmoduleSlug, startSession]);
+    let cancelled = false;
+    ensureUserId()
+      .then((uid) => {
+        if (cancelled) return;
+        return startSession({ userId: uid, moduleSlug, submoduleSlug: dbSubmoduleSlug });
+      })
+      .then((id) => {
+        if (!cancelled && id) setSessionId(id);
+      })
+      .catch(() => {
+        /* échec rare : l'écran « Préparation… » reste, l'effet re-tente au prochain rendu */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [sessionId, isTheoryCompleted, isRetryMode, moduleSlug, dbSubmoduleSlug, startSession, ensureUserId]);
 
   // Génère le spot
   useEffect(() => {
@@ -1706,30 +1723,38 @@ function DrillContent() {
   const validatable = canValidate(spot, answer);
 
   async function handleValidate() {
-    if (!spot || !userId || !sessionId) return;
-    const result = grade(spot, answer);
-    const timeMs = Date.now() - startedAtRef.current;
-    // S10 : erreur signée (calibration) + niveau de score (mapping qualité SM-2),
-    // calculés en une passe (cf. computeAttemptMetrics).
-    const { signedError, scoreLevel } = computeAttemptMetrics(spot, answer);
-    const attemptId = await recordAttempt({
-      userId,
-      submoduleSlug: dbSubmoduleSlug,
-      spotId: spot.id,
-      spotSnapshot: spot,
-      expected: spot.expected,
-      userAnswer: answer,
-      isCorrect: result.isCorrect,
-      timeMs,
-      hintUsed: false,
-      scoreLevel,
-      ...(signedError !== undefined ? { signedError } : {}),
-    });
-    await addSpotToSession({ sessionId, attemptId, orderIndex: spotIndex - 1, isCorrect: result.isCorrect });
-    // SM-2 + leak detection sur les patterns matchés par cet attempt.
-    await updateAfterAttempt({ attemptId });
-    setAttempts((prev) => [...prev, { spotId: spot.id, isCorrect: result.isCorrect, timeMs }]);
-    setShowCorrection(true);
+    // S11 : plus de garde `!userId` (qui skippait l'attempt sous latence d'auth).
+    // `pending` empêche un double-submit (donc un double recordAttempt).
+    if (!spot || !sessionId || pending) return;
+    setPending(true);
+    try {
+      const result = grade(spot, answer);
+      const timeMs = Date.now() - startedAtRef.current;
+      // S10 : erreur signée (calibration) + niveau de score (mapping qualité SM-2),
+      // calculés en une passe (cf. computeAttemptMetrics).
+      const { signedError, scoreLevel } = computeAttemptMetrics(spot, answer);
+      const uid = await ensureUserId();
+      const attemptId = await recordAttempt({
+        userId: uid,
+        submoduleSlug: dbSubmoduleSlug,
+        spotId: spot.id,
+        spotSnapshot: spot,
+        expected: spot.expected,
+        userAnswer: answer,
+        isCorrect: result.isCorrect,
+        timeMs,
+        hintUsed: false,
+        scoreLevel,
+        ...(signedError !== undefined ? { signedError } : {}),
+      });
+      await addSpotToSession({ sessionId, attemptId, orderIndex: spotIndex - 1, isCorrect: result.isCorrect });
+      // SM-2 + leak detection sur les patterns matchés par cet attempt.
+      await updateAfterAttempt({ attemptId });
+      setAttempts((prev) => [...prev, { spotId: spot.id, isCorrect: result.isCorrect, timeMs }]);
+      setShowCorrection(true);
+    } finally {
+      setPending(false);
+    }
   }
 
   async function handleNext() {
@@ -1872,7 +1897,7 @@ function DrillContent() {
             spot={spot}
             answer={answer}
             setAnswer={setAnswer}
-            canSubmit={validatable}
+            canSubmit={validatable && !pending}
             onValidate={handleValidate}
           />
         ) : (

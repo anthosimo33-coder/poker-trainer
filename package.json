@@ -52,6 +52,7 @@
     "screenshots:s9a": "tsx scripts/screenshots-s9a.ts",
     "screenshots:s9b": "tsx scripts/screenshots-s9b.ts",
     "screenshots:s10": "tsx scripts/screenshots-s10.ts",
+    "screenshots:s11": "tsx scripts/screenshots-s11.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts"
   },
   "dependencies": {
@@ -71,6 +72,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-markdown": "^10.1.0",
+    "recharts": "^3.8.1",
     "remark-frontmatter": "^5.0.0",
     "tailwind-merge": "^3.6.0"
   },

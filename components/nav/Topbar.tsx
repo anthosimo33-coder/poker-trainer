@@ -10,6 +10,7 @@ const NAV = [
   { href: "/theory", label: "Théorie" },
   { href: "/drill", label: "Drill" },
   { href: "/leaks", label: "Mes leaks" },
+  { href: "/stats", label: "Stats" },
 ] as const;
 
 export function Topbar() {

@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
-import { useCurrentUser } from "@/lib/auth/useCurrentUser";
+import { useEnsuredUserId } from "@/hooks/useEnsuredUserId";
 import { urlSlugToDbSlug } from "@/lib/slug";
 
 // Map des slugs → composants MDX
@@ -38,7 +38,7 @@ function TheoryContent() {
   const moduleId = params.moduleId as string;
   const submoduleId = params.submoduleId as string;
 
-  const { userId } = useCurrentUser();
+  const { ensureUserId } = useEnsuredUserId();
   const [TheoryComponent, setTheoryComponent] = useState<ComponentType | null>(null);
   const [showQuickCheck, setShowQuickCheck] = useState(false);
 
@@ -103,7 +103,7 @@ function TheoryContent() {
       {showQuickCheck && (
         <QuickCheckModal
           submoduleId={submoduleId}
-          userId={userId}
+          ensureUserId={ensureUserId}
           onClose={() => setShowQuickCheck(false)}
         />
       )}
@@ -870,17 +870,19 @@ const QUESTIONS: Record<string, QuickCheckQuestion[]> = {
 
 function QuickCheckModal({
   submoduleId,
-  userId,
+  ensureUserId,
   onClose,
 }: {
   submoduleId: string;
-  userId: Id<"users"> | null;
+  ensureUserId: () => Promise<Id<"users">>;
   onClose: () => void;
 }) {
   const questions = QUESTIONS[submoduleId] ?? [];
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selected, setSelected] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [saveError, setSaveError] = useState(false);
   const recordCompletion = useMutation(api.theoryCompletions.recordCompletion);
 
   const currentQ = questions[currentIdx];
@@ -889,15 +891,30 @@ function QuickCheckModal({
     setSelected({ ...selected, [currentIdx]: letter });
   }
 
+  // S11 — fix bootstrap : on attend l'identité (ensureUserId) AVANT d'écrire la
+  // complétion, donc une soumission lancée pendant la latence d'auth n'est plus
+  // jamais perdue (sinon le drill restait verrouillé). Échec → erreur visible.
   async function handleSubmit() {
+    if (pending) return;
     const score = questions.reduce(
       (s, q, i) => s + (selected[i] === q.correctLetter ? 1 : 0),
       0
     );
-    if (userId) {
-      await recordCompletion({ userId, submoduleSlug: urlSlugToDbSlug(submoduleId), quickCheckScore: score });
+    setPending(true);
+    setSaveError(false);
+    try {
+      const uid = await ensureUserId();
+      await recordCompletion({
+        userId: uid,
+        submoduleSlug: urlSlugToDbSlug(submoduleId),
+        quickCheckScore: score,
+      });
+      setShowResults(true);
+    } catch {
+      setSaveError(true);
+    } finally {
+      setPending(false);
     }
-    setShowResults(true);
   }
 
   const score = questions.reduce(
@@ -1000,18 +1017,25 @@ function QuickCheckModal({
                   Suivant →
                 </button>
               ) : (
-                <button
-                  onClick={handleSubmit}
-                  disabled={Object.keys(selected).length < questions.length}
-                  className="px-5 py-2.5 rounded text-[12px] font-medium transition-all duration-200 disabled:opacity-40 text-white"
-                  style={{
-                    background: "var(--purple-500)",
-                    border: "0.5px solid var(--purple-500)",
-                    boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
-                  }}
-                >
-                  Valider mes réponses →
-                </button>
+                <div className="flex flex-col items-end gap-2">
+                  {saveError && (
+                    <div className="text-[11px] font-mono" style={{ color: "var(--red)" }}>
+                      Échec de l&apos;enregistrement. Réessaie.
+                    </div>
+                  )}
+                  <button
+                    onClick={handleSubmit}
+                    disabled={pending || Object.keys(selected).length < questions.length}
+                    className="px-5 py-2.5 rounded text-[12px] font-medium transition-all duration-200 disabled:opacity-40 text-white"
+                    style={{
+                      background: "var(--purple-500)",
+                      border: "0.5px solid var(--purple-500)",
+                      boxShadow: "0 0 0 0.5px rgba(255,255,255,0.1), 0 4px 16px var(--purple-glow-strong)",
+                    }}
+                  >
+                    {pending ? "Enregistrement…" : "Valider mes réponses →"}
+                  </button>
+                </div>
               )}
             </div>
           </>

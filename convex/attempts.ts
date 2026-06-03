@@ -16,11 +16,14 @@ export const recordAttempt = mutation({
     signedError: v.optional(v.number()),
     // Niveau de score nuancé optionnel (cf. schema spotAttempts.scoreLevel).
     scoreLevel: v.optional(v.string()),
+    // Override optionnel de l'horodatage (seeding de données historiques pour les
+    // stats S11). Le client de drill ne le passe jamais → Date.now() côté serveur.
+    attemptedAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("spotAttempts", {
       ...args,
-      attemptedAt: Date.now(),
+      attemptedAt: args.attemptedAt ?? Date.now(),
       repetitionCount: 0,
       easeFactor: 2.5,
     });
