@@ -44,4 +44,12 @@ describe("resolveTestConvexUrl — garde anti-prod", () => {
     process.env.NEXT_PUBLIC_CONVEX_URL = "http://127.0.0.1:3210/my-machine-abc";
     expect(resolveTestConvexUrl()).toContain("my-machine-abc");
   });
+
+  it("retombe sur .env.local quand process.env est absent (chemin réel des e2e/purge)", () => {
+    // En run e2e/purge réel, process.env ne porte pas ces clés → la garde lit
+    // .env.local (déploiement dev du dépôt). Doit renvoyer une URL Convex sans throw.
+    delete process.env.CONVEX_DEPLOYMENT;
+    delete process.env.NEXT_PUBLIC_CONVEX_URL;
+    expect(resolveTestConvexUrl()).toMatch(/\.convex\.cloud$/);
+  });
 });

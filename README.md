@@ -19,8 +19,18 @@ Après le premier `pnpm dev:convex` (ou `pnpm dlx convex dev --once`) qui déplo
 seeder les modules/sous-modules une fois :
 
 ```bash
-pnpm dlx convex run seed:seedModules   # → { modules: 5, submodules: 4 }
+pnpm dlx convex run seed:seedModules   # → { modules: 5, submodules: 8 }
 ```
+
+> Note : l'app ne **lit** pas les tables `modules`/`submodules` (l'Atelier et les
+> index utilisent `lib/modules.ts` ; les drills, des slugs string). Ce seed est
+> optionnel. Le contenu Leçon, lui, doit être seedé : `pnpm seed:lessons`.
+
+## Déploiement & tests
+
+- **`DEPLOYMENT.md`** — runbook de mise en ligne Vercel + Convex prod (+ rollback).
+- **`TESTING.md`** — run e2e reproductible, identité de test anti-churn, garde
+  anti-prod, purge des données de test.
 
 ## Stack
 

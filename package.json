@@ -55,7 +55,9 @@
     "screenshots:s11": "tsx scripts/screenshots-s11.ts",
     "seed:lessons": "tsx scripts/seed-lessons.ts",
     "screenshots:s12": "tsx scripts/screenshots-s12.ts",
-    "purge:test-data": "tsx scripts/purge-test-data.ts"
+    "purge:test-data": "tsx scripts/purge-test-data.ts",
+    "warm": "tsx scripts/warm-routes.ts",
+    "test:e2e:stable": "tsx scripts/warm-routes.ts && playwright test --workers=1"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
