@@ -1,4 +1,6 @@
-import { test, expect, type Page } from "@playwright/test";
+// S12 : `test` étendu = anonId fixe par test + reset (pas de churn). Le leak est
+// seedé sous ce même anonId, déjà injecté/resetté par la fixture.
+import { test, expect } from "./_fixtures";
 import { seedLeaks } from "./_seed";
 
 // S10 — leak detection + drill prioritization e2e.
@@ -9,20 +11,10 @@ import { seedLeaks } from "./_seed";
 const FOCUS_PATTERN = "m1-1-equity-marginal";
 const FOCUS_LABEL = "Call marginal (eq requise 25-30 %)";
 
-async function useSeededUser(page: Page, anonymousId: string) {
-  await page.addInitScript((id) => {
-    localStorage.setItem("poker-trainer.anonymousId", id);
-  }, anonymousId);
-}
-
 test.describe("S10 — leaks & focus drill", () => {
-  test.describe.configure({ mode: "serial" });
-
-  test("un leak créé (recordAttempt → updateAfterAttempt) s'affiche sur /leaks", async ({ page }) => {
+  test("un leak créé (recordAttempt → updateAfterAttempt) s'affiche sur /leaks", async ({ page, anonId }) => {
     test.slow();
-    const id = "s10-e2e-display";
-    await seedLeaks(id);
-    await useSeededUser(page, id);
+    await seedLeaks(anonId);
 
     await page.goto("/leaks");
     await expect(page.getByRole("heading", { name: /Mes leaks actifs/ })).toBeVisible({ timeout: 20_000 });
@@ -32,11 +24,9 @@ test.describe("S10 — leaks & focus drill", () => {
     await expect(page.getByText(/Sévère/).first()).toBeVisible();
   });
 
-  test("page /leaks → 'Drill ce pattern' lance le focus mode", async ({ page }) => {
+  test("page /leaks → 'Drill ce pattern' lance le focus mode", async ({ page, anonId }) => {
     test.slow();
-    const id = "s10-e2e-focus";
-    await seedLeaks(id);
-    await useSeededUser(page, id);
+    await seedLeaks(anonId);
 
     await page.goto("/leaks");
     await expect(page.getByText(FOCUS_LABEL)).toBeVisible({ timeout: 20_000 });

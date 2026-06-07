@@ -1,16 +1,12 @@
-import { test, expect } from "@playwright/test";
+// S12 : `test` étendu = anonId fixe par test + reset (pas de churn). Le seed
+// utilise ce même anonId déjà injecté/resetté par la fixture.
+import { test, expect } from "./_fixtures";
 import { seedStats } from "./_seed";
 
 test.describe("Stats — page calibration & biais (S11)", () => {
-  test("/stats : KPIs + au moins un graphe non vide après seeding", async ({ page }) => {
+  test("/stats : KPIs + au moins un graphe non vide après seeding", async ({ page, anonId }) => {
     test.slow(); // le seed (mode light) crée ~30 attempts via ConvexHttpClient
-    const anonymousId = `e2e-stats-${Date.now()}`;
-    await seedStats(anonymousId, { light: true });
-
-    // Injecte l'anonId AVANT le bootstrap de la page (même user que le seed).
-    await page.addInitScript((id) => {
-      window.localStorage.setItem("poker-trainer.anonymousId", id);
-    }, anonymousId);
+    await seedStats(anonId, { light: true });
 
     await page.goto("/stats");
     await expect(page.getByRole("heading", { name: /calibration/i })).toBeVisible({
@@ -34,14 +30,12 @@ test.describe("Stats — page calibration & biais (S11)", () => {
   test("quick-check sur user frais → complétion enregistrée, drill débloqué (fix bootstrap)", async ({
     page,
   }) => {
-    // Contexte neuf = user anonyme jamais bootstrappé : on enchaîne le quick
-    // check immédiatement. Avant le fix S11, recordCompletion était skippé tant
-    // que `userId` n'était pas résolu → le drill restait verrouillé. Désormais
-    // handleSubmit attend ensureUserId() : l'écriture n'est jamais perdue.
-    await page.addInitScript(() => {
-      window.localStorage.removeItem("poker-trainer.anonymousId");
-    });
-
+    // User de test resetté par la fixture (ardoise propre, pas de churn) : on
+    // enchaîne le quick check immédiatement. Avant le fix S11, recordCompletion
+    // était skippé tant que `userId` n'était pas résolu → le drill restait
+    // verrouillé. Désormais handleSubmit attend ensureUserId() : l'écriture
+    // n'est jamais perdue. La fixture ayant vidé theoryCompletions, le quick
+    // check réapparaît à chaque run (reproductible).
     await page.goto("/module/m1/theory/m1-1");
     await page.getByRole("button", { name: /Passer le quick check/ }).click({ timeout: 20_000 });
     await expect(page.getByText(/Question 1/)).toBeVisible();

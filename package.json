@@ -53,7 +53,9 @@
     "screenshots:s9b": "tsx scripts/screenshots-s9b.ts",
     "screenshots:s10": "tsx scripts/screenshots-s10.ts",
     "screenshots:s11": "tsx scripts/screenshots-s11.ts",
-    "seed:lessons": "tsx scripts/seed-lessons.ts"
+    "seed:lessons": "tsx scripts/seed-lessons.ts",
+    "screenshots:s12": "tsx scripts/screenshots-s12.ts",
+    "purge:test-data": "tsx scripts/purge-test-data.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

@@ -14,6 +14,7 @@ import type * as patterns from "../patterns.js";
 import type * as seed from "../seed.js";
 import type * as sessions from "../sessions.js";
 import type * as stats from "../stats.js";
+import type * as testing from "../testing.js";
 import type * as theoryCompletions from "../theoryCompletions.js";
 import type * as users from "../users.js";
 
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   seed: typeof seed;
   sessions: typeof sessions;
   stats: typeof stats;
+  testing: typeof testing;
   theoryCompletions: typeof theoryCompletions;
   users: typeof users;
 }>;

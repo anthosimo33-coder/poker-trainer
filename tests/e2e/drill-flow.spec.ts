@@ -1,4 +1,6 @@
-import { test, expect, type Page } from "@playwright/test";
+// S12 : `test` étendu = anonId de test fixe par test + reset (pas de churn,
+// ardoise propre reproductible). Voir tests/e2e/_fixtures.ts.
+import { test, expect, type Page } from "./_fixtures";
 
 // S4a : le drill est désormais verrouillé tant que la théorie M1.1 + quick check
 // ne sont pas validés. Les tests qui drillent doivent donc d'abord compléter la

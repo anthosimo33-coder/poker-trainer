@@ -5,20 +5,12 @@
  * `userId` n'est pas résolu). On exerce ici le VRAI code de création de leak
  * (recordAttempt + updateAfterAttempt), seul le déclencheur change.
  */
-import fs from "fs";
-import path from "path";
 import { ConvexHttpClient } from "convex/browser";
 // Import relatif (et non `@/…`) pour rester exécutable aussi sous tsx (scripts
 // de screenshots), où l'alias `@` n'est pas résolu — cf. screenshots-s11.ts.
 import { api } from "../../convex/_generated/api";
-
-function convexUrl(): string {
-  const envPath = path.join(process.cwd(), ".env.local");
-  const raw = fs.readFileSync(envPath, "utf8");
-  const m = raw.match(/^NEXT_PUBLIC_CONVEX_URL=(.+)$/m);
-  if (!m) throw new Error("NEXT_PUBLIC_CONVEX_URL introuvable dans .env.local");
-  return m[1].trim();
-}
+// Garde anti-prod (S12) : résout l'URL Convex en refusant toute cible de prod.
+import { resolveTestConvexUrl } from "./_guard";
 
 /** Spot M1.1 minimal ciblant le pattern m1-1-equity-marginal (req. 28 %, bet 0.6 pot). */
 function marginalSpot(i: number) {
@@ -62,7 +54,7 @@ export interface SeedOptions {
  * des attempts qui déclenchent un (ou des) leak(s). Idempotent par anonymousId.
  */
 export async function seedLeaks(anonymousId: string, opts: SeedOptions = {}): Promise<void> {
-  const client = new ConvexHttpClient(convexUrl());
+  const client = new ConvexHttpClient(resolveTestConvexUrl());
   const userId = await client.mutation(api.users.getOrCreateAnonymousUser, { anonymousId });
   await client.mutation(api.theoryCompletions.recordCompletion, {
     userId,
@@ -120,7 +112,7 @@ export async function seedStats(
   // SM-2 + leaks (KPI + forecast) — coûteux (updateAfterAttempt), sauté en light.
   if (!light) await seedLeaks(anonymousId, { rich: true });
 
-  const client = new ConvexHttpClient(convexUrl());
+  const client = new ConvexHttpClient(resolveTestConvexUrl());
   const userId = await client.mutation(api.users.getOrCreateAnonymousUser, { anonymousId });
   const now = Date.now();
   let seq = 0;

@@ -1,10 +1,12 @@
+import { ModuleCatalog } from "@/components/ModuleCatalog";
+
 export default function DrillIndexPage() {
   return (
-    <main className="max-w-[1200px] mx-auto px-8 py-12">
-      <h1 className="text-3xl font-semibold tracking-tight mb-2 bg-gradient-text">
-        Drill
-      </h1>
-      <p className="text-text-muted">La liste des modules drillables sera construite dans une prochaine session.</p>
-    </main>
+    <ModuleCatalog
+      eyebrow="Entraînement"
+      title="Drill"
+      subtitle="Choisis un sous-module à travailler. Si la théorie n'est pas encore validée, le drill t'y renvoie d'abord — sinon tu enchaînes une session de 20 spots."
+      mode="drill"
+    />
   );
 }
